@@ -1348,6 +1348,332 @@
       .temo-card { min-width: calc(85% - 0.9rem); }
       .videos-grid { grid-template-columns: 1fr; }
     }
+
+    /* ============================================================
+       SECTION FORFAIT ATHLÈTE
+    ============================================================ */
+    #forfait {
+      padding: 7rem 0;
+      background: #000769;
+      position: relative;
+    }
+    #forfait::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #C0A060, transparent);
+    }
+
+    .forfait-badge-wrap {
+      text-align: center;
+      margin-bottom: 0.8rem;
+    }
+    .forfait-pill {
+      display: inline-block;
+      background: rgba(192,160,96,0.12);
+      border: 1px solid rgba(192,160,96,0.45);
+      color: #C0A060;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      padding: 0.5rem 1.6rem;
+      border-radius: 50px;
+      text-transform: uppercase;
+    }
+
+    .forfait-card-wrap {
+      max-width: 620px;
+      margin: 2.8rem auto 0;
+    }
+
+    .forfait-card {
+      background: linear-gradient(145deg, rgba(0,5,80,0.95), rgba(26,26,46,0.92));
+      border: 2px solid #C0A060;
+      border-radius: 18px;
+      padding: 3.2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.4s ease;
+    }
+    .forfait-card:hover {
+      box-shadow: 0 0 60px rgba(192,160,96,0.18);
+    }
+
+    /* Lueur subtile au hover */
+    .forfait-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(192,160,96,0.07) 0%, transparent 65%);
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+    }
+    .forfait-card:hover::before { opacity: 1; }
+
+    .forfait-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.8rem;
+      letter-spacing: 5px;
+      color: #C0A060;
+      margin-bottom: 0.3rem;
+    }
+    .forfait-sub {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 0;
+    }
+    .forfait-divider {
+      width: 70px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #C0A060, transparent);
+      margin: 1.8rem auto;
+    }
+
+    .forfait-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 2.8rem;
+    }
+    .forfait-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 0.72rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.94rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.5;
+    }
+    .forfait-features li:last-child { border-bottom: none; }
+    .check-gold {
+      color: #C0A060;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 0.12rem;
+    }
+
+    .forfait-cta {
+      font-size: 1rem;
+      padding: 1.1rem 3.5rem;
+      letter-spacing: 2px;
+    }
+    .forfait-note {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.35);
+      margin-top: 1.5rem;
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       SECTION SPORTS
+    ============================================================ */
+    #sports {
+      padding: 7rem 0;
+      background: #1A1A2E;
+    }
+
+    .sports-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1.2rem;
+      margin-top: 3rem;
+    }
+
+    .sport-item {
+      text-align: center;
+      padding: 1.6rem 0.8rem;
+      border-radius: 10px;
+      background: rgba(0,7,105,0.25);
+      border: 1px solid rgba(192,160,96,0.1);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+    .sport-item:hover {
+      background: rgba(0,7,105,0.55);
+      border-color: rgba(192,160,96,0.4);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(192,160,96,0.08);
+    }
+    .sport-icon {
+      font-size: 2.4rem;
+      display: block;
+      margin-bottom: 0.7rem;
+      line-height: 1;
+    }
+    .sport-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: rgba(255,255,255,0.75);
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    /* ============================================================
+       SECTION CONTACT — CTA FINAL
+    ============================================================ */
+    #contact {
+      padding: 7rem 0 5rem;
+      background: linear-gradient(135deg, #B22234 0%, #000769 100%);
+      position: relative;
+    }
+    #contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .contact-heading {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      text-align: center;
+      letter-spacing: 4px;
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+    .contact-sub {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 2px;
+      margin-bottom: 3.5rem;
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* Formulaire */
+    .contact-form-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 14px;
+      padding: 2.6rem;
+      backdrop-filter: blur(8px);
+    }
+    .contact-form-card .form-group label { color: rgba(255,255,255,0.8); }
+    .contact-form-card input,
+    .contact-form-card textarea,
+    .contact-form-card select {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.2);
+    }
+    .contact-form-card input:focus,
+    .contact-form-card textarea:focus,
+    .contact-form-card select:focus {
+      border-color: rgba(255,255,255,0.6);
+    }
+    .contact-form-card textarea { min-height: 110px; }
+    .contact-form-card select option { background: #1A1A2E; }
+
+    .contact-submit {
+      width: 100%;
+      padding: 1.1rem;
+      font-size: 0.95rem;
+      letter-spacing: 2.5px;
+      margin-top: 0.3rem;
+    }
+
+    /* Infos de contact */
+    .contact-info-block { padding: 0.5rem 0; }
+    .contact-info-block h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.9rem;
+      letter-spacing: 2px;
+      color: #C0A060;
+      margin-bottom: 2rem;
+    }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.1rem;
+      margin-bottom: 1.6rem;
+    }
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+    .contact-item-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.2rem;
+    }
+    .contact-item-value {
+      font-size: 0.93rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.5;
+    }
+
+    .contact-promise {
+      margin-top: 2.2rem;
+      padding: 1.4rem 1.6rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      border-left: 3px solid rgba(192,160,96,0.7);
+    }
+    .contact-promise p {
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.72);
+    }
+    .contact-promise strong { color: #C0A060; }
+
+    /* Modale succès */
+    .modal-success { max-width: 440px; text-align: center; }
+    .modal-success .s-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
+    .modal-success h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: #C0A060;
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+    }
+    .modal-success p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.8;
+    }
+
+    /* ============================================================
+       RESPONSIVE — Étape 5
+    ============================================================ */
+    @media (max-width: 1200px) {
+      .sports-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .forfait-card   { padding: 2.2rem 1.6rem; }
+      .sports-grid    { grid-template-columns: repeat(3, 1fr); }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 480px) {
+      .sports-grid { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
 </head>
 <body>
@@ -1831,6 +2157,219 @@
   <div class="modal modal-video">
     <button class="modal-close" id="modalVideoClose" aria-label="Fermer la vidéo">×</button>
     <div id="videoEmbed"></div>
+  </div>
+</div>
+
+<!-- ================================================================
+     SECTION FORFAIT ATHLÈTE
+================================================================ -->
+<section id="forfait" aria-labelledby="forfait-title">
+  <div class="container">
+
+    <div class="forfait-badge-wrap fade-up">
+      <span class="forfait-pill">20 places par an — par agent</span>
+    </div>
+    <h2 class="section-title fade-up" id="forfait-title">LE FORFAIT ATHLÈTE</h2>
+    <div class="gold-line fade-up"></div>
+    <p class="section-subtitle fade-up">
+      Un seul programme. Un engagement total. Quatre ans à tes côtés.
+    </p>
+
+    <div class="forfait-card-wrap fade-up">
+      <div class="forfait-card">
+
+        <div class="forfait-name">FORFAIT ATHLÈTE</div>
+        <p class="forfait-sub">Accompagnement complet de A à Z</p>
+        <div class="forfait-divider"></div>
+
+        <ul class="forfait-features" aria-label="Ce qui est inclus">
+          <li>
+            <span class="check-gold" aria-hidden="true">✓</span>
+            <span>Accompagnement personnalisé de A à Z — un agent dédié, pas une équipe anonyme</span>
+          </li>
+          <li>
+            <span class="check-gold" aria-hidden="true">✓</span>
+            <span>Suivi sportif, académique et personnel sur les 4 années complètes</span>
+          </li>
+          <li>
+            <span class="check-gold" aria-hidden="true">✓</span>
+            <span>Accès à 7 000+ universités partenaires — Division I, II et III</span>
+          </li>
+          <li>
+            <span class="check-gold" aria-hidden="true">✓</span>
+            <span>Honnêteté totale sur ton profil, tes chances réelles et les étapes à franchir</span>
+          </li>
+          <li>
+            <span class="check-gold" aria-hidden="true">✓</span>
+            <span>Préparation aux entretiens avec les coachs et aux tests requis (SAT / TOEFL)</span>
+          </li>
+          <li>
+            <span class="check-gold" aria-hidden="true">✓</span>
+            <span>Suivi administratif complet : visa F-1, logement, inscriptions, assurance</span>
+          </li>
+          <li>
+            <span class="check-gold" aria-hidden="true">✓</span>
+            <span>Disponibilité permanente de ton agent — 7j/7, réponse garantie sous 24h</span>
+          </li>
+        </ul>
+
+        <a href="#contact" class="btn btn-red forfait-cta">Candidater maintenant</a>
+        <p class="forfait-note">
+          Seulement 20 athlètes acceptés par an par agent.<br>
+          Chaque dossier est étudié avec soin — pas de quota à remplir.
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION SPORTS
+================================================================ -->
+<section id="sports" aria-labelledby="sports-title">
+  <div class="container">
+
+    <p class="section-eyebrow fade-up">Toutes disciplines</p>
+    <h2 class="section-title fade-up" id="sports-title">
+      LES SPORTS QUE NOUS<br>ACCOMPAGNONS
+    </h2>
+    <div class="gold-line fade-up"></div>
+
+    <div class="sports-grid" id="sportsGrid"></div>
+
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION CONTACT — CTA FINAL
+================================================================ -->
+<section id="contact" aria-labelledby="contact-title">
+  <div class="container" style="position:relative; z-index:1;">
+
+    <h2 class="contact-heading fade-up" id="contact-title">
+      PRÊT À VIVRE<br>L'EXPÉRIENCE ?
+    </h2>
+    <p class="contact-sub fade-up">
+      20 places &nbsp;&bull;&nbsp; 1 opportunité &nbsp;&bull;&nbsp; 4 ans d'accompagnement
+    </p>
+
+    <div class="contact-wrapper">
+
+      <!-- Formulaire -->
+      <div class="contact-form-card fade-up">
+        <form id="contactForm" novalidate>
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label for="c-prenom">Prénom *</label>
+              <input type="text" id="c-prenom" placeholder="Ton prénom" required>
+            </div>
+            <div class="form-group">
+              <label for="c-nom">Nom *</label>
+              <input type="text" id="c-nom" placeholder="Ton nom" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="c-email">Email *</label>
+            <input type="email" id="c-email" placeholder="ton@email.com" required>
+          </div>
+          <div class="form-group">
+            <label for="c-sport">Sport *</label>
+            <input type="text" id="c-sport" placeholder="Ton sport principal" required>
+          </div>
+          <div class="form-group">
+            <label for="c-niveau">Niveau actuel</label>
+            <select id="c-niveau">
+              <option value="">— Sélectionne ton niveau —</option>
+              <option>National Élite</option>
+              <option>National</option>
+              <option>Régional Élite</option>
+              <option>Régional</option>
+              <option>Club Avancé</option>
+              <option>Club</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="c-message">Message</label>
+            <textarea
+              id="c-message"
+              placeholder="Parle-nous de toi, de ton sport, de tes ambitions aux États-Unis..."
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-red contact-submit">
+            Envoyer ma candidature
+          </button>
+        </form>
+      </div>
+
+      <!-- Infos contact -->
+      <div class="contact-info-block fade-up" style="transition-delay:0.2s">
+        <h3>ON EST LÀ POUR TOI</h3>
+
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">📧</div>
+          <div>
+            <div class="contact-item-label">Email</div>
+            <div class="contact-item-value">contact@nextmoov-usa.com</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">📱</div>
+          <div>
+            <div class="contact-item-label">Téléphone / WhatsApp</div>
+            <div class="contact-item-value">+33 (0)6 XX XX XX XX</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">📍</div>
+          <div>
+            <div class="contact-item-label">Basé en France &amp; USA</div>
+            <div class="contact-item-value">Paris, France — et sur tous les campus américains</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon" aria-hidden="true">🕐</div>
+          <div>
+            <div class="contact-item-label">Disponibilité</div>
+            <div class="contact-item-value">7j/7 — Ton agent répond toujours.</div>
+          </div>
+        </div>
+
+        <div class="contact-promise">
+          <p>
+            <strong>Première prise de contact :</strong><br>
+            On répond dans les 24h. Pas de téléopérateur,
+            pas d'IA. Ton agent, directement. Parce que tu mérites
+            un vrai interlocuteur dès le premier message.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Modale succès formulaire -->
+<div
+  class="modal-overlay"
+  id="modalSuccess"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modalSuccessTitle"
+>
+  <div class="modal modal-success">
+    <button class="modal-close" id="modalSuccessClose" aria-label="Fermer">×</button>
+    <span class="s-icon" aria-hidden="true">🎯</span>
+    <h3 id="modalSuccessTitle">CANDIDATURE REÇUE !</h3>
+    <p>
+      Ton dossier a bien été transmis. Notre équipe te
+      contacte dans les 24h. Pas d'IA, ton agent directement.
+      Bienvenue dans l'aventure.
+    </p>
   </div>
 </div>
 
@@ -2408,6 +2947,80 @@
   renderTemos();
   setTimeout(() => { goToSlide(0); startAutoplay(); }, 80);
   renderVideos();
+
+  /* ================================================================
+     ÉTAPE 5 — SPORTS + CONTACT
+  ================================================================ */
+
+  /* ---- Données sports ---- */
+  const sportsData = [
+    { icon: '🏈', name: 'Football Américain' },
+    { icon: '🏀', name: 'Basketball'         },
+    { icon: '⚽', name: 'Soccer'             },
+    { icon: '🎾', name: 'Tennis'             },
+    { icon: '🏊', name: 'Natation'           },
+    { icon: '🏃', name: 'Athlétisme'         },
+    { icon: '⚾', name: 'Baseball'           },
+    { icon: '🏐', name: 'Volleyball'         },
+    { icon: '⛳', name: 'Golf'               },
+    { icon: '🥎', name: 'Softball'           },
+    { icon: '🥍', name: 'Lacrosse'           },
+    { icon: '🤼', name: 'Wrestling'          }
+  ];
+
+  /* ---- Rendu sports ---- */
+  function renderSports() {
+    const grid = document.getElementById('sportsGrid');
+    if (!grid) return;
+
+    sportsData.forEach((s, i) => {
+      const item = document.createElement('div');
+      item.className = 'sport-item fade-up';
+      item.style.transitionDelay = `${i * 0.05}s`;
+      item.innerHTML = `
+        <span class="sport-icon" aria-hidden="true">${s.icon}</span>
+        <div class="sport-name">${esc(s.name)}</div>
+      `;
+      grid.appendChild(item);
+    });
+
+    observeFadeUps();
+  }
+
+  /* ---- Formulaire contact ---- */
+  setupModalClose('modalSuccess', 'modalSuccessClose');
+
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const prenom = document.getElementById('c-prenom').value.trim();
+    const nom    = document.getElementById('c-nom').value.trim();
+    const email  = document.getElementById('c-email').value.trim();
+    const sport  = document.getElementById('c-sport').value.trim();
+
+    if (!prenom || !nom || !email || !sport) {
+      /* Mise en évidence des champs vides */
+      [
+        { id: 'c-prenom', val: prenom },
+        { id: 'c-nom',    val: nom    },
+        { id: 'c-email',  val: email  },
+        { id: 'c-sport',  val: sport  }
+      ].forEach(({ id, val }) => {
+        const el = document.getElementById(id);
+        el.style.borderColor = val ? '' : 'rgba(178,34,52,0.8)';
+        el.addEventListener('input', () => { el.style.borderColor = ''; }, { once: true });
+      });
+      return;
+    }
+
+    /* Succès */
+    document.getElementById('modalSuccess').classList.add('active');
+    document.getElementById('modalSuccessClose').focus();
+    this.reset();
+  });
+
+  /* ---- Init étape 5 ---- */
+  renderSports();
 </script>
 </body>
 </html>
