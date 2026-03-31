@@ -664,6 +664,377 @@
       .pillars-grid { grid-template-columns: 1fr; }
       .timeline { grid-template-columns: 1fr; gap: 2.5rem; }
     }
+
+    /* ============================================================
+       SECTION ATHLÈTES
+    ============================================================ */
+    #athletes {
+      padding: 7rem 0;
+      background: #1A1A2E;
+      position: relative;
+    }
+
+    .athletes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Card athlète */
+    .athlete-card {
+      background: linear-gradient(145deg, rgba(0,7,105,0.55), rgba(26,26,46,0.85));
+      border: 1px solid rgba(192,160,96,0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      cursor: pointer;
+    }
+    .athlete-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(192,160,96,0.42);
+      box-shadow: 0 20px 50px rgba(0,7,105,0.4);
+    }
+
+    /* Photo wrapper avec overlay dégradé */
+    .athlete-photo-wrapper {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: linear-gradient(135deg, #000769, #1A1A2E);
+    }
+    .athlete-photo-wrapper::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,7,105,0.85) 0%, transparent 55%);
+    }
+    .athlete-photo-real {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .athlete-card:hover .athlete-photo-real {
+      transform: scale(1.05);
+    }
+    .athlete-photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.5rem;
+      background: linear-gradient(135deg, rgba(0,7,105,0.7), rgba(26,26,46,0.9));
+    }
+
+    /* Infos athlète */
+    .athlete-info {
+      padding: 1.5rem;
+    }
+    .athlete-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.25rem;
+      line-height: 1.1;
+    }
+    .athlete-sport {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #C0A060;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+    .athlete-university {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1rem;
+    }
+    .athlete-quote {
+      font-size: 0.88rem;
+      font-style: italic;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.65;
+      margin-bottom: 1.2rem;
+      padding-left: 0.9rem;
+      border-left: 2px solid rgba(192,160,96,0.5);
+    }
+
+    /* Bouton admin discret */
+    .admin-trigger-btn {
+      display: block;
+      margin: 0 auto;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.3);
+      padding: 0.45rem 1.1rem;
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+    .admin-trigger-btn:hover {
+      border-color: rgba(192,160,96,0.4);
+      color: #C0A060;
+    }
+
+    /* ============================================================
+       PANNEAU ADMIN (commun à toutes les sections)
+    ============================================================ */
+    .admin-panel {
+      display: none;
+      margin-top: 2.5rem;
+      padding: 2.5rem;
+      background: rgba(0,7,105,0.25);
+      border: 1px solid rgba(192,160,96,0.25);
+      border-radius: 10px;
+    }
+    .admin-panel.open { display: block; }
+
+    .admin-panel-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      color: #C0A060;
+      margin-bottom: 1.8rem;
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.1rem;
+    }
+    .form-group label {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.73rem;
+      font-weight: 700;
+      color: #C0A060;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 4px;
+      padding: 0.72rem 1rem;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #C0A060;
+    }
+    .form-group textarea  { resize: vertical; min-height: 80px; }
+    .form-group select option { background: #1A1A2E; color: #FFFFFF; }
+
+    /* ============================================================
+       MODALE GÉNÉRIQUE
+    ============================================================ */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.82);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal {
+      background: linear-gradient(145deg, #1A1A2E 0%, #000D5A 100%);
+      border: 1px solid rgba(192,160,96,0.28);
+      border-radius: 14px;
+      max-width: 660px;
+      width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
+      padding: 2.6rem;
+      position: relative;
+      transform: scale(0.9) translateY(20px);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .modal-overlay.active .modal {
+      transform: scale(1) translateY(0);
+    }
+
+    /* Scrollbar modale */
+    .modal::-webkit-scrollbar { width: 4px; }
+    .modal::-webkit-scrollbar-thumb { background: rgba(192,160,96,0.3); border-radius: 2px; }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.2rem;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 1.6rem;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+      padding: 0.2rem;
+    }
+    .modal-close:hover { color: #C0A060; }
+
+    /* Contenu modale athlète */
+    .modal-athlete-header {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 1.8rem;
+      flex-wrap: wrap;
+    }
+    .modal-athlete-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #000769, #1A1A2E);
+      border: 2px solid #C0A060;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+    .modal-athlete-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .modal-athlete-meta h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.3rem;
+    }
+    .modal-athlete-meta .sport-badge {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #C0A060;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .modal-athlete-meta .univ-badge {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .modal-divider {
+      height: 1px;
+      background: rgba(192,160,96,0.25);
+      margin: 1.4rem 0;
+    }
+
+    .modal-section-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: #C0A060;
+      text-transform: uppercase;
+      margin-bottom: 0.7rem;
+    }
+    .modal-section-text {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 1.5rem;
+    }
+    .modal-message-block {
+      padding: 1.2rem 1.5rem;
+      background: rgba(0,7,105,0.3);
+      border-left: 3px solid #C0A060;
+      border-radius: 0 8px 8px 0;
+    }
+    .modal-message-block p {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      font-style: italic;
+      color: rgba(255,255,255,0.88);
+    }
+
+    /* Modale mot de passe */
+    .modal-password { max-width: 400px; text-align: center; }
+    .modal-password h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: #C0A060;
+      letter-spacing: 2px;
+      margin-bottom: 0.6rem;
+    }
+    .modal-password p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 1.6rem;
+      line-height: 1.6;
+    }
+    .password-error {
+      color: #ff6b7a;
+      font-size: 0.82rem;
+      margin-top: 0.5rem;
+      display: none;
+    }
+    .password-error.show { display: block; }
+
+    /* Modale succès contact */
+    .modal-success { max-width: 420px; text-align: center; }
+    .modal-success .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .modal-success h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: #C0A060;
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+    }
+    .modal-success p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.75;
+    }
+
+    /* ============================================================
+       RESPONSIVE — Étape 3
+    ============================================================ */
+    @media (max-width: 1200px) {
+      .athletes-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .athletes-grid  { grid-template-columns: 1fr; }
+      .form-grid-2    { grid-template-columns: 1fr; }
+      .modal          { padding: 1.8rem; }
+      .modal-athlete-header { flex-direction: column; align-items: center; text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -894,6 +1265,124 @@
 </section>
 
 <!-- ================================================================
+     SECTION NOS ATHLÈTES
+================================================================ -->
+<section id="athletes" aria-labelledby="athletes-title">
+  <div class="container">
+
+    <p class="section-eyebrow fade-up">Ils nous font confiance</p>
+    <h2 class="section-title fade-up" id="athletes-title">
+      ILS FONT CONFIANCE À<br>NOTRE ACCOMPAGNEMENT
+    </h2>
+    <div class="gold-line fade-up"></div>
+    <p class="section-subtitle fade-up">
+      Des athlètes réels. Des parcours construits. Des histoires vraies.
+    </p>
+
+    <!-- Grille dynamique (remplie par JS) -->
+    <div class="athletes-grid" id="athletesGrid"></div>
+
+    <!-- Bouton admin discret -->
+    <button
+      class="admin-trigger-btn"
+      id="adminBtnAthletes"
+      aria-label="Accès administration athlètes"
+    >⚙ Admin</button>
+
+    <!-- Panneau admin athlètes -->
+    <div class="admin-panel" id="adminPanelAthletes">
+      <div class="admin-panel-title">AJOUTER UN ATHLÈTE</div>
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label for="ath-prenom">Prénom *</label>
+          <input type="text" id="ath-prenom" placeholder="Ex : Lucas" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="ath-nom">Nom *</label>
+          <input type="text" id="ath-nom" placeholder="Ex : MARTIN" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="ath-sport">Sport *</label>
+          <input type="text" id="ath-sport" placeholder="Ex : Basketball">
+        </div>
+        <div class="form-group">
+          <label for="ath-univ">Université *</label>
+          <input type="text" id="ath-univ" placeholder="Ex : UCLA, Californie">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="ath-quote">Citation personnelle</label>
+        <input type="text" id="ath-quote" placeholder="Ex : NextMoov a changé ma vision du possible.">
+      </div>
+      <div class="form-group">
+        <label for="ath-parcours">Son parcours</label>
+        <textarea id="ath-parcours" placeholder="Décris le parcours de l'athlète..."></textarea>
+      </div>
+      <div class="form-group">
+        <label for="ath-motiv">Sa motivation</label>
+        <textarea id="ath-motiv" placeholder="Qu'est-ce qui l'a motivé à rejoindre le programme ?"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="ath-message">Son message</label>
+        <textarea id="ath-message" placeholder="Son message aux futurs athlètes..."></textarea>
+      </div>
+      <div class="form-group">
+        <label for="ath-photo">URL photo (optionnel)</label>
+        <input type="url" id="ath-photo" placeholder="https://...">
+      </div>
+      <button class="btn btn-red" id="addAthleteBtn">Ajouter l'athlète</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================
+     MODALE — ATHLÈTE (détail parcours)
+================================================================ -->
+<div
+  class="modal-overlay"
+  id="modalAthlete"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modalAthleteTitle"
+>
+  <div class="modal">
+    <button class="modal-close" id="modalAthleteClose" aria-label="Fermer">×</button>
+    <div id="modalAthleteContent"></div>
+  </div>
+</div>
+
+<!-- ================================================================
+     MODALE — MOT DE PASSE ADMIN
+================================================================ -->
+<div
+  class="modal-overlay"
+  id="modalPassword"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modalPasswordTitle"
+>
+  <div class="modal modal-password">
+    <button class="modal-close" id="modalPasswordClose" aria-label="Fermer">×</button>
+    <div style="font-size:2.5rem; margin-bottom:0.8rem;">🔒</div>
+    <h3 id="modalPasswordTitle">ACCÈS ADMIN</h3>
+    <p>Entre le mot de passe pour accéder au panneau d'administration.</p>
+    <div class="form-group">
+      <input
+        type="password"
+        id="adminPasswordInput"
+        placeholder="Mot de passe"
+        style="text-align:center; font-size:1rem; letter-spacing:3px;"
+      >
+    </div>
+    <p class="password-error" id="passwordError">Mot de passe incorrect. Réessaie.</p>
+    <button class="btn btn-red" id="confirmPasswordBtn" style="width:100%; margin-top:0.5rem;">
+      Accéder
+    </button>
+  </div>
+</div>
+
+<!-- ================================================================
      JS — ÉTAPE 1 : Navigation + Parallax Hero
 ================================================================ -->
 <script>
@@ -965,6 +1454,247 @@
   }
 
   observeFadeUps();
+
+  /* ================================================================
+     ÉTAPE 3 — ATHLÈTES : données, rendu, admin, modales
+  ================================================================ */
+
+  /* ---- Sécurité XSS ---- */
+  function esc(text) {
+    if (text == null) return '';
+    const d = document.createElement('div');
+    d.appendChild(document.createTextNode(String(text)));
+    return d.innerHTML;
+  }
+  function escAttr(text) {
+    if (text == null) return '';
+    return String(text)
+      .replace(/&/g,'&amp;').replace(/"/g,'&quot;')
+      .replace(/'/g,'&#039;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  /* ---- localStorage helpers ---- */
+  function loadData(key, fallback) {
+    try {
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : fallback;
+    } catch { return fallback; }
+  }
+  function saveData(key, data) {
+    try { localStorage.setItem(key, JSON.stringify(data)); } catch {}
+  }
+
+  /* ---- Données par défaut athlètes ---- */
+  const defaultAthletes = [
+    {
+      prenom: 'Lucas', nom: 'MARTIN',
+      sport: 'Basketball', univ: 'UCLA, Californie',
+      quote: 'NextMoov m\'a appris que réussir, c\'est un processus, pas un coup de chance.',
+      parcours: 'Après 3 saisons dans les ligues régionales françaises, Lucas a intégré le programme NextMoov à 17 ans. En 6 mois, son profil athlétique et académique a été travaillé pour correspondre aux exigences NCAA Division I. Résultat : une scholarship complète à UCLA.',
+      motiv: 'Lucas voulait jouer au haut niveau ET obtenir un diplôme américain reconnu internationalement. Il savait que sans accompagnement solide, ces deux objectifs semblaient incompatibles.',
+      message: 'Ne sous-estime pas ton niveau. Ce qui compte, c\'est ton potentiel et ta mentalité. NextMoov a su voir en moi ce que je ne voyais pas encore moi-même.',
+      photo: ''
+    },
+    {
+      prenom: 'Camille', nom: 'DUBOIS',
+      sport: 'Soccer', univ: 'University of Florida',
+      quote: 'Avoir quelqu\'un à mes côtés à chaque étape, ça change tout mentalement.',
+      parcours: 'Joueuse de l\'équipe nationale U19, Camille cherchait à combiner son niveau sportif avec une formation d\'excellence en Business. NextMoov l\'a guidée vers une scholarship complète à Florida, l\'une des meilleures universités du pays pour les deux.',
+      motiv: 'L\'expérience américaine représentait pour elle l\'opportunité unique de se développer sur tous les plans — sportif, académique, humain. Elle voulait partir avec un filet de sécurité. C\'est exactement ce que NextMoov lui a offert.',
+      message: 'Le plus dur, c\'est de faire le premier pas. Après ça, vous n\'êtes plus seul(e). Jamais. Votre agent est là, toujours.',
+      photo: ''
+    },
+    {
+      prenom: 'Thomas', nom: 'BERNARD',
+      sport: 'Tennis', univ: 'Vanderbilt University',
+      quote: 'Honnêteté et précision — c\'est ce qui différencie NextMoov de toutes les autres agences.',
+      parcours: 'Classé top 50 junior en France, Thomas avait eu des contacts avec d\'autres agences qui lui promettaient des top 10 universitaires sans condition. NextMoov lui a présenté un plan réaliste avec des objectifs précis. 14 mois plus tard, il signait à Vanderbilt.',
+      motiv: 'Thomas voulait être honnêtement guidé, pas flatté. Il cherchait une agence qui lui dirait la vérité sur son niveau et ses chances réelles — sans fausse promesse pour signer un contrat.',
+      message: 'Choisissez des gens qui vous respectent assez pour vous dire la vérité. C\'est rare. C\'est ce que fait NextMoov.',
+      photo: ''
+    }
+  ];
+
+  let athletesData = loadData('nm_athletes', defaultAthletes);
+
+  /* ---- Rendu de la grille athlètes ---- */
+  function renderAthletes() {
+    const grid = document.getElementById('athletesGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    athletesData.forEach((a, i) => {
+      const card = document.createElement('div');
+      card.className = 'athlete-card fade-up';
+      card.style.transitionDelay = `${i * 0.12}s`;
+      card.setAttribute('role', 'button');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', `Voir le parcours de ${a.prenom} ${a.nom}`);
+
+      const photoHTML = a.photo
+        ? `<img
+             src="${escAttr(a.photo)}"
+             alt="Photo de ${escAttr(a.prenom)} ${escAttr(a.nom)}"
+             class="athlete-photo-real"
+             loading="lazy"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
+           >
+           <div class="athlete-photo-placeholder" style="display:none">🏅</div>`
+        : `<div class="athlete-photo-placeholder">🏅</div>`;
+
+      card.innerHTML = `
+        <div class="athlete-photo-wrapper">${photoHTML}</div>
+        <div class="athlete-info">
+          <div class="athlete-name">${esc(a.prenom)} ${esc(a.nom)}</div>
+          <div class="athlete-sport">${esc(a.sport)}</div>
+          <div class="athlete-university">📍 ${esc(a.univ)}</div>
+          <p class="athlete-quote">"${esc(a.quote)}"</p>
+          <button class="btn btn-gold" style="font-size:0.8rem; padding:0.5rem 1.3rem;">
+            Voir son parcours
+          </button>
+        </div>
+      `;
+
+      const openModal = () => openAthleteModal(i);
+      card.addEventListener('click', openModal);
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(); }
+      });
+
+      grid.appendChild(card);
+    });
+
+    observeFadeUps();
+  }
+
+  /* ---- Modale détail athlète ---- */
+  function openAthleteModal(index) {
+    const a = athletesData[index];
+    const avatarHTML = a.photo
+      ? `<img src="${escAttr(a.photo)}" alt="${escAttr(a.prenom)}" onerror="this.parentElement.innerHTML='🏅'">`
+      : '🏅';
+
+    document.getElementById('modalAthleteContent').innerHTML = `
+      <div class="modal-athlete-header">
+        <div class="modal-athlete-avatar">${avatarHTML}</div>
+        <div class="modal-athlete-meta">
+          <h2 id="modalAthleteTitle">${esc(a.prenom)} ${esc(a.nom)}</h2>
+          <div class="sport-badge">🏅 ${esc(a.sport)}</div>
+          <div class="univ-badge">📍 ${esc(a.univ)}</div>
+        </div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-section-label">Son parcours</div>
+      <p class="modal-section-text">${esc(a.parcours)}</p>
+      <div class="modal-section-label">Sa motivation</div>
+      <p class="modal-section-text">${esc(a.motiv)}</p>
+      <div class="modal-section-label">Son message</div>
+      <div class="modal-message-block">
+        <p>"${esc(a.message)}"</p>
+      </div>
+    `;
+
+    document.getElementById('modalAthlete').classList.add('active');
+    document.getElementById('modalAthleteClose').focus();
+  }
+
+  /* ---- Fermeture modales ---- */
+  function setupModalClose(overlayId, closeBtnId, extraCleanup) {
+    const overlay  = document.getElementById(overlayId);
+    const closeBtn = document.getElementById(closeBtnId);
+
+    const close = () => {
+      overlay.classList.remove('active');
+      if (extraCleanup) extraCleanup();
+    };
+
+    closeBtn.addEventListener('click', close);
+    overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
+  }
+
+  setupModalClose('modalAthlete', 'modalAthleteClose');
+  setupModalClose('modalPassword', 'modalPasswordClose', () => {
+    document.getElementById('adminPasswordInput').value = '';
+    document.getElementById('passwordError').classList.remove('show');
+  });
+
+  /* Escape ferme toutes les modales */
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.modal-overlay.active').forEach(m => {
+      m.classList.remove('active');
+    });
+  });
+
+  /* ---- Système Admin (mot de passe partagé) ---- */
+  const ADMIN_PW = 'athlete2024';
+  let pendingAdminPanel = null;
+
+  function requestAdmin(panelId) {
+    pendingAdminPanel = panelId;
+    document.getElementById('adminPasswordInput').value = '';
+    document.getElementById('passwordError').classList.remove('show');
+    document.getElementById('modalPassword').classList.add('active');
+    setTimeout(() => document.getElementById('adminPasswordInput').focus(), 320);
+  }
+
+  document.getElementById('confirmPasswordBtn').addEventListener('click', checkAdminPassword);
+  document.getElementById('adminPasswordInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') checkAdminPassword();
+  });
+
+  function checkAdminPassword() {
+    const val = document.getElementById('adminPasswordInput').value;
+    if (val === ADMIN_PW) {
+      document.getElementById('modalPassword').classList.remove('active');
+      const panel = document.getElementById(pendingAdminPanel);
+      if (panel) {
+        panel.classList.add('open');
+        setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      }
+      document.getElementById('adminPasswordInput').value = '';
+    } else {
+      document.getElementById('passwordError').classList.add('show');
+      document.getElementById('adminPasswordInput').value = '';
+      document.getElementById('adminPasswordInput').focus();
+    }
+  }
+
+  /* Bouton admin athlètes */
+  document.getElementById('adminBtnAthletes').addEventListener('click', () => {
+    requestAdmin('adminPanelAthletes');
+  });
+
+  /* Ajout d'un athlète */
+  document.getElementById('addAthleteBtn').addEventListener('click', () => {
+    const prenom = document.getElementById('ath-prenom').value.trim();
+    const nom    = document.getElementById('ath-nom').value.trim();
+    if (!prenom || !nom) {
+      alert('Le prénom et le nom sont requis.');
+      return;
+    }
+    athletesData.push({
+      prenom,
+      nom: nom.toUpperCase(),
+      sport:    document.getElementById('ath-sport').value.trim()   || 'Sport',
+      univ:     document.getElementById('ath-univ').value.trim()    || 'Université',
+      quote:    document.getElementById('ath-quote').value.trim()   || '...',
+      parcours: document.getElementById('ath-parcours').value.trim()|| '...',
+      motiv:    document.getElementById('ath-motiv').value.trim()   || '...',
+      message:  document.getElementById('ath-message').value.trim() || '...',
+      photo:    document.getElementById('ath-photo').value.trim()
+    });
+    saveData('nm_athletes', athletesData);
+    renderAthletes();
+    document.getElementById('adminPanelAthletes').classList.remove('open');
+    ['ath-prenom','ath-nom','ath-sport','ath-univ','ath-quote',
+     'ath-parcours','ath-motiv','ath-message','ath-photo']
+      .forEach(id => { document.getElementById(id).value = ''; });
+    document.getElementById('athletes').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  /* ---- Init athlètes ---- */
+  renderAthletes();
 </script>
 </body>
 </html>
