@@ -425,6 +425,245 @@
     @media (max-width: 480px) {
       .nav-logo { font-size: 1.5rem; }
     }
+
+    /* ============================================================
+       SECTION POURQUOI NOUS — L'APPROCHE HUMAINE
+    ============================================================ */
+    #approche {
+      padding: 7rem 0;
+      background: #1A1A2E;
+      position: relative;
+    }
+
+    /* Séparateur doré haut */
+    #approche::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, #C0A060);
+    }
+
+    .approche-intro {
+      max-width: 720px;
+      margin: 0 auto 4.5rem;
+      text-align: center;
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.78);
+    }
+    .approche-intro strong {
+      color: #FFFFFF;
+      font-weight: 500;
+    }
+
+    /* Grille 3 piliers */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin-bottom: 4rem;
+    }
+
+    .pillar-card {
+      background: linear-gradient(145deg, rgba(0,7,105,0.45), rgba(26,26,46,0.7));
+      border: 1px solid rgba(192,160,96,0.18);
+      border-radius: 10px;
+      padding: 2.6rem 2rem;
+      text-align: center;
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+    }
+    .pillar-card:hover {
+      border-color: rgba(192,160,96,0.45);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,7,105,0.35);
+    }
+
+    .pillar-icon {
+      font-size: 2.8rem;
+      margin-bottom: 1.2rem;
+      display: block;
+      line-height: 1;
+    }
+
+    .pillar-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.55rem;
+      letter-spacing: 2px;
+      color: #C0A060;
+      margin-bottom: 1rem;
+    }
+
+    .pillar-text {
+      font-size: 0.93rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.72);
+    }
+
+    /* Citation mise en avant */
+    .quote-block {
+      max-width: 740px;
+      margin: 0 auto;
+      padding: 1.8rem 2.4rem;
+      border-left: 3px solid #C0A060;
+      background: rgba(0,7,105,0.28);
+      border-radius: 0 8px 8px 0;
+      position: relative;
+    }
+    .quote-block::before {
+      content: '"';
+      position: absolute;
+      top: -0.8rem;
+      left: 1.5rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      color: rgba(192,160,96,0.2);
+      line-height: 1;
+      pointer-events: none;
+    }
+    .quote-block p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.08rem;
+      font-weight: 600;
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.75;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ============================================================
+       SECTION 4 ANS
+    ============================================================ */
+    #quatre-ans {
+      padding: 7rem 0;
+      background: linear-gradient(175deg, #000769 0%, #1A1A2E 100%);
+      position: relative;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 4rem;
+      position: relative;
+    }
+
+    /* Ligne dorée horizontale entre les icônes */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 39px;           /* moitié de la hauteur des icônes (80px / 2 - 1px) */
+      left: calc(12.5% + 10px);
+      right: calc(12.5% + 10px);
+      height: 2px;
+      background: linear-gradient(90deg,
+        #C0A060 0%,
+        rgba(192,160,96,0.5) 50%,
+        rgba(192,160,96,0.15) 100%
+      );
+      z-index: 0;
+    }
+
+    .timeline-item {
+      text-align: center;
+      padding: 0 1.2rem;
+      position: relative;
+    }
+
+    .timeline-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #000769 0%, #1A1A2E 100%);
+      border: 2px solid #C0A060;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.6rem;
+      font-size: 1.9rem;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .timeline-item:hover .timeline-icon {
+      transform: scale(1.08);
+      box-shadow: 0 0 24px rgba(192,160,96,0.3);
+    }
+
+    .timeline-year {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #C0A060;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.45rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.9rem;
+      color: #FFFFFF;
+    }
+
+    .timeline-desc {
+      font-size: 0.87rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.68);
+      margin-bottom: 1.1rem;
+    }
+
+    /* Tags sport / académique / perso */
+    .timeline-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      justify-content: center;
+    }
+
+    .tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      padding: 0.22rem 0.7rem;
+      border-radius: 20px;
+    }
+    .tag-sport {
+      background: rgba(178,34,52,0.22);
+      color: #ff8f9a;
+      border: 1px solid rgba(178,34,52,0.4);
+    }
+    .tag-acad {
+      background: rgba(192,160,96,0.18);
+      color: #C0A060;
+      border: 1px solid rgba(192,160,96,0.4);
+    }
+    .tag-perso {
+      background: rgba(80,100,255,0.18);
+      color: #9aadff;
+      border: 1px solid rgba(80,100,255,0.35);
+    }
+
+    /* ============================================================
+       RESPONSIVE — Étape 2
+    ============================================================ */
+    @media (max-width: 1200px) {
+      .timeline::before { display: none; }
+      .timeline { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -500,6 +739,159 @@
   </div>
 </section>
 
+
+<!-- ================================================================
+     SECTION POURQUOI NOUS — L'APPROCHE HUMAINE
+================================================================ -->
+<section id="approche" aria-labelledby="approche-title">
+  <div class="container">
+
+    <p class="section-eyebrow fade-up">Notre philosophie</p>
+    <h2 class="section-title fade-up" id="approche-title">
+      UN ACCOMPAGNEMENT<br>QUI CHANGE TOUT
+    </h2>
+    <div class="gold-line fade-up"></div>
+
+    <p class="approche-intro fade-up">
+      Nous ne promettons pas l'impossible. Nous construisons avec toi un parcours
+      <strong>réaliste et ambitieux</strong>. 20 athlètes par an, par agent — pas un de plus.
+      Parce que l'excellence se mérite, et un accompagnement d'excellence
+      ne peut pas s'industrialiser.
+    </p>
+
+    <!-- 3 Piliers -->
+    <div class="pillars-grid">
+
+      <div class="pillar-card fade-up" style="transition-delay: 0.1s">
+        <span class="pillar-icon">🎯</span>
+        <div class="pillar-title">Accompagnement Personnalisé</div>
+        <p class="pillar-text">
+          Pas de traitement en masse. Chaque athlète est unique, chaque parcours
+          est construit sur mesure. Ton agent connaît ton nom, ton histoire,
+          tes forces et tes objectifs.
+        </p>
+      </div>
+
+      <div class="pillar-card fade-up" style="transition-delay: 0.2s">
+        <span class="pillar-icon">🤝</span>
+        <div class="pillar-title">Honnêteté &amp; Transparence</div>
+        <p class="pillar-text">
+          Nous te disons la vérité sur ton niveau, tes chances réelles et les étapes
+          nécessaires. Toujours. Pas pour décourager — pour construire sur du
+          solide, pas sur des illusions.
+        </p>
+      </div>
+
+      <div class="pillar-card fade-up" style="transition-delay: 0.3s">
+        <span class="pillar-icon">🎓</span>
+        <div class="pillar-title">Sur Place Pendant 4 Ans</div>
+        <p class="pillar-text">
+          Sportif, académique, personnel. On est là du 1er jour jusqu'au diplôme.
+          Ton succès est notre succès. Ton intégration nous importe autant que
+          tes résultats sur le terrain.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Citation -->
+    <div class="quote-block fade-up">
+      <p>
+        "Nous limitons volontairement à 20 athlètes par an pour garantir un suivi
+        d'excellence. Ce n'est pas une contrainte commerciale — c'est notre promesse
+        envers chaque athlète que nous accompagnons."
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 4 ANS
+================================================================ -->
+<section id="quatre-ans" aria-labelledby="quatre-ans-title">
+  <div class="container">
+
+    <p class="section-eyebrow fade-up">Le programme complet</p>
+    <h2 class="section-title fade-up" id="quatre-ans-title">
+      4 ANS. PAS JUSTE UN VISA.
+    </h2>
+    <div class="gold-line fade-up"></div>
+    <p class="section-subtitle fade-up">
+      Chaque année est une étape construite avec toi.<br>
+      Sport, académique, personnel — les trois piliers, ensemble.
+    </p>
+
+    <!-- Timeline -->
+    <div class="timeline">
+
+      <!-- Année 1 -->
+      <div class="timeline-item fade-up" style="transition-delay: 0.1s">
+        <div class="timeline-icon" aria-hidden="true">🚀</div>
+        <div class="timeline-year">Année 1</div>
+        <div class="timeline-title">Intégration &amp; Lancement</div>
+        <p class="timeline-desc">
+          Arrivée aux États-Unis, adaptation culturelle, intégration dans l'équipe,
+          premières compétitions universitaires. On est là à chaque instant.
+        </p>
+        <div class="timeline-tags">
+          <span class="tag tag-sport">Premières compétitions</span>
+          <span class="tag tag-acad">Adaptation académique</span>
+          <span class="tag tag-perso">Intégration culturelle</span>
+        </div>
+      </div>
+
+      <!-- Année 2 -->
+      <div class="timeline-item fade-up" style="transition-delay: 0.2s">
+        <div class="timeline-icon" aria-hidden="true">📈</div>
+        <div class="timeline-year">Année 2</div>
+        <div class="timeline-title">Montée en Puissance</div>
+        <p class="timeline-desc">
+          Développement des performances, construction du réseau universitaire
+          et professionnel. Tu t'affirmes sportif et académiquement.
+        </p>
+        <div class="timeline-tags">
+          <span class="tag tag-sport">Performances avancées</span>
+          <span class="tag tag-acad">Spécialisation</span>
+          <span class="tag tag-perso">Réseau &amp; Connexions</span>
+        </div>
+      </div>
+
+      <!-- Année 3 -->
+      <div class="timeline-item fade-up" style="transition-delay: 0.3s">
+        <div class="timeline-icon" aria-hidden="true">⭐</div>
+        <div class="timeline-year">Année 3</div>
+        <div class="timeline-title">Leadership &amp; Opportunités</div>
+        <p class="timeline-desc">
+          Tu deviens un leader dans ton équipe. Opportunités de stages,
+          exposition professionnelle et spécialisation dans ton domaine académique.
+        </p>
+        <div class="timeline-tags">
+          <span class="tag tag-sport">Leadership sportif</span>
+          <span class="tag tag-acad">Stages &amp; Projets</span>
+          <span class="tag tag-perso">Vision professionnelle</span>
+        </div>
+      </div>
+
+      <!-- Année 4 -->
+      <div class="timeline-item fade-up" style="transition-delay: 0.4s">
+        <div class="timeline-icon" aria-hidden="true">🏆</div>
+        <div class="timeline-year">Année 4</div>
+        <div class="timeline-title">Diplôme &amp; Transition</div>
+        <p class="timeline-desc">
+          Obtention du diplôme américain, transition vers la vie professionnelle
+          ou le haut niveau. Intégration au réseau alumni — le début de ta nouvelle vie.
+        </p>
+        <div class="timeline-tags">
+          <span class="tag tag-sport">Haut niveau</span>
+          <span class="tag tag-acad">Diplôme US</span>
+          <span class="tag tag-perso">Réseau alumni</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <!-- ================================================================
      JS — ÉTAPE 1 : Navigation + Parallax Hero
