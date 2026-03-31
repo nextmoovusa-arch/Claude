@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NextMoov USA — Agence de Recrutement Sportif Universitaire Américain</title>
+  <style>
+    /* ============================================================
+       GOOGLE FONTS
+    ============================================================ */
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&family=Inter:wght@300;400;500&display=swap');
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #1A1A2E;
+      color: #FFFFFF;
+      overflow-x: hidden;
+    }
+
+    /* ============================================================
+       TYPOGRAPHIE
+    ============================================================ */
+    h1, h2, h3, h4, h5 {
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 2px;
+    }
+
+    /* ============================================================
+       UTILITAIRES
+    ============================================================ */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .gold-line {
+      width: 60px;
+      height: 2px;
+      background: #C0A060;
+      margin: 1rem auto;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      text-align: center;
+      letter-spacing: 3px;
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 3rem;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .section-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #C0A060;
+      text-align: center;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    /* ============================================================
+       BOUTONS
+    ============================================================ */
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      letter-spacing: 1px;
+      border: none;
+    }
+
+    .btn-red {
+      background: #B22234;
+      color: #FFFFFF;
+    }
+    .btn-red:hover {
+      background: #C8283E;
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #FFFFFF;
+      border: 2px solid #FFFFFF;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .btn-gold {
+      background: transparent;
+      color: #C0A060;
+      border: 2px solid #C0A060;
+    }
+    .btn-gold:hover {
+      background: rgba(192,160,96,0.1);
+    }
+
+    /* ============================================================
+       ANIMATIONS SCROLL (IntersectionObserver)
+    ============================================================ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================================
+       SCROLLBAR
+    ============================================================ */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #1A1A2E; }
+    ::-webkit-scrollbar-thumb { background: rgba(192,160,96,0.35); border-radius: 3px; }
+
+    /* ============================================================
+       NAVIGATION FIXE
+    ============================================================ */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.3rem 0;
+      transition: background 0.35s ease, padding 0.35s ease, backdrop-filter 0.35s ease;
+    }
+
+    #navbar.scrolled {
+      background: rgba(0, 7, 105, 0.93);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(192,160,96,0.15);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Logo */
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.75rem;
+      letter-spacing: 3px;
+      color: #FFFFFF;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo span { color: #C0A060; }
+
+    /* Menu desktop */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      letter-spacing: 0.4px;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-menu a:hover { color: #C0A060; }
+
+    .nav-cta {
+      background: #B22234 !important;
+      color: #FFFFFF !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 4px;
+    }
+    .nav-cta:hover {
+      background: #C8283E !important;
+      color: #FFFFFF !important;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      z-index: 1100;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #FFFFFF;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 620px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(0,7,105,0.82) 0%, rgba(26,26,46,0.88) 100%),
+        url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920&q=80') center / cover no-repeat;
+      will-change: transform;
+    }
+
+    /* Grain subtil */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* Ligne dorée déco en bas */
+    #hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #C0A060, transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 920px;
+      padding: 0 2rem;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 5px;
+      color: #C0A060;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+      opacity: 0;
+      animation: fadeUpIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.3s;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.8rem, 11vw, 8.5rem);
+      line-height: 0.92;
+      letter-spacing: 4px;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-title .line {
+      display: block;
+      overflow: hidden;
+    }
+
+    .hero-title .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: wordReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .hero-title .word.accent { color: #C0A060; }
+    .hero-title .word.red    { color: #B22234; }
+
+    .hero-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2.8rem;
+      letter-spacing: 1.5px;
+      opacity: 0;
+      animation: fadeUpIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.25s;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUpIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.45s;
+    }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(192,160,96,0.12);
+      border: 1px solid rgba(192,160,96,0.35);
+      border-radius: 50px;
+      padding: 0.65rem 2.2rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #C0A060;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      opacity: 0;
+      animation: fadeUpIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.8s;
+      z-index: 1;
+    }
+
+    /* Animations keyframes */
+    @keyframes wordReveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUpIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================================================
+       RESPONSIVE — Mobile
+    ============================================================ */
+    @media (max-width: 768px) {
+      /* Nav menu mobile */
+      .nav-menu {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 7, 105, 0.97);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        z-index: 1000;
+      }
+      .nav-menu.open { display: flex; }
+      .nav-menu a {
+        font-size: 1.25rem;
+        letter-spacing: 1px;
+      }
+      .hamburger { display: flex; }
+
+      .hero-badge {
+        font-size: 0.68rem;
+        padding: 0.5rem 1.2rem;
+        white-space: normal;
+        text-align: center;
+        width: 88%;
+      }
+
+      .hero-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero-btns .btn {
+        width: 260px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .nav-logo { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     NAVIGATION FIXE
+================================================================ -->
+<nav id="navbar" role="navigation" aria-label="Navigation principale">
+  <div class="nav-inner">
+
+    <a href="#hero" class="nav-logo" aria-label="NextMoov USA — Accueil">
+      NEXT<span>MOOV</span>
+    </a>
+
+    <ul class="nav-menu" id="navMenu" role="list">
+      <li><a href="#hero">Accueil</a></li>
+      <li><a href="#approche">Notre Approche</a></li>
+      <li><a href="#athletes">Nos Athlètes</a></li>
+      <li><a href="#temoignages">Témoignages</a></li>
+      <li><a href="#videos">Vidéos</a></li>
+      <li><a href="#forfait">Tarifs</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Rejoindre le programme</a></li>
+    </ul>
+
+    <button
+      class="hamburger"
+      id="hamburger"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      aria-controls="navMenu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+</nav>
+
+<!-- ================================================================
+     HERO
+================================================================ -->
+<section id="hero" aria-label="Hero — Agence NextMoov USA">
+  <div class="hero-bg" id="heroBg"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">Agence de recrutement sportif universitaire américain</p>
+
+    <h1 class="hero-title">
+      <span class="line">
+        <span class="word" style="animation-delay: 0.55s">CHAQUE</span>&thinsp;
+        <span class="word accent" style="animation-delay: 0.75s">ATHLÈTE</span>
+      </span>
+      <span class="line">
+        <span class="word" style="animation-delay: 0.95s">MÉRITE</span>&thinsp;
+        <span class="word red" style="animation-delay: 1.15s">SA CHANCE</span>
+      </span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Accompagnement personnalisé &nbsp;&bull;&nbsp; Honnêteté totale &nbsp;&bull;&nbsp; 4 ans à tes côtés
+    </p>
+
+    <div class="hero-btns">
+      <a href="#approche" class="btn btn-outline">Découvrir notre approche</a>
+      <a href="#contact"  class="btn btn-red">Rejoindre les 20 élus</a>
+    </div>
+  </div>
+
+  <div class="hero-badge" role="note">
+    20 places par an &nbsp;&bull;&nbsp; Par agent &nbsp;&bull;&nbsp; 7 000+ universités partenaires
+  </div>
+</section>
+
+
+<!-- ================================================================
+     JS — ÉTAPE 1 : Navigation + Parallax Hero
+================================================================ -->
+<script>
+  /* ---- Navbar scroll ---- */
+  const navbar    = document.getElementById('navbar');
+  const heroBg    = document.getElementById('heroBg');
+  const hamburger = document.getElementById('hamburger');
+  const navMenu   = document.getElementById('navMenu');
+
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+
+    // Classe scrolled
+    navbar.classList.toggle('scrolled', y > 50);
+
+    // Parallax hero (max 30 % de la vitesse)
+    if (heroBg) {
+      heroBg.style.transform = `translateY(${y * 0.28}px)`;
+    }
+  }, { passive: true });
+
+  /* ---- Hamburger ---- */
+  hamburger.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+  });
+
+  hamburger.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      hamburger.click();
+    }
+  });
+
+  /* Fermer le menu mobile au clic sur un lien */
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ---- Smooth scroll avec offset nav ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      const offset = 78;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+  /* ---- IntersectionObserver global (fade-up) ---- */
+  function observeFadeUps() {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll('.fade-up:not(.visible)').forEach(el => io.observe(el));
+  }
+
+  observeFadeUps();
+</script>
+</body>
+</html>
