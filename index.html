@@ -364,6 +364,18 @@
     @keyframes wordUp  { to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeUp  { to { opacity: 1; transform: translateY(0); } }
 
+    .brand-strip {
+      background: var(--navy);
+      padding: .95rem 1rem;
+      text-align: center;
+      font-family: Anton, sans-serif;
+      font-size: clamp(.85rem, 2.2vw, 1.1rem);
+      letter-spacing: 4px;
+      color: var(--gold);
+      border-top: 2px solid rgba(255,255,255,.06);
+      border-bottom: 2px solid rgba(255,255,255,.06);
+    }
+
     /* ============================================================
        RESPONSIVE — Étape 1
     ============================================================ */
@@ -1178,45 +1190,52 @@
 
     .vid-stage {
       position: relative;
+      height: 420px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
-      padding: 1rem 0 1.5rem;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .vid-card {
-      flex-shrink: 0;
+      position: absolute;
       width: 220px;
       border-radius: 14px;
       overflow: hidden;
       aspect-ratio: 9/16;
-      position: relative;
       cursor: pointer;
       background: rgba(255,255,255,.05);
       border: 1px solid rgba(255,255,255,.1);
-      transition: transform .45s cubic-bezier(.22,1,.36,1),
-                  opacity  .45s ease,
+      transform: scale(0);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 0;
+      transition: transform .5s cubic-bezier(.22,1,.36,1),
+                  opacity  .5s ease,
                   box-shadow .3s;
     }
-    .vid-card.center-card {
+    .vid-card.slot-left {
+      transform: translateX(-260px) scale(.82);
+      opacity: .5;
+      pointer-events: auto;
+      z-index: 1;
+    }
+    .vid-card.slot-center {
       transform: scale(1.12);
       opacity: 1;
+      pointer-events: auto;
       z-index: 2;
       box-shadow: 0 16px 50px rgba(0,0,0,.45);
       border-color: rgba(255,255,255,.25);
     }
-    .vid-card.side-card {
-      transform: scale(.82);
+    .vid-card.slot-right {
+      transform: translateX(260px) scale(.82);
       opacity: .5;
+      pointer-events: auto;
       z-index: 1;
     }
-    .vid-card.hidden-card {
-      transform: scale(.68);
-      opacity: 0;
-      pointer-events: none;
-    }
+    .vid-card.slot-center:hover .vid-thumb-img { transform: scale(1.04); }
+    .vid-card.slot-center:hover .vid-play { transform: scale(1.1); background: #fff; }
 
     .vid-thumb-img {
       width: 100%; height: 100%;
@@ -1224,7 +1243,6 @@
       display: block;
       transition: transform .5s;
     }
-    .vid-card.center-card:hover .vid-thumb-img { transform: scale(1.04); }
 
     .vid-thumb-ph {
       width: 100%; height: 100%;
@@ -1248,7 +1266,6 @@
       transition: transform .2s, background .2s;
       box-shadow: 0 4px 16px rgba(0,0,0,.3);
     }
-    .vid-card.center-card:hover .vid-play { transform: scale(1.1); background: #fff; }
 
     .vid-platform {
       position: absolute; top: .6rem; right: .6rem;
@@ -1319,10 +1336,14 @@
     }
     @media (max-width: 768px) {
       .temo-card  { min-width: calc(85% - .6rem); }
-      .vid-card   { width: 160px; }
+      .vid-card   { width: 150px; }
+      .vid-card.slot-left  { transform: translateX(-180px) scale(.82); }
+      .vid-card.slot-right { transform: translateX(180px)  scale(.82); }
     }
     @media (max-width: 480px) {
-      .vid-card { width: 130px; }
+      .vid-card { width: 120px; }
+      .vid-card.slot-left  { transform: translateX(-150px) scale(.82); }
+      .vid-card.slot-right { transform: translateX(150px)  scale(.82); }
     }
 
     /* ============================================================
@@ -1656,9 +1677,6 @@
     @media (max-width: 1100px) { .sports-grid { grid-template-columns: repeat(4, 1fr); } }
     @media (max-width: 768px) {
       .forfait-stats        { grid-template-columns: repeat(3, 1fr); }
-      .forfait-row          { grid-template-columns: repeat(2, 1fr); }
-      .forfait-row::after, .forfait-row-fill { display: none; }
-      .forfait-connector    { display: none; }
       .forfait-yr0          { flex-direction: column; gap: .8rem; }
       .sports-grid          { grid-template-columns: repeat(3, 1fr); gap: .7rem; }
       .contact-grid         { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -1959,6 +1977,11 @@
     </div>
   </div>
 </section>
+
+<!-- Brand strip -->
+<div class="brand-strip">
+  <span>NEXTMOOV — C'EST QUOI QU'IL ARRIVE</span>
+</div>
 
 
 <!-- ================================================================
@@ -2299,26 +2322,105 @@
       </div>
     </div>
 
-    <!-- Chemin snake 8 étapes -->
-    <div class="forfait-path fade-up" id="forfaitPath">
-      <!-- Rangée 1 : 01 → 02 → 03 → 04 -->
-      <div class="forfait-row" id="forfaitRow1">
-        <div class="forfait-row-fill" id="forfaitFill1"></div>
-        <div class="forfait-item"><div class="forfait-item-dot">01</div><span class="forfait-item-text">Évaluation sportive et académique</span></div>
-        <div class="forfait-item"><div class="forfait-item-dot">02</div><span class="forfait-item-text">Recherche des universités cibles</span></div>
-        <div class="forfait-item"><div class="forfait-item-dot">03</div><span class="forfait-item-text">Profil sportif &amp; highlight vidéo</span></div>
-        <div class="forfait-item"><div class="forfait-item-dot">04</div><span class="forfait-item-text">Démarches admin. et visa F-1</span></div>
+    <!-- Parcours zigzag 8 étapes -->
+    <div class="fj-journey fade-up" id="fjJourney">
+
+      <div class="fj-step fj-left">
+        <div class="fj-card">
+          <span class="fj-num">01</span>
+          <div>
+            <div class="fj-title">Évaluation sportive &amp; académique</div>
+            <p class="fj-desc">Analyse complète de ton profil pour identifier les meilleures opportunités NCAA/NAIA.</p>
+          </div>
+        </div>
+        <div class="fj-dot">01</div>
+        <span class="fj-spacer"></span>
       </div>
-      <!-- Connecteur vertical côté droit -->
-      <div class="forfait-connector"><div class="forfait-connector-line"><div class="forfait-connector-fill" id="forfaitConn"></div></div></div>
-      <!-- Rangée 2 : 08 ← 07 ← 06 ← 05 -->
-      <div class="forfait-row row-reverse" id="forfaitRow2">
-        <div class="forfait-row-fill" id="forfaitFill2"></div>
-        <div class="forfait-item"><div class="forfait-item-dot">08</div><span class="forfait-item-text">Suivi académique et sportif 4 ans</span></div>
-        <div class="forfait-item"><div class="forfait-item-dot">07</div><span class="forfait-item-text">Mise en relation coachs NCAA</span></div>
-        <div class="forfait-item"><div class="forfait-item-dot">06</div><span class="forfait-item-text">Cours d'anglais pris en charge</span></div>
-        <div class="forfait-item"><div class="forfait-item-dot">05</div><span class="forfait-item-text">Traduction &amp; apostille bulletins</span></div>
+
+      <div class="fj-step fj-right">
+        <span class="fj-spacer"></span>
+        <div class="fj-dot">02</div>
+        <div class="fj-card">
+          <span class="fj-num">02</span>
+          <div>
+            <div class="fj-title">Recherche des universités cibles</div>
+            <p class="fj-desc">Sélection personnalisée des universités alignée avec ton niveau sportif et ta filière d'études.</p>
+          </div>
+        </div>
       </div>
+
+      <div class="fj-step fj-left">
+        <div class="fj-card">
+          <span class="fj-num">03</span>
+          <div>
+            <div class="fj-title">Profil sportif &amp; highlight vidéo</div>
+            <p class="fj-desc">Création de ta fiche de recrutement et montage de ta vidéo pour séduire les coachs américains.</p>
+          </div>
+        </div>
+        <div class="fj-dot">03</div>
+        <span class="fj-spacer"></span>
+      </div>
+
+      <div class="fj-step fj-right">
+        <span class="fj-spacer"></span>
+        <div class="fj-dot">04</div>
+        <div class="fj-card">
+          <span class="fj-num">04</span>
+          <div>
+            <div class="fj-title">Démarches admin. &amp; visa F-1</div>
+            <p class="fj-desc">Gestion des documents officiels, inscription aux tests (SAT/TOEFL) et demande de visa étudiant.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="fj-step fj-left">
+        <div class="fj-card">
+          <span class="fj-num">05</span>
+          <div>
+            <div class="fj-title">Traduction &amp; apostille bulletins</div>
+            <p class="fj-desc">Certification officielle de tes relevés de notes et diplômes pour les universités américaines.</p>
+          </div>
+        </div>
+        <div class="fj-dot">05</div>
+        <span class="fj-spacer"></span>
+      </div>
+
+      <div class="fj-step fj-right">
+        <span class="fj-spacer"></span>
+        <div class="fj-dot">06</div>
+        <div class="fj-card">
+          <span class="fj-num">06</span>
+          <div>
+            <div class="fj-title">Cours d'anglais pris en charge</div>
+            <p class="fj-desc">Préparation linguistique pour réussir les tests et t'intégrer pleinement à la vie sur campus.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="fj-step fj-left">
+        <div class="fj-card">
+          <span class="fj-num">07</span>
+          <div>
+            <div class="fj-title">Mise en relation directe coachs</div>
+            <p class="fj-desc">Contact direct avec les staff sportifs via le réseau NextMoov — sans intermédiaire, décisions rapides.</p>
+          </div>
+        </div>
+        <div class="fj-dot">07</div>
+        <span class="fj-spacer"></span>
+      </div>
+
+      <div class="fj-step fj-right">
+        <span class="fj-spacer"></span>
+        <div class="fj-dot">08</div>
+        <div class="fj-card">
+          <span class="fj-num">08</span>
+          <div>
+            <div class="fj-title">Suivi académique &amp; sportif 4 ans</div>
+            <p class="fj-desc">Un agent dédié présent à chaque étape de ton parcours américain, de l'arrivée au diplôme.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- Banner Année 0 -->
@@ -2608,9 +2710,9 @@
       <div class="adm-danger-zone">
         <div class="adm-danger-title">ZONE DANGER — Réinitialisation</div>
         <div class="adm-danger-btns">
-          <button class="adm-danger-btn" onclick="admReset('nm_athletes','admAthletes','athlètes')">Réinitialiser Athlètes</button>
+          <button class="adm-danger-btn" onclick="admReset('nm_athletes_v2','admAthletes','athlètes')">Réinitialiser Athlètes</button>
           <button class="adm-danger-btn" onclick="admReset('nm_agents','admAgents','agents')">Réinitialiser Agents</button>
-          <button class="adm-danger-btn" onclick="admReset('nm_temos_v3','admTemos','témoignages')">Réinitialiser Témoignages</button>
+          <button class="adm-danger-btn" onclick="admReset('nm_temos_v4','admTemos','témoignages')">Réinitialiser Témoignages</button>
           <button class="adm-danger-btn" onclick="admReset('nm_videos_v2','admVideos','vidéos')">Réinitialiser Vidéos</button>
           <button class="adm-danger-btn" onclick="admReset('nm_showcases','admShowcases','showcases')">Réinitialiser Showcases</button>
           <button class="adm-danger-btn" style="background:#7c3aed;" onclick="admResetAll()">TOUT RÉINITIALISER</button>
@@ -2762,32 +2864,48 @@
   /* --- Données par défaut athlètes --- */
   const defaultAthletes = [
     {
-      prenom:'Lucas', nom:'MARTIN', sport:'Basketball', univ:'UCLA, Californie',
-      quote:'NextMoov m\'a appris que réussir, c\'est un processus, pas un coup de chance.',
-      parcours:'Après 3 saisons en ligue régionale française, Lucas a intégré le programme à 17 ans. En 6 mois, son profil sportif et académique a été entièrement préparé pour les exigences NCAA Division I.',
-      motiv:'Il voulait jouer au haut niveau ET obtenir un diplôme américain reconnu. Sans accompagnement solide, ces deux objectifs semblaient incompatibles.',
-      message:'Ne sous-estime pas ton potentiel. NextMoov voit en toi ce que tu ne vois pas encore.',
-      photo:''
+      prenom:'Luca', nom:'MOREAU-COTIN', sport:'Soccer', univ:'NEO CC, Ohio',
+      quote:'J\'ai quitté Cholet pour l\'Ohio. Le meilleur choix de ma vie.',
+      parcours:'Formé à Angers puis transféré à Cholet en U17 National. En quête d\'un projet ambitieux, Luca a choisi de franchir l\'Atlantique et s\'est engagé en Men Soccer à NEO CC (Ohio), combinant sport de haut niveau et diplôme américain.',
+      motiv:'Après le U17 Nat, le circuit français ne lui suffisait plus. Il voulait se confronter à un niveau supérieur tout en construisant son avenir académique.',
+      message:'Ne reste pas dans ta zone de confort. Il y a un tout autre monde de l\'autre côté.',
+      photo:'https://i.imgur.com/yDp5ULR.jpeg'
     },
     {
-      prenom:'Camille', nom:'DUBOIS', sport:'Soccer', univ:'University of Florida',
-      quote:'Avoir quelqu\'un à mes côtés à chaque étape, ça change tout mentalement.',
-      parcours:'Joueuse U19 nationale, Camille cherchait à combiner sport de haut niveau et formation Business. NextMoov l\'a guidée vers une scholarship complète à Florida.',
-      motiv:'L\'expérience américaine représentait pour elle l\'opportunité de se développer sur tous les plans — sportif, académique, humain.',
-      message:'Le plus dur, c\'est de faire le premier pas. Après, vous n\'êtes plus seul(e). Jamais.',
-      photo:''
+      prenom:'Pablo', nom:'CABRAL', sport:'Soccer', univ:'Mohawk Valley CC, New York',
+      quote:'J\'ai toujours rêvé de jouer aux États-Unis. NextMoov en a fait une réalité.',
+      parcours:'Senior R2 à Cholet, Pablo avait un rêve ancré depuis l\'enfance : jouer aux États-Unis. Avec NextMoov, ce rêve est devenu concret. Il s\'est engagé à Mohawk Valley CC (New York) pour accomplir son projet sportif et académique.',
+      motiv:'Un rêve de gamin, une ambition intacte. Il fallait juste trouver les bonnes personnes pour l\'accompagner.',
+      message:'Crois en ton rêve et entoure-toi des bonnes personnes. Le reste suit.',
+      photo:'https://i.imgur.com/hNZWvfU.jpeg'
     },
     {
-      prenom:'Thomas', nom:'BERNARD', sport:'Tennis', univ:'Vanderbilt University',
-      quote:'Honnêteté et précision — c\'est ce qui différencie NextMoov de toutes les autres agences.',
-      parcours:'Classé top 50 junior en France, Thomas avait déjà eu des contacts avec d\'autres agences. NextMoov lui a présenté un plan réaliste et l\'a tenu.',
-      motiv:'Il cherchait une agence qui lui dirait la vérité sur son niveau et ses chances réelles — sans fausse promesse.',
-      message:'Choisissez des gens qui vous respectent assez pour vous dire la vérité. C\'est rare.',
-      photo:''
+      prenom:'Alexandre', nom:'DESCALZO', sport:'Soccer', univ:'NEO CC, Ohio',
+      quote:'Muret, puis les États-Unis. NextMoov a tracé le chemin.',
+      parcours:'Après son U18 R1 à Muret, Alexandre a montré une progression constante saison après saison. Il a décidé de passer un cap en rejoignant NEO CC (Ohio) pour explorer son potentiel sur la scène américaine.',
+      motiv:'Aller plus loin que ce que le circuit français pouvait lui offrir. L\'envie de se surpasser dans un environnement nouveau.',
+      message:'La progression n\'a pas de frontière. N\'en mets pas toi-même.',
+      photo:'https://i.imgur.com/gVGYhjW.jpeg'
+    },
+    {
+      prenom:'Iliess', nom:'BARI', sport:'Soccer', univ:'Harcum CC, Pennsylvanie',
+      quote:'Capitaine à Valenciennes, maintenant à Harcum. Le leadership voyage.',
+      parcours:'Capitaine de l\'équipe U18 R1 à Valenciennes, Iliess s\'est imposé comme un leader reconnu par ses pairs et ses coachs. Cette mentalité gagnante lui a permis de s\'engager à Harcum CC (Pennsylvanie) pour continuer à écrire son histoire.',
+      motiv:'Prouver son niveau sur une scène internationale. Le brassard de capitaine, il voulait le porter plus loin.',
+      message:'Un leader, ça n\'attend pas la permission. Prends les devants.',
+      photo:'https://i.imgur.com/FkD1upj.jpeg'
+    },
+    {
+      prenom:'Nolan', nom:'ROUSSE', sport:'Soccer', univ:'Monroe CC, New York',
+      quote:'Je ne savais même pas que c\'était possible. NextMoov m\'a ouvert les yeux.',
+      parcours:'Nolan ne connaissait pas le système universitaire américain avant de rencontrer NextMoov. Accompagné de A à Z, il a préparé son dossier, passé ses tests et décroché une scholarship à Monroe CC (New York).',
+      motiv:'La curiosité et l\'envie de sortir des sentiers battus. Découvrir qu\'un autre chemin existait a tout changé.',
+      message:'Renseigne-toi. Le monde est bien plus grand que ton championnat régional.',
+      photo:'https://i.imgur.com/QoAtGsT.jpeg'
     }
   ];
 
-  let athletesData = load('nm_athletes', defaultAthletes);
+  let athletesData = load('nm_athletes_v2', defaultAthletes);
 
   function renderAthletes() {
     const grid = document.getElementById('athletesGrid');
@@ -2893,7 +3011,7 @@
       message:  document.getElementById('aMessage').value.trim()  || '...',
       photo:    document.getElementById('aPhoto').value.trim()
     });
-    save('nm_athletes', athletesData);
+    save('nm_athletes_v2', athletesData);
     renderAthletes();
     document.getElementById('adminPanelAthletes').style.display = 'none';
     ['aPrenom','aNom','aSport','aUniv','aQuote','aParcours','aMotiv','aMessage','aPhoto']
@@ -2982,33 +3100,33 @@
   /* ---------- TÉMOIGNAGES ---------- */
   const defaultTemos = [
     {
-      prenom:'Nolan ROUSSE', sport:'Football américain', univ:'Campus universitaire USA',
+      prenom:'Nolan ROUSSE', sport:'Soccer', univ:'Monroe CC, New York',
       texte:'Je ne savais même pas que faire mes études aux États-Unis était possible pour moi. Samuel m\'a accompagné de A à Z — les démarches, les contacts avec les coachs, les tests, le visa. Aujourd\'hui je suis sur campus avec une scholarship. Merci NextMoov.',
       note:5, photo:'https://i.imgur.com/QoAtGsT.jpeg'
     },
     {
-      prenom:'Pablo CABRAL', sport:'Soccer', univ:'Campus universitaire USA',
+      prenom:'Pablo CABRAL', sport:'Soccer', univ:'Mohawk Valley CC, New York',
       texte:'Ce qui fait vraiment la différence avec NextMoov, c\'est le réseau direct avec les coachs et les universités. Samuel ne passe pas par des intermédiaires — il connaît les gens, il appelle directement. J\'ai vécu une expérience exceptionnelle du début à la fin.',
       note:5, photo:'https://i.imgur.com/hNZWvfU.jpeg'
     },
     {
-      prenom:'Luca MOREAU-COTIN', sport:'Basketball', univ:'Campus universitaire USA',
+      prenom:'Luca MOREAU-COTIN', sport:'Soccer', univ:'NEO CC, Ohio',
       texte:'J\'étais complètement perdu avec les démarches administratives, les tests SAT, la vidéo de recrutement... Samuel a tout structuré pour moi. Résultat : plusieurs offres d\'universités. NextMoov, c\'est le partenaire qu\'il te faut pour réussir ce projet.',
       note:5, photo:'https://i.imgur.com/yDp5ULR.jpeg'
     },
     {
-      prenom:'Alexandre DESCALZO', sport:'Tennis', univ:'Campus universitaire USA',
+      prenom:'Alexandre DESCALZO', sport:'Soccer', univ:'NEO CC, Ohio',
       texte:'Ce que j\'ai apprécié chez NextMoov, c\'est la transparence totale et le suivi ultra personnalisé. Samuel maîtrise parfaitement le système américain et te guide sans jamais te laisser dans le flou. Un accompagnement vraiment au-dessus de tout.',
       note:5, photo:'https://i.imgur.com/gVGYhjW.jpeg'
     },
     {
-      prenom:'Iliess BARI', sport:'Athlétisme', univ:'Campus universitaire USA',
+      prenom:'Iliess BARI', sport:'Soccer', univ:'Harcum CC, Pennsylvanie',
       texte:'Je recommande NextMoov à 100 %. Une équipe professionnelle, investie et à l\'écoute. Ils m\'ont suivi à chaque étape avec sérieux et bienveillance. Si tu veux rejoindre une université américaine dans les meilleures conditions, c\'est eux qu\'il faut appeler.',
       note:5, photo:'https://i.imgur.com/FkD1upj.jpeg'
     }
   ];
 
-  let temosData = load('nm_temos_v3', defaultTemos);
+  let temosData = load('nm_temos_v4', defaultTemos);
   let temoIdx = 0, temoPaused = false, temoTimer = null;
 
   function temoVisible() { return window.innerWidth <= 1024 ? (window.innerWidth <= 768 ? 1 : 2) : 3; }
@@ -3092,7 +3210,7 @@
       note:  +document.getElementById('tNote').value || 5,
       photo: document.getElementById('tPhoto').value.trim()
     });
-    save('nm_temos_v3', temosData);
+    save('nm_temos_v4', temosData);
     renderTemos();
     document.getElementById('adminPanelTemo').style.display = 'none';
     ['tPrenom','tSport','tUniv','tTexte','tPhoto'].forEach(id => document.getElementById(id).value = '');
@@ -3134,7 +3252,7 @@
         <span class="vid-platform ${platClass}">${platLabel}</span>
         <div class="vid-caption">${esc(v.caption)}</div>`;
       card.addEventListener('click', () => {
-        if (!card.classList.contains('center-card')) { gotoVid(i); return; }
+        if (!card.classList.contains('slot-center')) { gotoVid(i); return; }
         const u = v.url && v.url.trim();
         if (u && (u.includes('instagram.com') || u.includes('tiktok.com'))) {
           window.open(u, '_blank', 'noopener,noreferrer');
@@ -3153,14 +3271,13 @@
     const cards = document.querySelectorAll('#vidStage .vid-card');
     const n = cards.length;
     if (!n) return;
+    const prev = ((vidIdx - 1) % n + n) % n;
+    const next = ((vidIdx + 1) % n + n) % n;
     cards.forEach((c, i) => {
-      c.classList.remove('center-card','side-card','hidden-card');
-      const diff = ((i - vidIdx) % n + n) % n;
-      const rdiff = ((vidIdx - i) % n + n) % n;
-      const d = Math.min(diff, rdiff);
-      if      (d === 0) c.classList.add('center-card');
-      else if (d === 1) c.classList.add('side-card');
-      else              c.classList.add('hidden-card');
+      c.classList.remove('slot-left', 'slot-center', 'slot-right');
+      if      (i === vidIdx) c.classList.add('slot-center');
+      else if (i === prev)   c.classList.add('slot-left');
+      else if (i === next)   c.classList.add('slot-right');
     });
   }
 
@@ -3326,7 +3443,7 @@
     admRenderTable('admAthletes', athletesData,
       ['Prénom', 'Nom', 'Sport', 'Université'],
       (a, i) => [esc(a.prenom), esc(a.nom), esc(a.sport), esc(a.univ||'—')],
-      (i) => { athletesData.splice(i,1); save('nm_athletes',athletesData); renderAthletes(); renderAdminDashboard(); }
+      (i) => { athletesData.splice(i,1); save('nm_athletes_v2',athletesData); renderAthletes(); renderAdminDashboard(); }
     );
 
     // Agents
@@ -3340,7 +3457,7 @@
     admRenderTable('admTemos', temosData,
       ['Prénom', 'Sport', 'Université', 'Note'],
       (t, i) => [esc(t.prenom), esc(t.sport||'—'), esc(t.univ||'—'), '★'.repeat(t.note||5)],
-      (i) => { temosData.splice(i,1); save('nm_temos_v3',temosData); renderTemos(); renderAdminDashboard(); }
+      (i) => { temosData.splice(i,1); save('nm_temos_v4',temosData); renderTemos(); renderAdminDashboard(); }
     );
 
     // Vidéos
@@ -3377,9 +3494,9 @@
     if (!confirm(`Supprimer toutes les données "${label}" ? Cette action est irréversible.`)) return;
     localStorage.removeItem(key);
     // Reload relevant data
-    if (key === 'nm_athletes') { athletesData = load('nm_athletes',[]); renderAthletes(); }
+    if (key === 'nm_athletes_v2') { athletesData = load('nm_athletes_v2',[]); renderAthletes(); }
     if (key === 'nm_agents')   { agentsData   = load('nm_agents',[]);   renderAgents(); }
-    if (key === 'nm_temos_v3') { temosData     = load('nm_temos_v3', defaultTemos); renderTemos(); }
+    if (key === 'nm_temos_v4') { temosData     = load('nm_temos_v4', defaultTemos); renderTemos(); }
     if (key === 'nm_videos_v2')   { videosData    = load('nm_videos_v2', defaultVideos); renderVideos(); }
     if (key === 'nm_showcases'){ showcasesData = load('nm_showcases',[]); renderShowcases(); }
     renderAdminDashboard();
@@ -3387,7 +3504,7 @@
 
   function admResetAll() {
     if (!confirm('ATTENTION : Supprimer TOUTES les données ? Cette action est irréversible.')) return;
-    ['nm_athletes','nm_agents','nm_temos_v3','nm_videos_v2','nm_showcases'].forEach(k => localStorage.removeItem(k));
+    ['nm_athletes_v2','nm_agents','nm_temos_v4','nm_videos_v2','nm_showcases'].forEach(k => localStorage.removeItem(k));
     athletesData  = [];
     agentsData    = [];
     temosData     = [];
@@ -3421,23 +3538,6 @@
       tlFill.classList.remove('has-fill');
       tlItems.forEach(el => el.classList.remove('tl-active'));
     });
-  })();
-
-  /* --- Forfait — chemin snake animé --- */
-  (function() {
-    const path  = document.getElementById('forfaitPath');
-    const fill1 = document.getElementById('forfaitFill1');
-    const conn  = document.getElementById('forfaitConn');
-    const fill2 = document.getElementById('forfaitFill2');
-    if (!path || !fill1) return;
-    const obs = new IntersectionObserver(entries => {
-      if (!entries[0].isIntersecting) return;
-      obs.unobserve(path);
-      fill1.classList.add('animated');
-      setTimeout(() => conn && conn.classList.add('animated'), 850);
-      setTimeout(() => fill2 && fill2.classList.add('animated'), 1250);
-    }, { threshold: .3 });
-    obs.observe(path);
   })();
 
   /* --- Forfait — chiffres animés au scroll --- */
