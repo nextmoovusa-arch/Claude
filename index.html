@@ -1324,112 +1324,126 @@
        ÉTAPE 5 — Forfait + Sports + Showcase + Contact
     ============================================================ */
 
-    /* --- Forfait --- */
+    /* --- Forfait — redesign animé --- */
     #forfait { background: var(--bg); padding: 7rem 0; }
-    .forfait-wrapper {
+
+    /* Stats 4 chiffres */
+    .forfait-stats {
       display: grid;
-      grid-template-columns: 1fr 1.4fr;
-      gap: 2.5rem;
-      align-items: center;
-      margin-top: 2.5rem;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 2.8rem 0 2.5rem;
     }
-    .forfait-tagline {
+    .forfait-stat-item {
+      background: var(--bg);
+      padding: 1.8rem 1rem;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      transition: background .2s;
+    }
+    .forfait-stat-item:last-child { border-right: none; }
+    .forfait-stat-item:hover { background: var(--bg-soft); }
+    .forfait-stat-num {
       font-family: Anton, sans-serif;
-      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-size: clamp(2rem, 4vw, 3rem);
       color: var(--navy);
-      line-height: 1.1;
-      margin-bottom: 1rem;
+      line-height: 1;
+      display: block;
     }
-    .forfait-tagline span { color: var(--red); }
-    .forfait-intro {
-      font-size: .95rem;
-      color: var(--text-2);
-      line-height: 1.7;
-      margin-bottom: 1.4rem;
-    }
-    .forfait-price-block {
-      display: flex;
-      align-items: baseline;
-      gap: .5rem;
-      margin-bottom: 1.2rem;
-    }
-    .forfait-price {
+    .forfait-stat-num.zero { color: var(--red); }
+    .forfait-stat-label {
       font-family: Oswald, sans-serif;
-      font-size: 2.4rem;
-      color: var(--navy);
-      font-weight: 600;
+      font-size: .62rem;
+      letter-spacing: 2px;
+      color: var(--text-3);
+      text-transform: uppercase;
+      margin-top: .45rem;
+      display: block;
     }
-    .forfait-price-sub { font-size: .8rem; color: var(--text-3); font-family: Nunito, sans-serif; }
-    .forfait-card {
-      background: linear-gradient(135deg, var(--navy) 0%, #1a1a6e 100%);
-      border-radius: 16px;
-      padding: 2.2rem;
+
+    /* Grille 8 items */
+    .forfait-items-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .forfait-item {
+      background: var(--bg);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 1.3rem 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      transition: background .2s, box-shadow .2s;
+    }
+    .forfait-item:nth-child(2n)   { border-right: none; }
+    .forfait-item:nth-last-child(-n+2) { border-bottom: none; }
+    .forfait-item:hover { background: var(--bg-soft); box-shadow: inset 3px 0 0 var(--navy); }
+    .forfait-item-num {
+      font-family: Anton, sans-serif;
+      font-size: 1.6rem;
+      color: rgba(0,7,105,.12);
+      flex-shrink: 0;
+      line-height: 1;
+      transition: color .3s, transform .3s;
+      min-width: 32px;
+    }
+    .forfait-item:hover .forfait-item-num { color: var(--navy); transform: scale(1.15); }
+    .forfait-item-text {
+      font-family: Nunito, sans-serif;
+      font-size: .88rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* Banner Année 0 */
+    .forfait-yr0 {
+      background: linear-gradient(135deg, var(--navy) 0%, #0a0a7a 100%);
+      border-radius: 14px;
+      padding: 1.8rem 2rem;
       color: #fff;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.4rem;
+      margin-bottom: 2.5rem;
       position: relative;
       overflow: hidden;
     }
-    .forfait-card::before {
-      content: '';
+    .forfait-yr0::after {
+      content: '0';
       position: absolute;
-      top: -50px; right: -50px;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(192,160,96,.2) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .forfait-badge {
-      display: inline-block;
-      background: var(--gold);
-      color: var(--navy);
-      font-family: Oswald, sans-serif;
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: 2px;
-      padding: .25rem .7rem;
-      border-radius: 4px;
-      margin-bottom: 1rem;
-    }
-    .forfait-card-title {
+      right: 1.5rem; top: 50%;
+      transform: translateY(-50%);
       font-family: Anton, sans-serif;
-      font-size: 1.6rem;
-      letter-spacing: 1px;
-      margin-bottom: 1.4rem;
-      line-height: 1.2;
+      font-size: 8rem;
+      color: rgba(255,255,255,.04);
+      line-height: 1;
+      pointer-events: none;
     }
-    .forfait-items { list-style: none; padding: 0; margin: 0 0 1.6rem; display: flex; flex-direction: column; gap: .65rem; }
-    .forfait-items li {
-      display: flex;
-      align-items: flex-start;
-      gap: .65rem;
-      font-family: Nunito, sans-serif;
-      font-size: .9rem;
-      color: rgba(255,255,255,.88);
-      line-height: 1.5;
-    }
-    .forfait-items li::before {
-      content: '✓';
+    .forfait-yr0-badge {
       background: var(--gold);
       color: var(--navy);
-      font-weight: 700;
-      width: 18px; height: 18px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: .7rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .forfait-divider { border: none; border-top: 1px solid rgba(255,255,255,.15); margin: 1.2rem 0; }
-    .forfait-annee0 {
-      background: rgba(192,160,96,.12);
-      border: 1px solid rgba(192,160,96,.3);
+      font-family: Anton, sans-serif;
+      font-size: .88rem;
+      letter-spacing: 1.5px;
+      padding: .5rem .9rem;
       border-radius: 8px;
-      padding: .8rem 1rem;
-      font-size: .82rem;
-      color: rgba(255,255,255,.75);
-      font-family: Nunito, sans-serif;
+      flex-shrink: 0;
+      white-space: nowrap;
     }
-    .forfait-annee0 strong { color: var(--gold); }
+    .forfait-yr0-text {
+      font-family: Nunito, sans-serif;
+      font-size: .88rem;
+      color: rgba(255,255,255,.85);
+      line-height: 1.7;
+    }
+    .forfait-yr0-text strong { color: var(--gold); }
 
     /* --- Sports --- */
     #sports { background: var(--bg-soft); padding: 7rem 0; }
@@ -1554,11 +1568,22 @@
 
     @media (max-width: 1100px) { .sports-grid { grid-template-columns: repeat(4, 1fr); } }
     @media (max-width: 768px) {
-      .forfait-wrapper { grid-template-columns: 1fr; }
-      .sports-grid { grid-template-columns: repeat(3, 1fr); gap: .7rem; }
-      .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+      .forfait-stats        { grid-template-columns: repeat(2, 1fr); }
+      .forfait-stat-item:nth-child(2) { border-right: none; }
+      .forfait-stat-item:nth-child(1),
+      .forfait-stat-item:nth-child(2) { border-bottom: 1px solid var(--border); }
+      .forfait-items-grid   { grid-template-columns: 1fr; }
+      .forfait-item         { border-right: none !important; }
+      .forfait-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border) !important; }
+      .forfait-item:last-child { border-bottom: none !important; }
+      .forfait-yr0          { flex-direction: column; gap: .8rem; }
+      .sports-grid          { grid-template-columns: repeat(3, 1fr); gap: .7rem; }
+      .contact-grid         { grid-template-columns: 1fr; gap: 1.5rem; }
     }
-    @media (max-width: 480px) { .sports-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) {
+      .forfait-stats { grid-template-columns: repeat(2, 1fr); }
+      .sports-grid   { grid-template-columns: repeat(2, 1fr); }
+    }
 
     /* ============================================================
        ÉTAPE 6 — Footer + Admin Dashboard
@@ -2171,38 +2196,76 @@
 <section id="forfait" aria-labelledby="forfait-title">
   <div class="container">
     <p class="section-eyebrow eyebrow-navy fade-up">Ce qui est inclus</p>
-    <h2 class="section-title fade-up" id="forfait-title">LE FORFAIT NEXTMOOV</h2>
+    <h2 class="section-title fade-up" id="forfait-title">LE FORFAIT NEXTMOOV USA</h2>
     <div class="accent-line fade-up"></div>
+    <p class="section-sub fade-up">Tout inclus. Un seul engagement. Aucune surprise.</p>
 
-    <div class="forfait-wrapper fade-up">
-      <div class="forfait-left">
-        <p class="forfait-tagline">Un seul forfait.<br><span>Tout est inclus.</span><br>Zéro surprise.</p>
-        <p class="forfait-intro">De la préparation à l'intégration dans une université américaine, NextMoov USA prend en charge l'intégralité du processus. Pas d'abonnement. Pas de frais cachés. Un accompagnement humain du début à la fin.</p>
-        <div class="forfait-price-block">
-          <span class="forfait-price">Sur devis</span>
-          <span class="forfait-price-sub">selon ton profil et ton niveau</span>
-        </div>
-        <a href="#contact" class="btn btn-navy" style="display:inline-flex;text-decoration:none;">Obtenir mon évaluation gratuite</a>
+    <!-- 4 chiffres animés -->
+    <div class="forfait-stats fade-up">
+      <div class="forfait-stat-item">
+        <span class="forfait-stat-num" data-count="8">0</span>
+        <span class="forfait-stat-label">Services inclus</span>
       </div>
+      <div class="forfait-stat-item">
+        <span class="forfait-stat-num" data-count="4">0</span>
+        <span class="forfait-stat-label">Ans d'accompagnement</span>
+      </div>
+      <div class="forfait-stat-item">
+        <span class="forfait-stat-num" data-count="1">0</span>
+        <span class="forfait-stat-label">Agent dédié</span>
+      </div>
+      <div class="forfait-stat-item">
+        <span class="forfait-stat-num zero" data-count="0">0</span>
+        <span class="forfait-stat-label">Frais cachés</span>
+      </div>
+    </div>
 
-      <div class="forfait-card">
-        <span class="forfait-badge">INCLUS DANS LE FORFAIT</span>
-        <div class="forfait-card-title">Accompagnement complet<br>Années 0 → 4</div>
-        <ul class="forfait-items">
-          <li>Évaluation sportive et académique complète</li>
-          <li>Recherche et sélection des universités cibles</li>
-          <li>Création de ton profil sportif (highlight vidéo)</li>
-          <li>Démarches administratives et visa F-1</li>
-          <li>Traduction et apostille des bulletins scolaires</li>
-          <li>Cours d'anglais préparatoires pris en charge</li>
-          <li>Mise en relation directe avec les coachs NCAA</li>
-          <li>Suivi académique et sportif pendant 4 ans</li>
-        </ul>
-        <hr class="forfait-divider">
-        <div class="forfait-annee0">
-          <strong>Année 0 — Avant le départ :</strong> placement universitaire, cours d'anglais, frais administratifs, montage vidéo highlight, traduction des bulletins. Tout est géré.
-        </div>
+    <!-- Grille 8 items -->
+    <div class="forfait-items-grid">
+      <div class="forfait-item fade-up" style="transition-delay:.05s">
+        <span class="forfait-item-num">01</span>
+        <span class="forfait-item-text">Évaluation sportive et académique complète</span>
       </div>
+      <div class="forfait-item fade-up" style="transition-delay:.10s">
+        <span class="forfait-item-num">02</span>
+        <span class="forfait-item-text">Recherche et sélection des universités cibles</span>
+      </div>
+      <div class="forfait-item fade-up" style="transition-delay:.15s">
+        <span class="forfait-item-num">03</span>
+        <span class="forfait-item-text">Création de ton profil sportif (highlight vidéo)</span>
+      </div>
+      <div class="forfait-item fade-up" style="transition-delay:.20s">
+        <span class="forfait-item-num">04</span>
+        <span class="forfait-item-text">Démarches administratives et visa F-1</span>
+      </div>
+      <div class="forfait-item fade-up" style="transition-delay:.25s">
+        <span class="forfait-item-num">05</span>
+        <span class="forfait-item-text">Traduction et apostille des bulletins scolaires</span>
+      </div>
+      <div class="forfait-item fade-up" style="transition-delay:.30s">
+        <span class="forfait-item-num">06</span>
+        <span class="forfait-item-text">Cours d'anglais préparatoires pris en charge</span>
+      </div>
+      <div class="forfait-item fade-up" style="transition-delay:.35s">
+        <span class="forfait-item-num">07</span>
+        <span class="forfait-item-text">Mise en relation directe avec les coachs NCAA</span>
+      </div>
+      <div class="forfait-item fade-up" style="transition-delay:.40s">
+        <span class="forfait-item-num">08</span>
+        <span class="forfait-item-text">Suivi académique et sportif pendant 4 ans</span>
+      </div>
+    </div>
+
+    <!-- Banner Année 0 -->
+    <div class="forfait-yr0 fade-up">
+      <div class="forfait-yr0-badge">ANNÉE 0</div>
+      <p class="forfait-yr0-text">
+        <strong>Avant le départ :</strong> placement universitaire, cours d'anglais pris en charge, frais administratifs, montage vidéo highlight, traduction et apostille des bulletins. Tout est géré — tu te concentres uniquement sur ta performance.
+      </p>
+    </div>
+
+    <div style="text-align:center;" class="fade-up">
+      <a href="#contact" class="btn btn-navy" style="text-decoration:none;display:inline-flex;">Obtenir mon évaluation gratuite</a>
     </div>
   </div>
 </section>
@@ -3262,6 +3325,32 @@
       tlFill.classList.remove('has-fill');
       tlItems.forEach(el => el.classList.remove('tl-active'));
     });
+  })();
+
+  /* --- Forfait — chiffres animés au scroll --- */
+  (function() {
+    const counters = document.querySelectorAll('.forfait-stat-num[data-count]');
+    if (!counters.length) return;
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el    = entry.target;
+        const target = +el.dataset.count;
+        obs.unobserve(el);
+        if (target === 0) return; /* reste à 0 */
+        let current = 0;
+        const duration = 900;
+        const steps    = 30;
+        const interval = duration / steps;
+        const inc = Math.ceil(target / steps);
+        const timer = setInterval(() => {
+          current = Math.min(current + inc, target);
+          el.textContent = current;
+          if (current >= target) clearInterval(timer);
+        }, interval);
+      });
+    }, { threshold: .6 });
+    counters.forEach(c => obs.observe(c));
   })();
 
   /* --- Active nav link highlighting --- */
