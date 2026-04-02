@@ -659,12 +659,26 @@
       opacity: 0;
       pointer-events: none;
       z-index: 0;
-      transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .5s;
+      transition: none;
+    }
+    .athlete-card.slot-left {
+      transform: translateX(-370px) scale(.82); opacity: .45;
+      pointer-events: auto; z-index: 1;
+      transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .45s;
       will-change: transform, opacity;
     }
-    .athlete-card.slot-left   { transform: translateX(-370px) scale(.82); opacity: .45; pointer-events: auto; z-index: 1; }
-    .athlete-card.slot-center  { transform: translateX(0) scale(1.05);   opacity: 1;   pointer-events: auto; z-index: 2; }
-    .athlete-card.slot-right  { transform: translateX(370px)  scale(.82); opacity: .45; pointer-events: auto; z-index: 1; }
+    .athlete-card.slot-center {
+      transform: translateX(0) scale(1.05); opacity: 1;
+      pointer-events: auto; z-index: 2;
+      transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .45s;
+      will-change: transform, opacity;
+    }
+    .athlete-card.slot-right {
+      transform: translateX(370px) scale(.82); opacity: .45;
+      pointer-events: auto; z-index: 1;
+      transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .45s;
+      will-change: transform, opacity;
+    }
 
     .ath-flipper {
       position: relative;
