@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Partenaires & Marques — NextMoov USA</title>
+  <meta name="description" content="Découvrez les marques partenaires de NextMoov USA — des acteurs du sport, de la tech et du lifestyle qui soutiennent nos athlètes."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --navy:#000769;--red:#B22234;--gold:#C0A060;
+      --bg:#FFFFFF;--bg-soft:#F0F4FF;
+      --text:#0F172A;--text-2:#475569;--text-3:#94A3B8;
+      --border:#E2E8F0;--r:10px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;}
+
+    /* NAVBAR */
+    #navbar{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between;
+      background:transparent;transition:background .3s,box-shadow .3s;
+    }
+    #navbar.scrolled{background:var(--navy);box-shadow:0 2px 16px rgba(0,0,0,.25);}
+    .nav-logo{font-family:'Anton',sans-serif;font-size:1.3rem;letter-spacing:.04em;color:#fff;white-space:nowrap;}
+    .nav-logo span{color:var(--gold);}
+    #navLinks{display:flex;align-items:center;gap:16px;flex-wrap:nowrap;}
+    #navLinks a{font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.85);letter-spacing:.05em;text-transform:uppercase;padding:4px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap;}
+    #navLinks a:hover,#navLinks a.active{color:#fff;border-color:var(--gold);}
+    .nav-cta{background:var(--red);color:#fff!important;border:none!important;padding:7px 14px!important;border-radius:6px!important;transition:background .2s!important;}
+    .nav-cta:hover{background:#9a1b2b!important;}
+    #burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+    #burger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
+    #burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    #burger.open span:nth-child(2){opacity:0;}
+    #burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    @media(max-width:1024px){
+      #burger{display:flex;}
+      #navLinks{
+        position:fixed;top:64px;left:0;right:0;
+        background:var(--navy);flex-direction:column;align-items:flex-start;
+        padding:16px 24px 24px;gap:16px;
+        transform:translateY(-110%);opacity:0;transition:transform .3s,opacity .3s;pointer-events:none;
+      }
+      #navLinks.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+    }
+
+    /* UTILS */
+    .fade-up{opacity:0;transform:translateY(28px);transition:opacity .55s,transform .55s;}
+    .fade-up.visible{opacity:1;transform:none;}
+    .container{max-width:1100px;margin:0 auto;}
+    .section-eyebrow{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+    .section-title{font-family:'Anton',sans-serif;font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:20px;}
+    .text-center{text-align:center;}
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">NEXT<span>MOOV</span> USA</a>
+  <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div id="navLinks">
+    <a href="index.html">Accueil</a>
+    <a href="athletes.html">Athlètes</a>
+    <a href="temoignages.html">Témoignages</a>
+    <a href="showcase.html">Showcase</a>
+    <a href="videos.html">Vidéos</a>
+    <a href="marques.html" class="active">Marques</a>
+    <a href="reseaux.html">Réseaux</a>
+    <a href="index.html#contact" class="nav-cta">Intégrer la Sélection</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="mq-hero">
+  <div class="mq-hero-inner">
+    <p class="mq-eyebrow fade-up">Partenaires officiels</p>
+    <h1 class="mq-hero-title fade-up">Nos Partenaires<br><span>&amp; Marques</span></h1>
+    <p class="mq-hero-sub fade-up">NEXTMOOV USA s'entoure de marques qui partagent les mêmes valeurs&nbsp;: performance, ambition et excellence.</p>
+  </div>
+</section>
+
+<!-- BANDEAU DÉFILANT -->
+<section class="mq-ticker-wrap">
+  <div class="mq-ticker">
+    <div class="mq-ticker-track">
+      <span class="mq-tick-item">APEX SPORT</span>
+      <span class="mq-tick-sep">✦</span>
+      <span class="mq-tick-item">NUTRIVE PRO</span>
+      <span class="mq-tick-sep">✦</span>
+      <span class="mq-tick-item">PERFORMA TECH</span>
+      <span class="mq-tick-sep">✦</span>
+      <span class="mq-tick-item">REVIVE LAB</span>
+      <span class="mq-tick-sep">✦</span>
+      <span class="mq-tick-item">URBAN ATHLETE</span>
+      <span class="mq-tick-sep">✦</span>
+      <span class="mq-tick-item">MINDSET ELITE</span>
+      <span class="mq-tick-sep">✦</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="mq-tick-item">APEX SPORT</span>
+      <span class="mq-tick-sep">✦</span>
+      <span class="mq-tick-item">NUTRIVE PRO</span>
+      <span class="mq-tick-sep">✦</span>
+      <span class="mq-tick-item">PERFORMA TECH</span>
+      <span class="mq-tick-sep">✦</span>
+      <span class="mq-tick-item">REVIVE LAB</span>
+      <span class="mq-tick-sep">✦</span>
+      <span class="mq-tick-item">URBAN ATHLETE</span>
+      <span class="mq-tick-sep">✦</span>
+      <span class="mq-tick-item">MINDSET ELITE</span>
+      <span class="mq-tick-sep">✦</span>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS GRID -->
+<section class="mq-logos-section">
+  <div class="container">
+    <p class="section-eyebrow text-center fade-up">Ils nous font confiance</p>
+    <div class="mq-logos-grid fade-up">
+      <div class="mq-logo-pill" title="Apex Sport">APEX<br><span>SPORT</span></div>
+      <div class="mq-logo-pill" title="Nutrive Pro">NUTRIVE<br><span>PRO</span></div>
+      <div class="mq-logo-pill" title="Performa Tech">PERFORMA<br><span>TECH</span></div>
+      <div class="mq-logo-pill" title="Revive Lab">REVIVE<br><span>LAB</span></div>
+      <div class="mq-logo-pill" title="Urban Athlete">URBAN<br><span>ATHLETE</span></div>
+      <div class="mq-logo-pill" title="Mindset Elite">MINDSET<br><span>ELITE</span></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* HERO */
+  .mq-hero{
+    background:linear-gradient(135deg,var(--navy) 0%,#0a0d5e 60%,#12104a 100%);
+    padding:130px 24px 90px;text-align:center;color:#fff;position:relative;overflow:hidden;
+  }
+  .mq-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 110%,rgba(192,160,96,.14),transparent);pointer-events:none;}
+  .mq-hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+  .mq-eyebrow{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .mq-hero-title{font-family:'Anton',sans-serif;font-size:clamp(3rem,7vw,5.5rem);line-height:1.05;margin-bottom:18px;}
+  .mq-hero-title span{color:var(--gold);}
+  .mq-hero-sub{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:540px;margin:0 auto;line-height:1.7;}
+
+  /* TICKER */
+  .mq-ticker-wrap{background:var(--navy);padding:18px 0;overflow:hidden;border-top:1px solid rgba(255,255,255,.08);}
+  .mq-ticker{overflow:hidden;white-space:nowrap;}
+  .mq-ticker-track{display:inline-flex;align-items:center;gap:32px;animation:ticker 28s linear infinite;}
+  .mq-ticker-track:hover{animation-play-state:paused;}
+  @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .mq-tick-item{font-family:'Anton',sans-serif;font-size:1rem;letter-spacing:.12em;color:rgba(255,255,255,.45);transition:color .3s;}
+  .mq-ticker-track:hover .mq-tick-item{color:rgba(255,255,255,.7);}
+  .mq-tick-sep{color:var(--gold);font-size:.7rem;opacity:.6;}
+
+  /* LOGOS GRID */
+  .mq-logos-section{padding:56px 24px 40px;background:var(--bg-soft);}
+  .mq-logos-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-top:24px;}
+  .mq-logo-pill{
+    padding:18px 28px;background:#fff;border:1.5px solid var(--border);border-radius:12px;
+    font-family:'Anton',sans-serif;font-size:.85rem;letter-spacing:.1em;text-align:center;
+    color:var(--text-3);line-height:1.3;min-width:120px;
+    filter:grayscale(1);opacity:.55;transition:all .3s;cursor:default;
+  }
+  .mq-logo-pill span{display:block;color:var(--text-3);}
+  .mq-logo-pill:hover{filter:grayscale(0);opacity:1;border-color:var(--navy);color:var(--navy);transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,7,105,.1);}
+  .mq-logo-pill:hover span{color:var(--gold);}
+</style>
+
+<!-- PARTENAIRES GRID -->
+<section class="mq-partners">
+  <div class="container">
+    <p class="section-eyebrow text-center fade-up">Nos partenaires</p>
+    <h2 class="section-title text-center fade-up" style="color:var(--navy)">Des marques qui croient<br>en nos athlètes</h2>
+    <div class="mq-grid" id="mqGrid">
+
+      <!-- APEX SPORT -->
+      <div class="mq-card fade-up">
+        <div class="mq-card-logo" style="background:#f0f4ff;color:#000769">⚡<br><span>APEX SPORT</span></div>
+        <div class="mq-badge" style="background:#dbeafe;color:#1e40af">Équipement sportif</div>
+        <h3 class="mq-card-name">Apex Sport</h3>
+        <p class="mq-card-desc">Marque française de chaussures et vêtements de performance, Apex Sport équipe nos athlètes pour les entraînements et les Showcases avec du matériel haut de gamme.</p>
+        <ul class="mq-perks">
+          <li>30% de réduction sur toute la gamme</li>
+          <li>Kit d'entraînement offert à la sélection</li>
+          <li>Mise en avant sur leurs réseaux sociaux</li>
+        </ul>
+        <div class="mq-card-btns">
+          <a href="#" target="_blank" rel="noopener" class="mq-btn-primary">Découvrir la marque ↗</a>
+          <a href="index.html#contact" class="mq-btn-secondary">Devenir partenaire</a>
+        </div>
+      </div>
+
+      <!-- NUTRIVE PRO -->
+      <div class="mq-card fade-up">
+        <div class="mq-card-logo" style="background:#f0fdf4;color:#166534">🥗<br><span>NUTRIVE PRO</span></div>
+        <div class="mq-badge" style="background:#dcfce7;color:#166534">Nutrition sportive</div>
+        <h3 class="mq-card-name">Nutrive Pro</h3>
+        <p class="mq-card-desc">Spécialiste de la nutrition de performance, Nutrive Pro accompagne nos athlètes dans leur préparation physique avec des compléments adaptés aux exigences du sport universitaire américain.</p>
+        <ul class="mq-perks">
+          <li>Pack nutrition offert au départ pour les USA</li>
+          <li>Suivi nutritionnel personnalisé 3 mois</li>
+          <li>Code promo exclusif NEXTMOOV (-25%)</li>
+        </ul>
+        <div class="mq-card-btns">
+          <a href="#" target="_blank" rel="noopener" class="mq-btn-primary">Découvrir la marque ↗</a>
+          <a href="index.html#contact" class="mq-btn-secondary">Devenir partenaire</a>
+        </div>
+      </div>
+
+      <!-- PERFORMA TECH -->
+      <div class="mq-card fade-up">
+        <div class="mq-card-logo" style="background:#faf5ff;color:#6b21a8">📡<br><span>PERFORMA TECH</span></div>
+        <div class="mq-badge" style="background:#f3e8ff;color:#6b21a8">Tech & Performance</div>
+        <h3 class="mq-card-name">Performa Tech</h3>
+        <p class="mq-card-desc">Wearable et application d'analyse de performance, Performa Tech permet à nos athlètes et à leurs futurs coachs d'accéder à des données précises : vitesse, puissance, récupération.</p>
+        <ul class="mq-perks">
+          <li>Capteur GPS offert lors du Showcase</li>
+          <li>Accès 6 mois à l'application premium</li>
+          <li>Rapport de performance intégré au dossier</li>
+        </ul>
+        <div class="mq-card-btns">
+          <a href="#" target="_blank" rel="noopener" class="mq-btn-primary">Découvrir la marque ↗</a>
+          <a href="index.html#contact" class="mq-btn-secondary">Devenir partenaire</a>
+        </div>
+      </div>
+
+      <!-- REVIVE LAB -->
+      <div class="mq-card fade-up">
+        <div class="mq-card-logo" style="background:#fff7ed;color:#c2410c">🧊<br><span>REVIVE LAB</span></div>
+        <div class="mq-badge" style="background:#ffedd5;color:#c2410c">Récupération</div>
+        <h3 class="mq-card-name">Revive Lab</h3>
+        <p class="mq-card-desc">Expert en récupération sportive — bains froids, pistolets de massage, bandes de compression — Revive Lab aide nos athlètes à performer sur la durée et à éviter les blessures.</p>
+        <ul class="mq-perks">
+          <li>Kit récupération offert (valeur 120€)</li>
+          <li>Séance cryothérapie avant chaque Showcase</li>
+          <li>Protocole de récupération personnalisé</li>
+        </ul>
+        <div class="mq-card-btns">
+          <a href="#" target="_blank" rel="noopener" class="mq-btn-primary">Découvrir la marque ↗</a>
+          <a href="index.html#contact" class="mq-btn-secondary">Devenir partenaire</a>
+        </div>
+      </div>
+
+      <!-- URBAN ATHLETE -->
+      <div class="mq-card fade-up">
+        <div class="mq-card-logo" style="background:#fafafa;color:#1a1a1a">🧢<br><span>URBAN ATHLETE</span></div>
+        <div class="mq-badge" style="background:#f1f5f9;color:#334155">Lifestyle & Mode</div>
+        <h3 class="mq-card-name">Urban Athlete</h3>
+        <p class="mq-card-desc">Streetwear sport nouvelle génération, Urban Athlete habille nos athlètes en dehors du terrain — des vêtements qui reflètent leur identité d'athlète de haut niveau dans la vie de tous les jours.</p>
+        <ul class="mq-perks">
+          <li>Look complet offert pour les athlètes placés</li>
+          <li>Shooting photo pour les réseaux sociaux</li>
+          <li>Collaboration capsule "NEXTMOOV × UA"</li>
+        </ul>
+        <div class="mq-card-btns">
+          <a href="#" target="_blank" rel="noopener" class="mq-btn-primary">Découvrir la marque ↗</a>
+          <a href="index.html#contact" class="mq-btn-secondary">Devenir partenaire</a>
+        </div>
+      </div>
+
+      <!-- MINDSET ELITE -->
+      <div class="mq-card fade-up">
+        <div class="mq-card-logo" style="background:#fff1f2;color:#9f1239">🧠<br><span>MINDSET ELITE</span></div>
+        <div class="mq-badge" style="background:#ffe4e6;color:#9f1239">Préparation mentale</div>
+        <h3 class="mq-card-name">Mindset Elite</h3>
+        <p class="mq-card-desc">Plateforme de préparation mentale conçue pour les athlètes de haut niveau. Gestion du stress, visualisation, confiance en soi — des outils essentiels pour réussir la transition vers le sport américain.</p>
+        <ul class="mq-perks">
+          <li>3 séances de coaching mental offertes</li>
+          <li>Accès à l'app Mindset Elite (3 mois)</li>
+          <li>Préparation spécifique "départ aux USA"</li>
+        </ul>
+        <div class="mq-card-btns">
+          <a href="#" target="_blank" rel="noopener" class="mq-btn-primary">Découvrir la marque ↗</a>
+          <a href="index.html#contact" class="mq-btn-secondary">Devenir partenaire</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* PARTNERS */
+  .mq-partners{padding:80px 24px;}
+  .mq-partners .section-title{margin-bottom:48px;}
+  .mq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:900px){.mq-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.mq-grid{grid-template-columns:1fr;}}
+
+  .mq-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:transform .2s,box-shadow .2s;}
+  .mq-card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,7,105,.1);}
+  .mq-card-logo{
+    width:100%;padding:20px;border-radius:10px;text-align:center;
+    font-family:'Anton',sans-serif;font-size:2rem;line-height:1.1;
+  }
+  .mq-card-logo span{display:block;font-size:.75rem;letter-spacing:.14em;margin-top:4px;}
+  .mq-badge{display:inline-block;font-family:'Oswald',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px;width:fit-content;}
+  .mq-card-name{font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:700;color:var(--text);}
+  .mq-card-desc{font-size:.92rem;color:var(--text-2);line-height:1.65;}
+  .mq-perks{list-style:none;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .mq-perks li{font-size:.85rem;color:var(--text-2);padding-left:18px;position:relative;}
+  .mq-perks li::before{content:'✓';position:absolute;left:0;color:#2d8a4e;font-weight:700;}
+  .mq-card-btns{display:flex;flex-direction:column;gap:8px;margin-top:4px;}
+  .mq-btn-primary{display:block;text-align:center;background:var(--navy);color:#fff;font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:11px 16px;border-radius:8px;transition:background .2s;}
+  .mq-btn-primary:hover{background:#0a0d5e;}
+  .mq-btn-secondary{display:block;text-align:center;background:transparent;color:var(--text-2);font-family:'Oswald',sans-serif;font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:9px 16px;border-radius:8px;border:1.5px solid var(--border);transition:border-color .2s,color .2s;}
+  .mq-btn-secondary:hover{border-color:var(--navy);color:var(--navy);}
+</style>
+
+<!-- CTA MARQUES -->
+<section class="mq-cta-brand">
+  <div class="container">
+    <div class="mq-cta-inner">
+      <div class="mq-cta-text fade-up">
+        <p class="section-eyebrow" style="color:var(--gold)">Vous êtes une marque ?</p>
+        <h2 class="section-title" style="color:#fff">Associez votre image à la<br>prochaine génération d'athlètes</h2>
+        <div class="mq-cta-args">
+          <div class="mq-cta-arg">
+            <div class="mq-cta-arg-icon">👁️</div>
+            <div>
+              <h4>Visibilité ciblée</h4>
+              <p>Exposez votre marque à des athlètes à fort potentiel et à leur entourage — familles, clubs, coachs.</p>
+            </div>
+          </div>
+          <div class="mq-cta-arg">
+            <div class="mq-cta-arg-icon">📲</div>
+            <div>
+              <h4>Présence digitale</h4>
+              <p>Mentions sur nos réseaux, intégration sur le site, présence lors des Showcases filmés.</p>
+            </div>
+          </div>
+          <div class="mq-cta-arg">
+            <div class="mq-cta-arg-icon">🎯</div>
+            <div>
+              <h4>Partenariats sur-mesure</h4>
+              <p>Chaque collaboration est construite selon vos objectifs : notoriété, product placement, co-branding.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form class="mq-form fade-up" id="brandForm" name="partenariat" method="POST" data-netlify="true" novalidate>
+        <input type="hidden" name="form-name" value="partenariat"/>
+        <h3 class="mq-form-title">Proposer un partenariat</h3>
+        <div class="mq-form-group">
+          <label for="brandName">Nom de la marque *</label>
+          <input type="text" id="brandName" name="brand" placeholder="Ex: NovaSport" required/>
+        </div>
+        <div class="mq-form-group">
+          <label for="brandSector">Secteur *</label>
+          <select id="brandSector" name="sector" required>
+            <option value="">Sélectionner…</option>
+            <option>Équipement sportif</option>
+            <option>Nutrition sportive</option>
+            <option>Tech & Performance</option>
+            <option>Récupération</option>
+            <option>Lifestyle & Mode</option>
+            <option>Préparation mentale</option>
+            <option>Médias & Contenu</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="mq-form-row">
+          <div class="mq-form-group">
+            <label for="contactName">Nom du contact *</label>
+            <input type="text" id="contactName" name="contact" placeholder="Prénom Nom" required/>
+          </div>
+          <div class="mq-form-group">
+            <label for="contactEmail">Email *</label>
+            <input type="email" id="contactEmail" name="email" placeholder="vous@marque.fr" required/>
+          </div>
+        </div>
+        <div class="mq-form-group">
+          <label for="brandMsg">Votre message</label>
+          <textarea id="brandMsg" name="message" rows="3" placeholder="Décrivez votre marque et ce que vous recherchez dans un partenariat…"></textarea>
+        </div>
+        <button type="submit" class="mq-form-submit">Proposer un partenariat →</button>
+        <div id="brandSuccess" class="mq-form-success" style="display:none">✅ <strong>Message reçu !</strong> Nous vous répondons sous 48h.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">NEXT<span>MOOV</span> USA</div>
+        <p>L'agence de recrutement sportif universitaire américain pour les athlètes français.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/nextmoov.usa/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@nextmoov.usa" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.78 1.52V7.12a4.85 4.85 0 01-1.01-.43z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Pages</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="athletes.html">Athlètes</a></li>
+          <li><a href="temoignages.html">Témoignages</a></li>
+          <li><a href="showcase.html">Showcase</a></li>
+          <li><a href="videos.html">Vidéos</a></li>
+          <li><a href="marques.html">Marques</a></li>
+          <li><a href="reseaux.html">Réseaux</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Partenaires</h4>
+        <ul class="footer-links">
+          <li><a href="#mqGrid">Nos partenaires</a></li>
+          <li><a href="#register">Proposer un partenariat</a></li>
+          <li><a href="showcase.html">Nos Showcases</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:contact@nextmoovusa.com">contact@nextmoovusa.com</a></li>
+          <li><a href="index.html#contact">Formulaire</a></li>
+          <li><a href="https://www.instagram.com/nextmoov.usa/" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 NextMoov USA. Tous droits réservés.</div>
+  </div>
+</footer>
+
+<style>
+  /* CTA BRAND */
+  .mq-cta-brand{background:linear-gradient(135deg,var(--navy),#0a0d5e);padding:96px 24px;}
+  .mq-cta-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+  @media(max-width:860px){.mq-cta-inner{grid-template-columns:1fr;gap:40px;}}
+  .mq-cta-text .section-title{margin-bottom:32px;}
+  .mq-cta-args{display:flex;flex-direction:column;gap:20px;}
+  .mq-cta-arg{display:flex;gap:16px;align-items:flex-start;}
+  .mq-cta-arg-icon{font-size:1.6rem;flex-shrink:0;margin-top:2px;}
+  .mq-cta-arg h4{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:600;color:#fff;margin-bottom:4px;}
+  .mq-cta-arg p{font-size:.9rem;color:rgba(255,255,255,.65);line-height:1.6;}
+
+  /* FORM */
+  .mq-form{background:#fff;border-radius:16px;padding:32px;}
+  .mq-form-title{font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:20px;}
+  .mq-form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:480px){.mq-form-row{grid-template-columns:1fr;}}
+  .mq-form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+  .mq-form-group label{font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:600;color:var(--text);text-transform:uppercase;letter-spacing:.06em;}
+  .mq-form-group input,.mq-form-group select,.mq-form-group textarea{padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'Nunito',sans-serif;font-size:.95rem;color:var(--text);background:#fff;transition:border-color .2s;}
+  .mq-form-group input:focus,.mq-form-group select:focus,.mq-form-group textarea:focus{outline:none;border-color:var(--navy);}
+  .mq-form-group textarea{resize:vertical;min-height:76px;}
+  .mq-form-submit{width:100%;padding:13px;background:var(--navy);color:#fff;font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:none;border-radius:8px;cursor:pointer;transition:background .2s;margin-top:4px;}
+  .mq-form-submit:hover{background:#0a0d5e;}
+  .mq-form-success{margin-top:14px;padding:13px;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;font-size:.9rem;color:#166534;}
+
+  /* FOOTER */
+  footer{background:var(--navy);color:rgba(255,255,255,.75);padding:64px 24px 32px;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+  .footer-logo{font-family:'Anton',sans-serif;font-size:1.4rem;color:#fff;margin-bottom:12px;}
+  .footer-logo span{color:var(--gold);}
+  .footer-brand p{font-size:.9rem;line-height:1.6;max-width:260px;}
+  .footer-socials{display:flex;gap:14px;margin-top:20px;}
+  .footer-socials a{color:rgba(255,255,255,.6);transition:color .2s;}
+  .footer-socials a:hover{color:#fff;}
+  .footer-heading{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:16px;}
+  .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .footer-links a{font-size:.9rem;color:rgba(255,255,255,.6);transition:color .2s;}
+  .footer-links a:hover{color:#fff;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;font-size:.85rem;text-align:center;}
+  @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
+</style>
+
+
+<script>
+// Form submit
+document.getElementById('brandForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.mq-form-submit');
+  btn.textContent = 'Envoi…';
+  btn.disabled = true;
+  setTimeout(() => {
+    document.getElementById('brandSuccess').style.display = 'block';
+    btn.textContent = 'Proposer un partenariat →';
+    btn.disabled = false;
+    this.reset();
+  }, 800);
+});
+
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+if (window.scrollY > 40) navbar.classList.add('scrolled');
+
+// Burger
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+if (burger && navLinks) {
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navLinks.classList.remove('open');
+  }));
+}
+
+// IntersectionObserver
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
