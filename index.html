@@ -660,11 +660,11 @@
       pointer-events: none;
       z-index: 0;
       transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .5s;
+      will-change: transform, opacity;
     }
-    .athlete-card.slot-left  { transform: translateX(-370px) scale(.82); opacity: .45; pointer-events: auto; z-index: 1; }
-    .athlete-card.slot-center { transform: scale(1.05); opacity: 1; pointer-events: auto; z-index: 2; }
-    .athlete-card.slot-right { transform: translateX(370px) scale(.82); opacity: .45; pointer-events: auto; z-index: 1; }
-    .athlete-card.slot-center:not(.flipped):hover { transform: scale(1.08) translateY(-4px); }
+    .athlete-card.slot-left   { transform: translateX(-370px) scale(.82); opacity: .45; pointer-events: auto; z-index: 1; }
+    .athlete-card.slot-center  { transform: translateX(0) scale(1.05);   opacity: 1;   pointer-events: auto; z-index: 2; }
+    .athlete-card.slot-right  { transform: translateX(370px)  scale(.82); opacity: .45; pointer-events: auto; z-index: 1; }
 
     .ath-flipper {
       position: relative;
@@ -3340,7 +3340,6 @@
     if (Math.abs(d) > 40) d > 0 ? gotoVid(vidIdx + 1) : gotoVid(vidIdx - 1);
   });
 
-  setInterval(() => gotoVid(vidIdx + 1), 3500);
 
   function openVidModal(url) {
     const embed = document.getElementById('videoEmbed');
