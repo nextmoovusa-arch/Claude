@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nos Athlètes — NextMoov USA</title>
+  <meta name="description" content="Découvrez les athlètes accompagnés par NextMoov USA vers les universités américaines.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000769'/><text x='50%25' y='56%25' font-family='Arial Black' font-size='13' font-weight='900' fill='%23fff' text-anchor='middle' dominant-baseline='middle'>NM</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#000769;--red:#B22234;--gold:#C0A060;--bg:#fff;--bg-soft:#F0F4FF;--text:#0F172A;--text-2:#475569;--text-3:#94A3B8;--border:#E2E8F0;--r:10px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;font-size:15px;}
+    body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    h1,h2,h3,h4{font-family:'Oswald',sans-serif;letter-spacing:.5px;}
+    img{max-width:100%;display:block;}
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:1140px;margin:0 auto;padding:0 1.5rem;}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.72rem 1.8rem;border-radius:6px;font-family:'Oswald',sans-serif;font-weight:600;font-size:.88rem;letter-spacing:1px;cursor:pointer;transition:all .2s;border:2px solid transparent;}
+    .btn-navy{background:var(--navy);color:#fff;} .btn-navy:hover{background:#0009a0;}
+    .btn-red{background:var(--red);color:#fff;} .btn-red:hover{background:#C8283E;}
+    .btn-outline-white{background:transparent;border-color:rgba(255,255,255,.7);color:#fff;} .btn-outline-white:hover{background:rgba(255,255,255,.1);}
+    .section-eyebrow{font-family:'Oswald',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-align:center;margin-bottom:.4rem;}
+    .eyebrow-navy{color:var(--navy);}
+    .section-title{font-family:'Oswald',sans-serif;font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:700;text-align:center;line-height:1.1;margin-bottom:.5rem;}
+    .section-sub{font-size:.95rem;text-align:center;color:var(--text-2);margin-bottom:2.5rem;line-height:1.7;}
+    .accent-line{width:42px;height:3px;background:var(--navy);margin:.6rem auto 1.8rem;border-radius:2px;}
+    .fade-up{opacity:0;transform:translateY(24px);transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1);}
+    .fade-up.visible{opacity:1;transform:translateY(0);}
+    ::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:#f1f5f9;} ::-webkit-scrollbar-thumb{background:rgba(0,7,105,.25);border-radius:3px;}
+    ::selection{background:rgba(0,7,105,.15);color:var(--text);}
+    *:focus-visible{outline:2px solid var(--navy);outline-offset:3px;border-radius:3px;}
+
+    /* NAVBAR */
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 0;transition:background .3s,box-shadow .3s,padding .3s;}
+    #navbar.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 1px 20px rgba(0,7,105,.1);padding:.65rem 0;}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1140px;margin:0 auto;padding:0 1.5rem;}
+    .nav-logo-text{font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:2px;color:#fff;transition:color .3s;}
+    .nav-logo-text span{color:var(--red);}
+    #navbar.scrolled .nav-logo-text{color:var(--navy);}
+    .nav-menu{display:flex;align-items:center;gap:1.2rem;list-style:none;}
+    .nav-menu a{font-family:'Oswald',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,.85);transition:color .2s;white-space:nowrap;}
+    #navbar.scrolled .nav-menu a{color:var(--text-2);}
+    .nav-menu a:hover,.nav-menu a.active{color:#fff;}
+    #navbar.scrolled .nav-menu a:hover,#navbar.scrolled .nav-menu a.active{color:var(--navy);font-weight:600;}
+    .nav-cta{background:var(--red)!important;color:#fff!important;padding:.45rem 1.1rem;border-radius:5px;}
+    .nav-cta:hover{background:#C8283E!important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;z-index:1100;background:none;border:none;}
+    .hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all .3s;}
+    #navbar.scrolled .hamburger span{background:var(--navy);}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    @media(max-width:900px){
+      .nav-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--navy);flex-direction:column;justify-content:center;align-items:center;gap:2rem;z-index:999;}
+      .nav-menu.open{display:flex;}
+      .nav-menu a{font-size:1.1rem;color:#fff!important;}
+      .hamburger{display:flex;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar" role="navigation" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo-text" aria-label="NextMoov USA — Accueil">NEXT<span>MOOV</span> USA</a>
+    <ul class="nav-menu" id="navMenu" role="list">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="athletes.html" class="active">Athlètes</a></li>
+      <li><a href="temoignages.html">Témoignages</a></li>
+      <li><a href="showcase.html">Showcase</a></li>
+      <li><a href="videos.html">Vidéos Coachs</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Intégrer la Sélection</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero-ath" style="position:relative;min-height:52vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 1.5rem 80px;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:linear-gradient(150deg,rgba(0,7,105,.92) 0%,rgba(26,26,46,.95) 100%),url('https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1920&q=80') center/cover no-repeat;"></div>
+  <div style="position:relative;z-index:1;max-width:760px;">
+    <p style="font-family:'Oswald',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:4px;color:rgba(255,255,255,.65);text-transform:uppercase;margin-bottom:1.2rem;">Ils nous font confiance</p>
+    <h1 style="font-family:'Anton',sans-serif;font-size:clamp(2.2rem,6vw,4.5rem);line-height:.95;letter-spacing:2px;color:#fff;margin-bottom:1.2rem;">DES ATHLÈTES PRÊTS À <span style="color:var(--red);">CONQUÉRIR L'AMÉRIQUE</span></h1>
+    <p style="font-size:clamp(.9rem,2vw,1.05rem);color:rgba(255,255,255,.72);margin-bottom:2rem;line-height:1.6;">10 sports, 1 ambition commune. Découvrez les profils des athlètes accompagnés par NextMoov USA vers les meilleures universités américaines.</p>
+    <a href="index.html#contact" class="btn btn-outline-white">Rejoindre le programme →</a>
+  </div>
+</section>
+
+<!-- SECTION ATHLÈTES -->
+<section style="padding:5rem 0 6rem;background:var(--bg);">
+  <div class="container">
+    <p class="section-eyebrow eyebrow-navy fade-up">Nos Profils</p>
+    <h2 class="section-title fade-up">TOUS NOS ATHLÈTES</h2>
+    <div class="accent-line fade-up"></div>
+    <p class="section-sub fade-up">Placés, en cours de placement ou en recherche — chaque profil est unique.</p>
+
+    <!-- FILTRES -->
+    <div id="filters" class="fade-up" style="display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:2.8rem;">
+      <button class="filter-btn active" data-filter="tous">Tous</button>
+      <button class="filter-btn" data-filter="Football">⚽ Football</button>
+      <button class="filter-btn" data-filter="Basketball">🏀 Basketball</button>
+      <button class="filter-btn" data-filter="Tennis">🎾 Tennis</button>
+      <button class="filter-btn" data-filter="Natation">🏊 Natation</button>
+      <button class="filter-btn" data-filter="Athlétisme">🏃 Athlétisme</button>
+      <button class="filter-btn" data-filter="Golf">⛳ Golf</button>
+      <button class="filter-btn" data-filter="Baseball">⚾ Baseball</button>
+    </div>
+
+    <!-- GRILLE -->
+    <div id="athletesGrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;"></div>
+    <p id="noResults" style="display:none;text-align:center;color:var(--text-3);font-family:'Oswald',sans-serif;letter-spacing:1px;padding:3rem 0;">Aucun athlète dans cette catégorie pour le moment.</p>
+  </div>
+</section>
+
+<!-- MODALE -->
+<div id="modalOverlay" role="dialog" aria-modal="true" aria-label="Profil athlète" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;align-items:center;justify-content:center;padding:1.5rem;">
+  <div id="modalBox" style="background:#fff;border-radius:14px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;position:relative;">
+    <button id="modalClose" aria-label="Fermer" style="position:absolute;top:.8rem;right:.8rem;background:rgba(0,7,105,.08);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;z-index:1;">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<style>
+  /* FILTRES */
+  .filter-btn{padding:.45rem 1.1rem;border-radius:20px;border:1.5px solid var(--border);background:var(--bg-soft);color:var(--text-2);font-family:'Oswald',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.5px;cursor:pointer;transition:all .2s;}
+  .filter-btn:hover{border-color:var(--navy);color:var(--navy);}
+  .filter-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+
+  /* CARDS */
+  .ath-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .25s,box-shadow .25s;position:relative;}
+  .ath-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,7,105,.12);}
+  .ath-card-photo{width:100%;height:220px;object-fit:cover;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;font-size:4rem;}
+  .ath-card-photo img{width:100%;height:100%;object-fit:cover;}
+  .ath-badge{position:absolute;top:.9rem;right:.9rem;font-family:'Oswald',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:1px;padding:.28rem .7rem;border-radius:20px;text-transform:uppercase;}
+  .badge-place{background:#2d8a4e;color:#fff;}
+  .badge-encours{background:#c87820;color:#fff;}
+  .badge-recherche{background:var(--navy);color:#fff;}
+  .ath-card-body{padding:1.1rem 1.2rem 1.3rem;}
+  .ath-card-name{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.05rem;color:var(--text);margin-bottom:.2rem;}
+  .ath-card-sport{font-size:.82rem;color:var(--text-2);margin-bottom:.25rem;}
+  .ath-card-ville{font-size:.78rem;color:var(--text-3);margin-bottom:.4rem;}
+  .ath-card-univ{font-size:.8rem;color:var(--navy);font-family:'Oswald',sans-serif;font-weight:500;margin-bottom:.6rem;letter-spacing:.2px;}
+  .ath-level-pill{display:inline-block;padding:.2rem .7rem;border-radius:20px;background:var(--bg-soft);border:1px solid var(--border);font-size:.7rem;font-family:'Oswald',sans-serif;color:var(--text-2);margin-bottom:.9rem;}
+  .ath-card-btn{display:block;width:100%;padding:.6rem;background:var(--navy);color:#fff;font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:1px;border:none;border-radius:7px;cursor:pointer;transition:background .2s;text-align:center;}
+  .ath-card-btn:hover{background:#0009a0;}
+
+  /* MODAL */
+  .modal-ath-header{padding:1.6rem 1.6rem 1rem;display:flex;gap:1.2rem;align-items:flex-start;border-bottom:1px solid var(--border);}
+  .modal-ath-avatar{width:80px;height:80px;border-radius:50%;overflow:hidden;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;font-size:2.2rem;flex-shrink:0;border:2px solid var(--border);}
+  .modal-ath-avatar img{width:100%;height:100%;object-fit:cover;}
+  .modal-ath-name{font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:.2rem;}
+  .modal-ath-meta{font-size:.82rem;color:var(--text-2);line-height:1.5;}
+  .modal-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin:0;}
+  .modal-stat{background:var(--bg);padding:1rem 1.2rem;text-align:center;}
+  .modal-stat-val{font-family:'Anton',sans-serif;font-size:1.3rem;color:var(--navy);line-height:1;margin-bottom:.2rem;}
+  .modal-stat-label{font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-3);font-family:'Oswald',sans-serif;}
+  .modal-bio{padding:1.2rem 1.6rem;font-size:.88rem;color:var(--text-2);line-height:1.7;border-bottom:1px solid var(--border);}
+  .modal-actions{padding:1.2rem 1.6rem;display:flex;gap:.8rem;flex-wrap:wrap;}
+
+  /* RESPONSIVE */
+  @media(max-width:1024px){#athletesGrid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){#athletesGrid{grid-template-columns:1fr;}}
+  @media(max-width:560px){.modal-ath-header{flex-direction:column;}.modal-stats{grid-template-columns:1fr 1fr;}}
+</style>
+
+<!-- CTA SECTION -->
+<section style="padding:5rem 0;background:var(--navy);text-align:center;">
+  <div class="container">
+    <p style="font-family:'Oswald',sans-serif;font-size:.72rem;letter-spacing:3px;color:rgba(255,255,255,.6);text-transform:uppercase;margin-bottom:.5rem;">Rejoins-les</p>
+    <h2 style="font-family:'Anton',sans-serif;font-size:clamp(1.8rem,4vw,3rem);color:#fff;margin-bottom:1rem;">TU VEUX TOI AUSSI FAIRE PARTIE DE L'AVENTURE ?</h2>
+    <p style="color:rgba(255,255,255,.65);max-width:480px;margin:0 auto 2rem;font-size:.95rem;line-height:1.7;">20 places par an, par agent. Candidature ouverte à tous les athlètes sérieux.</p>
+    <a href="index.html#contact" class="btn btn-red">Candidater maintenant →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#0a0a1a;color:rgba(255,255,255,.7);padding:3.5rem 0 2rem;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:2.5rem;">
+      <div>
+        <div style="font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:2px;color:#fff;margin-bottom:.8rem;">NEXT<span style="color:var(--red);">MOOV</span> USA</div>
+        <p style="font-size:.82rem;line-height:1.7;max-width:280px;">L'agence de recrutement sportif universitaire américain qui t'accompagne du premier jour jusqu'au diplôme.</p>
+        <div style="display:flex;gap:.8rem;margin-top:1rem;">
+          <a href="https://www.instagram.com/nextmoovusa" target="_blank" rel="noopener noreferrer" style="font-size:1.2rem;">📸</a>
+          <a href="https://www.tiktok.com/@nextmoovusa" target="_blank" rel="noopener noreferrer" style="font-size:1.2rem;">🎵</a>
+          <a href="https://wa.me/33632488633" target="_blank" rel="noopener noreferrer" style="font-size:1.2rem;">💬</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Oswald',sans-serif;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem;">Navigation</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;">
+          <li><a href="index.html" style="font-size:.84rem;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''">Accueil</a></li>
+          <li><a href="athletes.html" style="font-size:.84rem;color:#fff;">Nos Athlètes</a></li>
+          <li><a href="temoignages.html" style="font-size:.84rem;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''">Témoignages</a></li>
+          <li><a href="showcase.html" style="font-size:.84rem;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''">Showcase</a></li>
+          <li><a href="videos.html" style="font-size:.84rem;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''">Vidéos Coachs</a></li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family:'Oswald',sans-serif;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem;">Programme</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;">
+          <li><a href="index.html#forfait" style="font-size:.84rem;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''">Le Forfait</a></li>
+          <li><a href="index.html#sports" style="font-size:.84rem;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''">Nos Sports</a></li>
+          <li><a href="index.html#contact" style="font-size:.84rem;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family:'Oswald',sans-serif;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:1rem;">Contact</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.5rem;font-size:.82rem;">
+          <li><a href="mailto:nextmoovusa@gmail.com" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''">nextmoovusa@gmail.com</a></li>
+          <li><a href="https://wa.me/33632488633" target="_blank" rel="noopener noreferrer" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''">WhatsApp : 06 32 48 86 33</a></li>
+          <li><span>20 places / agent / an</span></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;font-size:.78rem;">
+      <span>© 2026 NEXTMOOV USA. Tous droits réservés.</span>
+    </div>
+  </div>
+</footer>
+<style>
+  @media(max-width:768px){
+    footer .container > div:first-child{grid-template-columns:1fr 1fr!important;}
+    footer .container > div:first-child > div:first-child{grid-column:1/-1;}
+  }
+  @media(max-width:480px){footer .container > div:first-child{grid-template-columns:1fr!important;}}
+</style>
+
+<script>
+const athletes = [
+  { prenom:'Théo',     nom:'LAMBERT',   sport:'Football',   emoji:'⚽', ville:'Lyon',        univ:'University of South Florida', niveau:'Université FR', statut:'Placé',       exp:'6 ans',  comp:'Régional N2',           saisons:'4', palmares:'Capitaine U19',            bio:"Milieu de terrain technique formé à l'OL Academy. Bilan académique solide (mention Bien au bac). Objectif : combiner sport NCAA Division II et Bachelor en Business." },
+  { prenom:'Camille',  nom:'ROUSSEAU',  sport:'Natation',   emoji:'🏊', ville:'Marseille',   univ:'University of Tampa',          niveau:'Lycée',         statut:'Placé',       exp:'8 ans',  comp:'National',              saisons:'5', palmares:'3× Champ. régionale',     bio:"Nageuse spécialiste 200m nage libre. Classée top 10 nationale U18. Visa F-1 obtenu, rentrée août 2024 à Tampa." },
+  { prenom:'Karim',    nom:'BENALI',    sport:'Basketball', emoji:'🏀', ville:'Paris',        univ:'Lindsey Wilson College, KY',   niveau:'Prépa',         statut:'Placé',       exp:'7 ans',  comp:'Pro B',                 saisons:'3', palmares:'MVP Tournoi U21',          bio:"Arrière explosif de 1m90, formé au Pôle Espoir de Paris. Parti à Lindsey Wilson pour NAIA + diplôme en Sport Management." },
+  { prenom:'Juliette', nom:'MOREAU',    sport:'Tennis',     emoji:'🎾', ville:'Bordeaux',    univ:'Rollins College, Floride',     niveau:'Université FR', statut:'En cours',    exp:'10 ans', comp:'ITF Juniors',            saisons:'6', palmares:'Classée 250 FR',           bio:"Joueuse de fond de court classée 15/1 en France. Discussions avancées avec Rollins College pour scholarship tennis + Sciences de la Communication." },
+  { prenom:'Antoine',  nom:'GIRAUD',    sport:'Athlétisme', emoji:'🏃', ville:'Toulouse',    univ:'',                             niveau:'Lycée',         statut:'En recherche',exp:'5 ans',  comp:'Régional',              saisons:'3', palmares:'2× Champion dép. 400m',    bio:"Sprinteur polyvalent 100m-400m, Terminale à Toulouse. Excellent dossier scolaire. Recherche universités NCAA Division II ou NAIA avec scholarship partielle." },
+  { prenom:'Lucas',    nom:'PETIT',     sport:'Golf',       emoji:'⛳', ville:'Nice',         univ:'Barry University, Miami',      niveau:'Prépa',         statut:'Placé',       exp:'9 ans',  comp:'National',              saisons:'5', palmares:'Index -2, Top 20 FR U21', bio:"Golfeur de haut niveau avec index exceptionnel. Barry University (Miami) lui offre scholarship complète incluant licence en Finance." },
+  { prenom:'Sarah',    nom:'DUPONT',    sport:'Football',   emoji:'⚽', ville:'Rennes',       univ:'Limestone University, SC',     niveau:'Université FR', statut:'Placé',       exp:'11 ans', comp:'D1 Féminine',           saisons:'6', palmares:'Meilleure buteuse région', bio:"Attaquante formée au Stade Rennais féminin. A rejoint Limestone University (Caroline du Sud) avec scholarship athlétique + aide académique." },
+  { prenom:'Mehdi',    nom:'FARAH',     sport:'Baseball',   emoji:'⚾', ville:'Strasbourg',  univ:'',                             niveau:'Lycée',         statut:'En recherche',exp:'4 ans',  comp:'Élite nationale',       saisons:'3', palmares:'Lanceur #1 France U18',    bio:"Pitcher gaucher avec balle rapide à 135 km/h. Potentiel reconnu par la fédération française. Vise une entrée en université américaine en 2026." },
+  { prenom:'Emma',     nom:'RICHARD',   sport:'Natation',   emoji:'🏊', ville:'Grenoble',    univ:'Div. II — en discussion',      niveau:'Lycée',         statut:'En cours',    exp:'9 ans',  comp:'National',              saisons:'5', palmares:'Qualifiée Champ. France',  bio:"Spécialiste 100m-200m dos, qualifiée aux Championnats de France élite à 17 ans. Discussions avec 3 universités Division II." },
+  { prenom:'Rayan',    nom:'TOUATI',    sport:'Basketball', emoji:'🏀', ville:'Montpellier', univ:'Faulkner University, Alabama',  niveau:'Pro',           statut:'Placé',       exp:'12 ans', comp:'Pro B / Espoirs Pro A', saisons:'5', palmares:'All-Star Espoirs Pro A',   bio:"Ailier fort de 2m02. Après 2 saisons en espoirs Pro A à Montpellier, il a rejoint Faulkner University (Alabama) en NAIA." }
+];
+</script>
+
+<script>
+let activeFilter = 'tous';
+
+function renderAthletes(filter) {
+  activeFilter = filter || activeFilter;
+  const grid = document.getElementById('athletesGrid');
+  const noResults = document.getElementById('noResults');
+  const filtered = activeFilter === 'tous'
+    ? athletes
+    : athletes.filter(a => a.sport === activeFilter);
+
+  grid.innerHTML = '';
+
+  if (!filtered.length) {
+    noResults.style.display = 'block';
+    return;
+  }
+  noResults.style.display = 'none';
+
+  filtered.forEach((a, i) => {
+    const statColor = a.statut === 'Placé' ? '#2d8a4e' : a.statut === 'En cours' ? '#c87820' : '#000769';
+    const univTxt = a.univ || 'Université en recherche';
+    const card = document.createElement('div');
+    card.className = 'ath-card fade-up';
+    card.style.animationDelay = (i * 60) + 'ms';
+    card.innerHTML = `
+      <div class="ath-badge" style="background:${statColor}">${a.statut}</div>
+      <div class="ath-emoji">${a.emoji}</div>
+      <div class="ath-sport">${a.sport}</div>
+      <h3 class="ath-name">${a.prenom} ${a.nom}</h3>
+      <div class="ath-ville">${a.ville}</div>
+      <div class="ath-univ">${univTxt}</div>
+      <p class="ath-bio">${a.bio}</p>
+      <div class="ath-meta">
+        <span>🏆 ${a.palmares}</span>
+        <span>📅 ${a.exp} d'expérience</span>
+        <span>🎓 ${a.niveau}</span>
+      </div>
+    `;
+    card.addEventListener('click', () => openModal(a));
+    grid.appendChild(card);
+  });
+
+  // trigger IntersectionObserver on new cards
+  document.querySelectorAll('.ath-card.fade-up').forEach(el => observer.observe(el));
+}
+
+function openModal(a) {
+  const statColor = a.statut === 'Placé' ? '#2d8a4e' : a.statut === 'En cours' ? '#c87820' : '#000769';
+  const univTxt = a.univ || 'Université en recherche';
+  document.getElementById('modalBadge').textContent = a.statut;
+  document.getElementById('modalBadge').style.background = statColor;
+  document.getElementById('modalEmoji').textContent = a.emoji;
+  document.getElementById('modalSport').textContent = a.sport;
+  document.getElementById('modalName').textContent = a.prenom + ' ' + a.nom;
+  document.getElementById('modalVille').textContent = '📍 ' + a.ville;
+  document.getElementById('modalUniv').textContent = '🎓 ' + univTxt;
+  document.getElementById('modalBio').textContent = a.bio;
+  document.getElementById('modalMeta').innerHTML = `
+    <div class="modal-stat"><span class="modal-stat-label">Expérience</span><span class="modal-stat-val">${a.exp}</span></div>
+    <div class="modal-stat"><span class="modal-stat-label">Compétition</span><span class="modal-stat-val">${a.comp}</span></div>
+    <div class="modal-stat"><span class="modal-stat-label">Saisons</span><span class="modal-stat-val">${a.saisons}</span></div>
+    <div class="modal-stat"><span class="modal-stat-label">Niveau actuel</span><span class="modal-stat-val">${a.niveau}</span></div>
+    <div class="modal-stat" style="grid-column:1/-1"><span class="modal-stat-label">Palmarès</span><span class="modal-stat-val">${a.palmares}</span></div>
+  `;
+  document.getElementById('athleteModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+// Filter pills
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderAthletes(btn.dataset.filter);
+  });
+});
+
+// Count badge
+const countEl = document.getElementById('athleteCount');
+if (countEl) countEl.textContent = athletes.length;
+
+renderAthletes('tous');
+</script>
+
+<script>
+// Modal close
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('athleteModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+function closeModal() {
+  document.getElementById('athleteModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+// Burger menu
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+if (burger && navLinks) {
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navLinks.classList.remove('open');
+  }));
+}
+
+// IntersectionObserver fade-up
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
