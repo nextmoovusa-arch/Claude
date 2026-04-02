@@ -1165,6 +1165,244 @@
     @media (max-width: 480px) {
       .vid-card { width: 130px; }
     }
+
+    /* ============================================================
+       ÉTAPE 5 — Forfait + Sports + Showcase + Contact
+    ============================================================ */
+
+    /* --- Forfait --- */
+    #forfait { background: var(--bg); }
+    .forfait-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 2.5rem;
+      align-items: center;
+      margin-top: 2.5rem;
+    }
+    .forfait-tagline {
+      font-family: Anton, sans-serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .forfait-tagline span { color: var(--red); }
+    .forfait-intro {
+      font-size: .95rem;
+      color: var(--text-2);
+      line-height: 1.7;
+      margin-bottom: 1.4rem;
+    }
+    .forfait-price-block {
+      display: flex;
+      align-items: baseline;
+      gap: .5rem;
+      margin-bottom: 1.2rem;
+    }
+    .forfait-price {
+      font-family: Oswald, sans-serif;
+      font-size: 2.4rem;
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .forfait-price-sub { font-size: .8rem; color: var(--text-3); font-family: Nunito, sans-serif; }
+    .forfait-card {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a1a6e 100%);
+      border-radius: 16px;
+      padding: 2.2rem;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .forfait-card::before {
+      content: '';
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(192,160,96,.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .forfait-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: Oswald, sans-serif;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      padding: .25rem .7rem;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+    .forfait-card-title {
+      font-family: Anton, sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
+      margin-bottom: 1.4rem;
+      line-height: 1.2;
+    }
+    .forfait-items { list-style: none; padding: 0; margin: 0 0 1.6rem; display: flex; flex-direction: column; gap: .65rem; }
+    .forfait-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: .65rem;
+      font-family: Nunito, sans-serif;
+      font-size: .9rem;
+      color: rgba(255,255,255,.88);
+      line-height: 1.5;
+    }
+    .forfait-items li::before {
+      content: '✓';
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .7rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .forfait-divider { border: none; border-top: 1px solid rgba(255,255,255,.15); margin: 1.2rem 0; }
+    .forfait-annee0 {
+      background: rgba(192,160,96,.12);
+      border: 1px solid rgba(192,160,96,.3);
+      border-radius: 8px;
+      padding: .8rem 1rem;
+      font-size: .82rem;
+      color: rgba(255,255,255,.75);
+      font-family: Nunito, sans-serif;
+    }
+    .forfait-annee0 strong { color: var(--gold); }
+
+    /* --- Sports --- */
+    #sports { background: var(--bg-soft); }
+    .sports-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .sport-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.4rem .8rem;
+      text-align: center;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+    .sport-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,7,105,.1);
+      border-color: var(--navy);
+    }
+    .sport-icon { font-size: 2rem; margin-bottom: .5rem; display: block; }
+    .sport-name {
+      font-family: Oswald, sans-serif;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+    .sport-genders { font-family: Nunito, sans-serif; font-size: .72rem; color: var(--text-3); margin-top: .25rem; }
+
+    /* --- Showcase --- */
+    #showcase { background: var(--bg); }
+    .showcase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.4rem; }
+    .showcase-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+      background: #fff;
+    }
+    .showcase-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,7,105,.1); }
+    .showcase-card-header {
+      background: linear-gradient(135deg, var(--navy), #1a1a6e);
+      padding: 1.2rem 1.4rem;
+      color: #fff;
+    }
+    .showcase-date { font-family: Oswald, sans-serif; font-size: 1rem; letter-spacing: 1px; font-weight: 600; }
+    .showcase-city { font-family: Anton, sans-serif; font-size: 1.5rem; letter-spacing: 1px; margin-top: .15rem; }
+    .showcase-spots {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-family: Oswald, sans-serif;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      padding: .2rem .6rem;
+      border-radius: 4px;
+      margin-top: .6rem;
+    }
+    .showcase-card-body { padding: 1.2rem 1.4rem; }
+    .showcase-desc { font-size: .85rem; color: var(--text-2); margin-bottom: 1rem; line-height: 1.6; }
+
+    /* --- Contact --- */
+    #contact { background: var(--bg-soft); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 3rem;
+      align-items: start;
+      margin-top: 2.5rem;
+    }
+    .contact-info-title {
+      font-family: Anton, sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .contact-info-title span { color: var(--red); }
+    .contact-info p { font-size: .9rem; color: var(--text-2); line-height: 1.7; margin-bottom: 1.4rem; }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      font-size: .88rem;
+      color: var(--text);
+      margin-bottom: .6rem;
+      font-family: Nunito, sans-serif;
+    }
+    .contact-detail-icon { font-size: 1.1rem; }
+    .contact-form-area {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+    }
+    .tally-placeholder {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem;
+      text-align: center;
+      gap: 1rem;
+      color: var(--text-2);
+      font-family: Nunito, sans-serif;
+    }
+    .tally-placeholder .tally-icon { font-size: 2.5rem; }
+    .tally-placeholder p { font-size: .9rem; line-height: 1.6; max-width: 320px; }
+    .tally-placeholder a { color: var(--navy); font-weight: 700; text-decoration: underline; }
+    .tally-iframe { width: 100%; border: none; min-height: 500px; display: block; }
+
+    @media (max-width: 1100px) { .sports-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 768px) {
+      .forfait-wrapper { grid-template-columns: 1fr; }
+      .sports-grid { grid-template-columns: repeat(3, 1fr); gap: .7rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
+    @media (max-width: 480px) { .sports-grid { grid-template-columns: repeat(2, 1fr); } }
   </style>
 </head>
 <body>
@@ -1535,6 +1773,158 @@
       <div class="fg"><label>URL embed (lien Instagram/TikTok)</label><input id="vUrl" type="url" placeholder="https://www.instagram.com/p/CODE/embed/"></div>
       <div class="fg"><label>URL miniature</label><input id="vThumb" type="url" placeholder="https://..."></div>
       <button class="btn btn-navy" onclick="addVideo()" style="margin-top:.4rem;">Ajouter</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION FORFAIT
+================================================================ -->
+<section id="forfait" aria-labelledby="forfait-title">
+  <div class="container">
+    <p class="section-eyebrow eyebrow-navy fade-up">Ce qui est inclus</p>
+    <h2 class="section-title fade-up" id="forfait-title">LE FORFAIT NEXTMOOV</h2>
+    <div class="accent-line fade-up"></div>
+
+    <div class="forfait-wrapper fade-up">
+      <div class="forfait-left">
+        <p class="forfait-tagline">Un seul forfait.<br><span>Tout est inclus.</span><br>Zéro surprise.</p>
+        <p class="forfait-intro">De la préparation à l'intégration dans une université américaine, NextMoov USA prend en charge l'intégralité du processus. Pas d'abonnement. Pas de frais cachés. Un accompagnement humain du début à la fin.</p>
+        <div class="forfait-price-block">
+          <span class="forfait-price">Sur devis</span>
+          <span class="forfait-price-sub">selon ton profil et ton niveau</span>
+        </div>
+        <a href="#contact" class="btn btn-navy" style="display:inline-flex;text-decoration:none;">Obtenir mon évaluation gratuite</a>
+      </div>
+
+      <div class="forfait-card">
+        <span class="forfait-badge">INCLUS DANS LE FORFAIT</span>
+        <div class="forfait-card-title">Accompagnement complet<br>Années 0 → 4</div>
+        <ul class="forfait-items">
+          <li>Évaluation sportive et académique complète</li>
+          <li>Recherche et sélection des universités cibles</li>
+          <li>Création de ton profil sportif (highlight vidéo)</li>
+          <li>Démarches administratives et visa F-1</li>
+          <li>Traduction et apostille des bulletins scolaires</li>
+          <li>Cours d'anglais préparatoires pris en charge</li>
+          <li>Mise en relation directe avec les coachs NCAA</li>
+          <li>Suivi académique et sportif pendant 4 ans</li>
+        </ul>
+        <hr class="forfait-divider">
+        <div class="forfait-annee0">
+          <strong>Année 0 — Avant le départ :</strong> placement universitaire, cours d'anglais, frais administratifs, montage vidéo highlight, traduction des bulletins. Tout est géré.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION SPORTS
+================================================================ -->
+<section id="sports" aria-labelledby="sports-title">
+  <div class="container">
+    <p class="section-eyebrow eyebrow-red fade-up">Disciplines</p>
+    <h2 class="section-title fade-up" id="sports-title">7 SPORTS — HOMMES &amp; FEMMES</h2>
+    <div class="accent-line fade-up"></div>
+    <p class="section-sub fade-up">Nous recrutons dans les meilleures universités NCAA et NAIA pour ces disciplines.</p>
+
+    <div class="sports-grid fade-up">
+      <div class="sport-card">
+        <span class="sport-icon">⚽</span>
+        <div class="sport-name">Soccer</div>
+        <div class="sport-genders">H / F</div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-icon">🏀</span>
+        <div class="sport-name">Basketball</div>
+        <div class="sport-genders">H / F</div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-icon">🏐</span>
+        <div class="sport-name">Volleyball</div>
+        <div class="sport-genders">H / F</div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-icon">🎾</span>
+        <div class="sport-name">Tennis</div>
+        <div class="sport-genders">H / F</div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-icon">⛳</span>
+        <div class="sport-name">Golf</div>
+        <div class="sport-genders">H / F</div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-icon">🏊</span>
+        <div class="sport-name">Natation</div>
+        <div class="sport-genders">H / F</div>
+      </div>
+      <div class="sport-card">
+        <span class="sport-icon">🏃</span>
+        <div class="sport-name">Athlétisme</div>
+        <div class="sport-genders">H / F</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION SHOWCASE
+================================================================ -->
+<section id="showcase" aria-labelledby="showcase-title">
+  <div class="container">
+    <p class="section-eyebrow eyebrow-navy fade-up">Rencontrez-nous</p>
+    <h2 class="section-title fade-up" id="showcase-title">NOS SHOWCASES</h2>
+    <div class="accent-line fade-up"></div>
+    <p class="section-sub fade-up">Des événements de détection en France et en Europe. Venez performer devant nos agents et des coachs universitaires américains.</p>
+
+    <div class="showcase-grid" id="showcaseGrid"></div>
+
+    <button class="admin-btn" onclick="askAdmin('adminPanelShowcase')">⚙ Admin</button>
+    <div class="admin-panel" id="adminPanelShowcase">
+      <div class="admin-panel-title">Ajouter un Showcase</div>
+      <div class="form-grid-2">
+        <div class="fg"><label>Ville *</label><input id="scCity" placeholder="Paris"></div>
+        <div class="fg"><label>Date *</label><input id="scDate" placeholder="15 Juin 2025"></div>
+        <div class="fg"><label>Places disponibles</label><input id="scSpots" placeholder="12 places"></div>
+        <div class="fg"><label>Lien de réservation</label><input id="scLink" type="url" placeholder="https://tally.so/..."></div>
+      </div>
+      <div class="fg"><label>Description</label><textarea id="scDesc" placeholder="Détails sur le showcase..."></textarea></div>
+      <button class="btn btn-navy" onclick="addShowcase()" style="margin-top:.4rem;">Ajouter</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION CONTACT — Tally form
+================================================================ -->
+<section id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <p class="section-eyebrow eyebrow-navy fade-up">Commencer</p>
+    <h2 class="section-title fade-up" id="contact-title">INTÈGRE LA SÉLECTION</h2>
+    <div class="accent-line fade-up"></div>
+
+    <div class="contact-grid fade-up">
+      <div class="contact-info">
+        <p class="contact-info-title">Tu as le niveau ?<br><span>Fais-le savoir.</span></p>
+        <p>Remplis le formulaire, un agent NextMoov USA te contacte dans les 48h pour une évaluation gratuite de ton profil sportif et académique.</p>
+        <div class="contact-detail"><span class="contact-detail-icon">📍</span> France / Europe</div>
+        <div class="contact-detail"><span class="contact-detail-icon">📧</span> contact@nextmoovusa.com</div>
+        <div class="contact-detail"><span class="contact-detail-icon">📱</span> @nextmoovusa</div>
+        <div class="contact-detail"><span class="contact-detail-icon">⏱</span> Réponse sous 48h</div>
+      </div>
+
+      <div class="contact-form-area">
+        <!-- Pour activer Tally : décommente la ligne iframe et remplace TALLY_FORM_ID -->
+        <!-- <iframe class="tally-iframe" src="https://tally.so/embed/TALLY_FORM_ID" loading="lazy" title="Formulaire de contact NextMoov USA"></iframe> -->
+        <div class="tally-placeholder">
+          <span class="tally-icon">📋</span>
+          <strong style="font-family:Oswald,sans-serif;color:var(--navy);font-size:1rem;letter-spacing:1px;">FORMULAIRE TALLY</strong>
+          <p>Intègre ton formulaire Tally en remplaçant <code>TALLY_FORM_ID</code> dans le code source par l'identifiant de ton formulaire.</p>
+          <a href="https://tally.so" target="_blank" rel="noopener noreferrer">Créer mon formulaire sur Tally →</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2042,6 +2432,58 @@
   /* --- Init étape 4 --- */
   renderTemos();
   renderVideos();
+
+  /* ---------- SHOWCASE ---------- */
+  let showcasesData = load('nm_showcases', []);
+
+  function renderShowcases() {
+    const grid = document.getElementById('showcaseGrid');
+    if (!grid) return;
+    if (!showcasesData.length) {
+      grid.innerHTML = `<p style="color:var(--text-3);font-family:Nunito,sans-serif;font-size:.9rem;grid-column:1/-1;text-align:center;padding:2rem 0;">Aucun showcase programmé pour l'instant. Revenez bientôt.</p>`;
+      return;
+    }
+    grid.innerHTML = showcasesData.map((s, i) => `
+      <div class="showcase-card fade-up">
+        <div class="showcase-card-header">
+          <div class="showcase-date">${esc(s.date)}</div>
+          <div class="showcase-city">${esc(s.city)}</div>
+          ${s.spots ? `<span class="showcase-spots">${esc(s.spots)}</span>` : ''}
+        </div>
+        <div class="showcase-card-body">
+          ${s.desc ? `<p class="showcase-desc">${esc(s.desc)}</p>` : ''}
+          ${s.link
+            ? `<a href="${escA(s.link)}" target="_blank" rel="noopener noreferrer" class="btn btn-navy" style="text-decoration:none;display:inline-flex;justify-content:center;width:100%;box-sizing:border-box;">Réserver ma place</a>`
+            : `<button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="width:100%;justify-content:center;">Me faire contacter</button>`}
+          <button style="margin-top:.5rem;background:none;border:none;color:var(--text-3);font-size:.75rem;cursor:pointer;font-family:Nunito,sans-serif;display:block;" onclick="deleteShowcase(${i})">Supprimer</button>
+        </div>
+      </div>`).join('');
+  }
+
+  function deleteShowcase(i) {
+    if (!confirm('Supprimer ce showcase ?')) return;
+    showcasesData.splice(i, 1);
+    save('nm_showcases', showcasesData);
+    renderShowcases();
+  }
+
+  function addShowcase() {
+    const city = document.getElementById('scCity').value.trim();
+    const date = document.getElementById('scDate').value.trim();
+    if (!city || !date) { alert('Ville et date requises.'); return; }
+    showcasesData.push({
+      city, date,
+      spots: document.getElementById('scSpots').value.trim(),
+      link:  document.getElementById('scLink').value.trim(),
+      desc:  document.getElementById('scDesc').value.trim()
+    });
+    save('nm_showcases', showcasesData);
+    renderShowcases();
+    document.getElementById('adminPanelShowcase').style.display = 'none';
+    ['scCity','scDate','scSpots','scLink','scDesc'].forEach(id => document.getElementById(id).value = '');
+  }
+
+  renderShowcases();
 </script>
 </body>
 </html>
