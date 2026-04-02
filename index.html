@@ -2824,17 +2824,34 @@
 
   /* ---------- TÉMOIGNAGES ---------- */
   const defaultTemos = [
-    { prenom:'Sofia',   sport:'Natation',    univ:'University of Texas',
-      texte:'Je ne savais même pas par où commencer. Mon agent NextMoov a tout géré : contacts coachs, visa, logement. Je me suis concentrée sur ma performance. Résultat : scholarship complète Division I.', note:5, photo:'' },
-    { prenom:'Maxime',  sport:'Athlétisme',  univ:'Georgia Tech',
-      texte:'Ce qui m\'a frappé dès le début, c\'est l\'honnêteté de mon agent. Il m\'a dit exactement ce qu\'il fallait travailler. On l\'a fait, et on y est arrivé. Sans fausse promesse.', note:5, photo:'' },
-    { prenom:'Inès',    sport:'Volleyball',  univ:'Penn State',
-      texte:'Je suis en 3ème année à Penn State. Mon agent est encore là — il appelle, suit mes résultats, gère les situations difficiles. 4 ans d\'accompagnement, c\'est une réalité que je vis.', note:5, photo:'' },
-    { prenom:'Antoine', sport:'Baseball',    univ:'Florida State',
-      texte:'La barrière de la langue, les règles NCAA, les délais de recrutement... Tout ça m\'aurait perdu tout seul. Avec NextMoov, j\'avais un guide à chaque carrefour.', note:5, photo:'' }
+    {
+      prenom:'Sofia', sport:'Natation', univ:'University of Texas',
+      texte:'Je ne savais même pas par où commencer. Mon agent NextMoov a tout géré : contacts coachs, visa, logement. Je me suis concentrée uniquement sur ma performance. Résultat : scholarship complète Division I à UT Austin. Aucun regret.',
+      note:5, photo:''
+    },
+    {
+      prenom:'Maxime', sport:'Athlétisme', univ:'Georgia Tech',
+      texte:'Ce qui m\'a frappé dès le premier appel, c\'est l\'honnêteté de Samuel. Il m\'a dit exactement ce qu\'il fallait améliorer — pas ce que je voulais entendre. On a bossé, et on y est arrivé. Sans fausse promesse, sans surprise.',
+      note:5, photo:''
+    },
+    {
+      prenom:'Inès', sport:'Volleyball', univ:'Penn State University',
+      texte:'Je suis en 3ème année à Penn State et mon agent est encore là. Il appelle, il suit mes résultats, il gère les galères administratives. L\'accompagnement sur 4 ans, ce n\'est pas du marketing — c\'est une réalité que je vis chaque semaine.',
+      note:5, photo:''
+    },
+    {
+      prenom:'Karim', sport:'Soccer', univ:'University of Florida',
+      texte:'La différence avec NextMoov, c\'est que tu n\'es jamais seul face à une décision. L\'université, les délais NCAA, l\'anglais, le logement... tout a été cadré. J\'ai pu me concentrer sur le football. Aujourd\'hui en 2ème année, starter en Division I.',
+      note:5, photo:''
+    },
+    {
+      prenom:'Léa', sport:'Golf', univ:'Arizona State University',
+      texte:'Personne dans mon entourage ne comprenait ce que je voulais faire. Mon agent a su expliquer, rassurer mes parents, et construire un plan concret. ASU, c\'était mon rêve. NextMoov en a fait une réalité — et m\'a appris à y croire vraiment.',
+      note:5, photo:''
+    }
   ];
 
-  let temosData = load('nm_temos', defaultTemos);
+  let temosData = load('nm_temos_v2', defaultTemos);
   let temoIdx = 0, temoPaused = false, temoTimer = null;
 
   function temoVisible() { return window.innerWidth <= 1024 ? (window.innerWidth <= 768 ? 1 : 2) : 3; }
@@ -2918,20 +2935,22 @@
       note:  +document.getElementById('tNote').value || 5,
       photo: document.getElementById('tPhoto').value.trim()
     });
-    save('nm_temos', temosData);
+    save('nm_temos_v2', temosData);
     renderTemos();
     document.getElementById('adminPanelTemo').style.display = 'none';
     ['tPrenom','tSport','tUniv','tTexte','tPhoto'].forEach(id => document.getElementById(id).value = '');
   }
 
   /* ---------- VIDÉOS ---------- */
+  const IG_PROFILE = 'https://www.instagram.com/nextmoovusa';
+  const TT_PROFILE = 'https://www.tiktok.com/@nextmoovusa';
   const defaultVideos = [
-    { caption:'Premier jour sur le campus',        platform:'instagram', url:'', thumb:'' },
-    { caption:'Entraînement pré-saison NCAA',       platform:'tiktok',    url:'', thumb:'' },
-    { caption:'Interview après la 1ère victoire',  platform:'instagram', url:'', thumb:'' },
-    { caption:'La vie sur un campus américain',    platform:'tiktok',    url:'', thumb:'' },
-    { caption:'Remise de diplôme — Promo 2024',    platform:'instagram', url:'', thumb:'' },
-    { caption:'Coulisses d\'un training Division I',platform:'tiktok',   url:'', thumb:'' }
+    { caption:'Premier jour sur le campus',           platform:'instagram', url:IG_PROFILE, thumb:'' },
+    { caption:'Entraînement pré-saison NCAA',          platform:'tiktok',    url:TT_PROFILE, thumb:'' },
+    { caption:'Interview après la 1ère victoire',     platform:'instagram', url:IG_PROFILE, thumb:'' },
+    { caption:'La vie sur un campus américain',       platform:'tiktok',    url:TT_PROFILE, thumb:'' },
+    { caption:'Remise de diplôme — Promo 2024',       platform:'instagram', url:IG_PROFILE, thumb:'' },
+    { caption:'Coulisses d\'un training Division I',  platform:'instagram', url:IG_PROFILE, thumb:'' }
   ];
 
   let videosData = load('nm_videos', defaultVideos);
@@ -2955,7 +2974,17 @@
         <div class="vid-overlay"><div class="vid-play">▶</div></div>
         <span class="vid-platform ${platClass}">${platLabel}</span>
         <div class="vid-caption">${esc(v.caption)}</div>`;
-      card.addEventListener('click', () => { if(card.classList.contains('center-card')) openVidModal(v.url); else gotoVid(i); });
+      card.addEventListener('click', () => {
+        if (!card.classList.contains('center-card')) { gotoVid(i); return; }
+        const u = v.url && v.url.trim();
+        if (u && (u.includes('instagram.com') || u.includes('tiktok.com'))) {
+          window.open(u, '_blank', 'noopener,noreferrer');
+        } else if (u) {
+          openVidModal(u);
+        } else {
+          window.open(IG_PROFILE, '_blank', 'noopener,noreferrer');
+        }
+      });
       stage.appendChild(card);
     });
     updateVidStage();
@@ -2983,6 +3012,15 @@
 
   document.getElementById('vidPrev').addEventListener('click', () => gotoVid(vidIdx - 1));
   document.getElementById('vidNext').addEventListener('click', () => gotoVid(vidIdx + 1));
+
+  /* Swipe touch vidéos */
+  let vidTouchX = 0;
+  const vidStageEl = document.getElementById('vidStage');
+  vidStageEl.addEventListener('touchstart', e => { vidTouchX = e.touches[0].clientX; }, {passive:true});
+  vidStageEl.addEventListener('touchend',   e => {
+    const d = vidTouchX - e.changedTouches[0].clientX;
+    if (Math.abs(d) > 40) d > 0 ? gotoVid(vidIdx + 1) : gotoVid(vidIdx - 1);
+  });
 
   setInterval(() => gotoVid(vidIdx + 1), 3500);
 
@@ -3182,7 +3220,7 @@
     // Reload relevant data
     if (key === 'nm_athletes') { athletesData = load('nm_athletes',[]); renderAthletes(); }
     if (key === 'nm_agents')   { agentsData   = load('nm_agents',[]);   renderAgents(); }
-    if (key === 'nm_temos')    { temosData     = load('nm_temos',[]);     renderTemos(); }
+    if (key === 'nm_temos')    { temosData     = load('nm_temos_v2',[]);     renderTemos(); }
     if (key === 'nm_videos')   { videosData    = load('nm_videos', defaultVideos); renderVideos(); }
     if (key === 'nm_showcases'){ showcasesData = load('nm_showcases',[]); renderShowcases(); }
     renderAdminDashboard();
