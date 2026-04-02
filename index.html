@@ -2726,7 +2726,7 @@
           <button class="adm-danger-btn" onclick="admReset('nm_athletes_v2','admAthletes','athlètes')">Réinitialiser Athlètes</button>
           <button class="adm-danger-btn" onclick="admReset('nm_agents','admAgents','agents')">Réinitialiser Agents</button>
           <button class="adm-danger-btn" onclick="admReset('nm_temos_v4','admTemos','témoignages')">Réinitialiser Témoignages</button>
-          <button class="adm-danger-btn" onclick="admReset('nm_videos_v2','admVideos','vidéos')">Réinitialiser Vidéos</button>
+          <button class="adm-danger-btn" onclick="admReset('nm_videos_v3','admVideos','vidéos')">Réinitialiser Vidéos</button>
           <button class="adm-danger-btn" onclick="admReset('nm_showcases','admShowcases','showcases')">Réinitialiser Showcases</button>
           <button class="adm-danger-btn" style="background:#7c3aed;" onclick="admResetAll()">TOUT RÉINITIALISER</button>
         </div>
@@ -3266,17 +3266,13 @@
   const IG_PROFILE = 'https://www.instagram.com/nextmoovusa';
   const TT_PROFILE = 'https://www.tiktok.com/@nextmoovusa';
   const defaultVideos = [
-    { caption:'Coulisses d\'un training NCAA',         platform:'instagram', url:IG_PROFILE, thumb:'' },
-    { caption:'La vie sur un campus américain',        platform:'tiktok',    url:TT_PROFILE, thumb:'' },
-    { caption:'Interview — 1ère victoire',             platform:'instagram', url:IG_PROFILE, thumb:'' },
-    { caption:'Premier jour à l\'université',          platform:'tiktok',    url:TT_PROFILE, thumb:'' },
-    { caption:'Entraînement pré-saison Division I',    platform:'instagram', url:IG_PROFILE, thumb:'' },
-    { caption:'Scholarship confirmée — réaction',      platform:'tiktok',    url:TT_PROFILE, thumb:'' },
-    { caption:'Campus tour — notre athlète à Florida', platform:'instagram', url:IG_PROFILE, thumb:'' },
-    { caption:'Remise de diplôme — Promo 2024',        platform:'instagram', url:IG_PROFILE, thumb:'' }
+    { caption:'Les 3 grandes ligues du sport universitaire américain', platform:'instagram', url:'https://www.instagram.com/reel/DOMCCqpjaFK/', thumb:'https://i.imgur.com/8wVZBrZ.jpeg' },
+    { caption:'Reel NextMoov USA',                                     platform:'instagram', url:'https://www.instagram.com/reel/DOyEKEEjRZz/', thumb:'https://i.imgur.com/UekcfNY.jpeg' },
+    { caption:'Reel NextMoov USA',                                     platform:'instagram', url:'https://www.instagram.com/reel/DO6Q-bCjQNn/', thumb:'https://i.imgur.com/4CjlFAg.jpeg' },
+    { caption:'Reel NextMoov USA',                                     platform:'instagram', url:'https://www.instagram.com/reel/DNa4VR0MQN4/', thumb:'https://i.imgur.com/UcPFCda.jpeg' }
   ];
 
-  let videosData = load('nm_videos_v2', defaultVideos);
+  let videosData = load('nm_videos_v3', defaultVideos);
   let vidIdx = 0;
 
   function renderVideos() {
@@ -3369,7 +3365,7 @@
       url:   document.getElementById('vUrl').value.trim(),
       thumb: document.getElementById('vThumb').value.trim()
     });
-    save('nm_videos_v2', videosData);
+    save('nm_videos_v3', videosData);
     renderVideos();
     document.getElementById('adminPanelVideos').style.display = 'none';
     ['vCaption','vUrl','vThumb'].forEach(id => document.getElementById(id).value = '');
@@ -3510,7 +3506,7 @@
     admRenderTable('admVideos', videosData,
       ['Légende', 'Plateforme', 'URL'],
       (v, i) => [esc(v.caption), esc(v.platform), v.url ? `<a href="${escA(v.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-size:.78rem;">Voir</a>` : '—'],
-      (i) => { videosData.splice(i,1); save('nm_videos_v2',videosData); renderVideos(); renderAdminDashboard(); }
+      (i) => { videosData.splice(i,1); save('nm_videos_v3',videosData); renderVideos(); renderAdminDashboard(); }
     );
 
     // Showcases
@@ -3543,18 +3539,18 @@
     if (key === 'nm_athletes_v2') { athletesData = load('nm_athletes_v2',[]); renderAthletes(); }
     if (key === 'nm_agents')   { agentsData   = load('nm_agents',[]);   renderAgents(); }
     if (key === 'nm_temos_v4') { temosData     = load('nm_temos_v4', defaultTemos); renderTemos(); }
-    if (key === 'nm_videos_v2')   { videosData    = load('nm_videos_v2', defaultVideos); renderVideos(); }
+    if (key === 'nm_videos_v3')   { videosData    = load('nm_videos_v3', defaultVideos); renderVideos(); }
     if (key === 'nm_showcases'){ showcasesData = load('nm_showcases',[]); renderShowcases(); }
     renderAdminDashboard();
   }
 
   function admResetAll() {
     if (!confirm('ATTENTION : Supprimer TOUTES les données ? Cette action est irréversible.')) return;
-    ['nm_athletes_v2','nm_agents','nm_temos_v4','nm_videos_v2','nm_showcases'].forEach(k => localStorage.removeItem(k));
+    ['nm_athletes_v2','nm_agents','nm_temos_v4','nm_videos_v3','nm_showcases'].forEach(k => localStorage.removeItem(k));
     athletesData  = [];
     agentsData    = [];
     temosData     = [];
-    videosData    = load('nm_videos_v2', defaultVideos);
+    videosData    = load('nm_videos_v3', defaultVideos);
     showcasesData = [];
     renderAthletes(); renderAgents(); renderTemos(); renderVideos(); renderShowcases();
     renderAdminDashboard();
