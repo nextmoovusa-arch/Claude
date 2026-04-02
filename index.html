@@ -3,254 +3,228 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NextMoov USA — Agence de Recrutement Sportif Universitaire Américain</title>
+  <title>NextMoov USA — Agence de Recrutement Sportif Universitaire</title>
 
   <!-- SEO -->
-  <meta name="description" content="NextMoov USA accompagne 20 athlètes par an vers les universités américaines. Suivi personnalisé sportif, académique et personnel sur 4 ans. Honnêteté totale, 7 000+ universités partenaires.">
-  <meta name="keywords" content="recrutement sportif, université américaine, scholarship USA, NCAA, athlète, basketball, soccer, tennis, natation, accompagnement sportif USA">
-  <meta name="author" content="NextMoov USA">
+  <meta name="description" content="NextMoov USA accompagne 20 athlètes par an vers les universités américaines. Suivi personnalisé sportif, académique et personnel sur 4 ans.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://nextmoov-usa.com/">
 
-  <!-- Open Graph / Facebook -->
+  <!-- OG -->
   <meta property="og:type"        content="website">
-  <meta property="og:url"         content="https://nextmoov-usa.com/">
-  <meta property="og:title"       content="NextMoov USA — Agence de Recrutement Sportif Universitaire">
-  <meta property="og:description" content="20 athlètes par an. 4 ans d'accompagnement. Honnêteté totale. Ton agent dédié pour rejoindre les meilleures universités américaines.">
-  <meta property="og:image"       content="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&q=80">
+  <meta property="og:title"       content="NextMoov USA — Recrutement Sportif Universitaire">
+  <meta property="og:description" content="20 athlètes par an. 4 ans d'accompagnement. Ton agent dédié pour intégrer les universités américaines.">
   <meta property="og:locale"      content="fr_FR">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="NextMoov USA — Recrutement Sportif Universitaire Américain">
-  <meta name="twitter:description" content="20 athlètes par an. 4 ans d'accompagnement. Rejoins les meilleures universités américaines.">
-  <meta name="twitter:image"       content="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1200&q=80">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000769'/><text x='50%25' y='56%25' font-family='Arial Black' font-size='13' font-weight='900' fill='%23fff' text-anchor='middle' dominant-baseline='middle'>NM</text></svg>">
 
-  <!-- Favicon SVG inline -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000769'/><text x='50%25' y='55%25' font-family='Arial Black,sans-serif' font-size='14' font-weight='900' fill='%23C0A060' text-anchor='middle' dominant-baseline='middle'>NM</text></svg>">
-
-  <!-- Preconnect Google Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Theme color mobile browser -->
   <meta name="theme-color" content="#000769">
 
   <style>
     /* ============================================================
-       GOOGLE FONTS
+       VARIABLES
     ============================================================ */
-    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700&family=Inter:wght@300;400;500&display=swap');
+    :root {
+      --navy:    #000769;
+      --red:     #B22234;
+      --gold:    #C0A060;
+      --white:   #FFFFFF;
+      --bg:      #FFFFFF;
+      --bg-soft: #F0F4FF;
+      --text:    #0F172A;
+      --text-2:  #475569;
+      --text-3:  #94A3B8;
+      --border:  #E2E8F0;
+      --shadow:  0 4px 20px rgba(0,7,105,.08);
+      --r:       10px;
+    }
 
     /* ============================================================
        RESET & BASE
     ============================================================ */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-    }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 15px; }
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: #1A1A2E;
-      color: #FFFFFF;
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
       overflow-x: hidden;
     }
-
-    /* ============================================================
-       TYPOGRAPHIE
-    ============================================================ */
-    h1, h2, h3, h4, h5 {
-      font-family: 'Bebas Neue', sans-serif;
-      letter-spacing: 2px;
-    }
+    h1,h2,h3,h4 { font-family: 'Oswald', sans-serif; letter-spacing: .5px; }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
 
     /* ============================================================
        UTILITAIRES
     ============================================================ */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .gold-line {
-      width: 60px;
-      height: 2px;
-      background: #C0A060;
-      margin: 1rem auto;
-    }
-
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      text-align: center;
-      letter-spacing: 3px;
-      line-height: 1.05;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-subtitle {
-      font-family: 'Inter', sans-serif;
-      text-align: center;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 3rem;
-      font-size: 1.05rem;
-      line-height: 1.7;
-    }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
 
     .section-eyebrow {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 4px;
-      color: #C0A060;
-      text-align: center;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-    }
-
-    /* ============================================================
-       BOUTONS
-    ============================================================ */
-    .btn {
-      display: inline-block;
-      padding: 0.85rem 2.2rem;
-      border-radius: 4px;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Oswald', sans-serif;
+      font-size: .72rem;
       font-weight: 600;
-      font-size: 0.88rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-decoration: none;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: .4rem;
+    }
+    .eyebrow-navy { color: var(--navy); }
+    .eyebrow-red  { color: var(--red);  }
+    .eyebrow-white{ color: rgba(255,255,255,.7); }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.1;
+      margin-bottom: .5rem;
+    }
+    .section-sub {
+      font-size: .95rem;
+      text-align: center;
+      color: var(--text-2);
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .section-sub-white { color: rgba(255,255,255,.72); }
+
+    .accent-line {
+      width: 42px; height: 3px;
+      background: var(--navy);
+      margin: .6rem auto 1.8rem;
+      border-radius: 2px;
+    }
+    .accent-line-red   { background: var(--red); }
+    .accent-line-white { background: rgba(255,255,255,.5); }
+
+    /* Boutons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .72rem 1.8rem;
+      border-radius: 6px;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: .88rem;
       letter-spacing: 1px;
-      border: none;
+      cursor: pointer;
+      transition: all .2s ease;
+      border: 2px solid transparent;
+      text-decoration: none;
     }
+    .btn-red     { background: var(--red);   color: #fff; }
+    .btn-red:hover { background: #C8283E; }
+    .btn-navy    { background: var(--navy);  color: #fff; }
+    .btn-navy:hover { background: #0009a0; }
+    .btn-outline-white { background: transparent; border-color: rgba(255,255,255,.7); color: #fff; }
+    .btn-outline-white:hover { background: rgba(255,255,255,.1); }
+    .btn-outline-navy  { background: transparent; border-color: var(--navy); color: var(--navy); }
+    .btn-outline-navy:hover  { background: var(--navy); color: #fff; }
 
-    .btn-red {
-      background: #B22234;
-      color: #FFFFFF;
-    }
-    .btn-red:hover {
-      background: #C8283E;
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: #FFFFFF;
-      border: 2px solid #FFFFFF;
-    }
-    .btn-outline:hover {
-      background: rgba(255,255,255,0.08);
-    }
-
-    .btn-gold {
-      background: transparent;
-      color: #C0A060;
-      border: 2px solid #C0A060;
-    }
-    .btn-gold:hover {
-      background: rgba(192,160,96,0.1);
-    }
-
-    /* ============================================================
-       ANIMATIONS SCROLL (IntersectionObserver)
-    ============================================================ */
+    /* Animations scroll */
     .fade-up {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      transform: translateY(24px);
+      transition: opacity .55s cubic-bezier(.22,1,.36,1),
+                  transform .55s cubic-bezier(.22,1,.36,1);
     }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* ============================================================
-       SCROLLBAR
-    ============================================================ */
+    /* Scrollbar */
     ::-webkit-scrollbar { width: 5px; }
-    ::-webkit-scrollbar-track { background: #1A1A2E; }
-    ::-webkit-scrollbar-thumb { background: rgba(192,160,96,0.35); border-radius: 3px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: rgba(0,7,105,.25); border-radius: 3px; }
+
+    /* Sélection */
+    ::selection { background: rgba(0,7,105,.15); color: var(--text); }
+
+    /* Focus */
+    *:focus-visible { outline: 2px solid var(--navy); outline-offset: 3px; border-radius: 3px; }
 
     /* ============================================================
-       NAVIGATION FIXE
+       NAVIGATION
     ============================================================ */
     #navbar {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 1000;
-      padding: 1.3rem 0;
-      transition: background 0.35s ease, padding 0.35s ease, backdrop-filter 0.35s ease;
+      padding: 1rem 0;
+      transition: background .3s, box-shadow .3s, padding .3s;
     }
-
     #navbar.scrolled {
-      background: rgba(0, 7, 105, 0.93);
+      background: rgba(255,255,255,.96);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 0.85rem 0;
-      border-bottom: 1px solid rgba(192,160,96,0.15);
+      box-shadow: 0 1px 20px rgba(0,7,105,.1);
+      padding: .65rem 0;
     }
 
     .nav-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      max-width: 1200px;
+      max-width: 1140px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1.5rem;
     }
 
     /* Logo */
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.75rem;
-      letter-spacing: 3px;
-      color: #FFFFFF;
-      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
       flex-shrink: 0;
     }
-    .nav-logo span { color: #C0A060; }
+    .nav-logo-img {
+      height: 38px;
+      width: auto;
+      display: block;
+    }
+    .nav-logo-text {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #fff;
+      transition: color .3s;
+    }
+    #navbar.scrolled .nav-logo-text { color: var(--navy); }
+    .nav-logo-text span { color: var(--red); }
 
-    /* Menu desktop */
+    /* Menu */
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 1.4rem;
+      gap: 1.2rem;
       list-style: none;
     }
-
     .nav-menu a {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 600;
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.82);
-      text-decoration: none;
-      letter-spacing: 0.4px;
-      transition: color 0.2s;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      font-size: .8rem;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.85);
+      transition: color .2s;
       white-space: nowrap;
     }
-    .nav-menu a:hover { color: #C0A060; }
+    #navbar.scrolled .nav-menu a { color: var(--text-2); }
+    .nav-menu a:hover { color: #fff; }
+    #navbar.scrolled .nav-menu a:hover { color: var(--navy); }
 
     .nav-cta {
-      background: #B22234 !important;
-      color: #FFFFFF !important;
-      padding: 0.5rem 1.3rem;
-      border-radius: 4px;
+      background: var(--red) !important;
+      color: #fff !important;
+      padding: .45rem 1.1rem;
+      border-radius: 5px;
     }
-    .nav-cta:hover {
-      background: #C8283E !important;
-      color: #FFFFFF !important;
-    }
+    .nav-cta:hover { background: #C8283E !important; }
 
     /* Hamburger */
     .hamburger {
@@ -258,1644 +232,181 @@
       flex-direction: column;
       gap: 5px;
       cursor: pointer;
-      padding: 6px;
+      padding: 5px;
       z-index: 1100;
+      background: none;
+      border: none;
     }
     .hamburger span {
       display: block;
-      width: 24px;
-      height: 2px;
-      background: #FFFFFF;
+      width: 22px; height: 2px;
+      background: #fff;
       border-radius: 2px;
-      transition: all 0.3s ease;
+      transition: all .3s;
     }
-    .hamburger.open span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-      transform: scaleX(0);
-    }
-    .hamburger.open span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
+    #navbar.scrolled .hamburger span { background: var(--navy); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* ============================================================
        HERO
     ============================================================ */
     #hero {
       position: relative;
-      height: 100vh;
-      min-height: 620px;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
       overflow: hidden;
+      padding: 100px 1.5rem 90px;
     }
 
     .hero-bg {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(135deg, rgba(0,7,105,0.82) 0%, rgba(26,26,46,0.88) 100%),
-        url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920&q=80') center / cover no-repeat;
+        linear-gradient(150deg, rgba(0,7,105,.88) 0%, rgba(26,26,46,.92) 100%),
+        url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=1920&q=80') center/cover no-repeat;
       will-change: transform;
     }
-
-    /* Grain subtil */
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      opacity: 0.4;
-      pointer-events: none;
-    }
-
-    /* Ligne dorée déco en bas */
-    #hero::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #C0A060, transparent);
+      background: radial-gradient(ellipse at 60% 40%, rgba(178,34,52,.18) 0%, transparent 65%);
     }
 
     .hero-content {
       position: relative;
       z-index: 1;
-      max-width: 920px;
-      padding: 0 2rem;
+      max-width: 860px;
+      width: 100%;
     }
 
     .hero-eyebrow {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 5px;
-      color: #C0A060;
+      font-family: 'Oswald', sans-serif;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: 4px;
+      color: rgba(255,255,255,.65);
       text-transform: uppercase;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.4rem;
       opacity: 0;
-      animation: fadeUpIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 0.3s;
+      animation: fadeUp .8s ease forwards .3s;
     }
 
     .hero-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.8rem, 11vw, 8.5rem);
-      line-height: 0.92;
-      letter-spacing: 4px;
-      margin-bottom: 1.8rem;
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(2.8rem, 8vw, 6rem);
+      line-height: .95;
+      letter-spacing: 2px;
+      color: #fff;
+      margin-bottom: 1.4rem;
     }
-
-    .hero-title .line {
-      display: block;
-      overflow: hidden;
-    }
-
+    .hero-title .line { display: block; overflow: hidden; }
     .hero-title .word {
       display: inline-block;
       opacity: 0;
-      transform: translateY(50px);
-      animation: wordReveal 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      transform: translateY(40px);
+      animation: wordUp .7s cubic-bezier(.22,1,.36,1) forwards;
     }
+    .hero-title .c-red   { color: var(--red); }
+    .hero-title .c-white { color: #fff; }
 
-    .hero-title .word.accent { color: #C0A060; }
-    .hero-title .word.red    { color: #B22234; }
-
-    .hero-subtitle {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(0.95rem, 2vw, 1.15rem);
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 2.8rem;
-      letter-spacing: 1.5px;
+    .hero-sub {
+      font-size: clamp(.9rem, 2vw, 1.05rem);
+      color: rgba(255,255,255,.72);
+      margin-bottom: 2.2rem;
+      letter-spacing: 1px;
       opacity: 0;
-      animation: fadeUpIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.25s;
+      animation: fadeUp .8s ease forwards 1.2s;
     }
 
     .hero-btns {
       display: flex;
-      gap: 1.2rem;
+      gap: 1rem;
       justify-content: center;
       flex-wrap: wrap;
       opacity: 0;
-      animation: fadeUpIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.45s;
+      animation: fadeUp .8s ease forwards 1.4s;
+      margin-bottom: 2.5rem;
     }
 
     .hero-badge {
-      position: absolute;
-      bottom: 2.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(192,160,96,0.12);
-      border: 1px solid rgba(192,160,96,0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.2);
       border-radius: 50px;
-      padding: 0.65rem 2.2rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: #C0A060;
-      letter-spacing: 2px;
-      white-space: nowrap;
+      padding: .5rem 1.6rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: .72rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.8);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       opacity: 0;
-      animation: fadeUpIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards 1.8s;
-      z-index: 1;
+      animation: fadeUp .8s ease forwards 1.7s;
+    }
+    .hero-badge-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
     }
 
-    /* Animations keyframes */
-    @keyframes wordReveal {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeUpIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes wordUp  { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUp  { to { opacity: 1; transform: translateY(0); } }
 
     /* ============================================================
-       RESPONSIVE — Mobile
+       RESPONSIVE — Étape 1
     ============================================================ */
     @media (max-width: 768px) {
-      /* Nav menu mobile */
       .nav-menu {
         display: none;
         position: fixed;
         inset: 0;
-        background: rgba(0, 7, 105, 0.97);
+        background: rgba(0,7,105,.97);
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 2rem;
+        gap: 1.8rem;
         z-index: 1000;
       }
       .nav-menu.open { display: flex; }
-      .nav-menu a {
-        font-size: 1.25rem;
-        letter-spacing: 1px;
-      }
+      .nav-menu a { font-size: 1.1rem; color: rgba(255,255,255,.85) !important; }
+      .nav-menu a:hover { color: #fff !important; }
       .hamburger { display: flex; }
-
-      .hero-badge {
-        font-size: 0.68rem;
-        padding: 0.5rem 1.2rem;
-        white-space: normal;
-        text-align: center;
-        width: 88%;
-      }
-
-      .hero-btns {
-        flex-direction: column;
-        align-items: center;
-      }
-      .hero-btns .btn {
-        width: 260px;
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .nav-logo { font-size: 1.5rem; }
-    }
-
-    /* ============================================================
-       SECTION POURQUOI NOUS — L'APPROCHE HUMAINE
-    ============================================================ */
-    #approche {
-      padding: 7rem 0;
-      background: #1A1A2E;
-      position: relative;
-    }
-
-    /* Séparateur doré haut */
-    #approche::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1px;
-      height: 60px;
-      background: linear-gradient(to bottom, transparent, #C0A060);
-    }
-
-    .approche-intro {
-      max-width: 720px;
-      margin: 0 auto 4.5rem;
-      text-align: center;
-      font-size: 1.08rem;
-      line-height: 1.85;
-      color: rgba(255,255,255,0.78);
-    }
-    .approche-intro strong {
-      color: #FFFFFF;
-      font-weight: 500;
-    }
-
-    /* Grille 3 piliers */
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.8rem;
-      margin-bottom: 4rem;
-    }
-
-    .pillar-card {
-      background: linear-gradient(145deg, rgba(0,7,105,0.45), rgba(26,26,46,0.7));
-      border: 1px solid rgba(192,160,96,0.18);
-      border-radius: 10px;
-      padding: 2.6rem 2rem;
-      text-align: center;
-      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
-    }
-    .pillar-card:hover {
-      border-color: rgba(192,160,96,0.45);
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(0,7,105,0.35);
-    }
-
-    .pillar-icon {
-      font-size: 2.8rem;
-      margin-bottom: 1.2rem;
-      display: block;
-      line-height: 1;
-    }
-
-    .pillar-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.55rem;
-      letter-spacing: 2px;
-      color: #C0A060;
-      margin-bottom: 1rem;
-    }
-
-    .pillar-text {
-      font-size: 0.93rem;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.72);
-    }
-
-    /* Citation mise en avant */
-    .quote-block {
-      max-width: 740px;
-      margin: 0 auto;
-      padding: 1.8rem 2.4rem;
-      border-left: 3px solid #C0A060;
-      background: rgba(0,7,105,0.28);
-      border-radius: 0 8px 8px 0;
-      position: relative;
-    }
-    .quote-block::before {
-      content: '"';
-      position: absolute;
-      top: -0.8rem;
-      left: 1.5rem;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 5rem;
-      color: rgba(192,160,96,0.2);
-      line-height: 1;
-      pointer-events: none;
-    }
-    .quote-block p {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.08rem;
-      font-weight: 600;
-      font-style: italic;
-      color: rgba(255,255,255,0.9);
-      line-height: 1.75;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ============================================================
-       SECTION 4 ANS
-    ============================================================ */
-    #quatre-ans {
-      padding: 7rem 0;
-      background: linear-gradient(175deg, #000769 0%, #1A1A2E 100%);
-      position: relative;
-    }
-
-    .timeline {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      margin-top: 4rem;
-      position: relative;
-    }
-
-    /* Ligne dorée horizontale entre les icônes */
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 39px;           /* moitié de la hauteur des icônes (80px / 2 - 1px) */
-      left: calc(12.5% + 10px);
-      right: calc(12.5% + 10px);
-      height: 2px;
-      background: linear-gradient(90deg,
-        #C0A060 0%,
-        rgba(192,160,96,0.5) 50%,
-        rgba(192,160,96,0.15) 100%
-      );
-      z-index: 0;
-    }
-
-    .timeline-item {
-      text-align: center;
-      padding: 0 1.2rem;
-      position: relative;
-    }
-
-    .timeline-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #000769 0%, #1A1A2E 100%);
-      border: 2px solid #C0A060;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 1.6rem;
-      font-size: 1.9rem;
-      position: relative;
-      z-index: 1;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .timeline-item:hover .timeline-icon {
-      transform: scale(1.08);
-      box-shadow: 0 0 24px rgba(192,160,96,0.3);
-    }
-
-    .timeline-year {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: #C0A060;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .timeline-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.45rem;
-      letter-spacing: 2px;
-      margin-bottom: 0.9rem;
-      color: #FFFFFF;
-    }
-
-    .timeline-desc {
-      font-size: 0.87rem;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.68);
-      margin-bottom: 1.1rem;
-    }
-
-    /* Tags sport / académique / perso */
-    .timeline-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      justify-content: center;
-    }
-
-    .tag {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      padding: 0.22rem 0.7rem;
-      border-radius: 20px;
-    }
-    .tag-sport {
-      background: rgba(178,34,52,0.22);
-      color: #ff8f9a;
-      border: 1px solid rgba(178,34,52,0.4);
-    }
-    .tag-acad {
-      background: rgba(192,160,96,0.18);
-      color: #C0A060;
-      border: 1px solid rgba(192,160,96,0.4);
-    }
-    .tag-perso {
-      background: rgba(80,100,255,0.18);
-      color: #9aadff;
-      border: 1px solid rgba(80,100,255,0.35);
-    }
-
-    /* ============================================================
-       RESPONSIVE — Étape 2
-    ============================================================ */
-    @media (max-width: 1200px) {
-      .timeline::before { display: none; }
-      .timeline { grid-template-columns: repeat(2, 1fr); gap: 3rem; }
-    }
-
-    @media (max-width: 768px) {
-      .pillars-grid { grid-template-columns: 1fr; }
-      .timeline { grid-template-columns: 1fr; gap: 2.5rem; }
-    }
-
-    /* ============================================================
-       SECTION ATHLÈTES
-    ============================================================ */
-    #athletes {
-      padding: 7rem 0;
-      background: #1A1A2E;
-      position: relative;
-    }
-
-    .athletes-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-bottom: 2.5rem;
-    }
-
-    /* Card athlète */
-    .athlete-card {
-      background: linear-gradient(145deg, rgba(0,7,105,0.55), rgba(26,26,46,0.85));
-      border: 1px solid rgba(192,160,96,0.15);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
-      cursor: pointer;
-    }
-    .athlete-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(192,160,96,0.42);
-      box-shadow: 0 20px 50px rgba(0,7,105,0.4);
-    }
-
-    /* Photo wrapper avec overlay dégradé */
-    .athlete-photo-wrapper {
-      position: relative;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      background: linear-gradient(135deg, #000769, #1A1A2E);
-    }
-    .athlete-photo-wrapper::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,7,105,0.85) 0%, transparent 55%);
-    }
-    .athlete-photo-real {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-    .athlete-card:hover .athlete-photo-real {
-      transform: scale(1.05);
-    }
-    .athlete-photo-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4.5rem;
-      background: linear-gradient(135deg, rgba(0,7,105,0.7), rgba(26,26,46,0.9));
-    }
-
-    /* Infos athlète */
-    .athlete-info {
-      padding: 1.5rem;
-    }
-    .athlete-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.6rem;
-      letter-spacing: 2px;
-      margin-bottom: 0.25rem;
-      line-height: 1.1;
-    }
-    .athlete-sport {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #C0A060;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 0.25rem;
-    }
-    .athlete-university {
-      font-size: 0.83rem;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 1rem;
-    }
-    .athlete-quote {
-      font-size: 0.88rem;
-      font-style: italic;
-      color: rgba(255,255,255,0.72);
-      line-height: 1.65;
-      margin-bottom: 1.2rem;
-      padding-left: 0.9rem;
-      border-left: 2px solid rgba(192,160,96,0.5);
-    }
-
-    /* Bouton admin discret */
-    .admin-trigger-btn {
-      display: block;
-      margin: 0 auto;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.12);
-      color: rgba(255,255,255,0.3);
-      padding: 0.45rem 1.1rem;
-      border-radius: 4px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      cursor: pointer;
-      transition: all 0.25s ease;
-    }
-    .admin-trigger-btn:hover {
-      border-color: rgba(192,160,96,0.4);
-      color: #C0A060;
-    }
-
-    /* ============================================================
-       PANNEAU ADMIN (commun à toutes les sections)
-    ============================================================ */
-    .admin-panel {
-      display: none;
-      margin-top: 2.5rem;
-      padding: 2.5rem;
-      background: rgba(0,7,105,0.25);
-      border: 1px solid rgba(192,160,96,0.25);
-      border-radius: 10px;
-    }
-    .admin-panel.open { display: block; }
-
-    .admin-panel-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.6rem;
-      letter-spacing: 2px;
-      color: #C0A060;
-      margin-bottom: 1.8rem;
-    }
-
-    .form-grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .form-group {
-      margin-bottom: 1.1rem;
-    }
-    .form-group label {
-      display: block;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.73rem;
-      font-weight: 700;
-      color: #C0A060;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 4px;
-      padding: 0.72rem 1rem;
-      color: #FFFFFF;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      transition: border-color 0.2s;
-    }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      outline: none;
-      border-color: #C0A060;
-    }
-    .form-group textarea  { resize: vertical; min-height: 80px; }
-    .form-group select option { background: #1A1A2E; color: #FFFFFF; }
-
-    /* ============================================================
-       MODALE GÉNÉRIQUE
-    ============================================================ */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.82);
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-    }
-    .modal-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal {
-      background: linear-gradient(145deg, #1A1A2E 0%, #000D5A 100%);
-      border: 1px solid rgba(192,160,96,0.28);
-      border-radius: 14px;
-      max-width: 660px;
-      width: 100%;
-      max-height: 88vh;
-      overflow-y: auto;
-      padding: 2.6rem;
-      position: relative;
-      transform: scale(0.9) translateY(20px);
-      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .modal-overlay.active .modal {
-      transform: scale(1) translateY(0);
-    }
-
-    /* Scrollbar modale */
-    .modal::-webkit-scrollbar { width: 4px; }
-    .modal::-webkit-scrollbar-thumb { background: rgba(192,160,96,0.3); border-radius: 2px; }
-
-    .modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1.2rem;
-      background: none;
-      border: none;
-      color: rgba(255,255,255,0.5);
-      font-size: 1.6rem;
-      cursor: pointer;
-      line-height: 1;
-      transition: color 0.2s;
-      padding: 0.2rem;
-    }
-    .modal-close:hover { color: #C0A060; }
-
-    /* Contenu modale athlète */
-    .modal-athlete-header {
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
-      margin-bottom: 1.8rem;
-      flex-wrap: wrap;
-    }
-    .modal-athlete-avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 12px;
-      overflow: hidden;
-      flex-shrink: 0;
-      background: linear-gradient(135deg, #000769, #1A1A2E);
-      border: 2px solid #C0A060;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-    }
-    .modal-athlete-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .modal-athlete-meta h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      letter-spacing: 2px;
-      margin-bottom: 0.3rem;
-    }
-    .modal-athlete-meta .sport-badge {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #C0A060;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 0.3rem;
-    }
-    .modal-athlete-meta .univ-badge {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.55);
-    }
-
-    .modal-divider {
-      height: 1px;
-      background: rgba(192,160,96,0.25);
-      margin: 1.4rem 0;
-    }
-
-    .modal-section-label {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      color: #C0A060;
-      text-transform: uppercase;
-      margin-bottom: 0.7rem;
-    }
-    .modal-section-text {
-      font-size: 0.92rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 1.5rem;
-    }
-    .modal-message-block {
-      padding: 1.2rem 1.5rem;
-      background: rgba(0,7,105,0.3);
-      border-left: 3px solid #C0A060;
-      border-radius: 0 8px 8px 0;
-    }
-    .modal-message-block p {
-      font-size: 0.92rem;
-      line-height: 1.8;
-      font-style: italic;
-      color: rgba(255,255,255,0.88);
-    }
-
-    /* Modale mot de passe */
-    .modal-password { max-width: 400px; text-align: center; }
-    .modal-password h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      color: #C0A060;
-      letter-spacing: 2px;
-      margin-bottom: 0.6rem;
-    }
-    .modal-password p {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 1.6rem;
-      line-height: 1.6;
-    }
-    .password-error {
-      color: #ff6b7a;
-      font-size: 0.82rem;
-      margin-top: 0.5rem;
-      display: none;
-    }
-    .password-error.show { display: block; }
-
-    /* Modale succès contact */
-    .modal-success { max-width: 420px; text-align: center; }
-    .modal-success .success-icon { font-size: 3rem; margin-bottom: 1rem; }
-    .modal-success h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      color: #C0A060;
-      letter-spacing: 2px;
-      margin-bottom: 0.8rem;
-    }
-    .modal-success p {
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.78);
-      line-height: 1.75;
-    }
-
-    /* ============================================================
-       RESPONSIVE — Étape 3
-    ============================================================ */
-    @media (max-width: 1200px) {
-      .athletes-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .athletes-grid  { grid-template-columns: 1fr; }
-      .form-grid-2    { grid-template-columns: 1fr; }
-      .modal          { padding: 1.8rem; }
-      .modal-athlete-header { flex-direction: column; align-items: center; text-align: center; }
-    }
-
-    /* ============================================================
-       SECTION TÉMOIGNAGES — Carrousel
-    ============================================================ */
-    #temoignages {
-      padding: 7rem 0;
-      background: #000769;
-      overflow: hidden;
-      position: relative;
-    }
-    #temoignages::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #C0A060, transparent);
-    }
-
-    .carousel-outer {
-      overflow: hidden;
-      position: relative;
-      cursor: grab;
-      user-select: none;
-    }
-    .carousel-outer:active { cursor: grabbing; }
-
-    .carousel-track {
-      display: flex;
-      gap: 1.8rem;
-      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: transform;
-    }
-
-    .temo-card {
-      min-width: calc(33.333% - 1.2rem);
-      flex-shrink: 0;
-      background: linear-gradient(145deg, rgba(26,26,46,0.92), rgba(0,7,105,0.55));
-      border: 1px solid rgba(192,160,96,0.18);
-      border-radius: 12px;
-      padding: 2rem;
-      transition: border-color 0.3s;
-    }
-    .temo-card:hover { border-color: rgba(192,160,96,0.4); }
-
-    .temo-stars {
-      font-size: 1rem;
-      letter-spacing: 3px;
-      color: #C0A060;
-      margin-bottom: 1rem;
-    }
-    .temo-text {
-      font-size: 0.92rem;
-      line-height: 1.82;
-      color: rgba(255,255,255,0.82);
-      font-style: italic;
-      margin-bottom: 1.6rem;
-    }
-    .temo-author {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .temo-avatar {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 2px solid rgba(192,160,96,0.5);
-      background: linear-gradient(135deg, #000769, #1A1A2E);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .temo-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-    .temo-author-name {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 0.88rem;
-    }
-    .temo-author-detail {
-      font-size: 0.78rem;
-      color: #C0A060;
-      margin-top: 0.15rem;
-    }
-
-    .carousel-controls {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2.2rem;
-    }
-    .carousel-btn {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: rgba(192,160,96,0.12);
-      border: 1px solid rgba(192,160,96,0.35);
-      color: #C0A060;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .carousel-btn:hover {
-      background: rgba(192,160,96,0.25);
-      border-color: #C0A060;
-    }
-
-    /* Indicateurs points */
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 1.2rem;
-    }
-    .carousel-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(192,160,96,0.25);
-      border: 1px solid rgba(192,160,96,0.4);
-      cursor: pointer;
-      transition: background 0.25s, transform 0.25s;
-    }
-    .carousel-dot.active {
-      background: #C0A060;
-      transform: scale(1.3);
-    }
-
-    /* ============================================================
-       SECTION VIDÉOS
-    ============================================================ */
-    #videos {
-      padding: 7rem 0;
-      background: #1A1A2E;
-    }
-
-    .videos-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.4rem;
-    }
-
-    .video-card {
-      position: relative;
-      border-radius: 12px;
-      overflow: hidden;
-      aspect-ratio: 9 / 16;
-      background: linear-gradient(135deg, #000769, #1A1A2E);
-      border: 1px solid rgba(192,160,96,0.12);
-      cursor: pointer;
-      /* Animation entrée avec légère rotation */
-      opacity: 0;
-      transform: translateY(30px) rotate(2deg);
-      transition:
-        opacity   0.6s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-        border-color 0.3s ease;
-    }
-    .video-card.visible {
-      opacity: 1;
-      transform: translateY(0) rotate(0deg);
-    }
-    .video-card:hover {
-      border-color: rgba(192,160,96,0.4);
-    }
-
-    .video-thumb {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-    .video-card:hover .video-thumb { transform: scale(1.04); }
-
-    .video-thumb-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, rgba(0,7,105,0.75), rgba(26,26,46,0.9));
-      font-size: 4rem;
-    }
-
-    .video-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 55%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .video-play-btn {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.88);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      color: #000769;
-      transition: transform 0.25s ease, background 0.25s ease;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-    }
-    .video-card:hover .video-play-btn {
-      transform: scale(1.1);
-      background: #FFFFFF;
-    }
-
-    .video-platform-badge {
-      position: absolute;
-      top: 0.8rem;
-      right: 0.8rem;
-      padding: 0.28rem 0.65rem;
-      border-radius: 4px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      color: #FFFFFF;
-    }
-    .badge-instagram {
-      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-    }
-    .badge-tiktok {
-      background: #000;
-      border: 1px solid rgba(255,255,255,0.3);
-    }
-
-    .video-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 0.9rem 1rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.9);
-      line-height: 1.4;
-    }
-
-    /* Modale vidéo */
-    .modal-video { max-width: 500px; padding: 0; background: #000; border-radius: 12px; overflow: hidden; }
-    .modal-video .modal-close {
-      z-index: 10;
-      background: rgba(0,0,0,0.55);
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      top: 0.6rem;
-      right: 0.6rem;
-    }
-    #videoEmbed {
-      width: 100%;
-      aspect-ratio: 9 / 16;
-    }
-    #videoEmbed iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
-    }
-    .video-placeholder-msg {
-      width: 100%;
-      aspect-ratio: 9 / 16;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #000769, #1A1A2E);
-      gap: 1rem;
-      padding: 2rem;
-      text-align: center;
-    }
-    .video-placeholder-msg span:first-child { font-size: 3rem; }
-    .video-placeholder-msg p {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      color: #C0A060;
-    }
-    .video-placeholder-msg small {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.4);
-      font-family: 'Inter', sans-serif;
-    }
-
-    /* ============================================================
-       RESPONSIVE — Étape 4
-    ============================================================ */
-    @media (max-width: 1200px) {
-      .videos-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .temo-card { min-width: calc(85% - 0.9rem); }
-      .videos-grid { grid-template-columns: 1fr; }
-    }
-
-    /* ============================================================
-       SECTION FORFAIT ATHLÈTE
-    ============================================================ */
-    #forfait {
-      padding: 7rem 0;
-      background: #000769;
-      position: relative;
-    }
-    #forfait::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #C0A060, transparent);
-    }
-
-    .forfait-badge-wrap {
-      text-align: center;
-      margin-bottom: 0.8rem;
-    }
-    .forfait-pill {
-      display: inline-block;
-      background: rgba(192,160,96,0.12);
-      border: 1px solid rgba(192,160,96,0.45);
-      color: #C0A060;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      padding: 0.5rem 1.6rem;
-      border-radius: 50px;
-      text-transform: uppercase;
-    }
-
-    .forfait-card-wrap {
-      max-width: 620px;
-      margin: 2.8rem auto 0;
-    }
-
-    .forfait-card {
-      background: linear-gradient(145deg, rgba(0,5,80,0.95), rgba(26,26,46,0.92));
-      border: 2px solid #C0A060;
-      border-radius: 18px;
-      padding: 3.2rem 3rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: box-shadow 0.4s ease;
-    }
-    .forfait-card:hover {
-      box-shadow: 0 0 60px rgba(192,160,96,0.18);
-    }
-
-    /* Lueur subtile au hover */
-    .forfait-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(192,160,96,0.07) 0%, transparent 65%);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
-    }
-    .forfait-card:hover::before { opacity: 1; }
-
-    .forfait-name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.8rem;
-      letter-spacing: 5px;
-      color: #C0A060;
-      margin-bottom: 0.3rem;
-    }
-    .forfait-sub {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 0;
-    }
-    .forfait-divider {
-      width: 70px;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #C0A060, transparent);
-      margin: 1.8rem auto;
-    }
-
-    .forfait-features {
-      list-style: none;
-      text-align: left;
-      margin-bottom: 2.8rem;
-    }
-    .forfait-features li {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      padding: 0.72rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      font-size: 0.94rem;
-      color: rgba(255,255,255,0.88);
-      line-height: 1.5;
-    }
-    .forfait-features li:last-child { border-bottom: none; }
-    .check-gold {
-      color: #C0A060;
-      font-size: 1rem;
-      flex-shrink: 0;
-      margin-top: 0.12rem;
-    }
-
-    .forfait-cta {
-      font-size: 1rem;
-      padding: 1.1rem 3.5rem;
-      letter-spacing: 2px;
-    }
-    .forfait-note {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.35);
-      margin-top: 1.5rem;
-      font-style: italic;
-      line-height: 1.6;
-    }
-
-    /* ============================================================
-       SECTION SPORTS
-    ============================================================ */
-    #sports {
-      padding: 7rem 0;
-      background: #1A1A2E;
-    }
-
-    .sports-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 1.2rem;
-      margin-top: 3rem;
-    }
-
-    .sport-item {
-      text-align: center;
-      padding: 1.6rem 0.8rem;
-      border-radius: 10px;
-      background: rgba(0,7,105,0.25);
-      border: 1px solid rgba(192,160,96,0.1);
-      transition: all 0.3s ease;
-      cursor: default;
-    }
-    .sport-item:hover {
-      background: rgba(0,7,105,0.55);
-      border-color: rgba(192,160,96,0.4);
-      transform: translateY(-5px);
-      box-shadow: 0 12px 30px rgba(192,160,96,0.08);
-    }
-    .sport-icon {
-      font-size: 2.4rem;
-      display: block;
-      margin-bottom: 0.7rem;
-      line-height: 1;
-    }
-    .sport-name {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      color: rgba(255,255,255,0.75);
-      text-transform: uppercase;
-      line-height: 1.3;
-    }
-
-    /* ============================================================
-       SECTION CONTACT — CTA FINAL
-    ============================================================ */
-    #contact {
-      padding: 7rem 0 5rem;
-      background: linear-gradient(135deg, #B22234 0%, #000769 100%);
-      position: relative;
-    }
-    #contact::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-    }
-
-    .contact-heading {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      text-align: center;
-      letter-spacing: 4px;
-      line-height: 1;
-      margin-bottom: 0.6rem;
-    }
-    .contact-sub {
-      text-align: center;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: rgba(255,255,255,0.75);
-      letter-spacing: 2px;
-      margin-bottom: 3.5rem;
-    }
-
-    .contact-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    /* Formulaire */
-    .contact-form-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 14px;
-      padding: 2.6rem;
-      backdrop-filter: blur(8px);
-    }
-    .contact-form-card .form-group label { color: rgba(255,255,255,0.8); }
-    .contact-form-card input,
-    .contact-form-card textarea,
-    .contact-form-card select {
-      background: rgba(255,255,255,0.07);
-      border-color: rgba(255,255,255,0.2);
-    }
-    .contact-form-card input:focus,
-    .contact-form-card textarea:focus,
-    .contact-form-card select:focus {
-      border-color: rgba(255,255,255,0.6);
-    }
-    .contact-form-card textarea { min-height: 110px; }
-    .contact-form-card select option { background: #1A1A2E; }
-
-    .contact-submit {
-      width: 100%;
-      padding: 1.1rem;
-      font-size: 0.95rem;
-      letter-spacing: 2.5px;
-      margin-top: 0.3rem;
-    }
-
-    /* Infos de contact */
-    .contact-info-block { padding: 0.5rem 0; }
-    .contact-info-block h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.9rem;
-      letter-spacing: 2px;
-      color: #C0A060;
-      margin-bottom: 2rem;
-    }
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 1.1rem;
-      margin-bottom: 1.6rem;
-    }
-    .contact-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.15);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.15rem;
-      flex-shrink: 0;
-    }
-    .contact-item-label {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 0.2rem;
-    }
-    .contact-item-value {
-      font-size: 0.93rem;
-      color: rgba(255,255,255,0.88);
-      line-height: 1.5;
-    }
-
-    .contact-promise {
-      margin-top: 2.2rem;
-      padding: 1.4rem 1.6rem;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 10px;
-      border-left: 3px solid rgba(192,160,96,0.7);
-    }
-    .contact-promise p {
-      font-size: 0.88rem;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.72);
-    }
-    .contact-promise strong { color: #C0A060; }
-
-    /* Modale succès */
-    .modal-success { max-width: 440px; text-align: center; }
-    .modal-success .s-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
-    .modal-success h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      color: #C0A060;
-      letter-spacing: 2px;
-      margin-bottom: 0.8rem;
-    }
-    .modal-success p {
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.78);
-      line-height: 1.8;
-    }
-
-    /* ============================================================
-       RESPONSIVE — Étape 5
-    ============================================================ */
-    @media (max-width: 1200px) {
-      .sports-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .forfait-card   { padding: 2.2rem 1.6rem; }
-      .sports-grid    { grid-template-columns: repeat(3, 1fr); }
-      .contact-wrapper { grid-template-columns: 1fr; gap: 2.5rem; }
-    }
-    @media (max-width: 480px) {
-      .sports-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    /* ============================================================
-       FOOTER
-    ============================================================ */
-    footer {
-      background: #1A1A2E;
-      padding: 5rem 0 2rem;
-      border-top: 1px solid rgba(192,160,96,0.2);
-      position: relative;
-    }
-    footer::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      width: 1px;
-      height: 50px;
-      background: linear-gradient(to bottom, #C0A060, transparent);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 3.5rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .footer-logo-text {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 3px;
-      margin-bottom: 1rem;
-      color: #FFFFFF;
-    }
-    .footer-logo-text span { color: #C0A060; }
-
-    .footer-desc {
-      font-size: 0.88rem;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.45);
-      max-width: 300px;
-      margin-bottom: 1.8rem;
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 0.8rem;
-    }
-    .social-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      transition: all 0.25s ease;
-      flex-shrink: 0;
-    }
-    .social-btn:hover {
-      background: rgba(192,160,96,0.15);
-      border-color: rgba(192,160,96,0.5);
-      color: #C0A060;
-      transform: translateY(-2px);
-    }
-    .social-btn svg { display: block; }
-
-    .footer-col-title {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      color: #C0A060;
-      text-transform: uppercase;
-      margin-bottom: 1.3rem;
-    }
-    .footer-links {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-    .footer-links a {
-      font-size: 0.86rem;
-      color: rgba(255,255,255,0.45);
-      text-decoration: none;
-      transition: color 0.2s ease;
-      display: inline-block;
-    }
-    .footer-links a:hover { color: rgba(255,255,255,0.9); }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding-top: 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-    }
-    .footer-bottom p {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.28);
-      line-height: 1.6;
-    }
-    .footer-bottom a {
-      color: rgba(255,255,255,0.35);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-bottom a:hover { color: rgba(255,255,255,0.7); }
-
-    /* ============================================================
-       BOUTON SCROLL-TO-TOP
-    ============================================================ */
-    #scrollTop {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(0,7,105,0.85);
-      border: 1px solid rgba(192,160,96,0.4);
-      color: #C0A060;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 500;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
-      backdrop-filter: blur(6px);
-    }
-    #scrollTop.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    #scrollTop:hover {
-      background: rgba(0,7,105,0.98);
-      border-color: #C0A060;
-    }
-
-    /* ============================================================
-       POLISH GLOBAL — micro-détails finaux
-    ============================================================ */
-
-    /* Focus visible accessible */
-    *:focus-visible {
-      outline: 2px solid rgba(192,160,96,0.6);
-      outline-offset: 3px;
-      border-radius: 3px;
-    }
-
-    /* Smooth image loading */
-    img { transition: opacity 0.3s ease; }
-    img[loading="lazy"] { opacity: 0; }
-    img[loading="lazy"].loaded { opacity: 1; }
-
-    /* Sélection texte dorée */
-    ::selection {
-      background: rgba(192,160,96,0.3);
-      color: #FFFFFF;
-    }
-
-    /* ============================================================
-       RESPONSIVE — Étape 6
-    ============================================================ */
-    @media (max-width: 768px) {
-      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .footer-bottom { flex-direction: column; text-align: center; }
-      #scrollTop { bottom: 1.2rem; right: 1.2rem; }
+      #navbar.scrolled .hamburger span { background: var(--navy); }
+
+      .hero-btns { flex-direction: column; align-items: center; }
+      .hero-btns .btn { width: 240px; justify-content: center; }
+      .hero-badge { font-size: .65rem; padding: .45rem 1rem; }
     }
   </style>
 </head>
 <body>
 
 <!-- ================================================================
-     NAVIGATION FIXE
+     NAVIGATION
 ================================================================ -->
 <nav id="navbar" role="navigation" aria-label="Navigation principale">
   <div class="nav-inner">
 
-    <a href="#hero" class="nav-logo" aria-label="NextMoov USA — Accueil">
-      NEXT<span>MOOV</span>
+    <a href="#hero" class="nav-logo" aria-label="NextMoov USA">
+      <!-- Logo image : remplace src="" par l'URL de ton logo -->
+      <img
+        src=""
+        alt="NextMoov USA"
+        class="nav-logo-img"
+        id="logoImg"
+        onerror="this.style.display='none'"
+      >
+      <span class="nav-logo-text">NEXT<span>MOOV</span></span>
     </a>
 
     <ul class="nav-menu" id="navMenu" role="list">
@@ -1904,9 +415,10 @@
       <li><a href="#athletes">Nos Athlètes</a></li>
       <li><a href="#temoignages">Témoignages</a></li>
       <li><a href="#videos">Vidéos</a></li>
-      <li><a href="#forfait">Tarifs</a></li>
+      <li><a href="#forfait">Programme</a></li>
+      <li><a href="#showcase">Showcases</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a href="#contact" class="nav-cta">Rejoindre le programme</a></li>
+      <li><a href="#contact" class="nav-cta">Intégrer la Sélection</a></li>
     </ul>
 
     <button
@@ -1916,18 +428,15 @@
       aria-expanded="false"
       aria-controls="navMenu"
     >
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
-
   </div>
 </nav>
 
 <!-- ================================================================
      HERO
 ================================================================ -->
-<section id="hero" aria-label="Hero — Agence NextMoov USA">
+<section id="hero" aria-label="Hero NextMoov USA">
   <div class="hero-bg" id="heroBg"></div>
 
   <div class="hero-content">
@@ -1935,1430 +444,138 @@
 
     <h1 class="hero-title">
       <span class="line">
-        <span class="word" style="animation-delay: 0.55s">CHAQUE</span>&thinsp;
-        <span class="word accent" style="animation-delay: 0.75s">ATHLÈTE</span>
+        <span class="word c-white" style="animation-delay:.5s">CHAQUE</span>&thinsp;
+        <span class="word c-white" style="animation-delay:.65s">ATHLÈTE</span>
       </span>
       <span class="line">
-        <span class="word" style="animation-delay: 0.95s">MÉRITE</span>&thinsp;
-        <span class="word red" style="animation-delay: 1.15s">SA CHANCE</span>
+        <span class="word c-white" style="animation-delay:.8s">MÉRITE</span>&thinsp;
+        <span class="word c-red"   style="animation-delay:.95s">SA CHANCE</span>
       </span>
     </h1>
 
-    <p class="hero-subtitle">
-      Accompagnement personnalisé &nbsp;&bull;&nbsp; Honnêteté totale &nbsp;&bull;&nbsp; 4 ans à tes côtés
+    <p class="hero-sub">
+      Accompagnement personnalisé &nbsp;·&nbsp; Honnêteté totale &nbsp;·&nbsp; 4 ans à tes côtés
     </p>
 
     <div class="hero-btns">
-      <a href="#approche" class="btn btn-outline">Découvrir notre approche</a>
-      <a href="#contact"  class="btn btn-red">Rejoindre les 20 élus</a>
-    </div>
-  </div>
-
-  <div class="hero-badge" role="note">
-    20 places par an &nbsp;&bull;&nbsp; Par agent &nbsp;&bull;&nbsp; 7 000+ universités partenaires
-  </div>
-</section>
-
-
-<!-- ================================================================
-     SECTION POURQUOI NOUS — L'APPROCHE HUMAINE
-================================================================ -->
-<section id="approche" aria-labelledby="approche-title">
-  <div class="container">
-
-    <p class="section-eyebrow fade-up">Notre philosophie</p>
-    <h2 class="section-title fade-up" id="approche-title">
-      UN ACCOMPAGNEMENT<br>QUI CHANGE TOUT
-    </h2>
-    <div class="gold-line fade-up"></div>
-
-    <p class="approche-intro fade-up">
-      Nous ne promettons pas l'impossible. Nous construisons avec toi un parcours
-      <strong>réaliste et ambitieux</strong>. 20 athlètes par an, par agent — pas un de plus.
-      Parce que l'excellence se mérite, et un accompagnement d'excellence
-      ne peut pas s'industrialiser.
-    </p>
-
-    <!-- 3 Piliers -->
-    <div class="pillars-grid">
-
-      <div class="pillar-card fade-up" style="transition-delay: 0.1s">
-        <span class="pillar-icon">🎯</span>
-        <div class="pillar-title">Accompagnement Personnalisé</div>
-        <p class="pillar-text">
-          Pas de traitement en masse. Chaque athlète est unique, chaque parcours
-          est construit sur mesure. Ton agent connaît ton nom, ton histoire,
-          tes forces et tes objectifs.
-        </p>
-      </div>
-
-      <div class="pillar-card fade-up" style="transition-delay: 0.2s">
-        <span class="pillar-icon">🤝</span>
-        <div class="pillar-title">Honnêteté &amp; Transparence</div>
-        <p class="pillar-text">
-          Nous te disons la vérité sur ton niveau, tes chances réelles et les étapes
-          nécessaires. Toujours. Pas pour décourager — pour construire sur du
-          solide, pas sur des illusions.
-        </p>
-      </div>
-
-      <div class="pillar-card fade-up" style="transition-delay: 0.3s">
-        <span class="pillar-icon">🎓</span>
-        <div class="pillar-title">Sur Place Pendant 4 Ans</div>
-        <p class="pillar-text">
-          Sportif, académique, personnel. On est là du 1er jour jusqu'au diplôme.
-          Ton succès est notre succès. Ton intégration nous importe autant que
-          tes résultats sur le terrain.
-        </p>
-      </div>
-
+      <a href="#approche" class="btn btn-outline-white">Découvrir notre approche</a>
+      <a href="#contact"  class="btn btn-red">Intégrer la Sélection</a>
     </div>
 
-    <!-- Citation -->
-    <div class="quote-block fade-up">
-      <p>
-        "Nous limitons volontairement à 20 athlètes par an pour garantir un suivi
-        d'excellence. Ce n'est pas une contrainte commerciale — c'est notre promesse
-        envers chaque athlète que nous accompagnons."
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================================================================
-     SECTION 4 ANS
-================================================================ -->
-<section id="quatre-ans" aria-labelledby="quatre-ans-title">
-  <div class="container">
-
-    <p class="section-eyebrow fade-up">Le programme complet</p>
-    <h2 class="section-title fade-up" id="quatre-ans-title">
-      4 ANS. PAS JUSTE UN VISA.
-    </h2>
-    <div class="gold-line fade-up"></div>
-    <p class="section-subtitle fade-up">
-      Chaque année est une étape construite avec toi.<br>
-      Sport, académique, personnel — les trois piliers, ensemble.
-    </p>
-
-    <!-- Timeline -->
-    <div class="timeline">
-
-      <!-- Année 1 -->
-      <div class="timeline-item fade-up" style="transition-delay: 0.1s">
-        <div class="timeline-icon" aria-hidden="true">🚀</div>
-        <div class="timeline-year">Année 1</div>
-        <div class="timeline-title">Intégration &amp; Lancement</div>
-        <p class="timeline-desc">
-          Arrivée aux États-Unis, adaptation culturelle, intégration dans l'équipe,
-          premières compétitions universitaires. On est là à chaque instant.
-        </p>
-        <div class="timeline-tags">
-          <span class="tag tag-sport">Premières compétitions</span>
-          <span class="tag tag-acad">Adaptation académique</span>
-          <span class="tag tag-perso">Intégration culturelle</span>
-        </div>
-      </div>
-
-      <!-- Année 2 -->
-      <div class="timeline-item fade-up" style="transition-delay: 0.2s">
-        <div class="timeline-icon" aria-hidden="true">📈</div>
-        <div class="timeline-year">Année 2</div>
-        <div class="timeline-title">Montée en Puissance</div>
-        <p class="timeline-desc">
-          Développement des performances, construction du réseau universitaire
-          et professionnel. Tu t'affirmes sportif et académiquement.
-        </p>
-        <div class="timeline-tags">
-          <span class="tag tag-sport">Performances avancées</span>
-          <span class="tag tag-acad">Spécialisation</span>
-          <span class="tag tag-perso">Réseau &amp; Connexions</span>
-        </div>
-      </div>
-
-      <!-- Année 3 -->
-      <div class="timeline-item fade-up" style="transition-delay: 0.3s">
-        <div class="timeline-icon" aria-hidden="true">⭐</div>
-        <div class="timeline-year">Année 3</div>
-        <div class="timeline-title">Leadership &amp; Opportunités</div>
-        <p class="timeline-desc">
-          Tu deviens un leader dans ton équipe. Opportunités de stages,
-          exposition professionnelle et spécialisation dans ton domaine académique.
-        </p>
-        <div class="timeline-tags">
-          <span class="tag tag-sport">Leadership sportif</span>
-          <span class="tag tag-acad">Stages &amp; Projets</span>
-          <span class="tag tag-perso">Vision professionnelle</span>
-        </div>
-      </div>
-
-      <!-- Année 4 -->
-      <div class="timeline-item fade-up" style="transition-delay: 0.4s">
-        <div class="timeline-icon" aria-hidden="true">🏆</div>
-        <div class="timeline-year">Année 4</div>
-        <div class="timeline-title">Diplôme &amp; Transition</div>
-        <p class="timeline-desc">
-          Obtention du diplôme américain, transition vers la vie professionnelle
-          ou le haut niveau. Intégration au réseau alumni — le début de ta nouvelle vie.
-        </p>
-        <div class="timeline-tags">
-          <span class="tag tag-sport">Haut niveau</span>
-          <span class="tag tag-acad">Diplôme US</span>
-          <span class="tag tag-perso">Réseau alumni</span>
-        </div>
-      </div>
-
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      20 places par an &nbsp;·&nbsp; Par agent &nbsp;·&nbsp; 7 000+ universités partenaires
     </div>
   </div>
 </section>
 
-<!-- ================================================================
-     SECTION NOS ATHLÈTES
-================================================================ -->
-<section id="athletes" aria-labelledby="athletes-title">
-  <div class="container">
-
-    <p class="section-eyebrow fade-up">Ils nous font confiance</p>
-    <h2 class="section-title fade-up" id="athletes-title">
-      ILS FONT CONFIANCE À<br>NOTRE ACCOMPAGNEMENT
-    </h2>
-    <div class="gold-line fade-up"></div>
-    <p class="section-subtitle fade-up">
-      Des athlètes réels. Des parcours construits. Des histoires vraies.
-    </p>
-
-    <!-- Grille dynamique (remplie par JS) -->
-    <div class="athletes-grid" id="athletesGrid"></div>
-
-    <!-- Bouton admin discret -->
-    <button
-      class="admin-trigger-btn"
-      id="adminBtnAthletes"
-      aria-label="Accès administration athlètes"
-    >⚙ Admin</button>
-
-    <!-- Panneau admin athlètes -->
-    <div class="admin-panel" id="adminPanelAthletes">
-      <div class="admin-panel-title">AJOUTER UN ATHLÈTE</div>
-      <div class="form-grid-2">
-        <div class="form-group">
-          <label for="ath-prenom">Prénom *</label>
-          <input type="text" id="ath-prenom" placeholder="Ex : Lucas" autocomplete="off">
-        </div>
-        <div class="form-group">
-          <label for="ath-nom">Nom *</label>
-          <input type="text" id="ath-nom" placeholder="Ex : MARTIN" autocomplete="off">
-        </div>
-        <div class="form-group">
-          <label for="ath-sport">Sport *</label>
-          <input type="text" id="ath-sport" placeholder="Ex : Basketball">
-        </div>
-        <div class="form-group">
-          <label for="ath-univ">Université *</label>
-          <input type="text" id="ath-univ" placeholder="Ex : UCLA, Californie">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="ath-quote">Citation personnelle</label>
-        <input type="text" id="ath-quote" placeholder="Ex : NextMoov a changé ma vision du possible.">
-      </div>
-      <div class="form-group">
-        <label for="ath-parcours">Son parcours</label>
-        <textarea id="ath-parcours" placeholder="Décris le parcours de l'athlète..."></textarea>
-      </div>
-      <div class="form-group">
-        <label for="ath-motiv">Sa motivation</label>
-        <textarea id="ath-motiv" placeholder="Qu'est-ce qui l'a motivé à rejoindre le programme ?"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="ath-message">Son message</label>
-        <textarea id="ath-message" placeholder="Son message aux futurs athlètes..."></textarea>
-      </div>
-      <div class="form-group">
-        <label for="ath-photo">URL photo (optionnel)</label>
-        <input type="url" id="ath-photo" placeholder="https://...">
-      </div>
-      <button class="btn btn-red" id="addAthleteBtn">Ajouter l'athlète</button>
-    </div>
-
-  </div>
-</section>
 
 <!-- ================================================================
-     MODALE — ATHLÈTE (détail parcours)
-================================================================ -->
-<div
-  class="modal-overlay"
-  id="modalAthlete"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="modalAthleteTitle"
->
-  <div class="modal">
-    <button class="modal-close" id="modalAthleteClose" aria-label="Fermer">×</button>
-    <div id="modalAthleteContent"></div>
-  </div>
-</div>
-
-<!-- ================================================================
-     MODALE — MOT DE PASSE ADMIN
-================================================================ -->
-<div
-  class="modal-overlay"
-  id="modalPassword"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="modalPasswordTitle"
->
-  <div class="modal modal-password">
-    <button class="modal-close" id="modalPasswordClose" aria-label="Fermer">×</button>
-    <div style="font-size:2.5rem; margin-bottom:0.8rem;">🔒</div>
-    <h3 id="modalPasswordTitle">ACCÈS ADMIN</h3>
-    <p>Entre le mot de passe pour accéder au panneau d'administration.</p>
-    <div class="form-group">
-      <input
-        type="password"
-        id="adminPasswordInput"
-        placeholder="Mot de passe"
-        style="text-align:center; font-size:1rem; letter-spacing:3px;"
-      >
-    </div>
-    <p class="password-error" id="passwordError">Mot de passe incorrect. Réessaie.</p>
-    <button class="btn btn-red" id="confirmPasswordBtn" style="width:100%; margin-top:0.5rem;">
-      Accéder
-    </button>
-  </div>
-</div>
-
-<!-- ================================================================
-     SECTION TÉMOIGNAGES
-================================================================ -->
-<section id="temoignages" aria-labelledby="temo-title">
-  <div class="container">
-    <p class="section-eyebrow fade-up">Ce qu'ils disent</p>
-    <h2 class="section-title fade-up" id="temo-title">
-      ILS L'ONT VÉCU.<br>ILS EN PARLENT.
-    </h2>
-    <div class="gold-line fade-up"></div>
-    <p class="section-subtitle fade-up">
-      Des mots authentiques. Des expériences réelles. Pas de script.
-    </p>
-
-    <div class="carousel-outer fade-up" id="carouselOuter">
-      <div class="carousel-track" id="carouselTrack"></div>
-    </div>
-
-    <div class="carousel-controls" role="group" aria-label="Contrôles carrousel">
-      <button class="carousel-btn" id="carouselPrev" aria-label="Témoignage précédent">&#8592;</button>
-      <button class="carousel-btn" id="carouselNext" aria-label="Témoignage suivant">&#8594;</button>
-    </div>
-    <div class="carousel-dots" id="carouselDots"></div>
-
-    <button
-      class="admin-trigger-btn"
-      id="adminBtnTemo"
-      style="margin-top:2rem;"
-      aria-label="Accès administration témoignages"
-    >⚙ Admin</button>
-
-    <!-- Panneau admin témoignages -->
-    <div class="admin-panel" id="adminPanelTemo">
-      <div class="admin-panel-title">AJOUTER UN TÉMOIGNAGE</div>
-      <div class="form-grid-2">
-        <div class="form-group">
-          <label for="tem-prenom">Prénom *</label>
-          <input type="text" id="tem-prenom" placeholder="Ex : Sofia">
-        </div>
-        <div class="form-group">
-          <label for="tem-sport">Sport</label>
-          <input type="text" id="tem-sport" placeholder="Ex : Natation">
-        </div>
-        <div class="form-group">
-          <label for="tem-univ">Université</label>
-          <input type="text" id="tem-univ" placeholder="Ex : University of Texas">
-        </div>
-        <div class="form-group">
-          <label for="tem-note">Note</label>
-          <select id="tem-note">
-            <option value="5">★★★★★ — 5 étoiles</option>
-            <option value="4">★★★★☆ — 4 étoiles</option>
-            <option value="3">★★★☆☆ — 3 étoiles</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="tem-texte">Témoignage *</label>
-        <textarea id="tem-texte" placeholder="Son témoignage authentique..."></textarea>
-      </div>
-      <div class="form-group">
-        <label for="tem-photo">URL photo (optionnel)</label>
-        <input type="url" id="tem-photo" placeholder="https://...">
-      </div>
-      <button class="btn btn-red" id="addTemoBtn">Ajouter le témoignage</button>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================================================================
-     SECTION VIDÉOS
-================================================================ -->
-<section id="videos" aria-labelledby="videos-title">
-  <div class="container">
-    <p class="section-eyebrow fade-up">Coulisses du programme</p>
-    <h2 class="section-title fade-up" id="videos-title">
-      DANS LES COULISSES<br>DU PROGRAMME
-    </h2>
-    <div class="gold-line fade-up"></div>
-    <p class="section-subtitle fade-up">
-      Vis-le avant de le vivre. Authentique, sans filtre.
-    </p>
-
-    <div class="videos-grid" id="videosGrid"></div>
-
-    <button
-      class="admin-trigger-btn"
-      id="adminBtnVideos"
-      style="margin-top:2.5rem;"
-      aria-label="Accès administration vidéos"
-    >⚙ Admin</button>
-
-    <!-- Panneau admin vidéos -->
-    <div class="admin-panel" id="adminPanelVideos">
-      <div class="admin-panel-title">AJOUTER UNE VIDÉO</div>
-      <div class="form-grid-2">
-        <div class="form-group">
-          <label for="vid-caption">Légende *</label>
-          <input type="text" id="vid-caption" placeholder="Ex : Premier jour sur le campus...">
-        </div>
-        <div class="form-group">
-          <label for="vid-platform">Plateforme</label>
-          <select id="vid-platform">
-            <option value="instagram">Instagram</option>
-            <option value="tiktok">TikTok</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="vid-url">URL embed de la vidéo</label>
-        <input type="url" id="vid-url" placeholder="URL iframe embed Instagram ou TikTok">
-      </div>
-      <div class="form-group">
-        <label for="vid-thumb">URL miniature (optionnel)</label>
-        <input type="url" id="vid-thumb" placeholder="https://...">
-      </div>
-      <button class="btn btn-red" id="addVideoBtn">Ajouter la vidéo</button>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================================================================
-     MODALE — VIDÉO
-================================================================ -->
-<div
-  class="modal-overlay"
-  id="modalVideo"
-  role="dialog"
-  aria-modal="true"
-  aria-label="Lecteur vidéo"
->
-  <div class="modal modal-video">
-    <button class="modal-close" id="modalVideoClose" aria-label="Fermer la vidéo">×</button>
-    <div id="videoEmbed"></div>
-  </div>
-</div>
-
-<!-- ================================================================
-     SECTION FORFAIT ATHLÈTE
-================================================================ -->
-<section id="forfait" aria-labelledby="forfait-title">
-  <div class="container">
-
-    <div class="forfait-badge-wrap fade-up">
-      <span class="forfait-pill">20 places par an — par agent</span>
-    </div>
-    <h2 class="section-title fade-up" id="forfait-title">LE FORFAIT ATHLÈTE</h2>
-    <div class="gold-line fade-up"></div>
-    <p class="section-subtitle fade-up">
-      Un seul programme. Un engagement total. Quatre ans à tes côtés.
-    </p>
-
-    <div class="forfait-card-wrap fade-up">
-      <div class="forfait-card">
-
-        <div class="forfait-name">FORFAIT ATHLÈTE</div>
-        <p class="forfait-sub">Accompagnement complet de A à Z</p>
-        <div class="forfait-divider"></div>
-
-        <ul class="forfait-features" aria-label="Ce qui est inclus">
-          <li>
-            <span class="check-gold" aria-hidden="true">✓</span>
-            <span>Accompagnement personnalisé de A à Z — un agent dédié, pas une équipe anonyme</span>
-          </li>
-          <li>
-            <span class="check-gold" aria-hidden="true">✓</span>
-            <span>Suivi sportif, académique et personnel sur les 4 années complètes</span>
-          </li>
-          <li>
-            <span class="check-gold" aria-hidden="true">✓</span>
-            <span>Accès à 7 000+ universités partenaires — Division I, II et III</span>
-          </li>
-          <li>
-            <span class="check-gold" aria-hidden="true">✓</span>
-            <span>Honnêteté totale sur ton profil, tes chances réelles et les étapes à franchir</span>
-          </li>
-          <li>
-            <span class="check-gold" aria-hidden="true">✓</span>
-            <span>Préparation aux entretiens avec les coachs et aux tests requis (SAT / TOEFL)</span>
-          </li>
-          <li>
-            <span class="check-gold" aria-hidden="true">✓</span>
-            <span>Suivi administratif complet : visa F-1, logement, inscriptions, assurance</span>
-          </li>
-          <li>
-            <span class="check-gold" aria-hidden="true">✓</span>
-            <span>Disponibilité permanente de ton agent — 7j/7, réponse garantie sous 24h</span>
-          </li>
-        </ul>
-
-        <a href="#contact" class="btn btn-red forfait-cta">Candidater maintenant</a>
-        <p class="forfait-note">
-          Seulement 20 athlètes acceptés par an par agent.<br>
-          Chaque dossier est étudié avec soin — pas de quota à remplir.
-        </p>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ================================================================
-     SECTION SPORTS
-================================================================ -->
-<section id="sports" aria-labelledby="sports-title">
-  <div class="container">
-
-    <p class="section-eyebrow fade-up">Toutes disciplines</p>
-    <h2 class="section-title fade-up" id="sports-title">
-      LES SPORTS QUE NOUS<br>ACCOMPAGNONS
-    </h2>
-    <div class="gold-line fade-up"></div>
-
-    <div class="sports-grid" id="sportsGrid"></div>
-
-  </div>
-</section>
-
-<!-- ================================================================
-     SECTION CONTACT — CTA FINAL
-================================================================ -->
-<section id="contact" aria-labelledby="contact-title">
-  <div class="container" style="position:relative; z-index:1;">
-
-    <h2 class="contact-heading fade-up" id="contact-title">
-      PRÊT À VIVRE<br>L'EXPÉRIENCE ?
-    </h2>
-    <p class="contact-sub fade-up">
-      20 places &nbsp;&bull;&nbsp; 1 opportunité &nbsp;&bull;&nbsp; 4 ans d'accompagnement
-    </p>
-
-    <div class="contact-wrapper">
-
-      <!-- Formulaire -->
-      <div class="contact-form-card fade-up">
-        <form id="contactForm" novalidate>
-          <div class="form-grid-2">
-            <div class="form-group">
-              <label for="c-prenom">Prénom *</label>
-              <input type="text" id="c-prenom" placeholder="Ton prénom" required>
-            </div>
-            <div class="form-group">
-              <label for="c-nom">Nom *</label>
-              <input type="text" id="c-nom" placeholder="Ton nom" required>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="c-email">Email *</label>
-            <input type="email" id="c-email" placeholder="ton@email.com" required>
-          </div>
-          <div class="form-group">
-            <label for="c-sport">Sport *</label>
-            <input type="text" id="c-sport" placeholder="Ton sport principal" required>
-          </div>
-          <div class="form-group">
-            <label for="c-niveau">Niveau actuel</label>
-            <select id="c-niveau">
-              <option value="">— Sélectionne ton niveau —</option>
-              <option>National Élite</option>
-              <option>National</option>
-              <option>Régional Élite</option>
-              <option>Régional</option>
-              <option>Club Avancé</option>
-              <option>Club</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="c-message">Message</label>
-            <textarea
-              id="c-message"
-              placeholder="Parle-nous de toi, de ton sport, de tes ambitions aux États-Unis..."
-            ></textarea>
-          </div>
-          <button type="submit" class="btn btn-red contact-submit">
-            Envoyer ma candidature
-          </button>
-        </form>
-      </div>
-
-      <!-- Infos contact -->
-      <div class="contact-info-block fade-up" style="transition-delay:0.2s">
-        <h3>ON EST LÀ POUR TOI</h3>
-
-        <div class="contact-item">
-          <div class="contact-icon" aria-hidden="true">📧</div>
-          <div>
-            <div class="contact-item-label">Email</div>
-            <div class="contact-item-value">contact@nextmoov-usa.com</div>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon" aria-hidden="true">📱</div>
-          <div>
-            <div class="contact-item-label">Téléphone / WhatsApp</div>
-            <div class="contact-item-value">+33 (0)6 00 00 00 00</div>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon" aria-hidden="true">📍</div>
-          <div>
-            <div class="contact-item-label">Basé en France &amp; USA</div>
-            <div class="contact-item-value">Paris, France — et sur tous les campus américains</div>
-          </div>
-        </div>
-
-        <div class="contact-item">
-          <div class="contact-icon" aria-hidden="true">🕐</div>
-          <div>
-            <div class="contact-item-label">Disponibilité</div>
-            <div class="contact-item-value">7j/7 — Ton agent répond toujours.</div>
-          </div>
-        </div>
-
-        <div class="contact-promise">
-          <p>
-            <strong>Première prise de contact :</strong><br>
-            On répond dans les 24h. Pas de téléopérateur,
-            pas d'IA. Ton agent, directement. Parce que tu mérites
-            un vrai interlocuteur dès le premier message.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Modale succès formulaire -->
-<div
-  class="modal-overlay"
-  id="modalSuccess"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="modalSuccessTitle"
->
-  <div class="modal modal-success">
-    <button class="modal-close" id="modalSuccessClose" aria-label="Fermer">×</button>
-    <span class="s-icon" aria-hidden="true">🎯</span>
-    <h3 id="modalSuccessTitle">CANDIDATURE REÇUE !</h3>
-    <p>
-      Ton dossier a bien été transmis. Notre équipe te
-      contacte dans les 24h. Pas d'IA, ton agent directement.
-      Bienvenue dans l'aventure.
-    </p>
-  </div>
-</div>
-
-<!-- ================================================================
-     FOOTER
-================================================================ -->
-<footer role="contentinfo">
-  <div class="container">
-
-    <div class="footer-grid">
-
-      <!-- Col 1 — Identité -->
-      <div>
-        <div class="footer-logo-text">NEXT<span>MOOV</span> USA</div>
-        <p class="footer-desc">
-          Agence de recrutement sportif universitaire américain.
-          20 athlètes par an. 4 ans d'accompagnement.
-          Une promesse tenue — chaque fois.
-        </p>
-        <div class="footer-social" role="list" aria-label="Réseaux sociaux">
-          <!-- Instagram -->
-          <a href="#" class="social-btn" role="listitem" aria-label="Instagram NextMoov USA">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-            </svg>
-          </a>
-          <!-- TikTok -->
-          <a href="#" class="social-btn" role="listitem" aria-label="TikTok NextMoov USA">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
-            </svg>
-          </a>
-          <!-- LinkedIn -->
-          <a href="#" class="social-btn" role="listitem" aria-label="LinkedIn NextMoov USA">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Col 2 — Navigation -->
-      <div>
-        <div class="footer-col-title">Navigation</div>
-        <ul class="footer-links">
-          <li><a href="#hero">Accueil</a></li>
-          <li><a href="#approche">Notre Approche</a></li>
-          <li><a href="#quatre-ans">Le Programme</a></li>
-          <li><a href="#athletes">Nos Athlètes</a></li>
-          <li><a href="#temoignages">Témoignages</a></li>
-          <li><a href="#videos">Vidéos</a></li>
-          <li><a href="#forfait">Tarifs</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 3 — Sports & légal -->
-      <div>
-        <div class="footer-col-title">Sports</div>
-        <ul class="footer-links">
-          <li><a href="#sports">Football Américain</a></li>
-          <li><a href="#sports">Basketball</a></li>
-          <li><a href="#sports">Soccer</a></li>
-          <li><a href="#sports">Tennis</a></li>
-          <li><a href="#sports">Natation</a></li>
-          <li><a href="#sports">Athlétisme</a></li>
-          <li><a href="#sports">+ 6 autres sports</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <!-- Footer bottom -->
-    <div class="footer-bottom">
-      <p>
-        &copy; 2025 NextMoov USA &mdash;
-        Agence de recrutement sportif universitaire américain.
-        Tous droits réservés.
-      </p>
-      <p>
-        <a href="#">Mentions légales</a>
-        &nbsp;&bull;&nbsp;
-        <a href="#">Politique de confidentialité</a>
-      </p>
-    </div>
-
-  </div>
-</footer>
-
-<!-- Bouton scroll-to-top -->
-<button id="scrollTop" aria-label="Retour en haut de page">&#8593;</button>
-
-<!-- ================================================================
-     JS — ÉTAPE 1 : Navigation + Parallax Hero
+     JS — ÉTAPE 1 : Nav + Parallax + Smooth scroll + Observer
 ================================================================ -->
 <script>
-  /* ---- Navbar scroll ---- */
-  const navbar    = document.getElementById('navbar');
-  const heroBg    = document.getElementById('heroBg');
-  const hamburger = document.getElementById('hamburger');
-  const navMenu   = document.getElementById('navMenu');
+  /* ---- Variables globales réutilisables ---- */
+  const navbar   = document.getElementById('navbar');
+  const heroBg   = document.getElementById('heroBg');
+  const hamburger= document.getElementById('hamburger');
+  const navMenu  = document.getElementById('navMenu');
 
+  /* ---- Navbar scroll + parallax ---- */
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
-
-    // Classe scrolled
-    navbar.classList.toggle('scrolled', y > 50);
-
-    // Parallax hero (max 30 % de la vitesse)
-    if (heroBg) {
-      heroBg.style.transform = `translateY(${y * 0.28}px)`;
-    }
+    navbar.classList.toggle('scrolled', y > 60);
+    if (heroBg) heroBg.style.transform = `translateY(${y * 0.25}px)`;
   }, { passive: true });
 
   /* ---- Hamburger ---- */
   hamburger.addEventListener('click', () => {
-    const isOpen = navMenu.classList.toggle('open');
-    hamburger.classList.toggle('open', isOpen);
-    hamburger.setAttribute('aria-expanded', isOpen);
+    const open = navMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
   });
-
-  hamburger.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      hamburger.click();
-    }
-  });
-
-  /* Fermer le menu mobile au clic sur un lien */
-  navMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
+  navMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
       navMenu.classList.remove('open');
       hamburger.classList.remove('open');
       hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
     });
   });
 
-  /* Smooth scroll géré par bindSmoothScroll() en fin de script */
-
-  /* ---- IntersectionObserver global (fade-up) ---- */
-  function observeFadeUps() {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          io.unobserve(entry.target);
-        }
+  /* ---- Smooth scroll avec offset nav ---- */
+  function bindLinks() {
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      if (a.dataset.bound) return;
+      a.dataset.bound = '1';
+      a.addEventListener('click', function(e) {
+        const t = document.querySelector(this.getAttribute('href'));
+        if (!t) return;
+        e.preventDefault();
+        window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
       });
-    }, { threshold: 0.14 });
+    });
+  }
+  bindLinks();
 
+  /* ---- IntersectionObserver fade-up ---- */
+  function observeFadeUps() {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
     document.querySelectorAll('.fade-up:not(.visible)').forEach(el => io.observe(el));
   }
-
   observeFadeUps();
 
-  /* ================================================================
-     ÉTAPE 3 — ATHLÈTES : données, rendu, admin, modales
-  ================================================================ */
-
-  /* ---- Sécurité XSS ---- */
-  function esc(text) {
-    if (text == null) return '';
+  /* ---- Helpers sécurité XSS ---- */
+  function esc(t) {
+    if (t == null) return '';
     const d = document.createElement('div');
-    d.appendChild(document.createTextNode(String(text)));
+    d.appendChild(document.createTextNode(String(t)));
     return d.innerHTML;
   }
-  function escAttr(text) {
-    if (text == null) return '';
-    return String(text)
-      .replace(/&/g,'&amp;').replace(/"/g,'&quot;')
-      .replace(/'/g,'&#039;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  function escA(t) {
+    return String(t ?? '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/'/g,'&#039;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
   /* ---- localStorage helpers ---- */
-  function loadData(key, fallback) {
-    try {
-      const raw = localStorage.getItem(key);
-      return raw ? JSON.parse(raw) : fallback;
-    } catch { return fallback; }
+  function load(k, d) { try { const r=localStorage.getItem(k); return r?JSON.parse(r):d; } catch { return d; } }
+  function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+
+  /* ---- Modal générique ---- */
+  function openModal(id)  { document.getElementById(id).classList.add('active'); }
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+    if (id === 'modalVideo') document.getElementById('videoEmbed').innerHTML = '';
   }
-  function saveData(key, data) {
-    try { localStorage.setItem(key, JSON.stringify(data)); } catch {}
-  }
-
-  /* ---- Données par défaut athlètes ---- */
-  const defaultAthletes = [
-    {
-      prenom: 'Lucas', nom: 'MARTIN',
-      sport: 'Basketball', univ: 'UCLA, Californie',
-      quote: 'NextMoov m\'a appris que réussir, c\'est un processus, pas un coup de chance.',
-      parcours: 'Après 3 saisons dans les ligues régionales françaises, Lucas a intégré le programme NextMoov à 17 ans. En 6 mois, son profil athlétique et académique a été travaillé pour correspondre aux exigences NCAA Division I. Résultat : une scholarship complète à UCLA.',
-      motiv: 'Lucas voulait jouer au haut niveau ET obtenir un diplôme américain reconnu internationalement. Il savait que sans accompagnement solide, ces deux objectifs semblaient incompatibles.',
-      message: 'Ne sous-estime pas ton niveau. Ce qui compte, c\'est ton potentiel et ta mentalité. NextMoov a su voir en moi ce que je ne voyais pas encore moi-même.',
-      photo: ''
-    },
-    {
-      prenom: 'Camille', nom: 'DUBOIS',
-      sport: 'Soccer', univ: 'University of Florida',
-      quote: 'Avoir quelqu\'un à mes côtés à chaque étape, ça change tout mentalement.',
-      parcours: 'Joueuse de l\'équipe nationale U19, Camille cherchait à combiner son niveau sportif avec une formation d\'excellence en Business. NextMoov l\'a guidée vers une scholarship complète à Florida, l\'une des meilleures universités du pays pour les deux.',
-      motiv: 'L\'expérience américaine représentait pour elle l\'opportunité unique de se développer sur tous les plans — sportif, académique, humain. Elle voulait partir avec un filet de sécurité. C\'est exactement ce que NextMoov lui a offert.',
-      message: 'Le plus dur, c\'est de faire le premier pas. Après ça, vous n\'êtes plus seul(e). Jamais. Votre agent est là, toujours.',
-      photo: ''
-    },
-    {
-      prenom: 'Thomas', nom: 'BERNARD',
-      sport: 'Tennis', univ: 'Vanderbilt University',
-      quote: 'Honnêteté et précision — c\'est ce qui différencie NextMoov de toutes les autres agences.',
-      parcours: 'Classé top 50 junior en France, Thomas avait eu des contacts avec d\'autres agences qui lui promettaient des top 10 universitaires sans condition. NextMoov lui a présenté un plan réaliste avec des objectifs précis. 14 mois plus tard, il signait à Vanderbilt.',
-      motiv: 'Thomas voulait être honnêtement guidé, pas flatté. Il cherchait une agence qui lui dirait la vérité sur son niveau et ses chances réelles — sans fausse promesse pour signer un contrat.',
-      message: 'Choisissez des gens qui vous respectent assez pour vous dire la vérité. C\'est rare. C\'est ce que fait NextMoov.',
-      photo: ''
-    }
-  ];
-
-  let athletesData = loadData('nm_athletes', defaultAthletes);
-
-  /* ---- Rendu de la grille athlètes ---- */
-  function renderAthletes() {
-    const grid = document.getElementById('athletesGrid');
-    if (!grid) return;
-    grid.innerHTML = '';
-
-    athletesData.forEach((a, i) => {
-      const card = document.createElement('div');
-      card.className = 'athlete-card fade-up';
-      card.style.transitionDelay = `${i * 0.12}s`;
-      card.setAttribute('role', 'button');
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('aria-label', `Voir le parcours de ${a.prenom} ${a.nom}`);
-
-      const photoHTML = a.photo
-        ? `<img
-             src="${escAttr(a.photo)}"
-             alt="Photo de ${escAttr(a.prenom)} ${escAttr(a.nom)}"
-             class="athlete-photo-real"
-             loading="lazy"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'"
-           >
-           <div class="athlete-photo-placeholder" style="display:none">🏅</div>`
-        : `<div class="athlete-photo-placeholder">🏅</div>`;
-
-      card.innerHTML = `
-        <div class="athlete-photo-wrapper">${photoHTML}</div>
-        <div class="athlete-info">
-          <div class="athlete-name">${esc(a.prenom)} ${esc(a.nom)}</div>
-          <div class="athlete-sport">${esc(a.sport)}</div>
-          <div class="athlete-university">📍 ${esc(a.univ)}</div>
-          <p class="athlete-quote">"${esc(a.quote)}"</p>
-          <button class="btn btn-gold" style="font-size:0.8rem; padding:0.5rem 1.3rem;">
-            Voir son parcours
-          </button>
-        </div>
-      `;
-
-      const openModal = () => openAthleteModal(i);
-      card.addEventListener('click', openModal);
-      card.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(); }
-      });
-
-      grid.appendChild(card);
-    });
-
-    observeFadeUps();
-  }
-
-  /* ---- Modale détail athlète ---- */
-  function openAthleteModal(index) {
-    const a = athletesData[index];
-    const avatarHTML = a.photo
-      ? `<img src="${escAttr(a.photo)}" alt="${escAttr(a.prenom)}" onerror="this.parentElement.innerHTML='🏅'">`
-      : '🏅';
-
-    document.getElementById('modalAthleteContent').innerHTML = `
-      <div class="modal-athlete-header">
-        <div class="modal-athlete-avatar">${avatarHTML}</div>
-        <div class="modal-athlete-meta">
-          <h2 id="modalAthleteTitle">${esc(a.prenom)} ${esc(a.nom)}</h2>
-          <div class="sport-badge">🏅 ${esc(a.sport)}</div>
-          <div class="univ-badge">📍 ${esc(a.univ)}</div>
-        </div>
-      </div>
-      <div class="modal-divider"></div>
-      <div class="modal-section-label">Son parcours</div>
-      <p class="modal-section-text">${esc(a.parcours)}</p>
-      <div class="modal-section-label">Sa motivation</div>
-      <p class="modal-section-text">${esc(a.motiv)}</p>
-      <div class="modal-section-label">Son message</div>
-      <div class="modal-message-block">
-        <p>"${esc(a.message)}"</p>
-      </div>
-    `;
-
-    document.getElementById('modalAthlete').classList.add('active');
-    document.getElementById('modalAthleteClose').focus();
-  }
-
-  /* ---- Fermeture modales ---- */
-  function setupModalClose(overlayId, closeBtnId, extraCleanup) {
-    const overlay  = document.getElementById(overlayId);
-    const closeBtn = document.getElementById(closeBtnId);
-
-    const close = () => {
-      overlay.classList.remove('active');
-      if (extraCleanup) extraCleanup();
-    };
-
-    closeBtn.addEventListener('click', close);
-    overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
-  }
-
-  setupModalClose('modalAthlete', 'modalAthleteClose');
-  setupModalClose('modalPassword', 'modalPasswordClose', () => {
-    document.getElementById('adminPasswordInput').value = '';
-    document.getElementById('passwordError').classList.remove('show');
-  });
-
-  /* Escape ferme toutes les modales */
   document.addEventListener('keydown', e => {
-    if (e.key !== 'Escape') return;
-    document.querySelectorAll('.modal-overlay.active').forEach(m => {
-      m.classList.remove('active');
+    if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => {
+      closeModal(m.id);
     });
   });
 
-  /* ---- Système Admin (mot de passe partagé) ---- */
+  /* ---- Admin password ---- */
   const ADMIN_PW = 'athlete2024';
-  let pendingAdminPanel = null;
+  let pendingPanel = null;
 
-  function requestAdmin(panelId) {
-    pendingAdminPanel = panelId;
-    document.getElementById('adminPasswordInput').value = '';
-    document.getElementById('passwordError').classList.remove('show');
-    document.getElementById('modalPassword').classList.add('active');
-    setTimeout(() => document.getElementById('adminPasswordInput').focus(), 320);
+  function askAdmin(panelId) {
+    pendingPanel = panelId;
+    document.getElementById('pwInput').value = '';
+    document.getElementById('pwError').style.display = 'none';
+    openModal('modalPw');
+    setTimeout(() => document.getElementById('pwInput').focus(), 300);
   }
-
-  document.getElementById('confirmPasswordBtn').addEventListener('click', checkAdminPassword);
-  document.getElementById('adminPasswordInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') checkAdminPassword();
-  });
-
-  function checkAdminPassword() {
-    const val = document.getElementById('adminPasswordInput').value;
-    if (val === ADMIN_PW) {
-      document.getElementById('modalPassword').classList.remove('active');
-      const panel = document.getElementById(pendingAdminPanel);
-      if (panel) {
-        panel.classList.add('open');
-        setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
-      }
-      document.getElementById('adminPasswordInput').value = '';
+  function checkPw() {
+    if (document.getElementById('pwInput').value === ADMIN_PW) {
+      closeModal('modalPw');
+      const p = document.getElementById(pendingPanel);
+      if (p) { p.style.display = 'block'; p.scrollIntoView({ behavior:'smooth', block:'start' }); }
     } else {
-      document.getElementById('passwordError').classList.add('show');
-      document.getElementById('adminPasswordInput').value = '';
-      document.getElementById('adminPasswordInput').focus();
+      document.getElementById('pwError').style.display = 'block';
+      document.getElementById('pwInput').value = '';
+      document.getElementById('pwInput').focus();
     }
   }
-
-  /* Bouton admin athlètes */
-  document.getElementById('adminBtnAthletes').addEventListener('click', () => {
-    requestAdmin('adminPanelAthletes');
-  });
-
-  /* Ajout d'un athlète */
-  document.getElementById('addAthleteBtn').addEventListener('click', () => {
-    const prenom = document.getElementById('ath-prenom').value.trim();
-    const nom    = document.getElementById('ath-nom').value.trim();
-    if (!prenom || !nom) {
-      alert('Le prénom et le nom sont requis.');
-      return;
-    }
-    athletesData.push({
-      prenom,
-      nom: nom.toUpperCase(),
-      sport:    document.getElementById('ath-sport').value.trim()   || 'Sport',
-      univ:     document.getElementById('ath-univ').value.trim()    || 'Université',
-      quote:    document.getElementById('ath-quote').value.trim()   || '...',
-      parcours: document.getElementById('ath-parcours').value.trim()|| '...',
-      motiv:    document.getElementById('ath-motiv').value.trim()   || '...',
-      message:  document.getElementById('ath-message').value.trim() || '...',
-      photo:    document.getElementById('ath-photo').value.trim()
-    });
-    saveData('nm_athletes', athletesData);
-    renderAthletes();
-    document.getElementById('adminPanelAthletes').classList.remove('open');
-    ['ath-prenom','ath-nom','ath-sport','ath-univ','ath-quote',
-     'ath-parcours','ath-motiv','ath-message','ath-photo']
-      .forEach(id => { document.getElementById(id).value = ''; });
-    document.getElementById('athletes').scrollIntoView({ behavior: 'smooth' });
-  });
-
-  /* ---- Init athlètes ---- */
-  renderAthletes();
-
-  /* ================================================================
-     ÉTAPE 4 — TÉMOIGNAGES + VIDÉOS
-  ================================================================ */
-
-  /* ---- Données par défaut témoignages ---- */
-  const defaultTemos = [
-    {
-      prenom: 'Sofia', sport: 'Natation', univ: 'University of Texas',
-      texte: 'Je ne savais même pas par où commencer. Mon agent NextMoov a tout géré : les contacts avec les coachs, le visa, le logement, la préparation académique. Je me suis concentrée sur ma performance. Résultat : scholarship complète en Division I.',
-      note: 5, photo: ''
-    },
-    {
-      prenom: 'Maxime', sport: 'Athlétisme', univ: 'Georgia Tech',
-      texte: 'Ce qui m\'a frappé dès le début, c\'est l\'honnêteté de mon agent. Il m\'a dit : "Tu peux viser Division I, mais il faut travailler ces 3 points précis." On a travaillé. Et on y est arrivé. Sans fausse promesse.',
-      note: 5, photo: ''
-    },
-    {
-      prenom: 'Inès', sport: 'Volleyball', univ: 'Penn State',
-      texte: 'Je suis en 3ème année à Penn State. Mon agent est encore là. Il appelle, suit mes résultats, gère les situations difficiles avec le staff. "4 ans d\'accompagnement" — ce n\'est pas un slogan, c\'est une réalité que je vis chaque jour.',
-      note: 5, photo: ''
-    },
-    {
-      prenom: 'Antoine', sport: 'Baseball', univ: 'Florida State',
-      texte: 'La barrière de la langue, les règles NCAA, les délais de recrutement... Tout ça m\'aurait perdu tout seul. Avec NextMoov, j\'ai eu un guide à chaque carrefour. Je suis fier du chemin parcouru.',
-      note: 5, photo: ''
-    }
-  ];
-
-  let temosData = loadData('nm_temos', defaultTemos);
-
-  /* ---- Rendu des témoignages ---- */
-  function renderTemos() {
-    const track = document.getElementById('carouselTrack');
-    const dots  = document.getElementById('carouselDots');
-    if (!track) return;
-    track.innerHTML = '';
-    dots.innerHTML  = '';
-
-    temosData.forEach((t, i) => {
-      const stars = '★'.repeat(parseInt(t.note)) + '☆'.repeat(5 - parseInt(t.note));
-      const avatarHTML = t.photo
-        ? `<img src="${escAttr(t.photo)}" alt="${escAttr(t.prenom)}" onerror="this.parentElement.innerHTML='🏅'">`
-        : '🏅';
-
-      const card = document.createElement('div');
-      card.className = 'temo-card';
-      card.innerHTML = `
-        <div class="temo-stars" aria-label="Note : ${t.note} sur 5">${stars}</div>
-        <p class="temo-text">"${esc(t.texte)}"</p>
-        <div class="temo-author">
-          <div class="temo-avatar">${avatarHTML}</div>
-          <div>
-            <div class="temo-author-name">${esc(t.prenom)}</div>
-            <div class="temo-author-detail">${esc(t.sport)} &bull; ${esc(t.univ)}</div>
-          </div>
-        </div>
-      `;
-      track.appendChild(card);
-
-      /* Point de navigation */
-      const dot = document.createElement('button');
-      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', `Aller au témoignage ${i + 1}`);
-      dot.addEventListener('click', () => goToSlide(i));
-      dots.appendChild(dot);
-    });
-  }
-
-  /* ---- Carrousel ---- */
-  let carouselIndex  = 0;
-  let carouselTimer  = null;
-  let carouselPaused = false;
-
-  function visibleCount() { return window.innerWidth <= 768 ? 1 : 3; }
-
-  function maxIndex() {
-    return Math.max(0, temosData.length - visibleCount());
-  }
-
-  function goToSlide(idx) {
-    carouselIndex = Math.max(0, Math.min(idx, maxIndex()));
-    const track = document.getElementById('carouselTrack');
-    const cards = track.querySelectorAll('.temo-card');
-    if (!cards.length) return;
-    const gap   = 28.8; /* 1.8rem en px approx */
-    const w     = cards[0].offsetWidth;
-    track.style.transform = `translateX(-${carouselIndex * (w + gap)}px)`;
-
-    /* Mise à jour des dots */
-    document.querySelectorAll('.carousel-dot').forEach((d, i) =>
-      d.classList.toggle('active', i === carouselIndex)
-    );
-  }
-
-  function carouselNext() { goToSlide(carouselIndex >= maxIndex() ? 0 : carouselIndex + 1); }
-  function carouselPrev() { goToSlide(carouselIndex <= 0 ? maxIndex() : carouselIndex - 1); }
-
-  function startAutoplay() {
-    clearInterval(carouselTimer);
-    carouselTimer = setInterval(() => { if (!carouselPaused) carouselNext(); }, 4500);
-  }
-
-  document.getElementById('carouselNext').addEventListener('click', () => { carouselPaused = false; carouselNext(); });
-  document.getElementById('carouselPrev').addEventListener('click', () => { carouselPaused = false; carouselPrev(); });
-
-  const carouselOuter = document.getElementById('carouselOuter');
-  carouselOuter.addEventListener('mouseenter', () => { carouselPaused = true; });
-  carouselOuter.addEventListener('mouseleave', () => { carouselPaused = false; });
-
-  /* Swipe tactile */
-  let touchStartX = 0;
-  carouselOuter.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  carouselOuter.addEventListener('touchend',   e => {
-    const diff = touchStartX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) diff > 0 ? carouselNext() : carouselPrev();
-  });
-
-  window.addEventListener('resize', () => goToSlide(0));
-
-  /* ---- Admin témoignages ---- */
-  document.getElementById('adminBtnTemo').addEventListener('click', () => requestAdmin('adminPanelTemo'));
-
-  document.getElementById('addTemoBtn').addEventListener('click', () => {
-    const prenom = document.getElementById('tem-prenom').value.trim();
-    const texte  = document.getElementById('tem-texte').value.trim();
-    if (!prenom || !texte) { alert('Le prénom et le témoignage sont requis.'); return; }
-
-    temosData.push({
-      prenom,
-      sport: document.getElementById('tem-sport').value.trim() || 'Sport',
-      univ:  document.getElementById('tem-univ').value.trim()  || 'Université',
-      texte,
-      note:  parseInt(document.getElementById('tem-note').value) || 5,
-      photo: document.getElementById('tem-photo').value.trim()
-    });
-    saveData('nm_temos', temosData);
-    renderTemos();
-    setTimeout(() => { goToSlide(0); startAutoplay(); }, 50);
-    document.getElementById('adminPanelTemo').classList.remove('open');
-    ['tem-prenom','tem-sport','tem-univ','tem-texte','tem-photo'].forEach(id => {
-      document.getElementById(id).value = '';
-    });
-  });
-
-  /* ---- Données par défaut vidéos ---- */
-  const defaultVideos = [
-    { caption: 'Premier jour sur le campus — Lucas à UCLA',    platform: 'instagram', url: '', thumb: '' },
-    { caption: 'Entraînement pré-saison — Camille à Florida',  platform: 'tiktok',    url: '', thumb: '' },
-    { caption: 'Interview après la première victoire NCAA',     platform: 'instagram', url: '', thumb: '' },
-    { caption: 'La vie quotidienne sur un campus américain',   platform: 'tiktok',    url: '', thumb: '' },
-    { caption: 'Remise de diplôme — Promotion 2024',           platform: 'instagram', url: '', thumb: '' },
-    { caption: 'Coulisses d\'un entraînement Division I',      platform: 'tiktok',    url: '', thumb: '' }
-  ];
-
-  let videosData = loadData('nm_videos', defaultVideos);
-
-  /* ---- Rendu des vidéos ---- */
-  function renderVideos() {
-    const grid = document.getElementById('videosGrid');
-    if (!grid) return;
-    grid.innerHTML = '';
-
-    videosData.forEach((v, i) => {
-      const card = document.createElement('div');
-      card.className = 'video-card';
-      card.style.transitionDelay = `${i * 0.08}s`;
-      card.setAttribute('role', 'button');
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('aria-label', `Regarder : ${v.caption}`);
-
-      const thumbHTML = v.thumb
-        ? `<img src="${escAttr(v.thumb)}" alt="${escAttr(v.caption)}" class="video-thumb" loading="lazy"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">`
-          + `<div class="video-thumb-placeholder" style="display:none">${v.platform === 'tiktok' ? '🎵' : '📸'}</div>`
-        : `<div class="video-thumb-placeholder">${v.platform === 'tiktok' ? '🎵' : '📸'}</div>`;
-
-      const badgeClass = v.platform === 'tiktok' ? 'badge-tiktok' : 'badge-instagram';
-      const badgeLabel = v.platform === 'tiktok' ? 'TikTok' : 'Instagram';
-
-      card.innerHTML = `
-        ${thumbHTML}
-        <div class="video-overlay">
-          <div class="video-play-btn" aria-hidden="true">▶</div>
-        </div>
-        <span class="video-platform-badge ${badgeClass}">${badgeLabel}</span>
-        <div class="video-caption">${esc(v.caption)}</div>
-      `;
-
-      const openVideo = () => openVideoModal(v.url);
-      card.addEventListener('click', openVideo);
-      card.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openVideo(); }
-      });
-
-      grid.appendChild(card);
-    });
-
-    /* Observer pour l'animation d'entrée en rotation */
-    const videoObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          videoObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    grid.querySelectorAll('.video-card').forEach(el => videoObserver.observe(el));
-  }
-
-  /* ---- Modale vidéo ---- */
-  function openVideoModal(url) {
-    const embed = document.getElementById('videoEmbed');
-    if (url && url.trim()) {
-      embed.innerHTML = `<iframe src="${escAttr(url)}" allowfullscreen allow="autoplay; encrypted-media"></iframe>`;
-    } else {
-      embed.innerHTML = `
-        <div class="video-placeholder-msg">
-          <span>🎬</span>
-          <p>VIDÉO NON DISPONIBLE</p>
-          <small>Ajoutez une URL via le panneau admin</small>
-        </div>`;
-    }
-    document.getElementById('modalVideo').classList.add('active');
-  }
-
-  function closeVideoModal() {
-    document.getElementById('modalVideo').classList.remove('active');
-    document.getElementById('videoEmbed').innerHTML = '';
-  }
-
-  setupModalClose('modalVideo', 'modalVideoClose', () => {
-    document.getElementById('videoEmbed').innerHTML = '';
-  });
-
-  /* ---- Admin vidéos ---- */
-  document.getElementById('adminBtnVideos').addEventListener('click', () => requestAdmin('adminPanelVideos'));
-
-  document.getElementById('addVideoBtn').addEventListener('click', () => {
-    const caption = document.getElementById('vid-caption').value.trim();
-    if (!caption) { alert('La légende est requise.'); return; }
-
-    videosData.push({
-      caption,
-      platform: document.getElementById('vid-platform').value,
-      url:      document.getElementById('vid-url').value.trim(),
-      thumb:    document.getElementById('vid-thumb').value.trim()
-    });
-    saveData('nm_videos', videosData);
-    renderVideos();
-    document.getElementById('adminPanelVideos').classList.remove('open');
-    ['vid-caption','vid-url','vid-thumb'].forEach(id => {
-      document.getElementById(id).value = '';
-    });
-  });
-
-  /* ---- Init étape 4 ---- */
-  renderTemos();
-  setTimeout(() => { goToSlide(0); startAutoplay(); }, 80);
-  renderVideos();
-
-  /* ================================================================
-     ÉTAPE 5 — SPORTS + CONTACT
-  ================================================================ */
-
-  /* ---- Données sports ---- */
-  const sportsData = [
-    { icon: '🏈', name: 'Football Américain' },
-    { icon: '🏀', name: 'Basketball'         },
-    { icon: '⚽', name: 'Soccer'             },
-    { icon: '🎾', name: 'Tennis'             },
-    { icon: '🏊', name: 'Natation'           },
-    { icon: '🏃', name: 'Athlétisme'         },
-    { icon: '⚾', name: 'Baseball'           },
-    { icon: '🏐', name: 'Volleyball'         },
-    { icon: '⛳', name: 'Golf'               },
-    { icon: '🥎', name: 'Softball'           },
-    { icon: '🥍', name: 'Lacrosse'           },
-    { icon: '🤼', name: 'Wrestling'          }
-  ];
-
-  /* ---- Rendu sports ---- */
-  function renderSports() {
-    const grid = document.getElementById('sportsGrid');
-    if (!grid) return;
-
-    sportsData.forEach((s, i) => {
-      const item = document.createElement('div');
-      item.className = 'sport-item fade-up';
-      item.style.transitionDelay = `${i * 0.05}s`;
-      item.innerHTML = `
-        <span class="sport-icon" aria-hidden="true">${s.icon}</span>
-        <div class="sport-name">${esc(s.name)}</div>
-      `;
-      grid.appendChild(item);
-    });
-
-    observeFadeUps();
-  }
-
-  /* ---- Formulaire contact ---- */
-  setupModalClose('modalSuccess', 'modalSuccessClose');
-
-  document.getElementById('contactForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const prenom = document.getElementById('c-prenom').value.trim();
-    const nom    = document.getElementById('c-nom').value.trim();
-    const email  = document.getElementById('c-email').value.trim();
-    const sport  = document.getElementById('c-sport').value.trim();
-
-    if (!prenom || !nom || !email || !sport) {
-      /* Mise en évidence des champs vides */
-      [
-        { id: 'c-prenom', val: prenom },
-        { id: 'c-nom',    val: nom    },
-        { id: 'c-email',  val: email  },
-        { id: 'c-sport',  val: sport  }
-      ].forEach(({ id, val }) => {
-        const el = document.getElementById(id);
-        el.style.borderColor = val ? '' : 'rgba(178,34,52,0.8)';
-        el.addEventListener('input', () => { el.style.borderColor = ''; }, { once: true });
-      });
-      return;
-    }
-
-    /* Succès */
-    document.getElementById('modalSuccess').classList.add('active');
-    document.getElementById('modalSuccessClose').focus();
-    this.reset();
-  });
-
-  /* ---- Init étape 5 ---- */
-  renderSports();
-
-  /* ================================================================
-     ÉTAPE 6 — POLISH FINAL
-  ================================================================ */
-
-  /* ---- Scroll-to-top ---- */
-  const scrollTopBtn = document.getElementById('scrollTop');
-
-  window.addEventListener('scroll', () => {
-    scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
-  }, { passive: true });
-
-  scrollTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
-  /* ---- Lazy images : ajout classe .loaded après chargement ---- */
-  document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-    if (img.complete) {
-      img.classList.add('loaded');
-    } else {
-      img.addEventListener('load',  () => img.classList.add('loaded'));
-      img.addEventListener('error', () => img.classList.add('loaded'));
-    }
-  });
-
-  /* ---- Smooth scroll footer (liens internes) — re-bind après rendu dynamique ---- */
-  function bindSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      if (anchor.dataset.scrollBound) return;
-      anchor.dataset.scrollBound = '1';
-      anchor.addEventListener('click', function (e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (!target) return;
-        e.preventDefault();
-        const offset = 78;
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-        /* Fermer le menu mobile si ouvert */
-        navMenu.classList.remove('open');
-        hamburger.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-  bindSmoothScroll();
-
-  /* ---- ObserverFadeUps final — passe sur tous les éléments restants ---- */
-  observeFadeUps();
 </script>
 </body>
 </html>
