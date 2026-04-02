@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Témoignages — NextMoov USA</title>
+  <meta name="description" content="Découvrez les témoignages d'athlètes français placés dans des universités américaines grâce à NextMoov USA."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --navy:#000769;--red:#B22234;--gold:#C0A060;
+      --bg:#FFFFFF;--bg-soft:#F0F4FF;
+      --text:#0F172A;--text-2:#475569;--text-3:#94A3B8;
+      --border:#E2E8F0;--r:10px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;}
+
+    /* NAVBAR */
+    #navbar{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;
+      background:transparent;transition:background .3s,box-shadow .3s;
+    }
+    #navbar.scrolled{background:var(--navy);box-shadow:0 2px 16px rgba(0,0,0,.25);}
+    .nav-logo{font-family:'Anton',sans-serif;font-size:1.35rem;letter-spacing:.04em;color:#fff;}
+    .nav-logo span{color:var(--gold);}
+    #navLinks{display:flex;align-items:center;gap:24px;}
+    #navLinks a{font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:500;color:rgba(255,255,255,.85);letter-spacing:.06em;text-transform:uppercase;padding:4px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
+    #navLinks a:hover,#navLinks a.active{color:#fff;border-color:var(--gold);}
+    .nav-cta{background:var(--red);color:#fff!important;border:none!important;padding:8px 18px!important;border-radius:6px!important;transition:background .2s!important;}
+    .nav-cta:hover{background:#9a1b2b!important;}
+    #burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+    #burger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
+    #burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    #burger.open span:nth-child(2){opacity:0;}
+    #burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    @media(max-width:768px){
+      #burger{display:flex;}
+      #navLinks{
+        position:fixed;top:64px;left:0;right:0;
+        background:var(--navy);flex-direction:column;align-items:flex-start;
+        padding:16px 24px 24px;gap:16px;
+        transform:translateY(-110%);opacity:0;transition:transform .3s,opacity .3s;pointer-events:none;
+      }
+      #navLinks.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo" href="index.html">NEXT<span>MOOV</span> USA</a>
+  <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div id="navLinks">
+    <a href="index.html">Accueil</a>
+    <a href="athletes.html">Athlètes</a>
+    <a href="temoignages.html" class="active">Témoignages</a>
+    <a href="showcase.html">Showcase</a>
+    <a href="videos.html">Vidéos</a>
+    <a href="index.html#contact" class="nav-cta">Nous contacter</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="temo-hero">
+  <div class="temo-hero-inner">
+    <p class="temo-hero-eyebrow">Ils l'ont fait</p>
+    <h1 class="temo-hero-title">Nos athlètes<br><span>témoignent</span></h1>
+    <p class="temo-hero-sub">Des athlètes français qui ont franchi le cap — leurs mots, leur parcours, leur réalité.</p>
+  </div>
+</section>
+
+<!-- STATS BANNER -->
+<section class="stats-banner">
+  <div class="stats-grid">
+    <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">des placés satisfaits</span></div>
+    <div class="stat-item"><span class="stat-num">+15</span><span class="stat-label">athlètes placés</span></div>
+    <div class="stat-item"><span class="stat-num">8</span><span class="stat-label">états américains</span></div>
+    <div class="stat-item"><span class="stat-num">+50K€</span><span class="stat-label">de bourses obtenues</span></div>
+  </div>
+</section>
+
+<!-- FILTRES -->
+<section class="temo-filter-section">
+  <div class="container">
+    <div class="filter-row">
+      <button class="filter-btn active" data-filter="tous">Tous</button>
+      <button class="filter-btn" data-filter="Soccer">Football</button>
+      <button class="filter-btn" data-filter="Natation">Natation</button>
+      <button class="filter-btn" data-filter="Basketball">Basketball</button>
+      <button class="filter-btn" data-filter="Tennis">Tennis</button>
+      <button class="filter-btn" data-filter="Autre">Autre sport</button>
+    </div>
+  </div>
+</section>
+
+<!-- GRID TEMOIGNAGES -->
+<section class="temo-section">
+  <div class="container">
+    <div class="temo-grid" id="temoGrid"></div>
+    <p id="noTemo" style="display:none;text-align:center;color:var(--text-3);padding:48px 0;font-size:1.1rem;">Aucun témoignage pour ce sport.</p>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="temo-modal" id="temoModal">
+  <div class="temo-modal-box">
+    <button class="temo-modal-close" id="temoModalClose">✕</button>
+    <div class="temo-modal-photo-wrap">
+      <img id="modalPhoto" src="" alt="" class="temo-modal-photo"/>
+    </div>
+    <div class="temo-modal-body">
+      <div class="temo-modal-stars" id="modalStars"></div>
+      <p class="temo-modal-quote" id="modalQuote"></p>
+      <div class="temo-modal-author">
+        <strong id="modalAuthorName"></strong>
+        <span id="modalAuthorSport"></span>
+        <span id="modalAuthorUniv"></span>
+      </div>
+      <div class="temo-modal-tags" id="modalTags"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* HERO */
+  .temo-hero{
+    background:linear-gradient(135deg,var(--navy) 0%,#0a0d5e 60%,#1a1060 100%);
+    padding:120px 24px 72px;text-align:center;color:#fff;
+  }
+  .temo-hero-eyebrow{font-family:'Oswald',sans-serif;font-size:.9rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  .temo-hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.8rem,6vw,5rem);line-height:1.05;margin-bottom:20px;}
+  .temo-hero-title span{color:var(--gold);}
+  .temo-hero-sub{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:560px;margin:0 auto;}
+
+  /* STATS */
+  .stats-banner{background:var(--red);padding:36px 24px;}
+  .stats-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;}
+  .stat-item{display:flex;flex-direction:column;gap:4px;}
+  .stat-num{font-family:'Anton',sans-serif;font-size:2.2rem;color:#fff;}
+  .stat-label{font-family:'Oswald',sans-serif;font-size:.85rem;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.08em;}
+  @media(max-width:640px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* FILTER */
+  .temo-filter-section{padding:40px 24px 8px;}
+  .filter-row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;}
+  .filter-btn{
+    font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+    padding:8px 20px;border-radius:30px;border:2px solid var(--border);
+    background:#fff;color:var(--text-2);cursor:pointer;transition:all .2s;
+  }
+  .filter-btn:hover{border-color:var(--navy);color:var(--navy);}
+  .filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+  /* GRID */
+  .temo-section{padding:40px 24px 80px;}
+  .container{max-width:1100px;margin:0 auto;}
+  .temo-grid{
+    columns:3;column-gap:24px;
+  }
+  @media(max-width:900px){.temo-grid{columns:2;}}
+  @media(max-width:560px){.temo-grid{columns:1;}}
+
+  /* CARD */
+  .temo-card{
+    break-inside:avoid;margin-bottom:24px;
+    background:#fff;border:1px solid var(--border);border-radius:var(--r);
+    padding:24px;cursor:pointer;
+    box-shadow:0 2px 8px rgba(0,7,105,.06);
+    transition:transform .2s,box-shadow .2s;
+  }
+  .temo-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,7,105,.13);}
+  .temo-card-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
+  .temo-photo{width:54px;height:54px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);flex-shrink:0;}
+  .temo-photo-placeholder{width:54px;height:54px;border-radius:50%;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+  .temo-author-info{display:flex;flex-direction:column;gap:2px;}
+  .temo-author-name{font-family:'Oswald',sans-serif;font-weight:600;font-size:1rem;color:var(--text);}
+  .temo-author-meta{font-size:.8rem;color:var(--text-3);}
+  .temo-stars{color:#f59e0b;font-size:.9rem;letter-spacing:2px;margin-bottom:10px;}
+  .temo-quote{font-size:.95rem;color:var(--text-2);line-height:1.6;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
+  .temo-sport-tag{display:inline-block;margin-top:14px;font-family:'Oswald',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:var(--bg-soft);color:var(--navy);}
+  .temo-card.verified .temo-author-name::after{content:'✓';display:inline-block;margin-left:6px;color:#2d8a4e;font-size:.8rem;}
+
+  /* FADE-UP */
+  .fade-up{opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s;}
+  .fade-up.visible{opacity:1;transform:none;}
+
+  /* MODAL */
+  .temo-modal{
+    position:fixed;inset:0;z-index:200;
+    background:rgba(0,7,105,.55);backdrop-filter:blur(6px);
+    display:flex;align-items:center;justify-content:center;padding:24px;
+    opacity:0;pointer-events:none;transition:opacity .3s;
+  }
+  .temo-modal.open{opacity:1;pointer-events:auto;}
+  .temo-modal-box{
+    background:#fff;border-radius:16px;max-width:580px;width:100%;
+    max-height:90vh;overflow-y:auto;position:relative;
+    transform:translateY(24px);transition:transform .3s;
+  }
+  .temo-modal.open .temo-modal-box{transform:none;}
+  .temo-modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--text-2);z-index:2;}
+  .temo-modal-photo-wrap{width:100%;aspect-ratio:3/2;overflow:hidden;border-radius:16px 16px 0 0;}
+  .temo-modal-photo{width:100%;height:100%;object-fit:cover;}
+  .temo-modal-body{padding:28px;}
+  .temo-modal-stars{color:#f59e0b;font-size:1.1rem;margin-bottom:12px;}
+  .temo-modal-quote{font-size:1.05rem;color:var(--text);line-height:1.7;margin-bottom:20px;font-style:italic;}
+  .temo-modal-author{display:flex;flex-direction:column;gap:4px;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:16px;}
+  .temo-modal-author strong{font-family:'Oswald',sans-serif;font-size:1.1rem;}
+  .temo-modal-author span{font-size:.9rem;color:var(--text-2);}
+  .temo-modal-tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .temo-modal-tag{font-size:.8rem;padding:4px 12px;border-radius:20px;background:var(--bg-soft);color:var(--navy);font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.06em;}
+</style>
+
+<!-- CTA -->
+<section class="temo-cta">
+  <div class="temo-cta-inner">
+    <p class="temo-cta-eyebrow">Rejoins l'aventure</p>
+    <h2 class="temo-cta-title">Prêt à écrire<br>ton propre témoignage ?</h2>
+    <p class="temo-cta-sub">Des dizaines d'athlètes ont franchi le cap avant toi. C'est ton tour.</p>
+    <a href="index.html#contact" class="temo-cta-btn">Démarre ton dossier →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">NEXT<span>MOOV</span> USA</div>
+        <p>L'agence de recrutement sportif universitaire américain pour les athlètes français.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/nextmoov.usa/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@nextmoov.usa" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.78 1.52V7.12a4.85 4.85 0 01-1.01-.43z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Pages</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="athletes.html">Nos athlètes</a></li>
+          <li><a href="temoignages.html">Témoignages</a></li>
+          <li><a href="showcase.html">Showcase</a></li>
+          <li><a href="videos.html">Vidéos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Sports</h4>
+        <ul class="footer-links">
+          <li><a href="athletes.html">Football / Soccer</a></li>
+          <li><a href="athletes.html">Basketball</a></li>
+          <li><a href="athletes.html">Natation</a></li>
+          <li><a href="athletes.html">Tennis</a></li>
+          <li><a href="athletes.html">Athlétisme</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:contact@nextmoovusa.com">contact@nextmoovusa.com</a></li>
+          <li><a href="index.html#contact">Formulaire de contact</a></li>
+          <li><a href="https://www.instagram.com/nextmoov.usa/" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 NextMoov USA. Tous droits réservés.</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* CTA */
+  .temo-cta{background:linear-gradient(135deg,var(--navy),#0a0d5e);padding:96px 24px;text-align:center;color:#fff;}
+  .temo-cta-eyebrow{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+  .temo-cta-title{font-family:'Anton',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.1;margin-bottom:16px;}
+  .temo-cta-sub{color:rgba(255,255,255,.75);font-size:1.05rem;margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto;}
+  .temo-cta-btn{display:inline-block;background:var(--red);color:#fff;font-family:'Oswald',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:14px 36px;border-radius:8px;transition:background .2s,transform .2s;}
+  .temo-cta-btn:hover{background:#9a1b2b;transform:translateY(-2px);}
+
+  /* FOOTER */
+  footer{background:var(--navy);color:rgba(255,255,255,.75);padding:64px 24px 32px;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+  .footer-logo{font-family:'Anton',sans-serif;font-size:1.4rem;color:#fff;margin-bottom:12px;}
+  .footer-logo span{color:var(--gold);}
+  .footer-brand p{font-size:.9rem;line-height:1.6;max-width:260px;}
+  .footer-socials{display:flex;gap:14px;margin-top:20px;}
+  .footer-socials a{color:rgba(255,255,255,.6);transition:color .2s;}
+  .footer-socials a:hover{color:#fff;}
+  .footer-heading{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:16px;}
+  .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .footer-links a{font-size:.9rem;color:rgba(255,255,255,.6);transition:color .2s;}
+  .footer-links a:hover{color:#fff;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;font-size:.85rem;text-align:center;}
+  @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
+</style>
+
+
+<script>
+const temoignages = [
+  {
+    prenom:'Nolan', nom:'ROUSSE', sport:'Soccer', verified:true,
+    univ:'Monroe Community College, New York',
+    photo:'https://i.imgur.com/QoAtGsT.jpeg',
+    stars:5,
+    quote:"NextMoov USA a complètement changé ma trajectoire. En quelques mois, j'avais un dossier solide, des contacts aux États-Unis et une offre de Monroe CC. Je n'aurais jamais réussi ça seul. L'accompagnement est professionnel, réactif, et surtout sincère.",
+    tags:['New York','Division III','Scholarship']
+  },
+  {
+    prenom:'Pablo', nom:'CABRAL', sport:'Soccer', verified:true,
+    univ:'Mohawk Valley Community College, New York',
+    photo:'https://i.imgur.com/hNZWvfU.jpeg',
+    stars:5,
+    quote:"Ce que NextMoov m'a apporté, c'est bien plus qu'une place en université américaine. C'est une méthode, une vision, et une vraie confiance en moi pour aborder ce projet de vie. Aujourd'hui je joue et j'étudie à New York, c'est dingue.",
+    tags:['New York','NJCAA','Soccer']
+  },
+  {
+    prenom:'Luca', nom:'MOREAU-COTIN', sport:'Soccer', verified:true,
+    univ:'NEO Community College, Ohio',
+    photo:'https://i.imgur.com/yDp5ULR.jpeg',
+    stars:5,
+    quote:"Le processus est intense mais NextMoov est là à chaque étape. La préparation du highlight vidéo, les contacts avec les coachs, les démarches administratives... ils gèrent tout avec toi. Ohio, c'est ma nouvelle maison.",
+    tags:['Ohio','NJCAA','Soccer']
+  },
+  {
+    prenom:'Alexandre', nom:'DESCALZO', sport:'Soccer', verified:true,
+    univ:'NEO Community College, Ohio',
+    photo:'https://i.imgur.com/gVGYhjW.jpeg',
+    stars:5,
+    quote:"J'hésitais beaucoup au départ, je ne savais pas si c'était fait pour moi. NextMoov m'a montré que c'était possible. Aujourd'hui je partage le même campus que Luca et je vis une expérience incroyable sportivement et humainement.",
+    tags:['Ohio','NJCAA','Soccer']
+  },
+  {
+    prenom:'Iliess', nom:'BARI', sport:'Soccer', verified:true,
+    univ:'Harcum Community College, Pennsylvanie',
+    photo:'https://i.imgur.com/FkD1upj.jpeg',
+    stars:5,
+    quote:"NextMoov USA c'est du sérieux. Ils connaissent le système américain par cœur et savent exactement comment te positionner. Ma bourse couvre une grande partie de mes frais, et je joue au foot à haut niveau chaque semaine.",
+    tags:['Pennsylvanie','NJCAA','Soccer']
+  },
+  {
+    prenom:'Thomas', nom:'GIRARD', sport:'Basketball', verified:false,
+    univ:'Faulkner University, Alabama',
+    photo:'',
+    stars:5,
+    quote:"Je jouais en Espoirs Pro B et je voulais plus. NextMoov a su trouver la bonne université pour mon profil. Aujourd'hui je suis en Alabama avec une scholarship complète, je progresse chaque jour et je prépare mon avenir.",
+    tags:['Alabama','NAIA','Basketball']
+  },
+  {
+    prenom:'Inès', nom:'LAMBERT', sport:'Natation', verified:false,
+    univ:'University of Tampa, Floride',
+    photo:'',
+    stars:5,
+    quote:"Nager en NCAA, c'était mon rêve depuis gamine. NextMoov a rendu ça concret : dossier académique, vidéo de performance, contacts avec les coachs... Tout s'est enchaîné très vite. Tampa est magnifique et le niveau est incroyable.",
+    tags:['Floride','NCAA Div. II','Natation']
+  },
+  {
+    prenom:'Yanis', nom:'TORRES', sport:'Soccer', verified:false,
+    univ:'Lindsey Wilson College, Kentucky',
+    photo:'',
+    stars:4,
+    quote:"Le point fort de NextMoov c'est la transparence. Ils t'expliquent tout : les niveaux, les coûts, les réalités du quotidien en Amérique. Je suis parti en sachant exactement à quoi m'attendre. Zéro mauvaise surprise.",
+    tags:['Kentucky','NAIA','Soccer']
+  },
+  {
+    prenom:'Chloé', nom:'BERNARD', sport:'Tennis', verified:false,
+    univ:'Rollins College, Floride',
+    photo:'',
+    stars:5,
+    quote:"Classée 15/1 en France mais je ne savais pas comment accéder au tennis universitaire américain. NextMoov m'a ouvert les portes. Rollins College m'a offert une scholarship partielle et un cadre académique d'excellence.",
+    tags:['Floride','NCAA Div. II','Tennis']
+  },
+  {
+    prenom:'Kévin', nom:'MASSA', sport:'Soccer', verified:false,
+    univ:'Monroe Community College, New York',
+    photo:'',
+    stars:5,
+    quote:"Ce que j'ai apprécié c'est qu'ils ne promettent pas la lune. Ils sont honnêtes sur les chances, réalistes sur le processus. Et au final, j'ai décroché une place que je n'imaginais même pas. Merci NextMoov.",
+    tags:['New York','NJCAA','Soccer']
+  },
+  {
+    prenom:'Manon', nom:'PETIT', sport:'Natation', verified:false,
+    univ:'Barry University, Miami',
+    photo:'',
+    stars:5,
+    quote:"Miami, le soleil, le sport, les études... NextMoov a fait en sorte que tout ça devienne ma réalité. L'équipe est passionnée et ça se ressent. Ils croient vraiment au projet de chaque athlète.",
+    tags:['Floride','NCAA Div. II','Natation']
+  },
+  {
+    prenom:'Romain', nom:'CHEVALIER', sport:'Basketball', verified:false,
+    univ:'Limestone University, Caroline du Sud',
+    photo:'',
+    stars:4,
+    quote:"Le suivi post-placement c'est ce qui m'a le plus surpris. Même une fois arrivé aux États-Unis, NextMoov restait disponible pour m'aider à m'adapter. C'est un vrai accompagnement global, pas juste une mise en contact.",
+    tags:['Caroline du Sud','NCAA Div. II','Basketball']
+  }
+];
+</script>
+
+
+<script>
+let activeFilter = 'tous';
+
+function stars(n) {
+  return '★'.repeat(n) + '☆'.repeat(5 - n);
+}
+
+function renderTemos(filter) {
+  activeFilter = filter || activeFilter;
+  const grid = document.getElementById('temoGrid');
+  const noTemo = document.getElementById('noTemo');
+  const filtered = activeFilter === 'tous'
+    ? temoignages
+    : temoignages.filter(t => t.sport === activeFilter);
+
+  grid.innerHTML = '';
+
+  if (!filtered.length) {
+    noTemo.style.display = 'block';
+    return;
+  }
+  noTemo.style.display = 'none';
+
+  filtered.forEach((t, i) => {
+    const card = document.createElement('div');
+    card.className = 'temo-card fade-up' + (t.verified ? ' verified' : '');
+    card.style.animationDelay = (i * 60) + 'ms';
+
+    const photoHtml = t.photo
+      ? `<img class="temo-photo" src="${t.photo}" alt="${t.prenom} ${t.nom}" loading="lazy"/>`
+      : `<div class="temo-photo-placeholder">${t.prenom[0]}${t.nom[0]}</div>`;
+
+    card.innerHTML = `
+      <div class="temo-card-top">
+        ${photoHtml}
+        <div class="temo-author-info">
+          <span class="temo-author-name">${t.prenom} ${t.nom}</span>
+          <span class="temo-author-meta">${t.univ}</span>
+        </div>
+      </div>
+      <div class="temo-stars">${stars(t.stars)}</div>
+      <p class="temo-quote">"${t.quote}"</p>
+      <span class="temo-sport-tag">${t.sport}</span>
+    `;
+
+    card.addEventListener('click', () => openTemoModal(t));
+    grid.appendChild(card);
+  });
+
+  document.querySelectorAll('.temo-card.fade-up').forEach(el => observer.observe(el));
+}
+
+// Filter pills
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTemos(btn.dataset.filter);
+  });
+});
+
+function openTemoModal(t) {
+  const photoEl = document.getElementById('modalPhoto');
+  const photoWrap = photoEl.parentElement;
+  if (t.photo) {
+    photoEl.src = t.photo;
+    photoEl.alt = t.prenom + ' ' + t.nom;
+    photoWrap.style.display = 'block';
+  } else {
+    photoWrap.style.display = 'none';
+  }
+  document.getElementById('modalStars').textContent = stars(t.stars);
+  document.getElementById('modalQuote').textContent = '"' + t.quote + '"';
+  document.getElementById('modalAuthorName').textContent = t.prenom + ' ' + t.nom + (t.verified ? ' ✓' : '');
+  document.getElementById('modalAuthorSport').textContent = '🏅 ' + t.sport;
+  document.getElementById('modalAuthorUniv').textContent = '🎓 ' + t.univ;
+  const tagsEl = document.getElementById('modalTags');
+  tagsEl.innerHTML = t.tags.map(tag => `<span class="temo-modal-tag">${tag}</span>`).join('');
+  document.getElementById('temoModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+renderTemos('tous');
+</script>
+
+
+<script>
+// Modal close
+document.getElementById('temoModalClose').addEventListener('click', closeTemoModal);
+document.getElementById('temoModal').addEventListener('click', function(e) {
+  if (e.target === this) closeTemoModal();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeTemoModal(); });
+
+function closeTemoModal() {
+  document.getElementById('temoModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+// Init on load
+if (window.scrollY > 40) navbar.classList.add('scrolled');
+
+// Burger menu
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+if (burger && navLinks) {
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navLinks.classList.remove('open');
+  }));
+}
+
+// IntersectionObserver fade-up
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-up:not(.temo-card)').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
