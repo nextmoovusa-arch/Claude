@@ -792,58 +792,91 @@
       margin-bottom: 1.8rem;
     }
 
+    /* --- Agent card — photo + overlay hover --- */
     .agent-card {
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
+      position: relative;
       border-radius: var(--r);
-      padding: 1.8rem 1.5rem;
-      text-align: center;
-      transition: box-shadow .3s, transform .3s;
-    }
-    .agent-card:hover {
-      box-shadow: var(--shadow);
-      transform: translateY(-4px);
-    }
-
-    .agent-avatar {
-      width: 90px; height: 90px;
-      border-radius: 50%;
-      margin: 0 auto 1rem;
       overflow: hidden;
-      border: 3px solid var(--border);
-      background: linear-gradient(135deg, var(--bg-soft), #dde6ff);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2.5rem;
-      transition: border-color .3s;
+      aspect-ratio: 3/4;
+      cursor: default;
+      background: linear-gradient(135deg, #000769 0%, #1a1a6e 100%);
+      box-shadow: 0 4px 20px rgba(0,7,105,.1);
+      transition: transform .3s, box-shadow .3s;
     }
-    .agent-card:hover .agent-avatar { border-color: var(--navy); }
-    .agent-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .agent-card:hover { transform: translateY(-6px); box-shadow: 0 16px 45px rgba(0,7,105,.22); }
 
-    .agent-name {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: .2rem;
+    /* Photo de fond */
+    .agent-photo {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .55s ease, filter .55s ease;
     }
-    .agent-role {
-      font-family: 'Oswald', sans-serif;
-      font-size: .7rem;
-      font-weight: 600;
-      color: var(--red);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: .6rem;
+    .agent-card:hover .agent-photo { transform: scale(1.06); filter: brightness(.6); }
+
+    /* Placeholder initiales */
+    .agent-photo-ph {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: Anton, sans-serif;
+      font-size: 3.5rem;
+      color: rgba(255,255,255,.15);
+      letter-spacing: 3px;
+      background: linear-gradient(150deg, #000769 0%, #0a0a7a 60%, #1a1a6e 100%);
+      transition: filter .55s;
     }
-    .agent-sports {
-      font-size: .78rem;
-      color: var(--text-2);
-      margin-bottom: .7rem;
+    .agent-card:hover .agent-photo-ph { filter: brightness(.7); }
+
+    /* Chip nom/rôle toujours visible en bas */
+    .agent-chip {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 2.5rem 1.3rem .9rem;
+      background: linear-gradient(to top, rgba(0,7,105,.88) 0%, transparent 100%);
+      transition: opacity .35s;
+      z-index: 2;
     }
-    .agent-desc {
-      font-size: .83rem;
-      color: var(--text-2);
-      line-height: 1.65;
+    .agent-card:hover .agent-chip { opacity: 0; pointer-events: none; }
+    .agent-chip-name {
+      font-family: 'Oswald', sans-serif; font-size: 1.05rem;
+      font-weight: 700; color: #fff; margin-bottom: .1rem;
+    }
+    .agent-chip-role {
+      font-family: 'Oswald', sans-serif; font-size: .62rem;
+      letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase;
+    }
+
+    /* Overlay complet au hover */
+    .agent-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,7,105,.78);
+      backdrop-filter: blur(2px);
+      padding: 1.6rem 1.4rem;
+      display: flex; flex-direction: column; justify-content: center;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .4s cubic-bezier(.22,1,.36,1), transform .4s cubic-bezier(.22,1,.36,1);
+      z-index: 3;
+    }
+    .agent-card:hover .agent-overlay { opacity: 1; transform: translateY(0); }
+
+    .agent-ov-name {
+      font-family: 'Oswald', sans-serif; font-size: 1.2rem;
+      font-weight: 700; color: #fff; margin-bottom: .15rem; line-height: 1.2;
+    }
+    .agent-ov-role {
+      font-family: 'Oswald', sans-serif; font-size: .65rem;
+      letter-spacing: 2px; color: var(--gold); text-transform: uppercase;
+      margin-bottom: .8rem;
+    }
+    .agent-ov-sports {
+      font-family: 'Nunito', sans-serif; font-size: .78rem;
+      color: rgba(255,255,255,.65); margin-bottom: .9rem;
+      border-bottom: 1px solid rgba(255,255,255,.12); padding-bottom: .8rem;
+    }
+    .agent-ov-desc {
+      font-family: 'Nunito', sans-serif; font-size: .82rem;
+      color: rgba(255,255,255,.85); line-height: 1.65;
     }
 
     /* ============================================================
@@ -2731,15 +2764,33 @@
       const card = document.createElement('div');
       card.className = 'agent-card fade-up';
       card.style.transitionDelay = `${i * 0.1}s`;
-      const av = a.photo
-        ? `<img src="${escA(a.photo)}" alt="${esc(a.prenom)}" loading="lazy" onerror="this.parentElement.innerHTML='👤'">`
-        : '👤';
+
+      /* Initiales pour le placeholder */
+      const initials = (a.prenom.charAt(0) + a.nom.charAt(0)).toUpperCase();
+
+      const photoHTML = a.photo
+        ? `<img class="agent-photo" src="${escA(a.photo)}" alt="${esc(a.prenom)} ${esc(a.nom)}" loading="lazy"
+             onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'agent-photo-ph',textContent:'${initials}'}))">
+           `
+        : `<div class="agent-photo-ph">${initials}</div>`;
+
       card.innerHTML = `
-        <div class="agent-avatar">${av}</div>
-        <div class="agent-name">${esc(a.prenom)} ${esc(a.nom)}</div>
-        <div class="agent-role">${esc(a.role)}</div>
-        <div class="agent-sports" style="font-size:.75rem;color:var(--text-3);margin-bottom:.6rem;">${esc(a.sports)}</div>
-        <p class="agent-desc">${esc(a.desc)}</p>`;
+        ${photoHTML}
+
+        <!-- Chip nom/rôle visible par défaut -->
+        <div class="agent-chip">
+          <div class="agent-chip-name">${esc(a.prenom)} ${esc(a.nom)}</div>
+          <div class="agent-chip-role">${esc(a.role)}</div>
+        </div>
+
+        <!-- Overlay complet au hover -->
+        <div class="agent-overlay">
+          <div class="agent-ov-name">${esc(a.prenom)} ${esc(a.nom)}</div>
+          <div class="agent-ov-role">${esc(a.role)}</div>
+          ${a.sports ? `<div class="agent-ov-sports">${esc(a.sports)}</div>` : ''}
+          ${a.desc   ? `<p class="agent-ov-desc">${esc(a.desc)}</p>` : ''}
+        </div>`;
+
       grid.appendChild(card);
     });
     observeFadeUps();
