@@ -899,6 +899,272 @@
       .modal { padding: 1.5rem; }
       .modal-ath-header { flex-direction: column; align-items: center; text-align: center; }
     }
+
+    /* ============================================================
+       SECTION TÉMOIGNAGES — Carrousel compact
+    ============================================================ */
+    #temoignages {
+      padding: 5rem 0;
+      background: var(--bg-soft);
+      overflow: hidden;
+    }
+
+    .temo-outer {
+      overflow: hidden;
+      margin: 0 -1rem;
+      padding: 0 1rem;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .temo-outer:active { cursor: grabbing; }
+
+    .temo-track {
+      display: flex;
+      gap: 1.2rem;
+      transition: transform .5s cubic-bezier(.22,1,.36,1);
+      will-change: transform;
+    }
+
+    .temo-card {
+      min-width: calc(33.333% - .8rem);
+      flex-shrink: 0;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+      transition: box-shadow .3s, border-color .3s;
+    }
+    .temo-card:hover { box-shadow: var(--shadow); border-color: rgba(0,7,105,.18); }
+
+    .temo-top {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+    }
+    .temo-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: var(--bg-soft);
+      border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+    }
+    .temo-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .temo-author-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: .88rem; font-weight: 700;
+      color: var(--navy);
+    }
+    .temo-author-detail {
+      font-size: .72rem; color: var(--text-3);
+      margin-top: .1rem;
+    }
+
+    .temo-stars { color: #F59E0B; font-size: .85rem; letter-spacing: 2px; }
+
+    .temo-text {
+      font-size: .84rem;
+      line-height: 1.72;
+      color: var(--text-2);
+      font-style: italic;
+      flex: 1;
+    }
+
+    .carousel-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .8rem;
+      margin-top: 1.6rem;
+    }
+    .caro-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--navy);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: all .2s;
+    }
+    .caro-btn:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+    .caro-dots { display: flex; gap: .4rem; }
+    .caro-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: all .25s;
+      border: none;
+    }
+    .caro-dot.active { background: var(--navy); transform: scale(1.35); }
+
+    /* ============================================================
+       SECTION VIDÉOS — Carrousel zoom central
+    ============================================================ */
+    #videos {
+      padding: 5rem 0;
+      background: var(--navy);
+      overflow: hidden;
+    }
+
+    .vid-stage {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1rem 0 1.5rem;
+      overflow: hidden;
+    }
+
+    .vid-card {
+      flex-shrink: 0;
+      width: 220px;
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 9/16;
+      position: relative;
+      cursor: pointer;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      transition: transform .45s cubic-bezier(.22,1,.36,1),
+                  opacity  .45s ease,
+                  box-shadow .3s;
+    }
+    .vid-card.center-card {
+      transform: scale(1.12);
+      opacity: 1;
+      z-index: 2;
+      box-shadow: 0 16px 50px rgba(0,0,0,.45);
+      border-color: rgba(255,255,255,.25);
+    }
+    .vid-card.side-card {
+      transform: scale(.82);
+      opacity: .5;
+      z-index: 1;
+    }
+    .vid-card.hidden-card {
+      transform: scale(.68);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .vid-thumb-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s;
+    }
+    .vid-card.center-card:hover .vid-thumb-img { transform: scale(1.04); }
+
+    .vid-thumb-ph {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      background: linear-gradient(135deg, rgba(0,7,105,.7), rgba(26,26,46,.9));
+    }
+
+    .vid-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.75) 0%, transparent 50%);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .vid-play {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.9);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--navy);
+      transition: transform .2s, background .2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,.3);
+    }
+    .vid-card.center-card:hover .vid-play { transform: scale(1.1); background: #fff; }
+
+    .vid-platform {
+      position: absolute; top: .6rem; right: .6rem;
+      padding: .2rem .55rem;
+      border-radius: 4px;
+      font-family: 'Oswald', sans-serif;
+      font-size: .6rem; font-weight: 600;
+      color: #fff; letter-spacing: .5px;
+    }
+    .plat-ig  { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+    .plat-tt  { background: #000; border: 1px solid rgba(255,255,255,.3); }
+
+    .vid-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: .6rem .8rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: .72rem; font-weight: 500;
+      color: rgba(255,255,255,.88);
+      line-height: 1.3;
+    }
+
+    /* Flèches latérales du carrousel vidéo */
+    .vid-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      z-index: 10;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.2);
+      color: #fff; font-size: .9rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .vid-arrow:hover { background: rgba(255,255,255,.25); }
+    .vid-arrow-prev { left: .5rem; }
+    .vid-arrow-next { right: .5rem; }
+
+    /* Lien Instagram */
+    .ig-link {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: .78rem; font-weight: 600;
+      color: rgba(255,255,255,.65);
+      letter-spacing: 1px;
+      text-decoration: none;
+      margin-top: .5rem;
+      transition: color .2s;
+    }
+    .ig-link:hover { color: #fff; }
+
+    /* Modale vidéo */
+    .modal-video { max-width: 420px; padding: 0; background: #000; overflow: hidden; }
+    .modal-video .modal-close {
+      z-index: 5; background: rgba(0,0,0,.5);
+      border-radius: 50%; width: 30px; height: 30px;
+      display: flex; align-items: center; justify-content: center;
+      top: .5rem; right: .5rem; color: #fff;
+    }
+    #videoEmbed { width: 100%; aspect-ratio: 9/16; }
+    #videoEmbed iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ============================================================
+       RESPONSIVE — Étape 4
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .temo-card { min-width: calc(50% - .6rem); }
+    }
+    @media (max-width: 768px) {
+      .temo-card  { min-width: calc(85% - .6rem); }
+      .vid-card   { width: 160px; }
+    }
+    @media (max-width: 480px) {
+      .vid-card { width: 130px; }
+    }
   </style>
 </head>
 <body>
@@ -1185,6 +1451,99 @@
   <div class="modal">
     <button class="modal-close" onclick="closeModal('modalAth')" aria-label="Fermer">×</button>
     <div id="modalAthContent"></div>
+  </div>
+</div>
+
+<!-- ================================================================
+     SECTION TÉMOIGNAGES
+================================================================ -->
+<section id="temoignages" aria-labelledby="temo-title">
+  <div class="container">
+    <p class="section-eyebrow eyebrow-navy fade-up">Ce qu'ils disent</p>
+    <h2 class="section-title fade-up" id="temo-title">ILS L'ONT VÉCU. ILS EN PARLENT.</h2>
+    <div class="accent-line fade-up"></div>
+    <p class="section-sub fade-up">Des mots authentiques. Des expériences réelles.</p>
+
+    <div class="temo-outer fade-up" id="temoOuter">
+      <div class="temo-track" id="temoTrack"></div>
+    </div>
+
+    <div class="carousel-nav">
+      <button class="caro-btn" id="temoPrev" aria-label="Précédent">&#8592;</button>
+      <div class="caro-dots" id="temoDots"></div>
+      <button class="caro-btn" id="temoNext" aria-label="Suivant">&#8594;</button>
+    </div>
+
+    <button class="admin-btn" style="margin-top:1.2rem;" onclick="askAdmin('adminPanelTemo')">⚙ Admin</button>
+    <div class="admin-panel" id="adminPanelTemo">
+      <div class="admin-panel-title">Ajouter un témoignage</div>
+      <div class="form-grid-2">
+        <div class="fg"><label>Prénom *</label><input id="tPrenom" placeholder="Sofia"></div>
+        <div class="fg"><label>Sport</label><input id="tSport" placeholder="Natation"></div>
+        <div class="fg"><label>Université</label><input id="tUniv" placeholder="University of Texas"></div>
+        <div class="fg"><label>Note</label>
+          <select id="tNote">
+            <option value="5">★★★★★</option>
+            <option value="4">★★★★☆</option>
+            <option value="3">★★★☆☆</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label>Témoignage *</label><textarea id="tTexte" placeholder="Son témoignage authentique..."></textarea></div>
+      <div class="fg"><label>URL Photo</label><input id="tPhoto" type="url" placeholder="https://..."></div>
+      <button class="btn btn-navy" onclick="addTemo()" style="margin-top:.4rem;">Ajouter</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION VIDÉOS — Carrousel zoom central
+================================================================ -->
+<section id="videos" aria-labelledby="videos-title">
+  <div class="container">
+    <p class="section-eyebrow eyebrow-white fade-up">Coulisses du programme</p>
+    <h2 class="section-title fade-up" id="videos-title" style="color:#fff;">DANS LES COULISSES</h2>
+    <div class="accent-line accent-line-red fade-up"></div>
+    <p class="section-sub section-sub-white fade-up">
+      Authentique, sans filtre — directement depuis notre Instagram.
+    </p>
+
+    <div style="position:relative;" class="fade-up">
+      <button class="vid-arrow vid-arrow-prev" id="vidPrev" aria-label="Vidéo précédente">&#8592;</button>
+      <div class="vid-stage" id="vidStage"></div>
+      <button class="vid-arrow vid-arrow-next" id="vidNext" aria-label="Vidéo suivante">&#8594;</button>
+    </div>
+
+    <div style="text-align:center;margin-top:.8rem;">
+      <a href="https://www.instagram.com/nextmoovusa" target="_blank" rel="noopener noreferrer" class="ig-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+        @nextmoovusa sur Instagram
+      </a>
+    </div>
+
+    <button class="admin-btn" style="margin-top:1.2rem;" onclick="askAdmin('adminPanelVideos')">⚙ Admin</button>
+    <div class="admin-panel" id="adminPanelVideos">
+      <div class="admin-panel-title">Ajouter une vidéo</div>
+      <div class="form-grid-2">
+        <div class="fg"><label>Légende *</label><input id="vCaption" placeholder="Premier jour sur le campus..."></div>
+        <div class="fg"><label>Plateforme</label>
+          <select id="vPlatform"><option value="instagram">Instagram</option><option value="tiktok">TikTok</option></select>
+        </div>
+      </div>
+      <div class="fg"><label>URL embed (lien Instagram/TikTok)</label><input id="vUrl" type="url" placeholder="https://www.instagram.com/p/CODE/embed/"></div>
+      <div class="fg"><label>URL miniature</label><input id="vThumb" type="url" placeholder="https://..."></div>
+      <button class="btn btn-navy" onclick="addVideo()" style="margin-top:.4rem;">Ajouter</button>
+    </div>
+  </div>
+</section>
+
+<!-- Modale vidéo -->
+<div class="modal-overlay" id="modalVideo" onclick="if(event.target===this)closeModal('modalVideo')" role="dialog" aria-modal="true" aria-label="Lecteur vidéo">
+  <div class="modal modal-video">
+    <button class="modal-close" onclick="closeModal('modalVideo')" aria-label="Fermer">×</button>
+    <div id="videoEmbed"></div>
   </div>
 </div>
 
@@ -1482,6 +1841,207 @@
   /* --- Init étape 3 --- */
   renderAthletes();
   renderAgents();
+
+  /* ================================================================
+     ÉTAPE 4 — TÉMOIGNAGES + VIDÉOS
+  ================================================================ */
+
+  /* ---------- TÉMOIGNAGES ---------- */
+  const defaultTemos = [
+    { prenom:'Sofia',   sport:'Natation',    univ:'University of Texas',
+      texte:'Je ne savais même pas par où commencer. Mon agent NextMoov a tout géré : contacts coachs, visa, logement. Je me suis concentrée sur ma performance. Résultat : scholarship complète Division I.', note:5, photo:'' },
+    { prenom:'Maxime',  sport:'Athlétisme',  univ:'Georgia Tech',
+      texte:'Ce qui m\'a frappé dès le début, c\'est l\'honnêteté de mon agent. Il m\'a dit exactement ce qu\'il fallait travailler. On l\'a fait, et on y est arrivé. Sans fausse promesse.', note:5, photo:'' },
+    { prenom:'Inès',    sport:'Volleyball',  univ:'Penn State',
+      texte:'Je suis en 3ème année à Penn State. Mon agent est encore là — il appelle, suit mes résultats, gère les situations difficiles. 4 ans d\'accompagnement, c\'est une réalité que je vis.', note:5, photo:'' },
+    { prenom:'Antoine', sport:'Baseball',    univ:'Florida State',
+      texte:'La barrière de la langue, les règles NCAA, les délais de recrutement... Tout ça m\'aurait perdu tout seul. Avec NextMoov, j\'avais un guide à chaque carrefour.', note:5, photo:'' }
+  ];
+
+  let temosData = load('nm_temos', defaultTemos);
+  let temoIdx = 0, temoPaused = false, temoTimer = null;
+
+  function temoVisible() { return window.innerWidth <= 1024 ? (window.innerWidth <= 768 ? 1 : 2) : 3; }
+  function temoMax()     { return Math.max(0, temosData.length - temoVisible()); }
+
+  function renderTemos() {
+    const track = document.getElementById('temoTrack');
+    const dots  = document.getElementById('temoDots');
+    if (!track) return;
+    track.innerHTML = '';
+    dots.innerHTML  = '';
+
+    temosData.forEach((t, i) => {
+      const stars = '★'.repeat(+t.note) + '☆'.repeat(5 - +t.note);
+      const av = t.photo
+        ? `<img src="${escA(t.photo)}" alt="${esc(t.prenom)}" loading="lazy" onerror="this.parentElement.innerHTML='🏅'">`
+        : '🏅';
+      const card = document.createElement('div');
+      card.className = 'temo-card';
+      card.innerHTML = `
+        <div class="temo-top">
+          <div class="temo-avatar">${av}</div>
+          <div>
+            <div class="temo-author-name">${esc(t.prenom)}</div>
+            <div class="temo-author-detail">${esc(t.sport)} · ${esc(t.univ)}</div>
+          </div>
+        </div>
+        <div class="temo-stars">${stars}</div>
+        <p class="temo-text">"${esc(t.texte)}"</p>`;
+      track.appendChild(card);
+
+      const dot = document.createElement('button');
+      dot.className = 'caro-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Témoignage ${i+1}`);
+      dot.addEventListener('click', () => gotoTemo(i));
+      dots.appendChild(dot);
+    });
+    gotoTemo(0);
+  }
+
+  function gotoTemo(idx) {
+    temoIdx = Math.max(0, Math.min(idx, temoMax()));
+    const track = document.getElementById('temoTrack');
+    const cards = track.querySelectorAll('.temo-card');
+    if (!cards.length) return;
+    const gap = 19.2;
+    track.style.transform = `translateX(-${temoIdx * (cards[0].offsetWidth + gap)}px)`;
+    document.querySelectorAll('.caro-dot').forEach((d,i) => d.classList.toggle('active', i === temoIdx));
+  }
+
+  document.getElementById('temoPrev').addEventListener('click', () => {
+    gotoTemo(temoIdx <= 0 ? temoMax() : temoIdx - 1);
+  });
+  document.getElementById('temoNext').addEventListener('click', () => {
+    gotoTemo(temoIdx >= temoMax() ? 0 : temoIdx + 1);
+  });
+
+  const temoOuter = document.getElementById('temoOuter');
+  temoOuter.addEventListener('mouseenter', () => { temoPaused = true; });
+  temoOuter.addEventListener('mouseleave', () => { temoPaused = false; });
+
+  let tsTouchX = 0;
+  temoOuter.addEventListener('touchstart', e => { tsTouchX = e.touches[0].clientX; }, {passive:true});
+  temoOuter.addEventListener('touchend',   e => {
+    const d = tsTouchX - e.changedTouches[0].clientX;
+    if (Math.abs(d) > 45) d > 0 ? gotoTemo(temoIdx+1) : gotoTemo(temoIdx-1);
+  });
+
+  temoTimer = setInterval(() => { if(!temoPaused) gotoTemo(temoIdx >= temoMax() ? 0 : temoIdx+1); }, 4500);
+  window.addEventListener('resize', () => gotoTemo(0));
+
+  function addTemo() {
+    const prenom = document.getElementById('tPrenom').value.trim();
+    const texte  = document.getElementById('tTexte').value.trim();
+    if (!prenom || !texte) { alert('Prénom et témoignage requis.'); return; }
+    temosData.push({
+      prenom,
+      sport: document.getElementById('tSport').value.trim() || 'Sport',
+      univ:  document.getElementById('tUniv').value.trim()  || 'Université',
+      texte,
+      note:  +document.getElementById('tNote').value || 5,
+      photo: document.getElementById('tPhoto').value.trim()
+    });
+    save('nm_temos', temosData);
+    renderTemos();
+    document.getElementById('adminPanelTemo').style.display = 'none';
+    ['tPrenom','tSport','tUniv','tTexte','tPhoto'].forEach(id => document.getElementById(id).value = '');
+  }
+
+  /* ---------- VIDÉOS ---------- */
+  const defaultVideos = [
+    { caption:'Premier jour sur le campus',        platform:'instagram', url:'', thumb:'' },
+    { caption:'Entraînement pré-saison NCAA',       platform:'tiktok',    url:'', thumb:'' },
+    { caption:'Interview après la 1ère victoire',  platform:'instagram', url:'', thumb:'' },
+    { caption:'La vie sur un campus américain',    platform:'tiktok',    url:'', thumb:'' },
+    { caption:'Remise de diplôme — Promo 2024',    platform:'instagram', url:'', thumb:'' },
+    { caption:'Coulisses d\'un training Division I',platform:'tiktok',   url:'', thumb:'' }
+  ];
+
+  let videosData = load('nm_videos', defaultVideos);
+  let vidIdx = 0;
+
+  function renderVideos() {
+    const stage = document.getElementById('vidStage');
+    if (!stage) return;
+    stage.innerHTML = '';
+    videosData.forEach((v, i) => {
+      const card = document.createElement('div');
+      card.className = 'vid-card';
+      const platClass = v.platform === 'tiktok' ? 'plat-tt' : 'plat-ig';
+      const platLabel = v.platform === 'tiktok' ? 'TikTok' : 'Instagram';
+      const thumbHTML = v.thumb
+        ? `<img src="${escA(v.thumb)}" alt="${esc(v.caption)}" class="vid-thumb-img" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+          + `<div class="vid-thumb-ph" style="display:none">${v.platform==='tiktok'?'🎵':'📸'}</div>`
+        : `<div class="vid-thumb-ph">${v.platform==='tiktok'?'🎵':'📸'}</div>`;
+      card.innerHTML = `
+        ${thumbHTML}
+        <div class="vid-overlay"><div class="vid-play">▶</div></div>
+        <span class="vid-platform ${platClass}">${platLabel}</span>
+        <div class="vid-caption">${esc(v.caption)}</div>`;
+      card.addEventListener('click', () => { if(card.classList.contains('center-card')) openVidModal(v.url); else gotoVid(i); });
+      stage.appendChild(card);
+    });
+    updateVidStage();
+  }
+
+  function updateVidStage() {
+    const cards = document.querySelectorAll('#vidStage .vid-card');
+    const n = cards.length;
+    if (!n) return;
+    cards.forEach((c, i) => {
+      c.classList.remove('center-card','side-card','hidden-card');
+      const diff = ((i - vidIdx) % n + n) % n;
+      const rdiff = ((vidIdx - i) % n + n) % n;
+      const d = Math.min(diff, rdiff);
+      if      (d === 0) c.classList.add('center-card');
+      else if (d === 1) c.classList.add('side-card');
+      else              c.classList.add('hidden-card');
+    });
+  }
+
+  function gotoVid(i) {
+    vidIdx = ((i % videosData.length) + videosData.length) % videosData.length;
+    updateVidStage();
+  }
+
+  document.getElementById('vidPrev').addEventListener('click', () => gotoVid(vidIdx - 1));
+  document.getElementById('vidNext').addEventListener('click', () => gotoVid(vidIdx + 1));
+
+  setInterval(() => gotoVid(vidIdx + 1), 3500);
+
+  function openVidModal(url) {
+    const embed = document.getElementById('videoEmbed');
+    if (url && url.trim()) {
+      embed.innerHTML = `<iframe src="${escA(url)}" allowfullscreen allow="autoplay;encrypted-media"></iframe>`;
+    } else {
+      embed.innerHTML = `<div style="aspect-ratio:9/16;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(135deg,#000769,#1a1a2e);gap:.8rem;padding:2rem;text-align:center;">
+        <span style="font-size:2.5rem">📱</span>
+        <p style="font-family:Oswald,sans-serif;color:#C0A060;letter-spacing:2px;font-size:1rem;">VIDÉO NON DISPONIBLE</p>
+        <a href="https://www.instagram.com/nextmoovusa" target="_blank" style="font-family:Oswald,sans-serif;font-size:.8rem;color:rgba(255,255,255,.6);letter-spacing:1px;">Voir sur @nextmoovusa</a>
+      </div>`;
+    }
+    openModal('modalVideo');
+  }
+
+  function addVideo() {
+    const caption = document.getElementById('vCaption').value.trim();
+    if (!caption) { alert('Légende requise.'); return; }
+    videosData.push({
+      caption,
+      platform: document.getElementById('vPlatform').value,
+      url:   document.getElementById('vUrl').value.trim(),
+      thumb: document.getElementById('vThumb').value.trim()
+    });
+    save('nm_videos', videosData);
+    renderVideos();
+    document.getElementById('adminPanelVideos').style.display = 'none';
+    ['vCaption','vUrl','vThumb'].forEach(id => document.getElementById(id).value = '');
+  }
+
+  /* --- Init étape 4 --- */
+  renderTemos();
+  renderVideos();
 </script>
 </body>
 </html>
