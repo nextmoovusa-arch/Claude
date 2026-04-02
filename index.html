@@ -394,7 +394,7 @@
        SECTION APPROCHE
     ============================================================ */
     #approche {
-      padding: 5rem 0;
+      padding: 7rem 0;
       background: var(--bg);
     }
 
@@ -419,10 +419,34 @@
       border-color: rgba(0,7,105,.2);
     }
     .pillar-icon {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      display: block;
+      width: 64px; height: 64px;
+      margin: 0 auto 1.2rem;
+      display: flex; align-items: center; justify-content: center;
     }
+    .pillar-svg { width: 48px; height: 48px; overflow: visible; }
+    .pillar-card:hover .pillar-svg { filter: drop-shadow(0 4px 12px rgba(0,7,105,.18)); }
+
+    /* Pulse — icon personnalisé */
+    @keyframes pi-pulse {
+      0%   { r: 22; opacity: .35; stroke-width: 1; }
+      60%  { r: 30; opacity: 0;   stroke-width: .5; }
+      100% { r: 30; opacity: 0; }
+    }
+    .pi-pulse { animation: pi-pulse 2.8s ease-out infinite; transform-origin: center; }
+
+    /* Check draw — icon honnêteté */
+    @keyframes pi-check {
+      from { stroke-dashoffset: 30; }
+      to   { stroke-dashoffset: 0; }
+    }
+    .pi-check { animation: pi-check 1s cubic-bezier(.22,1,.36,1) forwards .4s; }
+
+    /* Float — icon 4 ans */
+    @keyframes pi-float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-4px); }
+    }
+    .pi-float { animation: pi-float 3.2s ease-in-out infinite; transform-origin: center; }
     .pillar-title {
       font-family: 'Oswald', sans-serif;
       font-size: 1.15rem;
@@ -471,7 +495,7 @@
        SECTION TIMELINE — ANNÉE 0 → 4
     ============================================================ */
     #programme {
-      padding: 5rem 0;
+      padding: 7rem 0;
       background: var(--navy);
       color: #fff;
     }
@@ -578,7 +602,7 @@
        SECTION ATHLÈTES
     ============================================================ */
     #athletes {
-      padding: 5rem 0;
+      padding: 7rem 0;
       background: var(--bg-soft);
     }
 
@@ -662,7 +686,7 @@
        SECTION AGENTS
     ============================================================ */
     #agents {
-      padding: 5rem 0;
+      padding: 7rem 0;
       background: var(--bg);
     }
 
@@ -906,7 +930,7 @@
        SECTION TÉMOIGNAGES — Carrousel compact
     ============================================================ */
     #temoignages {
-      padding: 5rem 0;
+      padding: 7rem 0;
       background: var(--bg-soft);
       overflow: hidden;
     }
@@ -1014,7 +1038,7 @@
        SECTION VIDÉOS — Carrousel zoom central
     ============================================================ */
     #videos {
-      padding: 5rem 0;
+      padding: 7rem 0;
       background: var(--navy);
       overflow: hidden;
     }
@@ -1173,7 +1197,7 @@
     ============================================================ */
 
     /* --- Forfait --- */
-    #forfait { background: var(--bg); }
+    #forfait { background: var(--bg); padding: 7rem 0; }
     .forfait-wrapper {
       display: grid;
       grid-template-columns: 1fr 1.4fr;
@@ -1280,7 +1304,7 @@
     .forfait-annee0 strong { color: var(--gold); }
 
     /* --- Sports --- */
-    #sports { background: var(--bg-soft); }
+    #sports { background: var(--bg-soft); padding: 7rem 0; }
     .sports-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
@@ -1312,7 +1336,9 @@
     .sport-genders { font-family: Nunito, sans-serif; font-size: .72rem; color: var(--text-3); margin-top: .25rem; }
 
     /* --- Showcase --- */
-    #showcase { background: var(--bg); }
+    #showcase { background: var(--bg); padding: 7rem 0; }
+    /* --- Contact --- */
+    #contact  { padding: 7rem 0; }
     .showcase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.4rem; }
     .showcase-card {
       border: 1px solid var(--border);
@@ -1430,7 +1456,6 @@
       color: #fff;
       margin-bottom: .6rem;
     }
-    .footer-brand-logo span { color: var(--gold); }
     .footer-tagline {
       font-size: .85rem;
       color: rgba(255,255,255,.55);
@@ -1674,11 +1699,11 @@
 
     <h1 class="hero-title">
       <span class="line">
-        <span class="word c-white" style="animation-delay:.5s">CHAQUE</span>&thinsp;
+        <span class="word c-white" style="animation-delay:.5s">CHAQUE</span>
         <span class="word c-white" style="animation-delay:.65s">ATHLÈTE</span>
       </span>
       <span class="line">
-        <span class="word c-white" style="animation-delay:.8s">MÉRITE</span>&thinsp;
+        <span class="word c-white" style="animation-delay:.8s">MÉRITE</span>
         <span class="word c-red"   style="animation-delay:.95s">SA CHANCE</span>
       </span>
     </h1>
@@ -1718,17 +1743,38 @@
 
     <div class="pillars-grid">
       <div class="pillar-card fade-up" style="transition-delay:.1s">
-        <span class="pillar-icon">🎯</span>
+        <div class="pillar-icon" aria-hidden="true">
+          <svg class="pillar-svg" viewBox="0 0 48 48" fill="none">
+            <circle class="pi-pulse" cx="24" cy="24" r="22" stroke="#000769" stroke-width="1" fill="none"/>
+            <circle cx="24" cy="17" r="7" fill="#000769"/>
+            <path d="M12 40c0-6.627 5.373-12 12-12s12 5.373 12 12" fill="#000769"/>
+            <circle cx="33" cy="13" r="5" fill="#B22234"/>
+            <path d="M31 13l1.5 1.5 3-3" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
         <div class="pillar-title">Accompagnement Personnalisé</div>
         <p class="pillar-text">Pas de traitement en masse. Chaque athlète est unique, chaque parcours est construit sur mesure. Ton agent connaît ton nom, ton histoire, tes objectifs.</p>
       </div>
       <div class="pillar-card fade-up" style="transition-delay:.2s">
-        <span class="pillar-icon">🤝</span>
+        <div class="pillar-icon" aria-hidden="true">
+          <svg class="pillar-svg" viewBox="0 0 48 48" fill="none">
+            <path d="M24 5L42 12v12c0 10.5-8.5 19.5-18 22C14.5 43.5 6 34.5 6 24V12Z" fill="#000769" fill-opacity=".1" stroke="#000769" stroke-width="1.5" stroke-linejoin="round"/>
+            <path class="pi-check" d="M15 24l7 7 11-13" stroke="#000769" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="30" stroke-dashoffset="30"/>
+          </svg>
+        </div>
         <div class="pillar-title">Honnêteté &amp; Transparence</div>
         <p class="pillar-text">Nous te disons la vérité sur ton niveau, tes chances réelles et les étapes nécessaires. Pas pour décourager — pour construire sur du solide, pas sur des illusions.</p>
       </div>
       <div class="pillar-card fade-up" style="transition-delay:.3s">
-        <span class="pillar-icon">🎓</span>
+        <div class="pillar-icon" aria-hidden="true">
+          <svg class="pillar-svg pi-float" viewBox="0 0 48 48" fill="none">
+            <rect x="7" y="13" width="34" height="26" rx="4" fill="#000769" fill-opacity=".1" stroke="#000769" stroke-width="1.5"/>
+            <rect x="7" y="13" width="34" height="10" rx="4" fill="#000769"/>
+            <line x1="16" y1="9"  x2="16" y2="17" stroke="#000769" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="32" y1="9"  x2="32" y2="17" stroke="#000769" stroke-width="2.5" stroke-linecap="round"/>
+            <text x="24" y="35" font-family="Oswald,sans-serif" font-size="9" fill="#000769" text-anchor="middle" font-weight="700">4 ANS</text>
+          </svg>
+        </div>
         <div class="pillar-title">Sur Place Pendant 4 Ans</div>
         <p class="pillar-text">Sportif, académique, personnel. On est là du 1er jour jusqu'au diplôme. Ton intégration nous importe autant que tes résultats sur le terrain.</p>
       </div>
@@ -2124,8 +2170,10 @@
         <p class="contact-info-title">Tu as le niveau ?<br><span>Fais-le savoir.</span></p>
         <p>Remplis le formulaire, un agent NextMoov USA te contacte dans les 48h pour une évaluation gratuite de ton profil sportif et académique.</p>
         <div class="contact-detail"><span class="contact-detail-icon">📍</span> France / Europe</div>
-        <div class="contact-detail"><span class="contact-detail-icon">📧</span> contact@nextmoovusa.com</div>
-        <div class="contact-detail"><span class="contact-detail-icon">📱</span> @nextmoovusa</div>
+        <div class="contact-detail"><span class="contact-detail-icon">📧</span> nextmoovusa@gmail.com</div>
+        <div class="contact-detail"><span class="contact-detail-icon">📲</span> WhatsApp : 06 32 48 86 33</div>
+        <div class="contact-detail"><span class="contact-detail-icon">📸</span> Instagram : @nextmoovusa</div>
+        <div class="contact-detail"><span class="contact-detail-icon">🎵</span> TikTok : @nextmoovusa</div>
         <div class="contact-detail"><span class="contact-detail-icon">⏱</span> Réponse sous 48h</div>
       </div>
 
@@ -2151,11 +2199,12 @@
     <div class="footer-grid">
 
       <div>
-        <div class="footer-brand-logo">NEXT<span>MOOV</span> USA</div>
+        <div class="footer-brand-logo">NEXTMOOV USA</div>
         <p class="footer-tagline">L'agence de recrutement sportif universitaire américain qui t'accompagne du premier jour jusqu'au diplôme. Honnêteté totale. Résultats concrets.</p>
         <div class="footer-socials">
           <a href="https://www.instagram.com/nextmoovusa" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram">📸</a>
           <a href="https://www.tiktok.com/@nextmoovusa" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="TikTok">🎵</a>
+          <a href="https://wa.me/33632488633" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="WhatsApp">💬</a>
         </div>
       </div>
 
@@ -2185,9 +2234,10 @@
       <div>
         <div class="footer-col-title">Informations</div>
         <ul class="footer-links">
-          <li><a href="mailto:contact@nextmoovusa.com">contact@nextmoovusa.com</a></li>
-          <li><a href="https://www.instagram.com/nextmoovusa" target="_blank" rel="noopener noreferrer">@nextmoovusa</a></li>
-          <li><span style="cursor:default;">France / Europe</span></li>
+          <li><a href="mailto:nextmoovusa@gmail.com">nextmoovusa@gmail.com</a></li>
+          <li><a href="https://wa.me/33632488633" target="_blank" rel="noopener noreferrer">WhatsApp : 06 32 48 86 33</a></li>
+          <li><a href="https://www.instagram.com/nextmoovusa" target="_blank" rel="noopener noreferrer">Instagram : @nextmoovusa</a></li>
+          <li><a href="https://www.tiktok.com/@nextmoovusa" target="_blank" rel="noopener noreferrer">TikTok : @nextmoovusa</a></li>
           <li><span style="cursor:default;">20 places / agent / an</span></li>
         </ul>
       </div>
@@ -2195,7 +2245,7 @@
     </div>
 
     <div class="footer-bottom">
-      <span>© 2025 NextMoov USA. Tous droits réservés.</span>
+      <span>© 2026 NEXTMOOV USA. Tous droits réservés.</span>
       <span>
         <button class="footer-admin-link" onclick="openAdminPage()" style="background:none;border:none;color:inherit;font-family:inherit;font-size:inherit;cursor:pointer;">⚙ Admin</button>
       </span>
