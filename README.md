@@ -1,0 +1,5 @@
+![Pablo C photo](https://github.com/user-attachments/assets/c0304ef0-8a37-4009-ac7f-6ef7fd16deca)
+![Nolan image](https://github.com/u![Nell photo](https://github.com/user-attachments/assets/a8a2e211-f5c2-40c5-9c38-9556147868b6)
+![Luca photo](https://github.com/user-attachments/assets/07f87d05-7f97-457f-a440-2e9fdfd58338)
+![Iliess image](https://github.com/user-attachments/assets/2338c793-ebbd-44b7-8d81-1abaf9982642)
+![Alex image](https://github.com/user-attachments/assets/ccbe905c-b175-4642-aef8-b24a5f982b87)
