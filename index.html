@@ -215,8 +215,10 @@
       white-space: nowrap;
     }
     #navbar.scrolled .nav-menu a { color: var(--text-2); }
-    .nav-menu a:hover { color: #fff; }
-    #navbar.scrolled .nav-menu a:hover { color: var(--navy); }
+    .nav-menu a:hover,
+    .nav-menu a.active { color: #fff; }
+    #navbar.scrolled .nav-menu a:hover,
+    #navbar.scrolled .nav-menu a.active { color: var(--navy); font-weight: 600; }
 
     .nav-cta {
       background: var(--red) !important;
@@ -1403,6 +1405,218 @@
       .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     }
     @media (max-width: 480px) { .sports-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ============================================================
+       ÉTAPE 6 — Footer + Admin Dashboard
+    ============================================================ */
+
+    /* --- Footer --- */
+    #footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.75);
+      padding: 4rem 0 0;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
+    .footer-brand-logo {
+      font-family: Anton, sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      color: #fff;
+      margin-bottom: .6rem;
+    }
+    .footer-brand-logo span { color: var(--gold); }
+    .footer-tagline {
+      font-size: .85rem;
+      color: rgba(255,255,255,.55);
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      font-family: Nunito, sans-serif;
+    }
+    .footer-socials { display: flex; gap: .6rem; }
+    .footer-social {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+    .footer-social:hover { background: var(--gold); transform: translateY(-2px); }
+    .footer-col-title {
+      font-family: Oswald, sans-serif;
+      font-size: .8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .45rem; }
+    .footer-links a {
+      font-family: Nunito, sans-serif;
+      font-size: .85rem;
+      color: rgba(255,255,255,.6);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 0;
+      font-size: .75rem;
+      color: rgba(255,255,255,.35);
+      font-family: Nunito, sans-serif;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .footer-bottom a { color: rgba(255,255,255,.35); text-decoration: none; }
+    .footer-bottom a:hover { color: rgba(255,255,255,.7); }
+    .footer-admin-link {
+      cursor: pointer;
+      opacity: .4;
+      transition: opacity .2s;
+      font-size: .7rem;
+      letter-spacing: .5px;
+    }
+    .footer-admin-link:hover { opacity: 1; }
+
+    /* --- Admin Dashboard page --- */
+    #adminPage {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #f0f4ff;
+      z-index: 2000;
+      overflow-y: auto;
+    }
+    #adminPage.open { display: block; }
+    .adm-header {
+      background: var(--navy);
+      color: #fff;
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .adm-header-title { font-family: Anton, sans-serif; font-size: 1.2rem; letter-spacing: 2px; }
+    .adm-header-title span { color: var(--gold); }
+    .adm-close {
+      background: none;
+      border: 1px solid rgba(255,255,255,.3);
+      color: #fff;
+      border-radius: 6px;
+      padding: .3rem .8rem;
+      cursor: pointer;
+      font-family: Oswald, sans-serif;
+      font-size: .8rem;
+      letter-spacing: 1px;
+      transition: background .2s;
+    }
+    .adm-close:hover { background: rgba(255,255,255,.1); }
+    .adm-body { padding: 2rem; max-width: 1100px; margin: 0 auto; }
+    .adm-stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .adm-stat {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+    .adm-stat-num {
+      font-family: Anton, sans-serif;
+      font-size: 2rem;
+      color: var(--navy);
+      line-height: 1;
+    }
+    .adm-stat-label {
+      font-family: Oswald, sans-serif;
+      font-size: .7rem;
+      letter-spacing: 1.5px;
+      color: var(--text-3);
+      text-transform: uppercase;
+      margin-top: .3rem;
+    }
+    .adm-sections { display: flex; flex-direction: column; gap: 1.5rem; }
+    .adm-section {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .adm-section-head {
+      background: var(--bg-soft);
+      padding: .9rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+    .adm-section-head-title {
+      font-family: Oswald, sans-serif;
+      font-size: .9rem;
+      letter-spacing: 1.5px;
+      color: var(--navy);
+      text-transform: uppercase;
+    }
+    .adm-section-body { padding: 1.2rem 1.4rem; }
+    .adm-table { width: 100%; border-collapse: collapse; font-family: Nunito, sans-serif; font-size: .85rem; }
+    .adm-table th { text-align: left; padding: .5rem .7rem; color: var(--text-3); font-size: .75rem; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid var(--border); font-family: Oswald, sans-serif; }
+    .adm-table td { padding: .55rem .7rem; border-bottom: 1px solid var(--border); color: var(--text); vertical-align: top; }
+    .adm-table tr:last-child td { border-bottom: none; }
+    .adm-table tr:hover td { background: var(--bg-soft); }
+    .adm-del { background: none; border: 1px solid #fca5a5; color: #dc2626; border-radius: 4px; padding: .2rem .5rem; cursor: pointer; font-size: .75rem; font-family: Nunito, sans-serif; transition: background .2s; }
+    .adm-del:hover { background: #fef2f2; }
+    .adm-empty { color: var(--text-3); font-size: .85rem; font-family: Nunito, sans-serif; padding: .5rem 0; }
+    .adm-danger-zone {
+      background: #fff5f5;
+      border: 1px solid #fca5a5;
+      border-radius: 12px;
+      padding: 1.4rem;
+      margin-top: 1.5rem;
+    }
+    .adm-danger-title { font-family: Oswald, sans-serif; font-size: .9rem; letter-spacing: 1.5px; color: #dc2626; margin-bottom: .8rem; }
+    .adm-danger-btns { display: flex; gap: .7rem; flex-wrap: wrap; }
+    .adm-danger-btn {
+      background: #dc2626;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: .5rem 1rem;
+      font-family: Oswald, sans-serif;
+      font-size: .78rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .adm-danger-btn:hover { background: #b91c1c; }
+
+    /* --- Password input in footer --- */
+    .pw-error { color: var(--red); font-size: .8rem; margin-top: .4rem; display: none; font-family: Nunito, sans-serif; }
+
+    @media (max-width: 1024px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .adm-stats { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .adm-stats { grid-template-columns: repeat(2, 1fr); }
+    }
   </style>
 </head>
 <body>
@@ -1928,6 +2142,149 @@
     </div>
   </div>
 </section>
+
+<!-- ================================================================
+     FOOTER
+================================================================ -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-brand-logo">NEXT<span>MOOV</span> USA</div>
+        <p class="footer-tagline">L'agence de recrutement sportif universitaire américain qui t'accompagne du premier jour jusqu'au diplôme. Honnêteté totale. Résultats concrets.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/nextmoovusa" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram">📸</a>
+          <a href="https://www.tiktok.com/@nextmoovusa" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="TikTok">🎵</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="#approche">Notre Approche</a></li>
+          <li><a href="#parcours">Le Parcours</a></li>
+          <li><a href="#athletes">Nos Athlètes</a></li>
+          <li><a href="#agents">Nos Agents</a></li>
+          <li><a href="#temoignages">Témoignages</a></li>
+          <li><a href="#videos">Vidéos</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Programme</div>
+        <ul class="footer-links">
+          <li><a href="#forfait">Le Forfait</a></li>
+          <li><a href="#sports">Nos Sports</a></li>
+          <li><a href="#showcase">Showcases</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Intégrer la Sélection</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Informations</div>
+        <ul class="footer-links">
+          <li><a href="mailto:contact@nextmoovusa.com">contact@nextmoovusa.com</a></li>
+          <li><a href="https://www.instagram.com/nextmoovusa" target="_blank" rel="noopener noreferrer">@nextmoovusa</a></li>
+          <li><span style="cursor:default;">France / Europe</span></li>
+          <li><span style="cursor:default;">20 places / agent / an</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2025 NextMoov USA. Tous droits réservés.</span>
+      <span>
+        <button class="footer-admin-link" onclick="openAdminPage()" style="background:none;border:none;color:inherit;font-family:inherit;font-size:inherit;cursor:pointer;">⚙ Admin</button>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================================================================
+     ADMIN DASHBOARD PAGE (overlay plein écran)
+================================================================ -->
+<div id="adminPage" role="dialog" aria-modal="true" aria-label="Administration NextMoov USA">
+  <div class="adm-header">
+    <div class="adm-header-title">NEXT<span>MOOV</span> USA — ADMIN</div>
+    <button class="adm-close" onclick="closeAdminPage()">✕ Fermer</button>
+  </div>
+  <div class="adm-body">
+
+    <!-- Stats -->
+    <div class="adm-stats" id="admStats"></div>
+
+    <!-- Sections de gestion -->
+    <div class="adm-sections">
+
+      <!-- Athlètes -->
+      <div class="adm-section">
+        <div class="adm-section-head">
+          <span class="adm-section-head-title">Athlètes</span>
+        </div>
+        <div class="adm-section-body">
+          <div id="admAthletes"></div>
+        </div>
+      </div>
+
+      <!-- Agents -->
+      <div class="adm-section">
+        <div class="adm-section-head">
+          <span class="adm-section-head-title">Agents</span>
+        </div>
+        <div class="adm-section-body">
+          <div id="admAgents"></div>
+        </div>
+      </div>
+
+      <!-- Témoignages -->
+      <div class="adm-section">
+        <div class="adm-section-head">
+          <span class="adm-section-head-title">Témoignages</span>
+        </div>
+        <div class="adm-section-body">
+          <div id="admTemos"></div>
+        </div>
+      </div>
+
+      <!-- Vidéos -->
+      <div class="adm-section">
+        <div class="adm-section-head">
+          <span class="adm-section-head-title">Vidéos</span>
+        </div>
+        <div class="adm-section-body">
+          <div id="admVideos"></div>
+        </div>
+      </div>
+
+      <!-- Showcases -->
+      <div class="adm-section">
+        <div class="adm-section-head">
+          <span class="adm-section-head-title">Showcases</span>
+        </div>
+        <div class="adm-section-body">
+          <div id="admShowcases"></div>
+        </div>
+      </div>
+
+      <!-- Zone danger -->
+      <div class="adm-danger-zone">
+        <div class="adm-danger-title">ZONE DANGER — Réinitialisation</div>
+        <div class="adm-danger-btns">
+          <button class="adm-danger-btn" onclick="admReset('nm_athletes','admAthletes','athlètes')">Réinitialiser Athlètes</button>
+          <button class="adm-danger-btn" onclick="admReset('nm_agents','admAgents','agents')">Réinitialiser Agents</button>
+          <button class="adm-danger-btn" onclick="admReset('nm_temos','admTemos','témoignages')">Réinitialiser Témoignages</button>
+          <button class="adm-danger-btn" onclick="admReset('nm_videos','admVideos','vidéos')">Réinitialiser Vidéos</button>
+          <button class="adm-danger-btn" onclick="admReset('nm_showcases','admShowcases','showcases')">Réinitialiser Showcases</button>
+          <button class="adm-danger-btn" style="background:#7c3aed;" onclick="admResetAll()">TOUT RÉINITIALISER</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <!-- Modale vidéo -->
 <div class="modal-overlay" id="modalVideo" onclick="if(event.target===this)closeModal('modalVideo')" role="dialog" aria-modal="true" aria-label="Lecteur vidéo">
@@ -2484,6 +2841,156 @@
   }
 
   renderShowcases();
+
+  /* ============================================================
+     ÉTAPE 6 — Admin Dashboard + JS final polish
+  ============================================================ */
+
+  /* --- Ouvrir / fermer le dashboard admin --- */
+  function openAdminPage() {
+    pendingPanel = null;
+    document.getElementById('pwInput').value = '';
+    document.getElementById('pwError').style.display = 'none';
+    openModal('modalPw');
+    setTimeout(() => document.getElementById('pwInput').focus(), 300);
+    // On surcharge temporairement checkPw pour ouvrir le dashboard
+    window._admTarget = 'dashboard';
+  }
+
+  function closeAdminPage() {
+    document.getElementById('adminPage').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* --- Surcharge checkPw pour supporter le dashboard --- */
+  const _origCheckPw = window.checkPw;
+  window.checkPw = function() {
+    const pw = document.getElementById('pwInput').value;
+    if (pw !== 'athlete2024') {
+      document.getElementById('pwError').style.display = 'block';
+      return;
+    }
+    closeModal('modalPw');
+    if (window._admTarget === 'dashboard') {
+      window._admTarget = null;
+      renderAdminDashboard();
+      document.getElementById('adminPage').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    } else if (pendingPanel) {
+      document.getElementById(pendingPanel).style.display = 'block';
+      pendingPanel = null;
+    }
+  };
+
+  /* --- Rendu du dashboard --- */
+  function renderAdminDashboard() {
+    // Stats
+    const stats = [
+      { num: athletesData.length,  label: 'Athlètes' },
+      { num: agentsData.length,    label: 'Agents' },
+      { num: temosData.length,     label: 'Témoignages' },
+      { num: videosData.length,    label: 'Vidéos' },
+      { num: showcasesData.length, label: 'Showcases' }
+    ];
+    document.getElementById('admStats').innerHTML = stats.map(s =>
+      `<div class="adm-stat"><div class="adm-stat-num">${s.num}</div><div class="adm-stat-label">${s.label}</div></div>`
+    ).join('');
+
+    // Athlètes
+    admRenderTable('admAthletes', athletesData,
+      ['Prénom', 'Nom', 'Sport', 'Université'],
+      (a, i) => [esc(a.prenom), esc(a.nom), esc(a.sport), esc(a.univ||'—')],
+      (i) => { athletesData.splice(i,1); save('nm_athletes',athletesData); renderAthletes(); renderAdminDashboard(); }
+    );
+
+    // Agents
+    admRenderTable('admAgents', agentsData,
+      ['Prénom', 'Nom', 'Rôle', 'Sports'],
+      (a, i) => [esc(a.prenom), esc(a.nom), esc(a.role||'—'), esc(a.sports||'—')],
+      (i) => { agentsData.splice(i,1); save('nm_agents',agentsData); renderAgents(); renderAdminDashboard(); }
+    );
+
+    // Témoignages
+    admRenderTable('admTemos', temosData,
+      ['Prénom', 'Sport', 'Université', 'Note'],
+      (t, i) => [esc(t.prenom), esc(t.sport||'—'), esc(t.univ||'—'), '★'.repeat(t.note||5)],
+      (i) => { temosData.splice(i,1); save('nm_temos',temosData); renderTemos(); renderAdminDashboard(); }
+    );
+
+    // Vidéos
+    admRenderTable('admVideos', videosData,
+      ['Légende', 'Plateforme', 'URL'],
+      (v, i) => [esc(v.caption), esc(v.platform), v.url ? `<a href="${escA(v.url)}" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-size:.78rem;">Voir</a>` : '—'],
+      (i) => { videosData.splice(i,1); save('nm_videos',videosData); renderVideos(); renderAdminDashboard(); }
+    );
+
+    // Showcases
+    admRenderTable('admShowcases', showcasesData,
+      ['Ville', 'Date', 'Places', 'Lien'],
+      (s, i) => [esc(s.city), esc(s.date), esc(s.spots||'—'), s.link ? `<a href="${escA(s.link)}" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-size:.78rem;">Voir</a>` : '—'],
+      (i) => { showcasesData.splice(i,1); save('nm_showcases',showcasesData); renderShowcases(); renderAdminDashboard(); }
+    );
+  }
+
+  function admRenderTable(containerId, data, headers, rowFn, deleteFn) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    if (!data.length) {
+      el.innerHTML = `<p class="adm-empty">Aucune entrée.</p>`;
+      return;
+    }
+    const ths = headers.map(h => `<th>${h}</th>`).join('');
+    const trs = data.map((item, i) => {
+      const tds = rowFn(item, i).map(v => `<td>${v}</td>`).join('');
+      return `<tr>${tds}<td><button class="adm-del" onclick="(${deleteFn.toString()})(${i})">Supprimer</button></td></tr>`;
+    }).join('');
+    el.innerHTML = `<table class="adm-table"><thead><tr>${ths}<th></th></tr></thead><tbody>${trs}</tbody></table>`;
+  }
+
+  function admReset(key, renderId, label) {
+    if (!confirm(`Supprimer toutes les données "${label}" ? Cette action est irréversible.`)) return;
+    localStorage.removeItem(key);
+    // Reload relevant data
+    if (key === 'nm_athletes') { athletesData = load('nm_athletes',[]); renderAthletes(); }
+    if (key === 'nm_agents')   { agentsData   = load('nm_agents',[]);   renderAgents(); }
+    if (key === 'nm_temos')    { temosData     = load('nm_temos',[]);     renderTemos(); }
+    if (key === 'nm_videos')   { videosData    = load('nm_videos', defaultVideos); renderVideos(); }
+    if (key === 'nm_showcases'){ showcasesData = load('nm_showcases',[]); renderShowcases(); }
+    renderAdminDashboard();
+  }
+
+  function admResetAll() {
+    if (!confirm('ATTENTION : Supprimer TOUTES les données ? Cette action est irréversible.')) return;
+    ['nm_athletes','nm_agents','nm_temos','nm_videos','nm_showcases'].forEach(k => localStorage.removeItem(k));
+    athletesData  = [];
+    agentsData    = [];
+    temosData     = [];
+    videosData    = load('nm_videos', defaultVideos);
+    showcasesData = [];
+    renderAthletes(); renderAgents(); renderTemos(); renderVideos(); renderShowcases();
+    renderAdminDashboard();
+    alert('Données réinitialisées.');
+  }
+
+  /* --- Active nav link highlighting --- */
+  const sections = document.querySelectorAll('section[id], footer[id]');
+  const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => io.observe(s));
+
+  /* --- Smooth scroll to top on logo click --- */
+  document.querySelector('.nav-logo').addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 </script>
 </body>
 </html>
