@@ -571,6 +571,334 @@
     @media (max-width: 480px) {
       .timeline-grid { grid-template-columns: 1fr; }
     }
+
+    /* ============================================================
+       SECTION ATHLÈTES
+    ============================================================ */
+    #athletes {
+      padding: 5rem 0;
+      background: var(--bg-soft);
+    }
+
+    .athletes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .athlete-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow .3s, transform .3s, border-color .3s;
+    }
+    .athlete-card:hover {
+      box-shadow: 0 8px 32px rgba(0,7,105,.12);
+      transform: translateY(-5px);
+      border-color: rgba(0,7,105,.2);
+    }
+
+    .ath-photo-wrap {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--bg-soft);
+    }
+    .ath-photo-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .athlete-card:hover .ath-photo-wrap img { transform: scale(1.04); }
+    .ath-photo-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+      background: linear-gradient(135deg, var(--bg-soft), #dde6ff);
+    }
+    .ath-photo-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,7,105,.55) 0%, transparent 55%);
+    }
+
+    .ath-body { padding: 1.2rem 1.3rem; }
+    .ath-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .15rem;
+    }
+    .ath-sport {
+      font-family: 'Oswald', sans-serif;
+      font-size: .7rem;
+      font-weight: 600;
+      color: var(--red);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: .2rem;
+    }
+    .ath-univ {
+      font-size: .78rem;
+      color: var(--text-3);
+      margin-bottom: .8rem;
+    }
+    .ath-quote {
+      font-size: .83rem;
+      font-style: italic;
+      color: var(--text-2);
+      line-height: 1.6;
+      border-left: 2px solid var(--border);
+      padding-left: .7rem;
+      margin-bottom: 1rem;
+    }
+
+    /* ============================================================
+       SECTION AGENTS
+    ============================================================ */
+    #agents {
+      padding: 5rem 0;
+      background: var(--bg);
+    }
+
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .agent-card {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      transition: box-shadow .3s, transform .3s;
+    }
+    .agent-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-4px);
+    }
+
+    .agent-avatar {
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      overflow: hidden;
+      border: 3px solid var(--border);
+      background: linear-gradient(135deg, var(--bg-soft), #dde6ff);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+      transition: border-color .3s;
+    }
+    .agent-card:hover .agent-avatar { border-color: var(--navy); }
+    .agent-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .agent-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: .2rem;
+    }
+    .agent-role {
+      font-family: 'Oswald', sans-serif;
+      font-size: .7rem;
+      font-weight: 600;
+      color: var(--red);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: .6rem;
+    }
+    .agent-sports {
+      font-size: .78rem;
+      color: var(--text-2);
+      margin-bottom: .7rem;
+    }
+    .agent-desc {
+      font-size: .83rem;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       BOUTON ADMIN DISCRET
+    ============================================================ */
+    .admin-btn {
+      display: block;
+      margin: .5rem auto 0;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-3);
+      padding: .35rem .9rem;
+      border-radius: 4px;
+      font-family: 'Oswald', sans-serif;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .5px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .admin-btn:hover { border-color: var(--navy); color: var(--navy); }
+
+    /* ============================================================
+       PANNEAU ADMIN (commun)
+    ============================================================ */
+    .admin-panel {
+      display: none;
+      margin-top: 1.5rem;
+      padding: 1.8rem;
+      background: var(--bg-soft);
+      border: 1px solid rgba(0,7,105,.15);
+      border-radius: var(--r);
+    }
+    .admin-panel-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+      letter-spacing: .5px;
+    }
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+
+    .fg { margin-bottom: .9rem; }
+    .fg label {
+      display: block;
+      font-family: 'Oswald', sans-serif;
+      font-size: .68rem;
+      font-weight: 600;
+      color: var(--navy);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: .3rem;
+    }
+    .fg input, .fg textarea, .fg select {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: .6rem .9rem;
+      font-family: 'Nunito', sans-serif;
+      font-size: .88rem;
+      color: var(--text);
+      transition: border-color .2s;
+    }
+    .fg input:focus, .fg textarea:focus, .fg select:focus {
+      outline: none; border-color: var(--navy);
+    }
+    .fg textarea { resize: vertical; min-height: 72px; }
+    .fg select option { background: #fff; }
+
+    /* ============================================================
+       MODALES
+    ============================================================ */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 2000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 1.5rem;
+      opacity: 0; visibility: hidden;
+      transition: opacity .3s, visibility .3s;
+    }
+    .modal-overlay.active { opacity: 1; visibility: visible; }
+
+    .modal {
+      background: var(--bg);
+      border-radius: 14px;
+      max-width: 600px; width: 100%;
+      max-height: 88vh; overflow-y: auto;
+      padding: 2.2rem;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,.2);
+      transform: scale(.92) translateY(16px);
+      transition: transform .35s cubic-bezier(.22,1,.36,1);
+    }
+    .modal-overlay.active .modal { transform: scale(1) translateY(0); }
+    .modal::-webkit-scrollbar { width: 4px; }
+    .modal::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .modal-close {
+      position: absolute; top: 1rem; right: 1.2rem;
+      background: none; border: none;
+      font-size: 1.4rem; color: var(--text-3);
+      cursor: pointer; line-height: 1;
+      transition: color .2s;
+    }
+    .modal-close:hover { color: var(--navy); }
+
+    /* Modale athlète */
+    .modal-ath-header {
+      display: flex; gap: 1.2rem;
+      align-items: flex-start;
+      margin-bottom: 1.4rem;
+      flex-wrap: wrap;
+    }
+    .modal-ath-avatar {
+      width: 88px; height: 88px;
+      border-radius: 10px; overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
+      background: var(--bg-soft);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem;
+    }
+    .modal-ath-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .modal-ath-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--navy);
+    }
+    .modal-ath-sport { font-family: 'Oswald', sans-serif; font-size: .72rem; font-weight: 600; color: var(--red); letter-spacing: 1.5px; text-transform: uppercase; margin: .2rem 0; }
+    .modal-ath-univ  { font-size: .82rem; color: var(--text-3); }
+
+    .modal-divider { height: 1px; background: var(--border); margin: 1.2rem 0; }
+
+    .modal-label {
+      font-family: 'Oswald', sans-serif;
+      font-size: .68rem; font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: .5rem;
+    }
+    .modal-text {
+      font-size: .88rem; line-height: 1.78;
+      color: var(--text-2); margin-bottom: 1.2rem;
+    }
+    .modal-msg {
+      padding: 1rem 1.3rem;
+      background: var(--bg-soft);
+      border-left: 3px solid var(--navy);
+      border-radius: 0 8px 8px 0;
+      font-size: .88rem; font-style: italic;
+      line-height: 1.75; color: var(--text);
+    }
+
+    /* Modale mot de passe */
+    .modal-pw { max-width: 380px; text-align: center; }
+    .modal-pw h3 { font-family: 'Oswald', sans-serif; font-size: 1.5rem; color: var(--navy); margin-bottom: .4rem; }
+    .modal-pw p  { font-size: .84rem; color: var(--text-2); margin-bottom: 1.2rem; }
+    .pw-error    { color: var(--red); font-size: .8rem; margin-top: .4rem; display: none; }
+
+    /* ============================================================
+       RESPONSIVE — Étape 3
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .athletes-grid { grid-template-columns: repeat(2, 1fr); }
+      .agents-grid   { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .athletes-grid { grid-template-columns: 1fr; }
+      .agents-grid   { grid-template-columns: 1fr; }
+      .form-grid-2   { grid-template-columns: 1fr; }
+      .modal { padding: 1.5rem; }
+      .modal-ath-header { flex-direction: column; align-items: center; text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -792,6 +1120,94 @@
 </section>
 
 <!-- ================================================================
+     SECTION ATHLÈTES
+================================================================ -->
+<section id="athletes" aria-labelledby="ath-title">
+  <div class="container">
+    <p class="section-eyebrow eyebrow-navy fade-up">Ils nous font confiance</p>
+    <h2 class="section-title fade-up" id="ath-title">NOS ATHLÈTES</h2>
+    <div class="accent-line fade-up"></div>
+    <p class="section-sub fade-up">Des parcours réels, construits avec rigueur et honnêteté.</p>
+
+    <div class="athletes-grid" id="athletesGrid"></div>
+
+    <button class="admin-btn" onclick="askAdmin('adminPanelAthletes')">⚙ Admin</button>
+    <div class="admin-panel" id="adminPanelAthletes">
+      <div class="admin-panel-title">Ajouter un athlète</div>
+      <div class="form-grid-2">
+        <div class="fg"><label>Prénom *</label><input id="aPrenom" placeholder="Lucas"></div>
+        <div class="fg"><label>Nom *</label><input id="aNom" placeholder="MARTIN"></div>
+        <div class="fg"><label>Sport *</label><input id="aSport" placeholder="Basketball"></div>
+        <div class="fg"><label>Université</label><input id="aUniv" placeholder="UCLA, Californie"></div>
+      </div>
+      <div class="fg"><label>Citation</label><input id="aQuote" placeholder="NextMoov a changé ma vision..."></div>
+      <div class="fg"><label>Parcours</label><textarea id="aParcours" placeholder="Son parcours..."></textarea></div>
+      <div class="fg"><label>Motivation</label><textarea id="aMotiv" placeholder="Sa motivation..."></textarea></div>
+      <div class="fg"><label>Message</label><textarea id="aMessage" placeholder="Son message..."></textarea></div>
+      <div class="fg"><label>URL Photo</label><input id="aPhoto" type="url" placeholder="https://..."></div>
+      <button class="btn btn-navy" onclick="addAthlete()" style="margin-top:.4rem;">Ajouter</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION AGENTS
+================================================================ -->
+<section id="agents" aria-labelledby="agents-title">
+  <div class="container">
+    <p class="section-eyebrow eyebrow-navy fade-up">L'équipe</p>
+    <h2 class="section-title fade-up" id="agents-title">VOS AGENTS</h2>
+    <div class="accent-line fade-up"></div>
+    <p class="section-sub fade-up">Des professionnels dédiés, un seul objectif : ton avenir aux États-Unis.</p>
+
+    <div class="agents-grid" id="agentsGrid"></div>
+
+    <button class="admin-btn" onclick="askAdmin('adminPanelAgents')">⚙ Admin</button>
+    <div class="admin-panel" id="adminPanelAgents">
+      <div class="admin-panel-title">Ajouter un agent</div>
+      <div class="form-grid-2">
+        <div class="fg"><label>Prénom *</label><input id="agPrenom" placeholder="Samuel"></div>
+        <div class="fg"><label>Nom *</label><input id="agNom" placeholder="KÖNG"></div>
+        <div class="fg"><label>Rôle</label><input id="agRole" placeholder="Fondateur &amp; Agent Principal"></div>
+        <div class="fg"><label>Sports suivis</label><input id="agSports" placeholder="Soccer, Basketball, Tennis"></div>
+      </div>
+      <div class="fg"><label>Description</label><textarea id="agDesc" placeholder="Présentation de l'agent..."></textarea></div>
+      <div class="fg"><label>URL Photo</label><input id="agPhoto" type="url" placeholder="https://..."></div>
+      <button class="btn btn-navy" onclick="addAgent()" style="margin-top:.4rem;">Ajouter</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     MODALE — Détail athlète
+================================================================ -->
+<div class="modal-overlay" id="modalAth" onclick="if(event.target===this)closeModal('modalAth')" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modalAth')" aria-label="Fermer">×</button>
+    <div id="modalAthContent"></div>
+  </div>
+</div>
+
+<!-- ================================================================
+     MODALE — Mot de passe admin
+================================================================ -->
+<div class="modal-overlay" id="modalPw" onclick="if(event.target===this)closeModal('modalPw')" role="dialog" aria-modal="true">
+  <div class="modal modal-pw">
+    <button class="modal-close" onclick="closeModal('modalPw')" aria-label="Fermer">×</button>
+    <div style="font-size:2rem;margin-bottom:.6rem;">🔒</div>
+    <h3>Accès Admin</h3>
+    <p>Mot de passe requis pour accéder au panneau d'administration.</p>
+    <div class="fg">
+      <input type="password" id="pwInput" placeholder="Mot de passe"
+        style="text-align:center;letter-spacing:3px;font-size:.95rem;"
+        onkeydown="if(event.key==='Enter')checkPw()">
+    </div>
+    <p class="pw-error" id="pwError">Mot de passe incorrect.</p>
+    <button class="btn btn-navy" onclick="checkPw()" style="width:100%;margin-top:.5rem;justify-content:center;">Accéder</button>
+  </div>
+</div>
+
+<!-- ================================================================
      JS — ÉTAPE 1 : Nav + Parallax + Smooth scroll + Observer
 ================================================================ -->
 <script>
@@ -897,6 +1313,175 @@
       document.getElementById('pwInput').focus();
     }
   }
+
+  /* ================================================================
+     ÉTAPE 3 — ATHLÈTES + AGENTS
+  ================================================================ */
+
+  /* --- Données par défaut athlètes --- */
+  const defaultAthletes = [
+    {
+      prenom:'Lucas', nom:'MARTIN', sport:'Basketball', univ:'UCLA, Californie',
+      quote:'NextMoov m\'a appris que réussir, c\'est un processus, pas un coup de chance.',
+      parcours:'Après 3 saisons en ligue régionale française, Lucas a intégré le programme à 17 ans. En 6 mois, son profil sportif et académique a été entièrement préparé pour les exigences NCAA Division I.',
+      motiv:'Il voulait jouer au haut niveau ET obtenir un diplôme américain reconnu. Sans accompagnement solide, ces deux objectifs semblaient incompatibles.',
+      message:'Ne sous-estime pas ton potentiel. NextMoov voit en toi ce que tu ne vois pas encore.',
+      photo:''
+    },
+    {
+      prenom:'Camille', nom:'DUBOIS', sport:'Soccer', univ:'University of Florida',
+      quote:'Avoir quelqu\'un à mes côtés à chaque étape, ça change tout mentalement.',
+      parcours:'Joueuse U19 nationale, Camille cherchait à combiner sport de haut niveau et formation Business. NextMoov l\'a guidée vers une scholarship complète à Florida.',
+      motiv:'L\'expérience américaine représentait pour elle l\'opportunité de se développer sur tous les plans — sportif, académique, humain.',
+      message:'Le plus dur, c\'est de faire le premier pas. Après, vous n\'êtes plus seul(e). Jamais.',
+      photo:''
+    },
+    {
+      prenom:'Thomas', nom:'BERNARD', sport:'Tennis', univ:'Vanderbilt University',
+      quote:'Honnêteté et précision — c\'est ce qui différencie NextMoov de toutes les autres agences.',
+      parcours:'Classé top 50 junior en France, Thomas avait déjà eu des contacts avec d\'autres agences. NextMoov lui a présenté un plan réaliste et l\'a tenu.',
+      motiv:'Il cherchait une agence qui lui dirait la vérité sur son niveau et ses chances réelles — sans fausse promesse.',
+      message:'Choisissez des gens qui vous respectent assez pour vous dire la vérité. C\'est rare.',
+      photo:''
+    }
+  ];
+
+  let athletesData = load('nm_athletes', defaultAthletes);
+
+  function renderAthletes() {
+    const grid = document.getElementById('athletesGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    athletesData.forEach((a, i) => {
+      const card = document.createElement('div');
+      card.className = 'athlete-card fade-up';
+      card.style.transitionDelay = `${i * 0.1}s`;
+      card.setAttribute('role','button'); card.setAttribute('tabindex','0');
+
+      const photoHTML = a.photo
+        ? `<img src="${escA(a.photo)}" alt="${esc(a.prenom)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+          + `<div class="ath-photo-placeholder" style="display:none">🏅</div>`
+        : `<div class="ath-photo-placeholder">🏅</div>`;
+
+      card.innerHTML = `
+        <div class="ath-photo-wrap">${photoHTML}<div class="ath-photo-overlay"></div></div>
+        <div class="ath-body">
+          <div class="ath-name">${esc(a.prenom)} ${esc(a.nom)}</div>
+          <div class="ath-sport">${esc(a.sport)}</div>
+          <div class="ath-univ">📍 ${esc(a.univ)}</div>
+          <p class="ath-quote">"${esc(a.quote)}"</p>
+          <button class="btn btn-outline-navy" style="font-size:.75rem;padding:.45rem 1rem;">Voir son parcours →</button>
+        </div>`;
+
+      const open = () => openAthleteModal(i);
+      card.addEventListener('click', open);
+      card.addEventListener('keydown', e => { if(e.key==='Enter'||e.key===' '){e.preventDefault();open();} });
+      grid.appendChild(card);
+    });
+    observeFadeUps();
+  }
+
+  function openAthleteModal(i) {
+    const a = athletesData[i];
+    const av = a.photo
+      ? `<img src="${escA(a.photo)}" onerror="this.parentElement.innerHTML='🏅'">`
+      : '🏅';
+    document.getElementById('modalAthContent').innerHTML = `
+      <div class="modal-ath-header">
+        <div class="modal-ath-avatar">${av}</div>
+        <div>
+          <div class="modal-ath-name">${esc(a.prenom)} ${esc(a.nom)}</div>
+          <div class="modal-ath-sport">🏅 ${esc(a.sport)}</div>
+          <div class="modal-ath-univ">📍 ${esc(a.univ)}</div>
+        </div>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-label">Son parcours</div>
+      <p class="modal-text">${esc(a.parcours)}</p>
+      <div class="modal-label">Sa motivation</div>
+      <p class="modal-text">${esc(a.motiv)}</p>
+      <div class="modal-label">Son message</div>
+      <div class="modal-msg">"${esc(a.message)}"</div>`;
+    openModal('modalAth');
+  }
+
+  function addAthlete() {
+    const prenom = document.getElementById('aPrenom').value.trim();
+    const nom    = document.getElementById('aNom').value.trim();
+    if (!prenom || !nom) { alert('Prénom et Nom requis.'); return; }
+    athletesData.push({
+      prenom, nom: nom.toUpperCase(),
+      sport:    document.getElementById('aSport').value.trim()    || 'Sport',
+      univ:     document.getElementById('aUniv').value.trim()     || 'Université',
+      quote:    document.getElementById('aQuote').value.trim()    || '...',
+      parcours: document.getElementById('aParcours').value.trim() || '...',
+      motiv:    document.getElementById('aMotiv').value.trim()    || '...',
+      message:  document.getElementById('aMessage').value.trim()  || '...',
+      photo:    document.getElementById('aPhoto').value.trim()
+    });
+    save('nm_athletes', athletesData);
+    renderAthletes();
+    document.getElementById('adminPanelAthletes').style.display = 'none';
+    ['aPrenom','aNom','aSport','aUniv','aQuote','aParcours','aMotiv','aMessage','aPhoto']
+      .forEach(id => { document.getElementById(id).value = ''; });
+  }
+
+  /* --- Données par défaut agents --- */
+  const defaultAgents = [
+    {
+      prenom:'Samuel', nom:'KÖNG',
+      role:'Fondateur & Agent Principal',
+      sports:'Soccer · Basketball · Tennis · Natation',
+      desc:'Fondateur de NextMoov USA, Samuel accompagne les athlètes depuis plus de 8 ans. Son approche : honnêteté, personnalisation et engagement total sur 4 ans.',
+      photo:''
+    }
+  ];
+
+  let agentsData = load('nm_agents', defaultAgents);
+
+  function renderAgents() {
+    const grid = document.getElementById('agentsGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    agentsData.forEach((a, i) => {
+      const card = document.createElement('div');
+      card.className = 'agent-card fade-up';
+      card.style.transitionDelay = `${i * 0.1}s`;
+      const av = a.photo
+        ? `<img src="${escA(a.photo)}" alt="${esc(a.prenom)}" loading="lazy" onerror="this.parentElement.innerHTML='👤'">`
+        : '👤';
+      card.innerHTML = `
+        <div class="agent-avatar">${av}</div>
+        <div class="agent-name">${esc(a.prenom)} ${esc(a.nom)}</div>
+        <div class="agent-role">${esc(a.role)}</div>
+        <div class="agent-sports" style="font-size:.75rem;color:var(--text-3);margin-bottom:.6rem;">${esc(a.sports)}</div>
+        <p class="agent-desc">${esc(a.desc)}</p>`;
+      grid.appendChild(card);
+    });
+    observeFadeUps();
+  }
+
+  function addAgent() {
+    const prenom = document.getElementById('agPrenom').value.trim();
+    const nom    = document.getElementById('agNom').value.trim();
+    if (!prenom || !nom) { alert('Prénom et Nom requis.'); return; }
+    agentsData.push({
+      prenom, nom: nom.toUpperCase(),
+      role:   document.getElementById('agRole').value.trim()   || 'Agent',
+      sports: document.getElementById('agSports').value.trim() || '',
+      desc:   document.getElementById('agDesc').value.trim()   || '',
+      photo:  document.getElementById('agPhoto').value.trim()
+    });
+    save('nm_agents', agentsData);
+    renderAgents();
+    document.getElementById('adminPanelAgents').style.display = 'none';
+    ['agPrenom','agNom','agRole','agSports','agDesc','agPhoto']
+      .forEach(id => { document.getElementById(id).value = ''; });
+  }
+
+  /* --- Init étape 3 --- */
+  renderAthletes();
+  renderAgents();
 </script>
 </body>
 </html>
