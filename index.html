@@ -2615,7 +2615,7 @@
         <div class="adm-danger-btns">
           <button class="adm-danger-btn" onclick="admReset('nm_athletes','admAthletes','athlètes')">Réinitialiser Athlètes</button>
           <button class="adm-danger-btn" onclick="admReset('nm_agents','admAgents','agents')">Réinitialiser Agents</button>
-          <button class="adm-danger-btn" onclick="admReset('nm_temos','admTemos','témoignages')">Réinitialiser Témoignages</button>
+          <button class="adm-danger-btn" onclick="admReset('nm_temos_v3','admTemos','témoignages')">Réinitialiser Témoignages</button>
           <button class="adm-danger-btn" onclick="admReset('nm_videos_v2','admVideos','vidéos')">Réinitialiser Vidéos</button>
           <button class="adm-danger-btn" onclick="admReset('nm_showcases','admShowcases','showcases')">Réinitialiser Showcases</button>
           <button class="adm-danger-btn" style="background:#7c3aed;" onclick="admResetAll()">TOUT RÉINITIALISER</button>
@@ -2987,33 +2987,33 @@
   /* ---------- TÉMOIGNAGES ---------- */
   const defaultTemos = [
     {
-      prenom:'Sofia', sport:'Natation', univ:'University of Texas',
-      texte:'Je ne savais même pas par où commencer. Mon agent NextMoov a tout géré : contacts coachs, visa, logement. Je me suis concentrée uniquement sur ma performance. Résultat : scholarship complète Division I à UT Austin. Aucun regret.',
-      note:5, photo:''
+      prenom:'Nolan ROUSSE', sport:'Football américain', univ:'Campus universitaire USA',
+      texte:'Je ne savais même pas que faire mes études aux États-Unis était possible pour moi. Samuel m\'a accompagné de A à Z — les démarches, les contacts avec les coachs, les tests, le visa. Aujourd\'hui je suis sur campus avec une scholarship. Merci NextMoov.',
+      note:5, photo:'img/temo_nolan.jpg'
     },
     {
-      prenom:'Maxime', sport:'Athlétisme', univ:'Georgia Tech',
-      texte:'Ce qui m\'a frappé dès le premier appel, c\'est l\'honnêteté de Samuel. Il m\'a dit exactement ce qu\'il fallait améliorer — pas ce que je voulais entendre. On a bossé, et on y est arrivé. Sans fausse promesse, sans surprise.',
-      note:5, photo:''
+      prenom:'Pablo CABRAL', sport:'Soccer', univ:'Campus universitaire USA',
+      texte:'Ce qui fait vraiment la différence avec NextMoov, c\'est le réseau direct avec les coachs et les universités. Samuel ne passe pas par des intermédiaires — il connaît les gens, il appelle directement. J\'ai vécu une expérience exceptionnelle du début à la fin.',
+      note:5, photo:'img/temo_pablo.jpg'
     },
     {
-      prenom:'Inès', sport:'Volleyball', univ:'Penn State University',
-      texte:'Je suis en 3ème année à Penn State et mon agent est encore là. Il appelle, il suit mes résultats, il gère les galères administratives. L\'accompagnement sur 4 ans, ce n\'est pas du marketing — c\'est une réalité que je vis chaque semaine.',
-      note:5, photo:''
+      prenom:'Luca MOREAU-COTIN', sport:'Basketball', univ:'Campus universitaire USA',
+      texte:'J\'étais complètement perdu avec les démarches administratives, les tests SAT, la vidéo de recrutement... Samuel a tout structuré pour moi. Résultat : plusieurs offres d\'universités. NextMoov, c\'est le partenaire qu\'il te faut pour réussir ce projet.',
+      note:5, photo:'img/temo_luca.jpg'
     },
     {
-      prenom:'Karim', sport:'Soccer', univ:'University of Florida',
-      texte:'La différence avec NextMoov, c\'est que tu n\'es jamais seul face à une décision. L\'université, les délais NCAA, l\'anglais, le logement... tout a été cadré. J\'ai pu me concentrer sur le football. Aujourd\'hui en 2ème année, starter en Division I.',
-      note:5, photo:''
+      prenom:'Alexandre DESCALZO', sport:'Tennis', univ:'Campus universitaire USA',
+      texte:'Ce que j\'ai apprécié chez NextMoov, c\'est la transparence totale et le suivi ultra personnalisé. Samuel maîtrise parfaitement le système américain et te guide sans jamais te laisser dans le flou. Un accompagnement vraiment au-dessus de tout.',
+      note:5, photo:'img/temo_alexandre.jpg'
     },
     {
-      prenom:'Léa', sport:'Golf', univ:'Arizona State University',
-      texte:'Personne dans mon entourage ne comprenait ce que je voulais faire. Mon agent a su expliquer, rassurer mes parents, et construire un plan concret. ASU, c\'était mon rêve. NextMoov en a fait une réalité — et m\'a appris à y croire vraiment.',
-      note:5, photo:''
+      prenom:'Iliess BARI', sport:'Athlétisme', univ:'Campus universitaire USA',
+      texte:'Je recommande NextMoov à 100 %. Une équipe professionnelle, investie et à l\'écoute. Ils m\'ont suivi à chaque étape avec sérieux et bienveillance. Si tu veux rejoindre une université américaine dans les meilleures conditions, c\'est eux qu\'il faut appeler.',
+      note:5, photo:'img/temo_iliess.jpg'
     }
   ];
 
-  let temosData = load('nm_temos_v2', defaultTemos);
+  let temosData = load('nm_temos_v3', defaultTemos);
   let temoIdx = 0, temoPaused = false, temoTimer = null;
 
   function temoVisible() { return window.innerWidth <= 1024 ? (window.innerWidth <= 768 ? 1 : 2) : 3; }
@@ -3097,7 +3097,7 @@
       note:  +document.getElementById('tNote').value || 5,
       photo: document.getElementById('tPhoto').value.trim()
     });
-    save('nm_temos_v2', temosData);
+    save('nm_temos_v3', temosData);
     renderTemos();
     document.getElementById('adminPanelTemo').style.display = 'none';
     ['tPrenom','tSport','tUniv','tTexte','tPhoto'].forEach(id => document.getElementById(id).value = '');
@@ -3345,7 +3345,7 @@
     admRenderTable('admTemos', temosData,
       ['Prénom', 'Sport', 'Université', 'Note'],
       (t, i) => [esc(t.prenom), esc(t.sport||'—'), esc(t.univ||'—'), '★'.repeat(t.note||5)],
-      (i) => { temosData.splice(i,1); save('nm_temos',temosData); renderTemos(); renderAdminDashboard(); }
+      (i) => { temosData.splice(i,1); save('nm_temos_v3',temosData); renderTemos(); renderAdminDashboard(); }
     );
 
     // Vidéos
@@ -3384,7 +3384,7 @@
     // Reload relevant data
     if (key === 'nm_athletes') { athletesData = load('nm_athletes',[]); renderAthletes(); }
     if (key === 'nm_agents')   { agentsData   = load('nm_agents',[]);   renderAgents(); }
-    if (key === 'nm_temos')    { temosData     = load('nm_temos_v2',[]);     renderTemos(); }
+    if (key === 'nm_temos_v3') { temosData     = load('nm_temos_v3', defaultTemos); renderTemos(); }
     if (key === 'nm_videos_v2')   { videosData    = load('nm_videos_v2', defaultVideos); renderVideos(); }
     if (key === 'nm_showcases'){ showcasesData = load('nm_showcases',[]); renderShowcases(); }
     renderAdminDashboard();
@@ -3392,7 +3392,7 @@
 
   function admResetAll() {
     if (!confirm('ATTENTION : Supprimer TOUTES les données ? Cette action est irréversible.')) return;
-    ['nm_athletes','nm_agents','nm_temos','nm_videos_v2','nm_showcases'].forEach(k => localStorage.removeItem(k));
+    ['nm_athletes','nm_agents','nm_temos_v3','nm_videos_v2','nm_showcases'].forEach(k => localStorage.removeItem(k));
     athletesData  = [];
     agentsData    = [];
     temosData     = [];
