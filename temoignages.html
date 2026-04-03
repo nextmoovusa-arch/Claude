@@ -59,15 +59,12 @@
   <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   <div id="navLinks">
     <a href="index.html">Accueil</a>
-    <a href="index.html#approche">Notre Approche</a>
-    <a href="athletes.html">Nos Athlètes</a>
+    <a href="athletes.html">Athlètes</a>
     <a href="temoignages.html" class="active">Témoignages</a>
-    <a href="index.html#videos">Vidéos</a>
-    <a href="index.html#forfait">Programme</a>
-    <a href="index.html#showcase">Showcases</a>
+    <a href="showcase.html">Showcase</a>
+    <a href="videos.html">Vidéos</a>
     <a href="marques.html">Marques</a>
     <a href="reseaux.html">Réseaux</a>
-    <a href="index.html#contact">Contact</a>
     <a href="index.html#contact" class="nav-cta">Intégrer la Sélection</a>
   </div>
 </nav>
@@ -85,8 +82,7 @@
 <section class="stats-banner">
   <div class="stats-grid">
     <div class="stat-item"><span class="stat-num">100%</span><span class="stat-label">des placés satisfaits</span></div>
-    <div class="stat-item"><span class="stat-num">+15</span><span class="stat-label">athlètes placés</span></div>
-    <div class="stat-item"><span class="stat-num">8</span><span class="stat-label">états américains</span></div>
+    <div class="stat-item"><span class="stat-num">+25</span><span class="stat-label">athlètes placés</span></div>
     <div class="stat-item"><span class="stat-num">+50K€</span><span class="stat-label">de bourses obtenues</span></div>
   </div>
 </section>
@@ -146,7 +142,7 @@
 
   /* STATS */
   .stats-banner{background:var(--red);padding:36px 24px;}
-  .stats-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;}
+  .stats-grid{max-width:700px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;text-align:center;}
   .stat-item{display:flex;flex-direction:column;gap:4px;}
   .stat-num{font-family:'Anton',sans-serif;font-size:2.2rem;color:#fff;}
   .stat-label{font-family:'Oswald',sans-serif;font-size:.85rem;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.08em;}
@@ -496,9 +492,7 @@ function openTemoModal(t) {
   document.body.style.overflow = 'hidden';
 }
 
-renderTemos('tous');
 </script>
-
 
 <script>
 // Modal close
@@ -542,6 +536,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.08 });
 document.querySelectorAll('.fade-up:not(.temo-card)').forEach(el => observer.observe(el));
+renderTemos('tous');
 </script>
 
 </body>
