@@ -1422,66 +1422,63 @@
       display: block;
     }
 
-    /* Forfait — puzzle map */
+    /* Forfait — puzzle USA map */
     .puzzle-wrap { margin: 2.5rem auto 2rem; }
-    .puzzle-stage { width: 100%; max-width: 860px; margin: 0 auto; }
+    .puzzle-stage { width: 100%; max-width: 900px; margin: 0 auto; }
     .puzzle-svg { width: 100%; height: auto; display: block; overflow: visible; }
-    .pp-g { cursor: pointer; }
-    .pp-p {
-      stroke: rgba(255,255,255,.2);
-      stroke-width: 1.5;
-      transition: filter .28s cubic-bezier(.22,1,.36,1), transform .28s cubic-bezier(.22,1,.36,1), fill .28s;
+    .pp-g {
+      cursor: pointer;
+      transition: transform .3s cubic-bezier(.22,1,.36,1);
       transform-box: fill-box;
       transform-origin: center;
-      filter: drop-shadow(0 4px 10px rgba(0,7,105,.38));
+    }
+    .pp-g:hover { transform: translateY(-8px); }
+    .pp-p {
+      fill: #fff;
+      stroke: #000769;
+      stroke-width: 2;
+      filter: drop-shadow(0 3px 8px rgba(0,7,105,.18));
+      transition: fill .28s ease, filter .28s ease;
     }
     .pp-g:hover .pp-p {
-      filter: drop-shadow(0 16px 28px rgba(0,7,105,.55));
-      transform: translateY(-7px) scale(1.025);
-      stroke: rgba(192,160,96,.5);
-      stroke-width: 2;
+      fill: #000769;
+      filter: drop-shadow(0 12px 24px rgba(0,7,105,.45));
     }
     .pp-g.pp-active .pp-p {
+      fill: #000769;
       stroke: var(--gold);
       stroke-width: 2.5;
-      filter: drop-shadow(0 16px 28px rgba(0,7,105,.55));
     }
     .pp-num-t {
       font-family: 'Anton', sans-serif;
-      font-size: 30px;
-      fill: var(--gold);
+      font-size: 26px;
+      fill: #000769;
       text-anchor: middle;
       pointer-events: none;
-      transition: transform .28s cubic-bezier(.22,1,.36,1);
-      transform-box: fill-box;
-      transform-origin: center;
+      transition: fill .28s;
     }
     .pp-ttl {
       font-family: 'Oswald', sans-serif;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 600;
-      letter-spacing: .8px;
+      letter-spacing: .6px;
       text-transform: uppercase;
-      fill: #fff;
+      fill: #000769;
       text-anchor: middle;
       pointer-events: none;
-      transition: transform .28s cubic-bezier(.22,1,.36,1);
-      transform-box: fill-box;
-      transform-origin: center;
+      transition: fill .28s;
     }
     .pp-sub {
       font-family: 'Nunito', sans-serif;
-      font-size: 9.5px;
-      fill: rgba(255,255,255,.65);
+      font-size: 9px;
+      fill: rgba(0,7,105,.55);
       text-anchor: middle;
       pointer-events: none;
-      transition: transform .28s cubic-bezier(.22,1,.36,1);
-      transform-box: fill-box;
-      transform-origin: center;
+      transition: fill .28s;
     }
-    .pp-g:hover .pp-num-t,
-    .pp-g:hover .pp-ttl,
-    .pp-g:hover .pp-sub { transform: translateY(-7px); }
+    .pp-g:hover .pp-num-t, .pp-g.pp-active .pp-num-t { fill: #fff; }
+    .pp-g:hover .pp-ttl, .pp-g.pp-active .pp-ttl { fill: #fff; }
+    .pp-g:hover .pp-sub, .pp-g.pp-active .pp-sub { fill: rgba(255,255,255,.75); }
     /* Info panel */
     .puzzle-panel {
       max-width: 680px;
@@ -1506,11 +1503,10 @@
     .puzzle-panel.active .pp-hint { display: none; }
     .puzzle-panel.active .pp-panel-num,
     .puzzle-panel.active .pp-panel-body { display: block; }
-    @media (max-width: 600px) {
-      .puzzle-svg { font-size: 80%; }
-      .pp-num-t { font-size: 22px; }
-      .pp-ttl { font-size: 9px; }
-      .pp-sub { font-size: 7.5px; }
+    @media(max-width:600px){
+      .pp-num-t { font-size: 18px; }
+      .pp-ttl { font-size: 8px; }
+      .pp-sub { display: none; }
     }
 
     /* Banner Année 0 */
@@ -2344,126 +2340,93 @@
     <!-- Puzzle Map 8 étapes -->
     <div class="puzzle-wrap fade-up">
       <div class="puzzle-stage">
-        <svg class="puzzle-svg" viewBox="0 0 840 530" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="ppG1" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#0e1690"/><stop offset="100%" stop-color="#000562"/>
-            </linearGradient>
-            <linearGradient id="ppG2" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#0a1288"/><stop offset="100%" stop-color="#000460"/>
-            </linearGradient>
-            <linearGradient id="ppG3" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#12188e"/><stop offset="100%" stop-color="#010668"/>
-            </linearGradient>
-            <linearGradient id="ppG4" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#0c1480"/><stop offset="100%" stop-color="#000458"/>
-            </linearGradient>
-            <linearGradient id="ppG5" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#0a1278"/><stop offset="100%" stop-color="#000350"/>
-            </linearGradient>
-            <linearGradient id="ppG6" x1="100%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stop-color="#0e1688"/><stop offset="100%" stop-color="#000560"/>
-            </linearGradient>
-            <linearGradient id="ppG7" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#000769"/><stop offset="100%" stop-color="#0a1280"/>
-            </linearGradient>
-            <linearGradient id="ppG8" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#020970"/><stop offset="100%" stop-color="#0c1488"/>
-            </linearGradient>
-          </defs>
+        <svg class="puzzle-svg" viewBox="0 0 868 560" xmlns="http://www.w3.org/2000/svg">
 
-          <!-- STEP 1 — top-left (col0 row0) -->
+          <!-- STEP 1 — Pacific NW (WA/OR/ID/MT) — top-left -->
           <g class="pp-g" data-step="01"
              data-title="Évaluation sportive &amp; académique"
              data-desc="Analyse complète de ton profil sportif et scolaire pour identifier les meilleures opportunités NCAA/NAIA adaptées à ton niveau réel.">
-            <path class="pp-p" fill="url(#ppG1)"
-              d="M 0 0 L 280 0 L 280 62 A 25 25 0 0 1 280 112 L 280 175 L 165 175 A 25 25 0 0 0 115 175 L 0 175 Z"/>
-            <text class="pp-num-t" x="130" y="58">01</text>
-            <text class="pp-ttl" x="130" y="94">Évaluation</text>
-            <text class="pp-sub" x="130" y="112">sport &amp; scolaire</text>
+            <path class="pp-p" d="M 85,35 L 310,35 L 310,245 L 185,270 L 85,295 Z"/>
+            <text class="pp-num-t" x="190" y="120">01</text>
+            <text class="pp-ttl" x="190" y="152">Évaluation</text>
+            <text class="pp-sub" x="190" y="168">sport &amp; scolaire</text>
           </g>
 
-          <!-- STEP 2 — top-center (col1 row0) -->
+          <!-- STEP 2 — Great Plains / Upper Midwest — top-center -->
           <g class="pp-g" data-step="02"
              data-title="Recherche des universités cibles"
              data-desc="Sélection personnalisée des universités alignées avec ton niveau sportif, ta filière d'études et tes objectifs de carrière.">
-            <path class="pp-p" fill="url(#ppG2)"
-              d="M 280 0 L 560 0 L 560 62 A 25 25 0 0 1 560 112 L 560 175 L 445 175 A 25 25 0 0 0 395 175 L 280 175 L 280 112 A 25 25 0 0 0 280 62 L 280 0 Z"/>
-            <text class="pp-num-t" x="420" y="58">02</text>
-            <text class="pp-ttl" x="420" y="94">Recherche</text>
-            <text class="pp-sub" x="420" y="112">universités cibles</text>
+            <path class="pp-p" d="M 310,35 L 590,35 L 590,245 L 310,245 Z"/>
+            <text class="pp-num-t" x="450" y="108">02</text>
+            <text class="pp-ttl" x="450" y="142">Recherche</text>
+            <text class="pp-sub" x="450" y="158">universités cibles</text>
           </g>
 
-          <!-- STEP 3 — top-right (col2 row0) -->
+          <!-- STEP 3 — Northeast (NY/PA/MI/NE states) — top-right -->
           <g class="pp-g" data-step="03"
              data-title="Profil sportif &amp; vidéo highlight"
              data-desc="Création de ta fiche de recrutement et montage de ta vidéo highlight pour séduire les coachs américains et déclencher les offres.">
-            <path class="pp-p" fill="url(#ppG3)"
-              d="M 560 0 L 840 0 L 840 175 L 725 175 A 25 25 0 0 1 675 175 L 560 175 L 560 112 A 25 25 0 0 0 560 62 L 560 0 Z"/>
-            <text class="pp-num-t" x="700" y="58">03</text>
-            <text class="pp-ttl" x="700" y="94">Profil &amp; vidéo</text>
-            <text class="pp-sub" x="700" y="112">highlight</text>
+            <path class="pp-p" d="M 590,35 L 850,35 L 810,245 L 590,245 Z"/>
+            <text class="pp-num-t" x="706" y="108">03</text>
+            <text class="pp-ttl" x="706" y="142">Profil &amp; vidéo</text>
+            <text class="pp-sub" x="706" y="158">highlight</text>
           </g>
 
-          <!-- STEP 4 — mid-right (col2 row1) — snake reverses here -->
+          <!-- STEP 4 — Mid-Atlantic / SE (OH/VA/TN) — mid-right, snake turns -->
           <g class="pp-g" data-step="04"
              data-title="Démarches administratives &amp; visa F-1"
              data-desc="Gestion complète des documents officiels, inscription aux tests (SAT/TOEFL) et demande de visa étudiant F-1 prise en charge.">
-            <path class="pp-p" fill="url(#ppG4)"
-              d="M 560 175 L 675 175 A 25 25 0 0 0 725 175 L 840 175 L 840 350 L 560 350 L 560 287 A 25 25 0 0 1 560 237 L 560 175 Z"/>
-            <text class="pp-num-t" x="700" y="232">04</text>
-            <text class="pp-ttl" x="700" y="268">Admin. &amp; visa</text>
-            <text class="pp-sub" x="700" y="286">F-1</text>
+            <path class="pp-p" d="M 590,245 L 810,245 L 780,400 L 610,415 L 590,375 Z"/>
+            <text class="pp-num-t" x="686" y="302">04</text>
+            <text class="pp-ttl" x="686" y="334">Admin. &amp; visa</text>
+            <text class="pp-sub" x="686" y="350">F-1</text>
           </g>
 
-          <!-- STEP 5 — mid-center (col1 row1) -->
+          <!-- STEP 5 — Central (KS/MO/AR/CO) — mid-center -->
           <g class="pp-g" data-step="05"
              data-title="Traduction &amp; apostille des bulletins"
              data-desc="Certification officielle de tes relevés de notes et diplômes pour les universités américaines — tout est pris en charge.">
-            <path class="pp-p" fill="url(#ppG5)"
-              d="M 280 175 L 395 175 A 25 25 0 0 1 445 175 L 560 175 L 560 237 A 25 25 0 0 1 560 287 L 560 350 L 445 350 A 25 25 0 0 0 395 350 L 280 350 L 280 287 A 25 25 0 0 0 280 237 L 280 175 Z"/>
-            <text class="pp-num-t" x="420" y="232">05</text>
-            <text class="pp-ttl" x="420" y="268">Traduction</text>
-            <text class="pp-sub" x="420" y="286">&amp; apostille</text>
+            <path class="pp-p" d="M 310,245 L 590,245 L 590,375 L 610,415 L 340,455 L 310,395 Z"/>
+            <text class="pp-num-t" x="458" y="315">05</text>
+            <text class="pp-ttl" x="458" y="348">Traduction</text>
+            <text class="pp-sub" x="458" y="364">&amp; apostille</text>
           </g>
 
-          <!-- STEP 6 — mid-left (col0 row1) -->
+          <!-- STEP 6 — Southwest / California — mid-left -->
           <g class="pp-g" data-step="06"
              data-title="Cours d'anglais pris en charge"
              data-desc="5 heures de préparation linguistique pour réussir les tests (TOEFL/SAT) et t'intégrer pleinement à la vie sur campus.">
-            <path class="pp-p" fill="url(#ppG6)"
-              d="M 0 175 L 115 175 A 25 25 0 0 1 165 175 L 280 175 L 280 237 A 25 25 0 0 1 280 287 L 280 350 L 165 350 A 25 25 0 0 0 115 350 L 0 350 Z"/>
-            <text class="pp-num-t" x="140" y="232">06</text>
-            <text class="pp-ttl" x="140" y="268">Cours d'anglais</text>
-            <text class="pp-sub" x="140" y="286">pris en charge</text>
+            <path class="pp-p" d="M 85,295 L 185,270 L 310,245 L 310,395 L 185,455 L 85,455 Z"/>
+            <text class="pp-num-t" x="196" y="328">06</text>
+            <text class="pp-ttl" x="196" y="360">Cours d'anglais</text>
+            <text class="pp-sub" x="196" y="376">pris en charge</text>
           </g>
 
-          <!-- STEP 7 — bottom-left (col0 row2) -->
+          <!-- STEP 7 — South / Texas / Gulf — bottom-left -->
           <g class="pp-g" data-step="07"
              data-title="Mise en relation directe avec les coachs"
              data-desc="Contact direct avec les staff sportifs universitaires via le réseau NextMoov — sans intermédiaire, décisions rapides.">
-            <path class="pp-p" fill="url(#ppG7)"
-              d="M 0 350 L 115 350 A 25 25 0 0 1 165 350 L 280 350 L 280 412 A 25 25 0 0 1 280 462 L 280 525 L 0 525 Z"/>
-            <text class="pp-num-t" x="140" y="407">07</text>
-            <text class="pp-ttl" x="140" y="443">Mise en relation</text>
-            <text class="pp-sub" x="140" y="461">coachs</text>
+            <path class="pp-p" d="M 85,455 L 185,455 L 340,455 L 490,515 L 340,535 L 185,525 L 85,485 Z"/>
+            <text class="pp-num-t" x="256" y="470">07</text>
+            <text class="pp-ttl" x="256" y="500">Mise en relation</text>
+            <text class="pp-sub" x="256" y="515">coachs</text>
           </g>
 
-          <!-- STEP 8 — bottom-center-left (col1 row2) -->
+          <!-- STEP 8 — Southeast / Florida — bottom-right -->
           <g class="pp-g" data-step="08"
              data-title="Suivi académique &amp; sportif sur 4 ans"
              data-desc="Un agent dédié présent à chaque étape de ton parcours américain — de l'arrivée au diplôme. Bourse, job campus, logement, tout inclus.">
-            <path class="pp-p" fill="url(#ppG8)"
-              d="M 280 350 L 395 350 A 25 25 0 0 1 445 350 L 560 350 L 560 525 L 280 525 L 280 462 A 25 25 0 0 0 280 412 L 280 350 Z"/>
-            <text class="pp-num-t" x="420" y="407">08</text>
-            <text class="pp-ttl" x="420" y="443">Suivi 4 ans</text>
-            <text class="pp-sub" x="420" y="461">académique &amp; sportif</text>
+            <path class="pp-p" d="M 340,455 L 610,415 L 780,400 L 780,460 L 720,515 L 670,545 L 610,545 L 490,555 L 490,515 Z"/>
+            <text class="pp-num-t" x="592" y="456">08</text>
+            <text class="pp-ttl" x="592" y="487">Suivi 4 ans</text>
+            <text class="pp-sub" x="592" y="502">académique &amp; sportif</text>
           </g>
 
-          <!-- Flow arrows (subtle dashes between connected steps) -->
-          <polyline points="140,87 420,87 700,87 700,262 420,262 140,262 140,437 420,437"
-            fill="none" stroke="rgba(192,160,96,.18)" stroke-width="2"
-            stroke-dasharray="6 5" pointer-events="none"/>
+          <!-- Chemin de progression — dashed snake -->
+          <polyline
+            points="190,155 450,140 706,140 686,325 458,345 196,360 256,490 592,480"
+            fill="none" stroke="rgba(0,7,105,.12)" stroke-width="2"
+            stroke-dasharray="5 5" pointer-events="none"/>
         </svg>
       </div>
 
