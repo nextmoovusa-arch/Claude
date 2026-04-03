@@ -54,12 +54,17 @@
     /* FADE-UP */
     .fade-up{opacity:0;transform:translateY(28px);transition:opacity .55s,transform .55s;}
     .fade-up.visible{opacity:1;transform:none;}
+  
+    /* NAV LOGO IMAGE */
+    .nav-logo-link{display:flex;align-items:center;flex-shrink:0;}
+    .nav-logo-img{height:38px;width:auto;display:block;transition:opacity .2s,transform .2s;}
+    .nav-logo-link:hover .nav-logo-img{opacity:.88;transform:scale(1.04);}
   </style>
 </head>
 <body>
 
 <nav id="navbar">
-  <a class="nav-logo" href="index.html">NEXT<span>MOOV</span> USA</a>
+  <a class="nav-logo-link" href="index.html"><img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img"></a>
   <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   <div id="navLinks">
     <a href="index.html">Accueil</a>
@@ -198,7 +203,8 @@
   }
   .sc-hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto;}
   .sc-eyebrow{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
-  .sc-hero-title{font-family:'Anton',sans-serif;font-size:clamp(3.2rem,8vw,6.5rem);line-height:1;margin-bottom:4px;letter-spacing:2px;}
+  .sc-hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1;margin-bottom:4px;letter-spacing:2px;text-transform:uppercase;display:inline-block;transition:transform .28s ease;}
+  .sc-hero-title:hover{transform:scale(1.06);}
   .sc-hero-title span{color:var(--gold);}
   .sc-hero-tagline{font-family:'Oswald',sans-serif;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:400;letter-spacing:6px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:22px;border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);padding:.4rem 0;display:inline-block;}
   .sc-hero-sub{font-size:1.05rem;color:rgba(255,255,255,.75);max-width:540px;margin:0 auto 36px;}

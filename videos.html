@@ -51,7 +51,8 @@
     .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#000220 0%,var(--navy) 60%,#0a0060 100%);}
     .hero-content{position:relative;text-align:center;color:#fff;padding:0 1.5rem;}
     .hero-eyebrow{font-family:'Oswald',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.8rem;}
-    .hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.2rem,5.5vw,4rem);line-height:1;text-transform:uppercase;color:#fff;margin-bottom:.9rem;}
+    .hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1;text-transform:uppercase;color:#fff;margin-bottom:.9rem;display:inline-block;transition:transform .28s ease;}
+  .hero-title:hover{transform:scale(1.06);}
     .hero-title span{color:var(--gold);}
     .hero-sub{font-size:1rem;color:rgba(255,255,255,.75);max-width:500px;margin:0 auto;line-height:1.7;}
 
@@ -104,6 +105,11 @@
     /* VIDE */
     .no-results{text-align:center;padding:4rem 1rem;color:var(--text-3);}
     .no-results p{font-family:'Oswald',sans-serif;font-size:1rem;letter-spacing:1px;}
+  
+    /* NAV LOGO IMAGE */
+    .nav-logo-link{display:flex;align-items:center;flex-shrink:0;}
+    .nav-logo-img{height:38px;width:auto;display:block;transition:opacity .2s,transform .2s;}
+    .nav-logo-link:hover .nav-logo-img{opacity:.88;transform:scale(1.04);}
   </style>
 </head>
 <body>
@@ -111,7 +117,7 @@
 <!-- NAVBAR -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo">NEXT<span>MOOV</span> USA</a>
+    <a href="index.html" class="nav-logo-link"><img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img"></a>
     <div id="navLinks">
       <a href="index.html">Accueil</a>
       <a href="athletes.html">Athlètes</a>

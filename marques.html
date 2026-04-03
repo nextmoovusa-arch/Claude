@@ -58,12 +58,17 @@
     .section-eyebrow{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
     .section-title{font-family:'Anton',sans-serif;font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:20px;}
     .text-center{text-align:center;}
+  
+    /* NAV LOGO IMAGE */
+    .nav-logo-link{display:flex;align-items:center;flex-shrink:0;}
+    .nav-logo-img{height:38px;width:auto;display:block;transition:opacity .2s,transform .2s;}
+    .nav-logo-link:hover .nav-logo-img{opacity:.88;transform:scale(1.04);}
   </style>
 </head>
 <body>
 
 <nav id="navbar">
-  <a class="nav-logo" href="index.html">NEXT<span>MOOV</span> USA</a>
+  <a class="nav-logo-link" href="index.html"><img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img"></a>
   <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   <div id="navLinks">
     <a href="index.html">Accueil</a>
@@ -142,7 +147,8 @@
   .mq-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 110%,rgba(192,160,96,.14),transparent);pointer-events:none;}
   .mq-hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
   .mq-eyebrow{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
-  .mq-hero-title{font-family:'Anton',sans-serif;font-size:clamp(3rem,7vw,5.5rem);line-height:1.05;margin-bottom:18px;}
+  .mq-hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.05;margin-bottom:18px;text-transform:uppercase;display:inline-block;transition:transform .28s ease;}
+  .mq-hero-title:hover{transform:scale(1.06);}
   .mq-hero-title span{color:var(--gold);}
   .mq-hero-sub{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:540px;margin:0 auto;line-height:1.7;}
 

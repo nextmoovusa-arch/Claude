@@ -50,12 +50,17 @@
       }
       #navLinks.open{transform:translateY(0);opacity:1;pointer-events:auto;}
     }
+  
+    /* NAV LOGO IMAGE */
+    .nav-logo-link{display:flex;align-items:center;flex-shrink:0;}
+    .nav-logo-img{height:38px;width:auto;display:block;transition:opacity .2s,transform .2s;}
+    .nav-logo-link:hover .nav-logo-img{opacity:.88;transform:scale(1.04);}
   </style>
 </head>
 <body>
 
 <nav id="navbar">
-  <a class="nav-logo" href="index.html">NEXT<span>MOOV</span> USA</a>
+  <a class="nav-logo-link" href="index.html"><img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img"></a>
   <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   <div id="navLinks">
     <a href="index.html">Accueil</a>
@@ -135,7 +140,8 @@
     padding:120px 24px 72px;text-align:center;color:#fff;
   }
   .temo-hero-eyebrow{font-family:'Oswald',sans-serif;font-size:.9rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
-  .temo-hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.8rem,6vw,5rem);line-height:1.05;margin-bottom:20px;}
+  .temo-hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.05;margin-bottom:20px;text-transform:uppercase;display:inline-block;transition:transform .28s ease;}
+  .temo-hero-title:hover{transform:scale(1.06);}
   .temo-hero-title span{color:var(--gold);}
   .temo-hero-sub{font-size:1.1rem;color:rgba(255,255,255,.75);max-width:560px;margin:0 auto;}
 

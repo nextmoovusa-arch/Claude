@@ -60,7 +60,8 @@
     .hero-bg::after{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&q=70') center/cover no-repeat;opacity:.18;}
     .hero-content{position:relative;text-align:center;color:#fff;padding:0 1.5rem;}
     .hero-eyebrow{font-family:'Oswald',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;display:block;}
-    .hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1;text-transform:uppercase;color:#fff;margin-bottom:1rem;}
+    .hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1;text-transform:uppercase;color:#fff;margin-bottom:1rem;display:inline-block;transition:transform .28s ease;}
+  .hero-title:hover{transform:scale(1.06);}
     .hero-title span{color:var(--gold);}
     .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.78);max-width:560px;margin:0 auto 2rem;line-height:1.7;}
     .hero-badges{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
@@ -137,6 +138,11 @@
     footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:2rem;font-size:.8rem;}
     footer strong{color:#fff;}
     ::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-thumb{background:rgba(0,7,105,.25);border-radius:3px;}
+  
+    /* NAV LOGO IMAGE */
+    .nav-logo-link{display:flex;align-items:center;flex-shrink:0;}
+    .nav-logo-img{height:38px;width:auto;display:block;transition:opacity .2s,transform .2s;}
+    .nav-logo-link:hover .nav-logo-img{opacity:.88;transform:scale(1.04);}
   </style>
 </head>
 <body>
@@ -144,7 +150,7 @@
 <!-- NAVBAR -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo-text">NEXT<span>MOOV</span> USA</a>
+    <a href="index.html" class="nav-logo-link"><img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img"></a>
     <div id="navLinks">
       <a href="index.html">Accueil</a>
       <a href="athletes.html">Athlètes</a>
