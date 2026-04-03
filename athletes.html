@@ -90,13 +90,18 @@
     .map-dot-wrap{position:absolute;transform:translate(-50%,-50%);}
     .map-dot{width:14px;height:14px;border-radius:50%;background:var(--red);border:2px solid #fff;box-shadow:0 0 0 0 rgba(178,34,52,.5);animation:pulse 2s infinite;cursor:pointer;position:relative;}
     @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(178,34,52,.5);}70%{box-shadow:0 0 0 10px rgba(178,34,52,0);}100%{box-shadow:0 0 0 0 rgba(178,34,52,0);}}
-    .map-popup{display:none;position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);background:#fff;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.18);padding:.9rem 1rem;width:200px;z-index:100;}
+    .map-popup{display:none;position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);background:#fff;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.18);padding:.9rem 1rem;width:220px;z-index:100;}
     .map-popup::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:#fff;}
     .map-dot-wrap:hover .map-popup{display:block;}
-    .map-popup img{width:56px;height:56px;border-radius:50%;object-fit:cover;object-position:top;margin:0 auto .6rem;}
-    .map-popup .pop-name{font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:700;color:var(--navy);text-align:center;}
-    .map-popup .pop-sport{font-family:'Oswald',sans-serif;font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--red);text-align:center;margin:.15rem 0;}
-    .map-popup .pop-univ{font-size:.72rem;color:var(--text-2);text-align:center;line-height:1.4;}
+    .map-popup .pop-univ-title{font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--red);text-align:center;margin-bottom:.6rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);}
+    .pop-athletes{display:flex;flex-direction:column;gap:.55rem;}
+    .pop-athlete{display:flex;align-items:center;gap:.6rem;}
+    .pop-athlete img{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;}
+    .pop-athlete-info{display:flex;flex-direction:column;}
+    .map-popup .pop-name{font-family:'Oswald',sans-serif;font-size:.82rem;font-weight:700;color:var(--navy);}
+    .map-popup .pop-sport{font-family:'Oswald',sans-serif;font-size:.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--text-3);}
+    .map-dot-multi{background:var(--navy);}
+    .map-dot-multi::after{content:'2';position:absolute;top:-6px;right:-6px;width:14px;height:14px;border-radius:50%;background:var(--gold);color:var(--navy);font-size:.55rem;font-weight:900;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;}
     .map-center{text-align:center;}
 
     /* ── CTA BANNER ── */
@@ -219,7 +224,7 @@
       univ:'NEO A&M — Oklahoma',
       quote:'Muret, puis les États-Unis. NextMoov a tracé le chemin.',
       photo:'https://i.imgur.com/gVGYhjW.jpeg',
-      map:{ left:'51%', top:'38%' }     /* Miami, OK — 36.9°N 94.9°W */
+      map:{ left:'51%', top:'38%' }      /* Miami, OK — 36.9°N 94.9°W */
     },
     {
       prenom:'Iliess', nom:'BARI', sport:'Soccer', annee:'2024',
@@ -233,7 +238,7 @@
       univ:'NEO A&M — Oklahoma',
       quote:'J\'ai quitté Cholet pour l\'Oklahoma. Le meilleur choix de ma vie.',
       photo:'https://i.imgur.com/yDp5ULR.jpeg',
-      map:{ left:'52%', top:'39%' }     /* Miami, OK — 36.9°N 94.9°W (léger décalage) */
+      map:{ left:'51%', top:'38%' }      /* Miami, OK — 36.9°N 94.9°W (même point) */
     },
     {
       prenom:'Nolan', nom:'ROUSSE', sport:'Soccer', annee:'2024',
@@ -278,18 +283,36 @@
   /* ── RENDER MAP DOTS ── */
   function renderDots(){
     const wrapper = document.getElementById('mapWrapper');
+
+    /* Regrouper par université (même position sur la carte) */
+    const groups = {};
     athletes.forEach(a => {
+      const key = a.univ;
+      if (!groups[key]) groups[key] = { map: a.map, univ: a.univ, list: [] };
+      groups[key].list.push(a);
+    });
+
+    Object.values(groups).forEach(g => {
+      const multi = g.list.length > 1;
       const wrap = document.createElement('div');
       wrap.className = 'map-dot-wrap';
-      wrap.style.left = a.map.left;
-      wrap.style.top = a.map.top;
-      wrap.innerHTML = `
-        <div class="map-dot"></div>
-        <div class="map-popup">
+      wrap.style.left = g.map.left;
+      wrap.style.top = g.map.top;
+
+      const athletesHtml = g.list.map(a => `
+        <div class="pop-athlete">
           <img src="${a.photo}" alt="${a.prenom} ${a.nom}">
-          <div class="pop-name">${a.prenom} ${a.nom}</div>
-          <div class="pop-sport">${a.sport}</div>
-          <div class="pop-univ">${a.univ}</div>
+          <div class="pop-athlete-info">
+            <div class="pop-name">${a.prenom} ${a.nom}</div>
+            <div class="pop-sport">${a.sport}</div>
+          </div>
+        </div>`).join('');
+
+      wrap.innerHTML = `
+        <div class="map-dot${multi ? ' map-dot-multi' : ''}"></div>
+        <div class="map-popup">
+          <div class="pop-univ-title">${g.univ}</div>
+          <div class="pop-athletes">${athletesHtml}</div>
         </div>`;
       wrapper.appendChild(wrap);
     });
