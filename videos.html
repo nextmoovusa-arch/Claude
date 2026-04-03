@@ -158,39 +158,11 @@
         <button class="filt-btn" data-filter="sport" data-val="Tennis">Tennis</button>
         <button class="filt-btn" data-filter="sport" data-val="Natation">Natation</button>
         <button class="filt-btn" data-filter="sport" data-val="Athlétisme">Athlétisme</button>
+        <button class="filt-btn" data-filter="sport" data-val="Volleyball">Volleyball</button>
+        <button class="filt-btn" data-filter="sport" data-val="Golf">Golf</button>
       </div>
-      <div class="filter-row" id="rowGenre" style="display:none">
-        <span class="filter-label">Genre</span>
-        <button class="filt-btn active" data-filter="genre" data-val="tous">Tous</button>
-        <button class="filt-btn" data-filter="genre" data-val="H">Homme</button>
-        <button class="filt-btn" data-filter="genre" data-val="F">Femme</button>
-      </div>
-      <div class="filter-row">
-        <span class="filter-label">Poste</span>
-        <button class="filt-btn active" data-filter="poste" data-val="tous">Tous</button>
-        <button class="filt-btn" data-filter="poste" data-val="Attaquant">Attaquant</button>
-        <button class="filt-btn" data-filter="poste" data-val="Milieu">Milieu</button>
-        <button class="filt-btn" data-filter="poste" data-val="Défenseur">Défenseur</button>
-        <button class="filt-btn" data-filter="poste" data-val="Gardien">Gardien</button>
-      </div>
-      <div class="filter-row">
-        <span class="filter-label">Niveau</span>
-        <button class="filt-btn active" data-filter="niveau" data-val="tous">Tous</button>
-        <button class="filt-btn" data-filter="niveau" data-val="NCAA D1">NCAA D1</button>
-        <button class="filt-btn" data-filter="niveau" data-val="NCAA D2">NCAA D2</button>
-        <button class="filt-btn" data-filter="niveau" data-val="NJCAA">NJCAA</button>
-        <button class="filt-btn" data-filter="niveau" data-val="NAIA">NAIA</button>
-      </div>
-      <div class="filter-row">
-        <span class="filter-label">Âge</span>
-        <button class="filt-btn active" data-filter="age" data-val="tous">Tous</button>
-        <button class="filt-btn" data-filter="age" data-val="18">18 ans</button>
-        <button class="filt-btn" data-filter="age" data-val="19">19 ans</button>
-        <button class="filt-btn" data-filter="age" data-val="20">20 ans</button>
-        <button class="filt-btn" data-filter="age" data-val="21">21 ans</button>
-        <button class="filt-btn" data-filter="age" data-val="22">22+ ans</button>
-        <button class="filter-reset" id="resetFilters">Réinitialiser</button>
-      </div>
+      <!-- Filtres secondaires dynamiques -->
+      <div id="dynFilters"></div>
     </div>
   </div>
 </div>
@@ -216,35 +188,35 @@
 <script>
 const athletes = [
   {
-    nom:'Nolan ROUSSE', sport:'Soccer', genre:'H', poste:'Milieu', niveau:'NJCAA', age:19,
+    nom:'Nolan ROUSSE', sport:'Soccer', genre:'H', spec:'CM', niv_fr:'Regional', niveau:'NJCAA', age:19,
     univ:'Monroe Community College — New York',
     photo:'https://i.imgur.com/QoAtGsT.jpeg',
     ytb:'https://www.youtube.com/embed/dQw4w9WgXcQ',
     club:'R2 Lyon', experience:'6 ans'
   },
   {
-    nom:'Pablo CABRAL', sport:'Soccer', genre:'H', poste:'Milieu', niveau:'NJCAA', age:20,
+    nom:'Pablo CABRAL', sport:'Soccer', genre:'H', spec:'CAM', niv_fr:'Regional', niveau:'NJCAA', age:20,
     univ:'Mohawk Valley CC — New York',
     photo:'https://i.imgur.com/hNZWvfU.jpeg',
     ytb:'https://www.youtube.com/embed/dQw4w9WgXcQ',
     club:'R2 Cholet', experience:'7 ans'
   },
   {
-    nom:'Luca MOREAU-COTIN', sport:'Soccer', genre:'H', poste:'Défenseur', niveau:'NJCAA', age:19,
+    nom:'Luca MOREAU-COTIN', sport:'Soccer', genre:'H', spec:'CB', niv_fr:'National', niveau:'NJCAA', age:19,
     univ:'NEO Community College — Ohio',
     photo:'https://i.imgur.com/yDp5ULR.jpeg',
     ytb:'https://www.youtube.com/embed/dQw4w9WgXcQ',
     club:'National Cholet', experience:'8 ans'
   },
   {
-    nom:'Alexandre DESCALZO', sport:'Soccer', genre:'H', poste:'Attaquant', niveau:'NJCAA', age:20,
+    nom:'Alexandre DESCALZO', sport:'Soccer', genre:'H', spec:'ST', niv_fr:'Regional', niveau:'NJCAA', age:20,
     univ:'NEO Community College — Ohio',
     photo:'https://i.imgur.com/gVGYhjW.jpeg',
     ytb:'https://www.youtube.com/embed/dQw4w9WgXcQ',
     club:'R2 Muret', experience:'7 ans'
   },
   {
-    nom:'Iliess BARI', sport:'Soccer', genre:'H', poste:'Attaquant', niveau:'NJCAA', age:21,
+    nom:'Iliess BARI', sport:'Soccer', genre:'H', spec:'ST', niv_fr:'Regional', niveau:'NJCAA', age:21,
     univ:'Harcum CC — Pennsylvanie',
     photo:'https://i.imgur.com/FkD1upj.jpeg',
     ytb:'https://www.youtube.com/embed/dQw4w9WgXcQ',
@@ -252,8 +224,90 @@ const athletes = [
   }
 ];
 
+/* Config filtres par sport */
+const SPORT_CONFIG = {
+  Soccer: {
+    niveaux: ['Regional','National','Centre de formation'],
+    specLabel: 'Poste',
+    specs: ['GK','CB','LB','RB','CDM','CM','CAM','WR','WL','ST']
+  },
+  Athlétisme: {
+    niveaux: ['Regional','National','Équipe de France'],
+    specLabel: 'Discipline',
+    specs: ['Sprint','Demi-fond','Fond','Haies','Relais','Saut en hauteur','Saut en longueur','Triple saut','Saut à la perche','Lancer du poids','Lancer du disque','Lancer du javelot','Lancer du marteau','Décathlon','Heptathlon']
+  },
+  Natation: {
+    niveaux: ['Regional','National','Équipe de France'],
+    specLabel: 'Spécialité',
+    specs: ['Nage libre','Dos crawlé','Brasse','Papillon','Quatre nages']
+  },
+  Basketball: {
+    niveaux: ['Regional','National','Centre de formation','Équipe de France'],
+    specLabel: 'Poste',
+    specs: ['PG','SG','SF','PF','C']
+  },
+  Tennis: {
+    niveaux: ['Regional','National','CNE','Équipe de France'],
+    specLabel: 'Spécialité',
+    specs: ['Simple','Double','Simple + Double']
+  },
+  Volleyball: {
+    niveaux: ['Regional','National','Centre de formation','Équipe de France'],
+    specLabel: 'Poste',
+    specs: ['Passeur','Libéro','Pointu','Central','Opposite']
+  },
+  Golf: {
+    niveaux: ['Regional','National','Équipe de France'],
+    specLabel: 'Spécialité',
+    specs: ['Stroke play','Match play','Scramble']
+  }
+};
+
 /* Filtres actifs */
-const active = { sport:'tous', genre:'tous', poste:'tous', niveau:'tous', age:'tous' };
+const active = { sport:'tous', genre:'tous', niveau:'tous', spec:'tous' };
+
+function buildDynFilters(sport) {
+  const dyn = document.getElementById('dynFilters');
+  if (sport === 'tous') { dyn.innerHTML = ''; return; }
+  const cfg = SPORT_CONFIG[sport];
+  if (!cfg) { dyn.innerHTML = ''; return; }
+
+  const makeRow = (key, label, vals) => {
+    const btns = vals.map(v => `<button class="filt-btn" data-filter="${key}" data-val="${v}">${v}</button>`).join('');
+    return `<div class="filter-row">
+      <span class="filter-label">${label}</span>
+      <button class="filt-btn active" data-filter="${key}" data-val="tous">Tous</button>
+      ${btns}
+    </div>`;
+  };
+
+  dyn.innerHTML =
+    makeRow('genre', 'Genre', ['Homme','Femme']) +
+    makeRow('niveau', 'Niveau', cfg.niveaux) +
+    makeRow('spec', cfg.specLabel, cfg.specs) +
+    `<div class="filter-row"><button class="filter-reset" id="resetFilters">Réinitialiser</button></div>`;
+
+  dyn.querySelectorAll('.filt-btn').forEach(btn => btn.addEventListener('click', () => onDynClick(btn)));
+  const resetBtn = dyn.querySelector('#resetFilters');
+  if (resetBtn) resetBtn.addEventListener('click', doReset);
+}
+
+function onDynClick(btn) {
+  const filter = btn.dataset.filter;
+  // genre stored as 'H'/'F' internally but displayed as Homme/Femme
+  active[filter] = filter === 'genre' ? (btn.dataset.val === 'tous' ? 'tous' : (btn.dataset.val === 'Homme' ? 'H' : 'F')) : btn.dataset.val;
+  btn.closest('.filter-row').querySelectorAll('.filt-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function doReset() {
+  active.genre = 'tous'; active.niveau = 'tous'; active.spec = 'tous';
+  document.getElementById('dynFilters').querySelectorAll('.filt-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.val === 'tous');
+  });
+  render();
+}
 
 function ytThumb(embedUrl){
   const m = embedUrl.match(/embed\/([^?]+)/);
@@ -263,23 +317,20 @@ function ytThumb(embedUrl){
 function render(){
   const grid = document.getElementById('vidGrid');
   const noRes = document.getElementById('noResults');
+  const cfg = active.sport !== 'tous' ? SPORT_CONFIG[active.sport] : null;
+  const specLabel = cfg ? cfg.specLabel : 'Poste';
+
   const filtered = athletes.filter(a => {
     if(active.sport !== 'tous' && a.sport !== active.sport) return false;
     if(active.genre !== 'tous' && a.genre !== active.genre) return false;
-    if(active.poste !== 'tous' && a.poste !== active.poste) return false;
-    if(active.niveau !== 'tous' && a.niveau !== active.niveau) return false;
-    if(active.age !== 'tous'){
-      const ageVal = parseInt(active.age);
-      if(active.age === '22'){ if(a.age < 22) return false; }
-      else { if(a.age !== ageVal) return false; }
-    }
+    if(active.niveau !== 'tous' && a.niv_fr !== active.niveau) return false;
+    if(active.spec !== 'tous' && a.spec !== active.spec) return false;
     return true;
   });
 
   if(!filtered.length){ grid.innerHTML=''; noRes.style.display='block'; return; }
   noRes.style.display='none';
 
-  const thumb = ytThumb(filtered[0]?.ytb||'');
   grid.innerHTML = filtered.map(a => {
     const t = ytThumb(a.ytb);
     return `
@@ -297,9 +348,9 @@ function render(){
         <div class="ath-vid-name">${a.nom}</div>
         <div class="ath-cv-grid">
           <div class="ath-cv-item"><span class="ath-cv-lbl">Âge</span><span class="ath-cv-val">${a.age} ans</span></div>
-          <div class="ath-cv-item"><span class="ath-cv-lbl">Poste</span><span class="ath-cv-val">${a.poste}</span></div>
-          <div class="ath-cv-item"><span class="ath-cv-lbl">Niveau</span><span class="ath-cv-val">${a.niveau}</span></div>
-          <div class="ath-cv-item"><span class="ath-cv-lbl">Expérience</span><span class="ath-cv-val">${a.experience}</span></div>
+          <div class="ath-cv-item"><span class="ath-cv-lbl">${specLabel}</span><span class="ath-cv-val">${a.spec}</span></div>
+          <div class="ath-cv-item"><span class="ath-cv-lbl">Niveau FR</span><span class="ath-cv-val">${a.niv_fr}</span></div>
+          <div class="ath-cv-item"><span class="ath-cv-lbl">Niveau US</span><span class="ath-cv-val">${a.niveau}</span></div>
           <div class="ath-cv-item"><span class="ath-cv-lbl">Club</span><span class="ath-cv-val">${a.club}</span></div>
           <div class="ath-cv-item"><span class="ath-cv-lbl">Genre</span><span class="ath-cv-val">${a.genre === 'H' ? 'Homme' : 'Femme'}</span></div>
         </div>
@@ -309,11 +360,9 @@ function render(){
     </div>`;
   }).join('');
 
-  /* Ouvrir modal au clic sur la vignette */
   grid.querySelectorAll('.ath-vid-thumb').forEach(el => {
     el.addEventListener('click', () => openModal(el.dataset.ytb));
   });
-
   grid.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 }
 
@@ -334,29 +383,17 @@ function closeModal(){
 document.getElementById('modalClose').addEventListener('click', closeModal);
 document.getElementById('vidModal').addEventListener('click', e => { if(e.target === e.currentTarget) closeModal(); });
 
-/* Filtres */
-document.querySelectorAll('.filt-btn').forEach(btn => {
+/* Sport row — filtres secondaires dynamiques */
+document.querySelectorAll('[data-filter="sport"]').forEach(btn => {
   btn.addEventListener('click', () => {
-    const filter = btn.dataset.filter;
     const val = btn.dataset.val;
-    active[filter] = val;
-    btn.closest('.filter-row').querySelectorAll('.filt-btn').forEach(b => b.classList.remove('active'));
+    active.sport = val;
+    active.genre = 'tous'; active.niveau = 'tous'; active.spec = 'tous';
+    document.querySelectorAll('[data-filter="sport"]').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    /* Afficher row genre si sport sélectionné */
-    const rowGenre = document.getElementById('rowGenre');
-    if(filter === 'sport' && val !== 'tous') rowGenre.style.display='flex';
-    else if(filter === 'sport') rowGenre.style.display='none';
+    buildDynFilters(val);
     render();
   });
-});
-
-document.getElementById('resetFilters').addEventListener('click', () => {
-  Object.keys(active).forEach(k => active[k] = 'tous');
-  document.querySelectorAll('.filt-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.val === 'tous');
-  });
-  document.getElementById('rowGenre').style.display='none';
-  render();
 });
 
 /* Navbar */
