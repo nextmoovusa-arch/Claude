@@ -211,7 +211,7 @@
   .vid-modal-box{background:#fff;border-radius:16px;max-width:640px;width:100%;max-height:92vh;overflow-y:auto;position:relative;transform:translateY(20px);transition:transform .3s;}
   .vid-modal.open .vid-modal-box{transform:none;}
   .vid-modal-close{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:50%;width:32px;height:32px;font-size:1rem;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center;}
-  .vid-modal-media{width:100%;aspect-ratio:16/9;background:#000;border-radius:16px 16px 0 0;overflow:hidden;}
+  .vid-modal-media{width:100%;aspect-ratio:9/16;max-height:560px;background:#000;border-radius:16px 16px 0 0;overflow:hidden;}
   .vid-modal-media iframe,.vid-modal-media img{width:100%;height:100%;object-fit:cover;}
   .vid-modal-body{padding:24px;}
   .vid-modal-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
@@ -589,8 +589,9 @@ function renderVideos(filter) {
 
 function openVidModal(v) {
   const mediaEl = document.getElementById('vidModalMedia');
-  if (v.url && v.url.includes('instagram.com')) {
-    mediaEl.innerHTML = `<img src="${v.thumb || placeholderThumb}" alt="${v.name}" style="width:100%;height:100%;object-fit:cover"/>`;
+  if (v.url && v.url.includes('instagram.com/reel/')) {
+    const embedUrl = v.url.replace(/\/?$/, '/embed');
+    mediaEl.innerHTML = `<iframe src="${embedUrl}" width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" allow="autoplay; encrypted-media" style="border:none;"></iframe>`;
   } else if (v.thumb) {
     mediaEl.innerHTML = `<img src="${v.thumb}" alt="${v.name}" style="width:100%;height:100%;object-fit:cover"/>`;
   } else {
