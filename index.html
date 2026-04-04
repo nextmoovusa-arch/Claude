@@ -399,6 +399,150 @@
       background: var(--bg);
     }
 
+    /* ============================================================
+       SECTION MON HISTOIRE
+    ============================================================ */
+    #histoire {
+      background: #080808;
+      padding: 7rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    #histoire::before {
+      content: '';
+      position: absolute;
+      width: 550px; height: 550px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,120,.09) 0%, transparent 65%);
+      top: 50%; left: 28%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .histoire-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    /* ---- Left card ---- */
+    .histoire-card {
+      background: linear-gradient(160deg, #111 0%, #0c1a10 100%);
+      border: 1px solid rgba(0,255,120,.18);
+      border-radius: 18px;
+      padding: 2.2rem 2rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .histoire-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0; height: 90px;
+      background: linear-gradient(to top, rgba(0,255,120,.06), transparent);
+      pointer-events: none;
+    }
+    .histoire-rating {
+      position: absolute;
+      top: 1.1rem; right: 1.1rem;
+      background: rgba(0,0,0,.5);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px;
+      padding: .5rem .85rem;
+      text-align: center;
+    }
+    .histoire-rating-score {
+      font-family: Anton, sans-serif;
+      font-size: 1rem; color: #fff; line-height: 1;
+    }
+    .histoire-rating-label {
+      font-family: Nunito, sans-serif;
+      font-size: .6rem; color: rgba(255,255,255,.45);
+      text-transform: uppercase; letter-spacing: 1px; margin-top: .2rem;
+    }
+    .histoire-photo-wrap {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      margin: 1.4rem auto 1.1rem;
+      border: 2.5px solid rgba(0,255,120,.5);
+      overflow: hidden;
+      background: linear-gradient(135deg, #1a3a2a, #0a1a10);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem;
+      box-shadow: 0 0 22px rgba(0,255,120,.18);
+    }
+    .histoire-photo-wrap img { width:100%; height:100%; object-fit:cover; }
+    .histoire-card-name {
+      font-family: Oswald, sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: #fff; text-align: center; margin-bottom: .22rem;
+    }
+    .histoire-card-role {
+      font-family: Nunito, sans-serif;
+      font-size: .73rem; color: rgba(255,255,255,.48);
+      text-align: center; margin-bottom: 1.8rem; line-height: 1.5;
+    }
+    .histoire-card-bar {
+      border-top: 1px solid rgba(0,255,120,.14);
+      margin: 0 -2rem;
+      padding: .9rem 1.6rem;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      position: relative; z-index: 1;
+    }
+    .histoire-bar-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #00ff78;
+      display: inline-block; margin-right: .4rem;
+      animation: hist-dot 1.8s ease-in-out infinite;
+    }
+    @keyframes hist-dot {
+      0%,100% { opacity:1; box-shadow:0 0 0 0 rgba(0,255,120,.4); }
+      50%      { opacity:.65; box-shadow:0 0 0 4px rgba(0,255,120,0); }
+    }
+    .histoire-bar-stat {
+      font-family: Nunito, sans-serif;
+      font-size: .73rem; color: rgba(255,255,255,.6);
+    }
+    .histoire-bar-badge {
+      background: var(--red);
+      color: #fff;
+      font-family: Oswald, sans-serif;
+      font-size: .65rem; font-weight: 700;
+      letter-spacing: .8px;
+      padding: .3rem .65rem; border-radius: 4px;
+      text-transform: uppercase;
+    }
+    /* ---- Right content ---- */
+    .histoire-label {
+      font-family: Oswald, sans-serif;
+      font-size: .7rem; letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #00ff78; margin-bottom: 1rem;
+    }
+    .histoire-title {
+      font-family: Anton, sans-serif;
+      font-size: clamp(2.1rem, 4vw, 3.3rem);
+      color: #fff; line-height: 1.08;
+      margin-bottom: 1.8rem;
+      text-transform: uppercase;
+    }
+    .histoire-title .hn {
+      color: #00ff78;
+      text-shadow: 0 0 8px rgba(0,255,120,.8), 0 0 25px rgba(0,255,120,.35);
+    }
+    .histoire-body {
+      font-family: Nunito, sans-serif;
+      font-size: .96rem; color: rgba(255,255,255,.7);
+      line-height: 1.9; max-width: 560px;
+    }
+    .histoire-body p { margin-bottom: 1.1rem; }
+    .histoire-body .hn {
+      color: #00ff78; font-weight: 700;
+    }
+    @media (max-width: 920px) {
+      .histoire-grid { grid-template-columns: 1fr; gap: 2.8rem; }
+      .histoire-card { max-width: 320px; margin: 0 auto; }
+    }
+
     .pillars-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -2172,6 +2316,54 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION MON HISTOIRE
+================================================================ -->
+<section id="histoire" aria-labelledby="histoire-title">
+  <div class="container">
+    <div class="histoire-grid">
+
+      <!-- Carte gauche -->
+      <div class="histoire-card fade-up">
+        <div class="histoire-rating">
+          <div class="histoire-rating-score">20&nbsp;/&nbsp;an</div>
+          <div class="histoire-rating-label">Athlètes max</div>
+        </div>
+
+        <div class="histoire-photo-wrap">
+          🏅
+        </div>
+
+        <div class="histoire-card-name">Samuel KÖNG</div>
+        <div class="histoire-card-role">Fondateur &amp; Agent Principal<br>Soccer · Basketball · Tennis · Natation</div>
+
+        <div class="histoire-card-bar">
+          <div style="display:flex;align-items:center;">
+            <span class="histoire-bar-dot"></span>
+            <span class="histoire-bar-stat">Saison 2024 · 5 athlètes placés</span>
+          </div>
+          <span class="histoire-bar-badge">NextMoov</span>
+        </div>
+      </div>
+
+      <!-- Contenu droit -->
+      <div class="fade-up" style="transition-delay:.15s;">
+        <p class="histoire-label">Mon histoire</p>
+        <h2 class="histoire-title" id="histoire-title">
+          Pourquoi j'ai créé<br>
+          <span class="hn">NextMoov.</span>
+        </h2>
+        <div class="histoire-body">
+          <p>Avant de créer NextMoov, j'ai vécu ce que vivent trop d'athlètes français : une agence qui gère 100 à 200 dossiers par an, un agent injoignable une fois la signature faite, un "suivi" qui s'arrête à l'aéroport.</p>
+          <p>Je suis parti aux États-Unis avec de l'ambition — et je me suis retrouvé seul face aux démarches, aux incompréhensions, aux doutes. Personne ne connaissait vraiment mon projet. J'étais un numéro dans une liste.</p>
+          <p>Ce n'est pas de la malveillance. C'est un modèle qui ne peut tout simplement pas fonctionner à grande échelle. Quand tu es 1 parmi 200, personne n'a le temps de vraiment te connaître. <span class="hn">Alors j'ai construit l'inverse : 20 athlètes par an, un agent dédié, un accompagnement qui va jusqu'au diplôme.</span></p>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
