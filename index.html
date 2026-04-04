@@ -1746,29 +1746,41 @@
     .showcase-desc { font-size: .85rem; color: var(--text-2); margin-bottom: 1rem; line-height: 1.6; }
 
     /* ============================================================
-       SECTION CTA NEON
+       SECTION CTA
     ============================================================ */
     #cta-neon {
-      background: #080808;
+      background: #00020e;
       padding: 8rem 0;
       position: relative;
       overflow: hidden;
       text-align: center;
     }
+    /* Glow blob navy */
     #cta-neon::before {
       content: '';
       position: absolute;
       width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,255,120,.11) 0%, transparent 68%);
+      background: radial-gradient(circle, rgba(0,7,105,.35) 0%, transparent 65%);
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       animation: cta-pulse 3.5s ease-in-out infinite;
       pointer-events: none;
     }
+    /* Glow blob red (décalé) */
+    #cta-neon::after {
+      content: '';
+      position: absolute;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(178,34,52,.18) 0%, transparent 65%);
+      top: 50%; left: 50%;
+      transform: translate(-30%, -60%);
+      pointer-events: none;
+    }
     @keyframes cta-pulse {
-      0%, 100% { opacity: .55; transform: translate(-50%,-50%) scale(1); }
-      50%       { opacity: 1;   transform: translate(-50%,-50%) scale(1.18); }
+      0%, 100% { opacity: .5;  transform: translate(-50%,-50%) scale(1); }
+      50%       { opacity: .85; transform: translate(-50%,-50%) scale(1.16); }
     }
     .cta-dot {
       position: absolute;
@@ -1779,26 +1791,6 @@
       0%, 100% { transform: translateY(0); }
       50%       { transform: translateY(-14px); }
     }
-    .cta-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: .45rem;
-      background: rgba(0,255,120,.09);
-      border: 1px solid rgba(0,255,120,.28);
-      color: #00ff78;
-      font-family: Oswald, sans-serif;
-      font-size: .72rem;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-      padding: .45rem 1.2rem;
-      border-radius: 999px;
-      margin-bottom: 2.4rem;
-      animation: badge-blink 2.8s ease-in-out infinite;
-    }
-    @keyframes badge-blink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: .65; }
-    }
     .cta-title {
       font-family: Anton, sans-serif;
       font-size: clamp(2.5rem, 6vw, 4.4rem);
@@ -1808,22 +1800,22 @@
       text-transform: uppercase;
     }
     .cta-neon-word {
-      color: #00ff78;
+      color: #B22234;
       text-shadow:
-        0 0 8px  rgba(0,255,120,.9),
-        0 0 25px rgba(0,255,120,.6),
-        0 0 55px rgba(0,255,120,.3);
+        0 0 8px  rgba(178,34,52,.9),
+        0 0 28px rgba(178,34,52,.55),
+        0 0 60px rgba(178,34,52,.25);
       animation: neon-flicker 4s linear infinite;
     }
     @keyframes neon-flicker {
       0%, 18%, 20%, 22%, 52%, 54%, 100% {
         text-shadow:
-          0 0 8px  rgba(0,255,120,.9),
-          0 0 25px rgba(0,255,120,.6),
-          0 0 55px rgba(0,255,120,.3);
+          0 0 8px  rgba(178,34,52,.9),
+          0 0 28px rgba(178,34,52,.55),
+          0 0 60px rgba(178,34,52,.25);
         opacity: 1;
       }
-      19%, 53% { text-shadow: none; opacity: .82; }
+      19%, 53% { text-shadow: none; opacity: .8; }
     }
     .cta-sub {
       font-family: Nunito, sans-serif;
@@ -1834,7 +1826,7 @@
     .cta-details {
       font-family: Nunito, sans-serif;
       font-size: .84rem;
-      color: rgba(255,255,255,.42);
+      color: rgba(255,255,255,.4);
       margin-bottom: 3rem;
       letter-spacing: .3px;
     }
@@ -1845,8 +1837,8 @@
       flex-wrap: wrap;
     }
     .btn-neon {
-      background: #00ff78;
-      color: #060606;
+      background: #B22234;
+      color: #fff;
       font-family: Oswald, sans-serif;
       font-size: .92rem;
       font-weight: 700;
@@ -1859,23 +1851,23 @@
       display: inline-flex;
       align-items: center;
       gap: .5rem;
-      box-shadow: 0 0 18px rgba(0,255,120,.45), 0 0 55px rgba(0,255,120,.15);
+      box-shadow: 0 0 18px rgba(178,34,52,.5), 0 0 55px rgba(178,34,52,.18);
       transition: box-shadow .3s, transform .2s;
     }
     .btn-neon:hover {
-      box-shadow: 0 0 30px rgba(0,255,120,.75), 0 0 80px rgba(0,255,120,.3);
+      box-shadow: 0 0 30px rgba(178,34,52,.8), 0 0 80px rgba(178,34,52,.3);
       transform: translateY(-2px);
     }
     .btn-neon-outline {
       background: transparent;
-      color: #00ff78;
+      color: #fff;
       font-family: Oswald, sans-serif;
       font-size: .92rem;
       font-weight: 600;
       letter-spacing: 1px;
       padding: .9rem 2.2rem;
       border-radius: 6px;
-      border: 1.5px solid rgba(0,255,120,.45);
+      border: 1.5px solid rgba(255,255,255,.3);
       cursor: pointer;
       text-decoration: none;
       display: inline-flex;
@@ -1883,8 +1875,8 @@
       transition: border-color .3s, background .3s;
     }
     .btn-neon-outline:hover {
-      border-color: #00ff78;
-      background: rgba(0,255,120,.07);
+      border-color: rgba(255,255,255,.7);
+      background: rgba(255,255,255,.06);
     }
 
     /* --- Contact --- */
@@ -2898,16 +2890,12 @@
 <section id="cta-neon" aria-label="Appel à candidater">
 
   <!-- Décoration flottante -->
-  <div class="cta-dot" style="width:9px;height:9px;left:11%;top:24%;background:#00ff78;opacity:.55;animation-delay:.4s;"></div>
-  <div class="cta-dot" style="width:5px;height:5px;left:7%;top:58%;background:#00ff78;opacity:.3;animation-delay:1.3s;"></div>
-  <div class="cta-dot" style="width:18px;height:18px;right:13%;top:28%;background:transparent;border:2px solid rgba(0,255,120,.35);animation-delay:.9s;"></div>
-  <div class="cta-dot" style="width:7px;height:7px;right:8%;top:64%;background:#00ff78;opacity:.4;animation-delay:2s;"></div>
+  <div class="cta-dot" style="width:8px;height:8px;left:11%;top:24%;background:#B22234;opacity:.6;animation-delay:.4s;"></div>
+  <div class="cta-dot" style="width:5px;height:5px;left:7%;top:58%;background:#000769;opacity:.5;animation-delay:1.3s;"></div>
+  <div class="cta-dot" style="width:18px;height:18px;right:13%;top:28%;background:transparent;border:2px solid rgba(178,34,52,.35);animation-delay:.9s;"></div>
+  <div class="cta-dot" style="width:7px;height:7px;right:8%;top:64%;background:#C0A060;opacity:.45;animation-delay:2s;"></div>
 
   <div class="container" style="position:relative;z-index:2;">
-
-    <div class="cta-badge fade-up">
-      <span>⚡</span> Places limitées — Sélection en cours
-    </div>
 
     <h2 class="cta-title fade-up">
       Prêt à passer au<br>
@@ -2918,8 +2906,8 @@
     <p class="cta-details fade-up">Analyse de ton profil &middot; Présentation de la méthode &middot; Réponse à tes questions</p>
 
     <div class="cta-btns fade-up">
-      <a href="#contact" class="btn-neon">Passer la sélection pour rejoindre →</a>
-      <a href="https://www.instagram.com/nextmoovusa" target="_blank" rel="noopener noreferrer" class="btn-neon-outline">Rejoindre le groupe de signaux</a>
+      <a href="#contact" class="btn-neon">Intégrer la sélection →</a>
+      <a href="athletes.html" class="btn-neon-outline">Voir nos athlètes</a>
     </div>
 
   </div>
