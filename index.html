@@ -635,54 +635,40 @@
       background: var(--bg-soft);
     }
 
-    .athletes-grid {
-      position: relative;
-      height: 510px;
+    /* Athletes ticker */
+    .ath-ticker-wrap {
+      overflow: hidden;
+      padding: 1.2rem 0 1.8rem;
+      mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    }
+    .ath-ticker {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: visible;
-      margin-bottom: 1.8rem;
+      gap: 1.4rem;
+      width: max-content;
+      animation: ath-scroll 32s linear infinite;
+    }
+    .ath-ticker:hover { animation-play-state: paused; }
+    @keyframes ath-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
-    /* --- Flip card + carousel system --- */
+    /* --- Flip card --- */
     .athlete-card {
-      position: absolute;
-      width: 300px;
+      flex-shrink: 0;
+      width: 210px;
       background: transparent;
       border: none;
       border-radius: var(--r);
       overflow: visible;
       cursor: pointer;
       perspective: 1200px;
-      transform: scale(0);
-      opacity: 0;
-      pointer-events: none;
-      z-index: 0;
-      transition: none;
-    }
-    .athlete-card.slot-left {
-      transform: translateX(-370px) scale(.82); opacity: .45;
-      pointer-events: auto; z-index: 1;
-      transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .45s;
-      will-change: transform, opacity;
-    }
-    .athlete-card.slot-center {
-      transform: translateX(0) scale(1.05); opacity: 1;
-      pointer-events: auto; z-index: 2;
-      transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .45s;
-      will-change: transform, opacity;
-    }
-    .athlete-card.slot-right {
-      transform: translateX(370px) scale(.82); opacity: .45;
-      pointer-events: auto; z-index: 1;
-      transition: transform .5s cubic-bezier(.22,1,.36,1), opacity .45s;
-      will-change: transform, opacity;
     }
 
     .ath-flipper {
       position: relative;
-      width: 100%; min-height: 420px;
+      width: 100%; min-height: 310px;
       transform-style: preserve-3d;
       transition: transform .7s cubic-bezier(.22,1,.36,1);
       border-radius: var(--r);
@@ -690,7 +676,7 @@
     .athlete-card.flipped .ath-flipper { transform: rotateY(180deg); }
 
     .ath-front, .ath-back {
-      position: absolute; width: 100%; min-height: 420px;
+      position: absolute; width: 100%; min-height: 310px;
       top: 0; left: 0;
       backface-visibility: hidden;
       -webkit-backface-visibility: hidden;
@@ -786,24 +772,6 @@
       transition: background .2s;
     }
     .ath-flip-close:hover { background: rgba(255,255,255,.25); }
-
-    /* Flèches carrousel athlètes */
-    .ath-arrow {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      z-index: 10;
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      color: var(--navy); font-size: 1.1rem;
-      cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background .2s, border-color .2s, color .2s;
-      box-shadow: 0 2px 10px rgba(0,7,105,.1);
-    }
-    .ath-arrow:hover { background: var(--navy); color: #fff; border-color: var(--navy); }
-    .ath-arrow-prev { left: .5rem; }
-    .ath-arrow-next { right: .5rem; }
 
     .ath-back-section { margin-bottom: .9rem; }
     .ath-back-label {
@@ -1088,11 +1056,9 @@
        RESPONSIVE — Étape 3
     ============================================================ */
     @media (max-width: 1024px) {
-      .athletes-grid { grid-template-columns: repeat(2, 1fr); }
       .agents-grid   { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
-      .athletes-grid { grid-template-columns: 1fr; }
       .agents-grid   { grid-template-columns: 1fr; }
       .form-grid-2   { grid-template-columns: 1fr; }
       .modal { padding: 1.5rem; }
@@ -2166,13 +2132,17 @@
     <h2 class="section-title fade-up" id="ath-title">NOS ATHLÈTES</h2>
     <div class="accent-line fade-up"></div>
     <p class="section-sub fade-up">Des parcours réels, construits avec rigueur et honnêteté.</p>
+  </div>
 
-    <div style="position:relative;" class="fade-up">
-      <button class="ath-arrow ath-arrow-prev" id="athPrev" aria-label="Athlète précédent">&#8249;</button>
-      <div class="athletes-grid" id="athletesGrid"></div>
-      <button class="ath-arrow ath-arrow-next" id="athNext" aria-label="Athlète suivant">&#8250;</button>
-    </div>
+  <div class="ath-ticker-wrap fade-up">
+    <div class="ath-ticker" id="athletesTicker"></div>
+  </div>
 
+  <div class="container" style="text-align:center; margin-top:2.2rem;">
+    <a href="athletes.html" class="btn btn-navy">Voir tous les profils →</a>
+  </div>
+
+  <div class="container">
     <button class="admin-btn" onclick="askAdmin('adminPanelAthletes')">⚙ Admin</button>
     <div class="admin-panel" id="adminPanelAthletes">
       <div class="admin-panel-title">Ajouter un athlète</div>
@@ -2946,26 +2916,22 @@
   let athletesData = load('nm_athletes_v2', defaultAthletes);
 
   function renderAthletes() {
-    const grid = document.getElementById('athletesGrid');
-    if (!grid) return;
-    grid.innerHTML = '';
-    athletesData.forEach((a, i) => {
+    const ticker = document.getElementById('athletesTicker');
+    if (!ticker) return;
+    ticker.innerHTML = '';
+
+    const makeCard = (a) => {
       const card = document.createElement('div');
-      card.className = 'athlete-card fade-up';
-      card.style.transitionDelay = `${i * 0.1}s`;
+      card.className = 'athlete-card';
       card.setAttribute('role', 'button');
       card.setAttribute('tabindex', '0');
-      card.setAttribute('aria-label', `${a.prenom} ${a.nom} — cliquer pour voir le parcours`);
-
+      card.setAttribute('aria-label', `${a.prenom} ${a.nom}`);
       const photoHTML = a.photo
         ? `<img src="${escA(a.photo)}" alt="${esc(a.prenom)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
           + `<div class="ath-photo-placeholder" style="display:none">🏅</div>`
         : `<div class="ath-photo-placeholder">🏅</div>`;
-
       card.innerHTML = `
         <div class="ath-flipper">
-
-          <!-- RECTO -->
           <div class="ath-front">
             <div class="ath-photo-wrap">${photoHTML}<div class="ath-photo-overlay"></div></div>
             <div class="ath-body">
@@ -2976,8 +2942,6 @@
               <span class="ath-flip-hint">↩ Voir son parcours</span>
             </div>
           </div>
-
-          <!-- VERSO -->
           <div class="ath-back">
             <div class="ath-back-header">
               <div>
@@ -2990,59 +2954,23 @@
             ${a.motiv    ? `<div class="ath-back-section"><div class="ath-back-label">Motivation</div><p class="ath-back-text">${esc(a.motiv)}</p></div>` : ''}
             ${a.message  ? `<div class="ath-back-section"><div class="ath-back-label">Son message</div><blockquote class="ath-back-quote">"${esc(a.message)}"</blockquote></div>` : ''}
           </div>
-
         </div>`;
-
-      /* Clic : side card → navigation, center card → flip */
       card.addEventListener('click', e => {
-        if (!card.classList.contains('slot-center')) { gotoAth(i); return; }
         if (e.target.closest('.ath-flip-close')) { card.classList.remove('flipped'); return; }
         card.classList.toggle('flipped');
       });
       card.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); if (card.classList.contains('slot-center')) card.classList.toggle('flipped'); }
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.toggle('flipped'); }
       });
+      return card;
+    };
 
-      grid.appendChild(card);
-    });
-    updateAthStage();
+    // Render cards + duplicate for seamless infinite scroll
+    athletesData.forEach(a => ticker.appendChild(makeCard(a)));
+    athletesData.forEach(a => ticker.appendChild(makeCard(a)));
+    // Adjust speed proportionally to number of cards
+    ticker.style.animationDuration = Math.max(18, athletesData.length * 6) + 's';
   }
-
-  /* --- Carrousel Athlètes --- */
-  let athIdx = 0;
-
-  function updateAthStage() {
-    const cards = document.querySelectorAll('#athletesGrid .athlete-card');
-    const n = cards.length;
-    if (!n) return;
-    const prev = ((athIdx - 1) % n + n) % n;
-    const next = ((athIdx + 1) % n + n) % n;
-    cards.forEach((c, i) => {
-      c.classList.remove('slot-left', 'slot-center', 'slot-right');
-      if      (i === athIdx) c.classList.add('slot-center');
-      else if (i === prev)   c.classList.add('slot-left');
-      else if (i === next)   c.classList.add('slot-right');
-    });
-  }
-
-  function gotoAth(i) {
-    const n = athletesData.length;
-    const cards = document.querySelectorAll('#athletesGrid .athlete-card');
-    if (cards[athIdx]) cards[athIdx].classList.remove('flipped');
-    athIdx = ((i % n) + n) % n;
-    updateAthStage();
-  }
-
-  document.getElementById('athPrev').addEventListener('click', () => gotoAth(athIdx - 1));
-  document.getElementById('athNext').addEventListener('click', () => gotoAth(athIdx + 1));
-
-  let athTouchX = 0;
-  const athStageEl = document.getElementById('athletesGrid');
-  athStageEl.addEventListener('touchstart', e => { athTouchX = e.touches[0].clientX; }, {passive:true});
-  athStageEl.addEventListener('touchend',   e => {
-    const d = athTouchX - e.changedTouches[0].clientX;
-    if (Math.abs(d) > 40) d > 0 ? gotoAth(athIdx + 1) : gotoAth(athIdx - 1);
-  });
 
   function openAthleteModal(i) {
     const a = athletesData[i];
