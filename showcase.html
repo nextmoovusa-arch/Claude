@@ -31,7 +31,7 @@
     .nav-logo{font-family:'Anton',sans-serif;font-size:1.35rem;letter-spacing:.04em;color:#fff;}
     .nav-logo span{color:var(--gold);}
     #navLinks{display:flex;align-items:center;gap:20px;}
-    #navLinks a{font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:500;color:rgba(255,255,255,.85);letter-spacing:.06em;text-transform:uppercase;padding:4px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap;}
+    #navLinks a{font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.85);letter-spacing:.06em;text-transform:uppercase;padding:4px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap;}
     #navLinks a:hover,#navLinks a.active{color:#fff;border-color:var(--gold);}
     .nav-cta{background:var(--red);color:#fff!important;border:none!important;padding:8px 16px!important;border-radius:6px!important;transition:background .2s!important;}
     .nav-cta:hover{background:#9a1b2b!important;}
@@ -82,8 +82,10 @@
   <div class="sc-hero-bg"></div>
   <div class="sc-hero-inner">
     <p class="sc-eyebrow">Visibilité · Opportunité · Résultats</p>
-    <h1 class="sc-hero-title">NEXTMOOV <span>USA</span></h1>
-    <p class="sc-hero-tagline">Le Showcase</p>
+    <div class="sc-hero-title-group">
+      <h1 class="sc-hero-title">NEXTMOOV <span>USA</span></h1>
+      <p class="sc-hero-tagline">Le Showcase</p>
+    </div>
     <p class="sc-hero-sub">Un événement taillé pour connecter les meilleurs athlètes français aux coachs universitaires américains.</p>
     <div class="sc-hero-btns">
       <a href="#dates" class="sc-btn-red">Voir les prochaines dates →</a>
@@ -203,10 +205,11 @@
   }
   .sc-hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto;}
   .sc-eyebrow{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
-  .sc-hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1;margin-bottom:4px;letter-spacing:2px;text-transform:uppercase;display:inline-block;transition:transform .28s ease;}
-  .sc-hero-title:hover{transform:scale(1.06);}
+  .sc-hero-title-group{display:inline-block;cursor:default;transition:transform .28s ease;transform-origin:center;}
+  .sc-hero-title-group:hover{transform:scale(1.06);}
+  .sc-hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1;margin-bottom:4px;letter-spacing:2px;text-transform:uppercase;}
   .sc-hero-title span{color:var(--gold);}
-  .sc-hero-tagline{font-family:'Oswald',sans-serif;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:400;letter-spacing:6px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:22px;border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);padding:.4rem 0;display:inline-block;}
+  .sc-hero-tagline{font-family:'Oswald',sans-serif;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:400;letter-spacing:6px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:22px;border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);padding:.4rem 0;display:block;}
   .sc-hero-sub{font-size:1.05rem;color:rgba(255,255,255,.75);max-width:540px;margin:0 auto 36px;}
   .sc-hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
   .sc-btn-red{background:var(--red);color:#fff;font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:14px 32px;border-radius:8px;transition:background .2s,transform .2s;}
