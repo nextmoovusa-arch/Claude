@@ -403,7 +403,7 @@
        SECTION MON HISTOIRE
     ============================================================ */
     #histoire {
-      background: #080808;
+      background: #00020e;
       padding: 7rem 0;
       position: relative;
       overflow: hidden;
@@ -413,7 +413,7 @@
       position: absolute;
       width: 550px; height: 550px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,255,120,.09) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(0,7,105,.3) 0%, transparent 65%);
       top: 50%; left: 28%;
       transform: translate(-50%, -50%);
       pointer-events: none;
@@ -426,8 +426,8 @@
     }
     /* ---- Left card ---- */
     .histoire-card {
-      background: linear-gradient(160deg, #111 0%, #0c1a10 100%);
-      border: 1px solid rgba(0,255,120,.18);
+      background: linear-gradient(160deg, #020b4a 0%, #000769 100%);
+      border: 1px solid rgba(192,160,96,.22);
       border-radius: 18px;
       padding: 2.2rem 2rem 0;
       position: relative;
@@ -437,7 +437,7 @@
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0; height: 90px;
-      background: linear-gradient(to top, rgba(0,255,120,.06), transparent);
+      background: linear-gradient(to top, rgba(192,160,96,.06), transparent);
       pointer-events: none;
     }
     .histoire-rating {
@@ -462,12 +462,12 @@
       width: 100px; height: 100px;
       border-radius: 50%;
       margin: 1.4rem auto 1.1rem;
-      border: 2.5px solid rgba(0,255,120,.5);
+      border: 2.5px solid rgba(192,160,96,.6);
       overflow: hidden;
-      background: linear-gradient(135deg, #1a3a2a, #0a1a10);
+      background: linear-gradient(135deg, #000769, #00020e);
       display: flex; align-items: center; justify-content: center;
       font-size: 2.2rem;
-      box-shadow: 0 0 22px rgba(0,255,120,.18);
+      box-shadow: 0 0 22px rgba(192,160,96,.2);
     }
     .histoire-photo-wrap img { width:100%; height:100%; object-fit:cover; }
     .histoire-card-name {
@@ -481,7 +481,7 @@
       text-align: center; margin-bottom: 1.8rem; line-height: 1.5;
     }
     .histoire-card-bar {
-      border-top: 1px solid rgba(0,255,120,.14);
+      border-top: 1px solid rgba(192,160,96,.18);
       margin: 0 -2rem;
       padding: .9rem 1.6rem;
       display: flex; align-items: center;
@@ -490,13 +490,13 @@
     }
     .histoire-bar-dot {
       width: 7px; height: 7px; border-radius: 50%;
-      background: #00ff78;
+      background: #C0A060;
       display: inline-block; margin-right: .4rem;
       animation: hist-dot 1.8s ease-in-out infinite;
     }
     @keyframes hist-dot {
-      0%,100% { opacity:1; box-shadow:0 0 0 0 rgba(0,255,120,.4); }
-      50%      { opacity:.65; box-shadow:0 0 0 4px rgba(0,255,120,0); }
+      0%,100% { opacity:1; box-shadow:0 0 0 0 rgba(192,160,96,.5); }
+      50%      { opacity:.65; box-shadow:0 0 0 4px rgba(192,160,96,0); }
     }
     .histoire-bar-stat {
       font-family: Nunito, sans-serif;
@@ -516,7 +516,7 @@
       font-family: Oswald, sans-serif;
       font-size: .7rem; letter-spacing: 2px;
       text-transform: uppercase;
-      color: #00ff78; margin-bottom: 1rem;
+      color: #C0A060; margin-bottom: 1rem;
     }
     .histoire-title {
       font-family: Anton, sans-serif;
@@ -526,8 +526,8 @@
       text-transform: uppercase;
     }
     .histoire-title .hn {
-      color: #00ff78;
-      text-shadow: 0 0 8px rgba(0,255,120,.8), 0 0 25px rgba(0,255,120,.35);
+      color: #C0A060;
+      text-shadow: 0 0 8px rgba(192,160,96,.8), 0 0 25px rgba(192,160,96,.35);
     }
     .histoire-body {
       font-family: Nunito, sans-serif;
@@ -536,7 +536,7 @@
     }
     .histoire-body p { margin-bottom: 1.1rem; }
     .histoire-body .hn {
-      color: #00ff78; font-weight: 700;
+      color: #C0A060; font-weight: 700;
     }
     @media (max-width: 920px) {
       .histoire-grid { grid-template-columns: 1fr; gap: 2.8rem; }
@@ -2617,7 +2617,7 @@
 <section id="forfait" aria-labelledby="forfait-title">
   <div class="container">
     <p class="section-eyebrow eyebrow-navy fade-up">Ce qui est inclus</p>
-    <h2 class="section-title fade-up" id="forfait-title">LE FORFAIT NEXTMOOV USA</h2>
+    <h2 class="section-title fade-up" id="forfait-title" style="font-size:clamp(1.2rem,2.4vw,1.7rem);">LE FORFAIT NEXTMOOV USA</h2>
     <div class="accent-line fade-up"></div>
     <p class="section-sub fade-up">Tout inclus. Un seul engagement. Aucune surprise.</p>
 
@@ -2898,8 +2898,8 @@
   <div class="container" style="position:relative;z-index:2;">
 
     <h2 class="cta-title fade-up">
-      Prêt à passer au<br>
-      <span class="cta-neon-word">niveau supérieur&nbsp;?</span>
+      Prêt à prendre ton<br>
+      <span class="cta-neon-word">avenir en main&nbsp;?</span>
     </h2>
 
     <p class="cta-sub fade-up">Passe l'entretien de sélection — 30 minutes.</p>
