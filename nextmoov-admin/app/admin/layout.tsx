@@ -8,24 +8,31 @@ import Sidebar from '@/components/Sidebar'
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
   const pathname = usePathname()
-  const [checking, setChecking] = useState(true)
+  const [authed, setAuthed] = useState<boolean | null>(null)
 
   useEffect(() => {
     const supabase = createClient()
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      if (!session && pathname !== '/admin/login') {
-        router.replace('/admin/login')
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session) {
+        setAuthed(true)
+        if (pathname === '/admin/login') {
+          router.replace('/admin/athletes')
+        }
       } else {
-        setChecking(false)
+        setAuthed(false)
+        if (pathname !== '/admin/login') {
+          router.replace('/admin/login')
+        }
       }
     })
+    return () => subscription.unsubscribe()
   }, [pathname])
 
   if (pathname === '/admin/login') {
     return <>{children}</>
   }
 
-  if (checking) {
+  if (authed === null || authed === false) {
     return (
       <div className="min-h-screen bg-[#00020e] flex items-center justify-center">
         <div className="w-7 h-7 border-2 border-white/20 border-t-white rounded-full animate-spin" />
