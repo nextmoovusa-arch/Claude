@@ -1,11 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 
 export default function LoginPage() {
-  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -22,8 +20,7 @@ export default function LoginPage() {
       setLoading(false)
       return
     }
-    router.push('/admin/athletes')
-    router.refresh()
+    window.location.href = '/admin/athletes'
   }
 
   return (
@@ -39,14 +36,14 @@ export default function LoginPage() {
           <h1 className="text-white text-lg font-semibold mb-6 text-center">Connexion</h1>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-xs text-white/50 uppercase tracking-widest mb-1.5">Email</label>
-              <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
+              <label htmlFor="email" className="block text-xs text-white/50 uppercase tracking-widest mb-1.5">Email</label>
+              <input id="email" name="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder-white/20 focus:outline-none focus:border-[#C0A060]/60 transition-colors"
                 placeholder="admin@nextmoov.com" />
             </div>
             <div>
-              <label className="block text-xs text-white/50 uppercase tracking-widest mb-1.5">Mot de passe</label>
-              <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
+              <label htmlFor="password" className="block text-xs text-white/50 uppercase tracking-widest mb-1.5">Mot de passe</label>
+              <input id="password" name="password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)}
                 className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2.5 text-white text-sm placeholder-white/20 focus:outline-none focus:border-[#C0A060]/60 transition-colors"
                 placeholder="••••••••" />
             </div>
