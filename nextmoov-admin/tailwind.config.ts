@@ -19,9 +19,6 @@ const config: Config = {
           gold: '#C0A060',
         },
       },
-      fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-      },
     },
   },
   plugins: [],

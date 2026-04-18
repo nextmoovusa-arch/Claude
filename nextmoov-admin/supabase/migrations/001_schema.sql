@@ -1,12 +1,6 @@
--- ============================================================
--- NextMoov USA — Admin CMS Schema
--- Run this in your Supabase SQL editor or via Supabase CLI
--- ============================================================
-
--- Enable UUID extension
+-- NextMoov USA Admin CMS Schema
 create extension if not exists "pgcrypto";
 
--- ─── Athletes ────────────────────────────────────────────────
 create table if not exists athletes (
   id            uuid primary key default gen_random_uuid(),
   created_at    timestamptz not null default now(),
@@ -23,7 +17,6 @@ create table if not exists athletes (
   instagram_url text
 );
 
--- ─── Testimonials ────────────────────────────────────────────
 create table if not exists testimonials (
   id            uuid primary key default gen_random_uuid(),
   created_at    timestamptz not null default now(),
@@ -37,7 +30,6 @@ create table if not exists testimonials (
   is_featured   boolean not null default false
 );
 
--- ─── Showcase Events ─────────────────────────────────────────
 create table if not exists showcase_events (
   id                uuid primary key default gen_random_uuid(),
   created_at        timestamptz not null default now(),
@@ -52,7 +44,6 @@ create table if not exists showcase_events (
   is_published      boolean not null default false
 );
 
--- ─── Social Posts ────────────────────────────────────────────
 create table if not exists social_posts (
   id             uuid primary key default gen_random_uuid(),
   created_at     timestamptz not null default now(),
@@ -64,22 +55,12 @@ create table if not exists social_posts (
   published_at   timestamptz
 );
 
--- ─── Row Level Security ──────────────────────────────────────
--- Enable RLS on all tables
-alter table athletes       enable row level security;
-alter table testimonials   enable row level security;
+alter table athletes        enable row level security;
+alter table testimonials    enable row level security;
 alter table showcase_events enable row level security;
-alter table social_posts   enable row level security;
+alter table social_posts    enable row level security;
 
--- Only authenticated users (admins) can read/write
-create policy "admins only" on athletes
-  for all to authenticated using (true) with check (true);
-
-create policy "admins only" on testimonials
-  for all to authenticated using (true) with check (true);
-
-create policy "admins only" on showcase_events
-  for all to authenticated using (true) with check (true);
-
-create policy "admins only" on social_posts
-  for all to authenticated using (true) with check (true);
+create policy "admins only" on athletes        for all to authenticated using (true) with check (true);
+create policy "admins only" on testimonials    for all to authenticated using (true) with check (true);
+create policy "admins only" on showcase_events for all to authenticated using (true) with check (true);
+create policy "admins only" on social_posts    for all to authenticated using (true) with check (true);
