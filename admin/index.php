@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($tables[$sec])) {
             $pdo->prepare("DELETE FROM {$tables[$sec]} WHERE id=?")->execute([(int)$_POST['id']]);
         }
-        header("Location: /admin/?section=$sec"); exit;
+        header("Location: /admin/index.php?section=$sec"); exit;
     }
 
     if ($act === 'save_athlete') {
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $pdo->prepare("INSERT INTO athletes(name,sport,position,school_origin,university_us,state_us,season,bio,quote,motiv,message,photo_url,instagram_url,is_featured) VALUES(:name,:sport,:position,:school,:university,:state,:season,:bio,:quote,:motiv,:message,:photo,:instagram,:featured)")->execute($row);
         }
-        header("Location: /admin/?section=athletes"); exit;
+        header("Location: /admin/index.php?section=athletes"); exit;
     }
 
     if ($act === 'save_temo') {
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $pdo->prepare("INSERT INTO testimonials(athlete_name,sport,quote,rating,photo_url,university_us,season,is_featured) VALUES(:name,:sport,:quote,:rating,:photo,:university,:season,:featured)")->execute($row);
         }
-        header("Location: /admin/?section=temos"); exit;
+        header("Location: /admin/index.php?section=temos"); exit;
     }
 
     if ($act === 'save_showcase') {
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $pdo->prepare("INSERT INTO showcase_events(title,location,event_date,description,sports,capacity,registration_url,photo_url,is_published) VALUES(:title,:location,:date,:desc,:sports,:capacity,:reg_url,:photo,:published)")->execute($row);
         }
-        header("Location: /admin/?section=showcase"); exit;
+        header("Location: /admin/index.php?section=showcase"); exit;
     }
 
     if ($act === 'save_social') {
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $pdo->prepare("INSERT INTO social_posts(platform,post_url,caption,thumbnail_url,is_featured) VALUES(:platform,:url,:caption,:thumb,:featured)")->execute($row);
         }
-        header("Location: /admin/?section=social"); exit;
+        header("Location: /admin/index.php?section=social"); exit;
     }
 }
 
