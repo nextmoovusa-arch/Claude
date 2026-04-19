@@ -2557,14 +2557,7 @@
 <!-- ================================================================
      JS — ÉTAPE 1 : Nav + Parallax + Smooth scroll + Observer
 ================================================================ -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
-  /* ---- Supabase public client ---- */
-  const nmDb = window.supabase.createClient(
-    'https://zropxcbxyqbyivgqiajj.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inpyb3B4Y2J4eXFieWl2Z3FpYWpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY0OTc1MzYsImV4cCI6MjA5MjA3MzUzNn0.j9rzlTMHFCSPJOFuMc0VxMOxW1zIJpi_98BiLc5N0pA'
-  );
-
   /* ---- Variables globales réutilisables ---- */
   const navbar   = document.getElementById('navbar');
   const heroBg   = document.getElementById('heroBg');
@@ -2887,8 +2880,8 @@
   /* --- Init étape 3 --- */
   (async () => {
     try {
-      const { data } = await nmDb.from('athletes').select('*').order('created_at');
-      if (data && data.length) athletesData = data.map(a => ({
+      const data = await fetch('/api.php?action=athletes').then(r => r.json());
+      if (Array.isArray(data) && data.length) athletesData = data.map(a => ({
         prenom: a.name.split(' ')[0] || a.name,
         nom:    a.name.split(' ').slice(1).join(' ') || '',
         sport:  a.sport || '',
@@ -3139,8 +3132,8 @@
   /* --- Init étape 4 --- */
   (async () => {
     try {
-      const { data } = await nmDb.from('testimonials').select('*').order('created_at');
-      if (data && data.length) temosData = data.map(t => ({
+      const data = await fetch('/api.php?action=testimonials').then(r => r.json());
+      if (Array.isArray(data) && data.length) temosData = data.map(t => ({
         prenom: t.athlete_name || '',
         sport:  t.sport || '',
         univ:   t.university_us || '',
