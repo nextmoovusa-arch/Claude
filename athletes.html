@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nos Athlètes — NextMoov USA</title>
+  <meta name="description" content="Découvrez les athlètes accompagnés par NextMoov USA vers les universités américaines.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000769'/><text x='50%25' y='56%25' font-family='Arial Black' font-size='13' font-weight='900' fill='%23fff' text-anchor='middle' dominant-baseline='middle'>NM</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#000769;--red:#B22234;--gold:#C0A060;--bg:#fff;--bg-soft:#F0F4FF;--text:#0F172A;--text-2:#475569;--text-3:#94A3B8;--border:#E2E8F0;--r:10px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;font-size:15px;}
+    body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    h1,h2,h3,h4{font-family:'Oswald',sans-serif;letter-spacing:.5px;}
+    img{max-width:100%;display:block;}
+    a{color:inherit;text-decoration:none;}
+    .container{max-width:1140px;margin:0 auto;padding:0 1.5rem;}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.72rem 1.8rem;border-radius:6px;font-family:'Oswald',sans-serif;font-weight:600;font-size:.88rem;letter-spacing:1px;cursor:pointer;transition:all .2s;border:2px solid transparent;}
+    .btn-red{background:var(--red);color:#fff;} .btn-red:hover{background:#C8283E;}
+    .section-eyebrow{font-family:'Oswald',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-align:center;margin-bottom:.4rem;color:var(--navy);}
+    .section-title{font-family:'Oswald',sans-serif;font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:700;text-align:center;line-height:1.1;margin-bottom:.5rem;}
+    .section-sub{font-size:.95rem;text-align:center;color:var(--text-2);margin-bottom:2.5rem;line-height:1.7;}
+    .accent-line{width:42px;height:3px;background:var(--navy);margin:.6rem auto 1.8rem;border-radius:2px;}
+    .fade-up{opacity:0;transform:translateY(24px);transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1);}
+    .fade-up.visible{opacity:1;transform:translateY(0);}
+    ::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:#f1f5f9;} ::-webkit-scrollbar-thumb{background:rgba(0,7,105,.25);border-radius:3px;}
+
+    /* ── NAVBAR ── */
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 0;transition:background .3s,box-shadow .3s,padding .3s;}
+    #navbar.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 1px 20px rgba(0,7,105,.1);padding:.65rem 0;}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1140px;margin:0 auto;padding:0 1.5rem;}
+    .nav-logo-text{font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:2px;color:#fff;transition:color .3s;}
+    .nav-logo-text span{color:var(--red);}
+    #navbar.scrolled .nav-logo-text{color:var(--navy);}
+    #navLinks{display:flex;align-items:center;gap:1.2rem;}
+    #navLinks a{font-family:'Oswald',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,.85);transition:color .2s;white-space:nowrap;}
+    #navbar.scrolled #navLinks a{color:var(--text-2);}
+    #navLinks a:hover,#navLinks a.active{color:#fff;}
+    #navbar.scrolled #navLinks a:hover,#navbar.scrolled #navLinks a.active{color:var(--navy);font-weight:600;}
+    #navLinks a.nav-cta{background:var(--red);color:#fff;padding:.45rem 1.1rem;border-radius:5px;}
+    #navLinks a.nav-cta:hover{background:#C8283E;}
+    #burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;background:none;border:none;z-index:1100;}
+    #burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
+    #navbar.scrolled #burger span{background:var(--navy);}
+    #burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    #burger.open span:nth-child(2){opacity:0;}
+    #burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--navy);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{font-family:'Oswald',sans-serif;font-size:1.5rem;font-weight:600;color:#fff;letter-spacing:1px;text-transform:uppercase;}
+    .mobile-menu a.nav-cta{background:var(--red);padding:.6rem 1.5rem;border-radius:6px;}
+
+    /* ── HERO ── */
+    .hero{position:relative;height:60vh;min-height:400px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1554068865-24cecd4e34b8?w=1920&q=80') center/cover no-repeat;filter:brightness(.45);}
+    .hero-content{position:relative;text-align:center;color:#fff;padding:0 1.5rem;}
+    .hero-eyebrow{font-family:'Oswald',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+    .hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1;text-transform:uppercase;color:#fff;margin-bottom:1rem;display:inline-block;transition:transform .28s ease;}
+    .hero-title:hover{transform:scale(1.06);}
+    .hero-title span{color:var(--gold);}
+    .hero-sub{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:520px;margin:0 auto 1.8rem;line-height:1.7;}
+
+    /* ── ATHLETES GRID ── */
+    .athletes-section{padding:5rem 0 4rem;}
+    .ath-flip-grid{display:grid;grid-template-columns:repeat(3,300px);gap:2rem;justify-content:center;margin-top:2rem;}
+    .athlete-card-grid{height:380px;perspective:1000px;cursor:pointer;}
+    .ath-flipper-grid{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);}
+    .athlete-card-grid:hover .ath-flipper-grid,.athlete-card-grid.flipped .ath-flipper-grid{transform:rotateY(180deg);}
+    .ath-front-g,.ath-back-g{position:absolute;inset:0;border-radius:12px;backface-visibility:hidden;overflow:hidden;}
+    .ath-front-g{background:#fff;box-shadow:0 4px 24px rgba(0,0,0,.1);}
+    .ath-front-g img{width:100%;height:240px;object-fit:cover;object-position:top;}
+    .ath-front-info{padding:1rem 1.2rem;}
+    .ath-front-info h3{font-family:'Oswald',sans-serif;font-size:1.1rem;font-weight:700;color:var(--navy);}
+    .ath-front-info .sport-tag{display:inline-block;font-family:'Oswald',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;background:var(--red);color:#fff;padding:.22rem .6rem;border-radius:4px;margin:.4rem 0;}
+    .ath-front-info .univ{font-size:.8rem;color:var(--text-2);margin-top:.3rem;line-height:1.4;}
+    .ath-back-g{background:linear-gradient(145deg,var(--navy) 0%,#001199 100%);transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:1.8rem 1.4rem;text-align:center;color:#fff;}
+    .ath-back-g .back-name{font-family:'Oswald',sans-serif;font-size:1.2rem;font-weight:700;letter-spacing:.5px;margin-bottom:.4rem;}
+    .ath-back-g .back-sport{font-family:'Oswald',sans-serif;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;}
+    .ath-back-g blockquote{font-size:.88rem;line-height:1.6;color:rgba(255,255,255,.85);font-style:italic;margin-bottom:1.4rem;border-left:3px solid var(--gold);padding-left:.9rem;text-align:left;}
+    .ath-back-g .back-univ{font-size:.78rem;color:rgba(255,255,255,.6);line-height:1.4;}
+    .ath-back-g .back-year{display:inline-block;margin-top:.5rem;font-family:'Oswald',sans-serif;font-size:.7rem;letter-spacing:1px;color:var(--gold);}
+    .ath-photo-ph{width:100%;height:240px;background:linear-gradient(135deg,var(--bg-soft),#dde6ff);display:flex;align-items:center;justify-content:center;font-size:4rem;}
+
+    /* ── MAP SECTION ── */
+    .map-section{padding:5rem 0;background:var(--bg-soft);}
+    .map-wrapper{position:relative;display:inline-block;max-width:900px;width:100%;margin:0 auto;}
+    .map-wrapper img{width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.15);}
+    .map-dot-wrap{position:absolute;transform:translate(-50%,-50%);}
+    .map-dot{width:14px;height:14px;border-radius:50%;background:var(--red);border:2px solid #fff;box-shadow:0 0 0 0 rgba(178,34,52,.5);animation:pulse 2s infinite;cursor:pointer;position:relative;}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(178,34,52,.5);}70%{box-shadow:0 0 0 10px rgba(178,34,52,0);}100%{box-shadow:0 0 0 0 rgba(178,34,52,0);}}
+    .map-popup{display:none;position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);background:#fff;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,.18);padding:.9rem 1rem;width:220px;z-index:100;}
+    .map-popup::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:#fff;}
+    .map-dot-wrap:hover .map-popup{display:block;}
+    .map-popup .pop-univ-title{font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--red);text-align:center;margin-bottom:.6rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);}
+    .pop-athletes{display:flex;flex-direction:column;gap:.55rem;}
+    .pop-athlete{display:flex;align-items:center;gap:.6rem;}
+    .pop-athlete img{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:top;flex-shrink:0;}
+    .pop-athlete-info{display:flex;flex-direction:column;}
+    .map-popup .pop-name{font-family:'Oswald',sans-serif;font-size:.82rem;font-weight:700;color:var(--navy);}
+    .map-popup .pop-sport{font-family:'Oswald',sans-serif;font-size:.6rem;letter-spacing:1px;text-transform:uppercase;color:var(--text-3);}
+    .map-dot-multi{background:var(--navy);}
+    .map-dot-multi::after{content:'2';position:absolute;top:-6px;right:-6px;width:14px;height:14px;border-radius:50%;background:var(--gold);color:var(--navy);font-size:.55rem;font-weight:900;display:flex;align-items:center;justify-content:center;font-family:'Oswald',sans-serif;}
+    .map-center{text-align:center;}
+
+    /* ── CTA BANNER ── */
+    .cta-banner{padding:5rem 0;background:linear-gradient(135deg,var(--navy) 0%,#001199 100%);text-align:center;color:#fff;}
+    .cta-banner h2{font-family:'Oswald',sans-serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;margin-bottom:.8rem;}
+    .cta-banner p{font-size:1rem;color:rgba(255,255,255,.75);margin-bottom:2rem;}
+
+    /* ── FOOTER ── */
+    footer{background:var(--navy);color:rgba(255,255,255,.55);text-align:center;padding:2rem 1.5rem;font-size:.8rem;}
+    footer strong{color:#fff;}
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1000px){.ath-flip-grid{grid-template-columns:repeat(2,300px);}}
+    @media(max-width:680px){
+      .ath-flip-grid{grid-template-columns:1fr;max-width:320px;margin-left:auto;margin-right:auto;}
+      #navLinks{display:none;}
+      #burger{display:flex;}
+    }
+
+    .nav-logo-link{display:flex;align-items:center;flex-shrink:0;}
+    .nav-logo-img{height:38px;width:auto;display:block;transition:opacity .2s,transform .2s;}
+    .nav-logo-link:hover .nav-logo-img{opacity:.88;transform:scale(1.04);}
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo-link"><img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img" onerror="this.style.display='none'"><span class="nav-logo-text">NEXT<span>MOOV</span></span></a>
+    <div id="navLinks">
+      <a href="index.html">Accueil</a>
+      <a href="athletes.html" class="active">Athlètes</a>
+      <a href="temoignages.html">Témoignages</a>
+      <a href="showcase.html">Showcase</a>
+      <a href="videos.html">Vidéos</a>
+      <a href="ecosysteme.html">Écosystème</a>
+      <a href="index.html#contact" class="nav-cta">Intégrer la Sélection</a>
+    </div>
+    <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Accueil</a>
+  <a href="athletes.html">Athlètes</a>
+  <a href="temoignages.html">Témoignages</a>
+  <a href="showcase.html">Showcase</a>
+  <a href="videos.html">Vidéos</a>
+  <a href="ecosysteme.html">Écosystème</a>
+  <a href="index.html#contact" class="nav-cta">Intégrer la Sélection</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">NextMoov USA</p>
+    <h1 class="hero-title">Nos <span>Athlètes</span></h1>
+    <p class="hero-sub">Des joueurs français qui ont franchi le cap. Chaque parcours est unique, chaque réussite est la nôtre.</p>
+  </div>
+</section>
+
+<!-- ATHLETES GRID -->
+<section class="athletes-section">
+  <div class="container">
+    <p class="section-eyebrow">Nos athlètes</p>
+    <h2 class="section-title">Ils ont fait le saut</h2>
+    <div class="accent-line"></div>
+    <div class="ath-flip-grid" id="athletesGrid"></div>
+  </div>
+</section>
+
+<!-- MAP SECTION -->
+<section class="map-section">
+  <div class="container">
+    <p class="section-eyebrow">Sur la carte</p>
+    <h2 class="section-title">Où sont nos athlètes ?</h2>
+    <div class="accent-line"></div>
+    <p class="section-sub">Survolez un point pour découvrir l'athlète présent dans cette université.</p>
+    <div class="map-center">
+      <div class="map-wrapper" id="mapWrapper">
+        <img src="img/usa-map.jpeg" alt="Carte USA — Athlètes NextMoov">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Tu veux rejoindre la sélection ?</h2>
+    <p>Rejoins les athlètes NextMoov USA et lance ta carrière aux États-Unis.</p>
+    <a href="index.html#contact" class="btn btn-red">Intégrer la Sélection</a>
+  </div>
+</section>
+
+<footer>
+  <p><strong>NextMoov USA</strong> &copy; 2025 — Tous droits réservés</p>
+</footer>
+
+<script>
+  /* ── Données par défaut ── */
+  const defaultAthletes = [
+    { prenom:'Pablo', nom:'CABRAL', sport:'Soccer', annee:'2024', univ:'Mohawk Valley CC — New York', quote:'J\'ai toujours rêvé de jouer aux États-Unis. NextMoov en a fait une réalité.', photo:'https://i.imgur.com/hNZWvfU.jpeg', map:{ left:'81%', top:'18.5%' } },
+    { prenom:'Alexandre', nom:'DESCALZO', sport:'Soccer', annee:'2024', univ:'NEO A&M — Oklahoma', quote:'Muret, puis les États-Unis. NextMoov a tracé le chemin.', photo:'https://i.imgur.com/gVGYhjW.jpeg', map:{ left:'51%', top:'38%' } },
+    { prenom:'Iliess', nom:'BARI', sport:'Soccer', annee:'2024', univ:'Harcum CC — Pennsylvanie', quote:'Capitaine à Valenciennes, maintenant à Harcum. Tout est possible.', photo:'https://i.imgur.com/FkD1upj.jpeg', map:{ left:'82%', top:'28%' } },
+    { prenom:'Luca', nom:'MOREAU-COTIN', sport:'Soccer', annee:'2024', univ:'NEO A&M — Oklahoma', quote:'J\'ai quitté Cholet pour l\'Oklahoma. Le meilleur choix de ma vie.', photo:'https://i.imgur.com/yDp5ULR.jpeg', map:{ left:'51%', top:'38%' } },
+    { prenom:'Nolan', nom:'ROUSSE', sport:'Soccer', annee:'2024', univ:'Monroe CC — New York', quote:'Je ne savais même pas que c\'était possible. Maintenant j\'y suis.', photo:'https://i.imgur.com/QoAtGsT.jpeg', map:{ left:'78%', top:'18%' } }
+  ];
+
+  let athletes = [...defaultAthletes];
+
+  /* ── Observer ── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }});
+  }, { threshold: 0.12 });
+
+  /* ── Render grid ── */
+  function renderAthletes() {
+    const grid = document.getElementById('athletesGrid');
+    if (!athletes.length) {
+      grid.innerHTML = '<p style="text-align:center;color:var(--text-3);grid-column:1/-1;padding:3rem 0;">Aucun athlète pour le moment.</p>';
+      return;
+    }
+    grid.innerHTML = athletes.map(a => `
+      <div class="athlete-card-grid fade-up">
+        <div class="ath-flipper-grid">
+          <div class="ath-front-g">
+            ${a.photo
+              ? `<img src="${a.photo}" alt="${a.prenom} ${a.nom}" loading="lazy" onerror="this.outerHTML='<div class=\\'ath-photo-ph\\'>🏅</div>'">`
+              : '<div class="ath-photo-ph">🏅</div>'}
+            <div class="ath-front-info">
+              <h3>${a.prenom} ${a.nom}</h3>
+              <span class="sport-tag">${a.sport}</span>
+              <p class="univ">${a.univ}</p>
+            </div>
+          </div>
+          <div class="ath-back-g">
+            <div class="back-name">${a.prenom} ${a.nom}</div>
+            <div class="back-sport">${a.sport}</div>
+            <blockquote>${a.quote || '...'}</blockquote>
+            <div class="back-univ">${a.univ}</div>
+            ${a.annee ? `<span class="back-year">Promotion ${a.annee}</span>` : ''}
+          </div>
+        </div>
+      </div>`).join('');
+    grid.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  }
+
+  /* ── Render map dots ── */
+  function renderDots() {
+    const wrapper = document.getElementById('mapWrapper');
+    wrapper.querySelectorAll('.map-dot-wrap').forEach(el => el.remove());
+    const groups = {};
+    athletes.filter(a => a.map).forEach(a => {
+      const key = a.univ;
+      if (!groups[key]) groups[key] = { map: a.map, univ: a.univ, list: [] };
+      groups[key].list.push(a);
+    });
+    Object.values(groups).forEach(g => {
+      const multi = g.list.length > 1;
+      const wrap = document.createElement('div');
+      wrap.className = 'map-dot-wrap';
+      wrap.style.left = g.map.left;
+      wrap.style.top = g.map.top;
+      const athletesHtml = g.list.map(a => `
+        <div class="pop-athlete">
+          ${a.photo ? `<img src="${a.photo}" alt="${a.prenom} ${a.nom}">` : ''}
+          <div class="pop-athlete-info">
+            <div class="pop-name">${a.prenom} ${a.nom}</div>
+            <div class="pop-sport">${a.sport}</div>
+          </div>
+        </div>`).join('');
+      wrap.innerHTML = `
+        <div class="map-dot${multi ? ' map-dot-multi' : ''}"></div>
+        <div class="map-popup">
+          <div class="pop-univ-title">${g.univ}</div>
+          <div class="pop-athletes">${athletesHtml}</div>
+        </div>`;
+      wrapper.appendChild(wrap);
+    });
+  }
+
+  /* ── Fetch depuis l'API PHP ── */
+  (async () => {
+    try {
+      const data = await fetch('/api.php?action=athletes').then(r => r.json());
+      if (Array.isArray(data) && data.length) {
+        athletes = data.map(a => ({
+          prenom:  a.name.split(' ')[0] || a.name,
+          nom:     a.name.split(' ').slice(1).join(' ') || '',
+          sport:   a.sport || '',
+          annee:   a.season || '',
+          univ:    [a.university_us, a.state_us].filter(Boolean).join(', ') || '',
+          quote:   a.quote || '',
+          photo:   a.photo_url || '',
+          map:     null
+        }));
+      }
+    } catch(e) {}
+    renderAthletes();
+    renderDots();
+  })();
+
+  /* ── Navbar ── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); mobileMenu.classList.remove('open'); }));
+</script>
+</body>
+</html>
