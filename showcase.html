@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Showcase — NextMoov USA</title>
+  <meta name="description" content="Découvrez le Showcase NextMoov USA — comment on met en valeur vos athlètes face aux coachs universitaires américains."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --navy:#000769;--red:#B22234;--gold:#C0A060;
+      --bg:#FFFFFF;--bg-soft:#F0F4FF;
+      --text:#0F172A;--text-2:#475569;--text-3:#94A3B8;
+      --border:#E2E8F0;--r:10px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;}
+
+    /* NAVBAR */
+    #navbar{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;
+      background:transparent;transition:background .3s,box-shadow .3s;
+    }
+    #navbar.scrolled{background:var(--navy);box-shadow:0 2px 16px rgba(0,0,0,.25);}
+    .nav-logo{font-family:'Anton',sans-serif;font-size:1.35rem;letter-spacing:.04em;color:#fff;}
+    .nav-logo span{color:var(--gold);}
+    #navLinks{display:flex;align-items:center;gap:20px;}
+    #navLinks a{font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.85);letter-spacing:.06em;text-transform:uppercase;padding:4px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap;}
+    #navLinks a:hover,#navLinks a.active{color:#fff;border-color:var(--gold);}
+    .nav-cta{background:var(--red);color:#fff!important;border:none!important;padding:8px 16px!important;border-radius:6px!important;transition:background .2s!important;}
+    .nav-cta:hover{background:#9a1b2b!important;}
+    #burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+    #burger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
+    #burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    #burger.open span:nth-child(2){opacity:0;}
+    #burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    @media(max-width:900px){
+      #burger{display:flex;}
+      #navLinks{
+        position:fixed;top:64px;left:0;right:0;
+        background:var(--navy);flex-direction:column;align-items:flex-start;
+        padding:16px 24px 24px;gap:16px;
+        transform:translateY(-110%);opacity:0;transition:transform .3s,opacity .3s;pointer-events:none;
+      }
+      #navLinks.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+    }
+
+    /* FADE-UP */
+    .fade-up{opacity:0;transform:translateY(28px);transition:opacity .55s,transform .55s;}
+    .fade-up.visible{opacity:1;transform:none;}
+  
+    /* NAV LOGO IMAGE */
+    .nav-logo-link{display:flex;align-items:center;flex-shrink:0;}
+    .nav-logo-img{height:38px;width:auto;display:block;transition:opacity .2s,transform .2s;}
+    .nav-logo-link:hover .nav-logo-img{opacity:.88;transform:scale(1.04);}
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo-link" href="index.html"><img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img"></a>
+  <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div id="navLinks">
+    <a href="index.html">Accueil</a>
+    <a href="athletes.html">Athlètes</a>
+    <a href="temoignages.html">Témoignages</a>
+    <a href="showcase.html" class="active">Showcase</a>
+    <a href="videos.html">Vidéos</a>
+    <a href="ecosysteme.html">Écosystème</a>
+    <a href="index.html#contact" class="nav-cta">Intégrer la Sélection</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="sc-hero">
+  <div class="sc-hero-bg"></div>
+  <div class="sc-hero-inner">
+    <p class="sc-eyebrow">Visibilité · Opportunité · Résultats</p>
+    <div class="sc-hero-title-group">
+      <h1 class="sc-hero-title">NEXTMOOV <span>USA</span></h1>
+      <p class="sc-hero-tagline">Le Showcase</p>
+    </div>
+    <p class="sc-hero-sub">Un événement taillé pour connecter les meilleurs athlètes français aux coachs universitaires américains.</p>
+    <div class="sc-hero-btns">
+      <a href="#dates" class="sc-btn-red">Voir les prochaines dates →</a>
+      <a href="#what" class="sc-btn-outline">En savoir plus ↓</a>
+    </div>
+  </div>
+  <div class="sc-hero-badge">PROCHAIN SHOWCASE<br><span>2025</span></div>
+</section>
+
+<!-- WHAT IS -->
+<section class="sc-what" id="what">
+  <div class="container">
+    <div class="sc-what-grid">
+      <div class="sc-what-text fade-up">
+        <p class="section-eyebrow">Le concept</p>
+        <h2 class="section-title">Un événement unique<br>en France</h2>
+        <p class="section-body">Le Showcase NextMoov USA est un événement sportif organisé en France où des athlètes sélectionnés sont filmés, évalués et présentés directement à des coachs universitaires américains.</p>
+        <p class="section-body">Contrairement à un simple envoi de vidéo, le Showcase offre un contexte réel de compétition, une production professionnelle et une mise en avant personnalisée auprès des programmes NCAA et NAIA.</p>
+      </div>
+      <div class="sc-what-cards fade-up">
+        <div class="sc-what-card">
+          <div class="sc-what-icon">🎯</div>
+          <h3>Sélection exigeante</h3>
+          <p>Seuls les athlètes avec un réel potentiel de placement sont retenus. Chaque profil est étudié en amont.</p>
+        </div>
+        <div class="sc-what-card">
+          <div class="sc-what-icon">🎬</div>
+          <h3>Production pro</h3>
+          <p>Vidéo highlight, photos d'action, statistiques — tout est produit sur place par notre équipe.</p>
+        </div>
+        <div class="sc-what-card">
+          <div class="sc-what-icon">🤝</div>
+          <h3>Contact direct</h3>
+          <p>Les coachs américains reçoivent ton dossier complet. Certains sont présents en visio pendant l'événement.</p>
+        </div>
+        <div class="sc-what-card">
+          <div class="sc-what-icon">📈</div>
+          <h3>Résultats prouvés</h3>
+          <p>Tous les athlètes placés par NextMoov sont passés par notre processus de valorisation Showcase.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="sc-timeline-section">
+  <div class="container">
+    <p class="section-eyebrow text-center fade-up">Le processus</p>
+    <h2 class="section-title text-center fade-up">De la candidature au placement</h2>
+    <div class="sc-timeline">
+      <div class="sc-step fade-up">
+        <div class="sc-step-num">01</div>
+        <div class="sc-step-content">
+          <h3>Candidature & Évaluation</h3>
+          <p>Tu remplis le formulaire de candidature. Notre équipe analyse ton profil sportif et académique pour évaluer ton potentiel de placement aux États-Unis.</p>
+        </div>
+      </div>
+      <div class="sc-step fade-up">
+        <div class="sc-step-num">02</div>
+        <div class="sc-step-content">
+          <h3>Sélection pour le Showcase</h3>
+          <p>Si ton profil correspond, tu es invité à participer au prochain Showcase. On t'explique en détail le programme, les attentes et ce que tu vas en retirer.</p>
+        </div>
+      </div>
+      <div class="sc-step fade-up">
+        <div class="sc-step-num">03</div>
+        <div class="sc-step-content">
+          <h3>Jour J — Le Showcase</h3>
+          <p>Entraînements filmés, matchs, tests physiques. Notre équipe de production capture tes meilleures actions. Une fiche profil complète est constituée en temps réel.</p>
+        </div>
+      </div>
+      <div class="sc-step fade-up">
+        <div class="sc-step-num">04</div>
+        <div class="sc-step-content">
+          <h3>Production du dossier</h3>
+          <p>Dans les jours qui suivent : montage vidéo highlight, traduction du profil en anglais, mise en page du dossier de recrutement aux standards NCAA/NAIA.</p>
+        </div>
+      </div>
+      <div class="sc-step fade-up">
+        <div class="sc-step-num">05</div>
+        <div class="sc-step-content">
+          <h3>Envoi aux coachs</h3>
+          <p>Ton dossier est envoyé à une liste ciblée de coachs universitaires correspondant à ton niveau, ton sport et tes objectifs académiques.</p>
+        </div>
+      </div>
+      <div class="sc-step fade-up">
+        <div class="sc-step-num">06</div>
+        <div class="sc-step-content">
+          <h3>Suivi & Placement</h3>
+          <p>On gère les échanges avec les coachs intéressés, on compare les offres et on t'accompagne jusqu'à la signature et l'obtention du visa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .container{max-width:1100px;margin:0 auto;}
+  .section-eyebrow{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .section-title{font-family:'Anton',sans-serif;font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:20px;color:var(--text);}
+  .section-body{color:var(--text-2);line-height:1.7;margin-bottom:14px;font-size:1rem;}
+  .text-center{text-align:center;}
+
+  /* HERO */
+  .sc-hero{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    padding:120px 24px 80px;text-align:center;color:#fff;position:relative;overflow:hidden;
+  }
+  .sc-hero-bg{
+    position:absolute;inset:0;
+    background:url('https://images.unsplash.com/photo-1540747913346-19212a4cf655?w=1920&q=80') center/cover no-repeat;
+  }
+  .sc-hero-bg::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(0,7,105,.82) 0%,rgba(10,13,94,.75) 55%,rgba(0,0,40,.88) 100%);
+  }
+  .sc-hero-inner{position:relative;z-index:1;max-width:700px;margin:0 auto;}
+  .sc-eyebrow{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .sc-hero-title-group{display:inline-block;cursor:default;transition:transform .28s ease;transform-origin:center;}
+  .sc-hero-title-group:hover{transform:scale(1.06);}
+  .sc-hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1;margin-bottom:4px;letter-spacing:2px;text-transform:uppercase;}
+  .sc-hero-title span{color:var(--gold);}
+  .sc-hero-tagline{font-family:'Oswald',sans-serif;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:400;letter-spacing:6px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:22px;border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15);padding:.4rem 0;display:block;}
+  .sc-hero-sub{font-size:1.05rem;color:rgba(255,255,255,.75);max-width:540px;margin:0 auto 36px;}
+  .sc-hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .sc-btn-red{background:var(--red);color:#fff;font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:14px 32px;border-radius:8px;transition:background .2s,transform .2s;}
+  .sc-btn-red:hover{background:#9a1b2b;transform:translateY(-2px);}
+  .sc-btn-outline{border:2px solid rgba(255,255,255,.4);color:#fff;font-family:'Oswald',sans-serif;font-size:.95rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:14px 32px;border-radius:8px;transition:border-color .2s,background .2s;}
+  .sc-btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.08);}
+  .sc-hero-badge{
+    position:absolute;top:88px;right:32px;
+    background:rgba(192,160,96,.15);border:1px solid var(--gold);
+    color:var(--gold);font-family:'Oswald',sans-serif;font-size:.75rem;font-weight:700;
+    letter-spacing:.12em;text-transform:uppercase;text-align:center;
+    padding:12px 16px;border-radius:8px;line-height:1.4;
+  }
+  .sc-hero-badge span{display:block;font-family:'Anton',sans-serif;font-size:1.8rem;color:#fff;letter-spacing:.04em;}
+  @media(max-width:600px){.sc-hero-badge{display:none;}}
+
+  /* WHAT */
+  .sc-what{padding:96px 24px;}
+  .sc-what-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+  @media(max-width:860px){.sc-what-grid{grid-template-columns:1fr;gap:40px;}}
+  .sc-what-text .section-title{color:var(--navy);}
+  .sc-what-cards{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:480px){.sc-what-cards{grid-template-columns:1fr;}}
+  .sc-what-card{background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--r);padding:20px;}
+  .sc-what-icon{font-size:1.8rem;margin-bottom:10px;}
+  .sc-what-card h3{font-family:'Oswald',sans-serif;font-size:1rem;font-weight:600;color:var(--navy);margin-bottom:6px;}
+  .sc-what-card p{font-size:.9rem;color:var(--text-2);line-height:1.6;}
+
+  /* TIMELINE — horizontal */
+  .sc-timeline-section{background:var(--bg-soft);padding:80px 24px;}
+  .sc-timeline-section .section-title{color:var(--navy);margin-bottom:16px;}
+  .sc-timeline-section .section-title br{display:none;}
+  .sc-timeline{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:0;
+    position:relative;
+    margin-top:3rem;
+  }
+  .sc-timeline::before{
+    content:'';position:absolute;
+    top:27px;left:calc(100%/12);right:calc(100%/12);
+    height:2px;
+    background:linear-gradient(to right,var(--navy),var(--gold));
+    opacity:.25;z-index:0;
+  }
+  .sc-step{
+    display:flex;flex-direction:column;align-items:center;
+    padding:0 .6rem;text-align:center;
+  }
+  .sc-step-num{
+    width:56px;height:56px;border-radius:50%;
+    background:var(--navy);color:#fff;
+    font-family:'Anton',sans-serif;font-size:1rem;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;position:relative;z-index:1;
+    margin-bottom:.9rem;
+    box-shadow:0 0 0 5px var(--bg-soft);
+    transition:background .2s,box-shadow .2s;
+  }
+  .sc-step:hover .sc-step-num{background:var(--red);box-shadow:0 0 0 5px var(--bg-soft),0 4px 16px rgba(178,34,52,.3);}
+  .sc-step-content h3{font-family:'Oswald',sans-serif;font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:.4px;}
+  .sc-step-content p{font-size:.75rem;color:var(--text-2);line-height:1.5;}
+  @media(max-width:860px){
+    .sc-timeline{grid-template-columns:repeat(3,1fr);gap:2rem 0;}
+    .sc-timeline::before{display:none;}
+  }
+  @media(max-width:480px){.sc-timeline{grid-template-columns:1fr 1fr;gap:1.5rem 0;}}
+</style>
+
+<!-- DATES & LIEUX -->
+<section class="sc-dates" id="dates">
+  <div class="container">
+    <p class="section-eyebrow text-center fade-up">Agenda 2025</p>
+    <h2 class="section-title text-center fade-up" style="color:var(--navy)">Prochains Showcases</h2>
+    <div class="accent-line fade-up"></div>
+    <p class="section-body text-center fade-up" style="max-width:560px;margin:0 auto 2.5rem;">Places limitées — sélection sur dossier. Candidature gratuite.</p>
+    <div class="sc-dates-grid" id="scDatesGrid"></div>
+  </div>
+</section>
+
+<!-- MODAL INSCRIPTION -->
+<div class="sc-modal" id="scModal">
+  <div class="sc-modal-box">
+    <button class="sc-modal-close" onclick="closeModal()">✕</button>
+    <p class="sc-modal-eyebrow">Inscription Showcase</p>
+    <h3 class="sc-modal-title" id="scModalTitle"></h3>
+    <p class="sc-modal-sport" id="scModalSport"></p>
+    <form class="sc-modal-form" id="scForm" onsubmit="submitForm(event)">
+      <div class="sc-form-row">
+        <input type="text" placeholder="Prénom *" required name="prenom">
+        <input type="text" placeholder="Nom *" required name="nom">
+      </div>
+      <input type="email" placeholder="Email *" required name="email">
+      <input type="tel" placeholder="Téléphone" name="tel">
+      <select name="sport" required>
+        <option value="" disabled selected>Ton sport principal *</option>
+        <option>Soccer</option><option>Basketball</option><option>Tennis</option>
+        <option>Natation</option><option>Athlétisme</option><option>Golf</option><option>Autre</option>
+      </select>
+      <input type="number" placeholder="Ton âge *" required name="age" min="15" max="30">
+      <textarea placeholder="Décris brièvement ton niveau (club, division, poste...)" name="niveau" rows="3"></textarea>
+      <button type="submit" class="sc-btn-red" style="width:100%;justify-content:center;border:none;cursor:pointer;">Envoyer ma candidature →</button>
+    </form>
+    <div class="sc-form-success" id="scSuccess" style="display:none">
+      <p>✅ Candidature reçue ! Notre équipe reviendra vers toi sous 48h.</p>
+    </div>
+  </div>
+</div>
+
+<!-- CHIFFRES -->
+<section class="sc-numbers">
+  <div class="container">
+    <div class="sc-numbers-grid">
+      <div class="sc-num-item fade-up">
+        <span class="sc-num">+15</span>
+        <span class="sc-num-label">Athlètes placés<br>grâce au Showcase</span>
+      </div>
+      <div class="sc-num-item fade-up">
+        <span class="sc-num">8</span>
+        <span class="sc-num-label">États américains<br>représentés</span>
+      </div>
+      <div class="sc-num-item fade-up">
+        <span class="sc-num">100%</span>
+        <span class="sc-num-label">des participants<br>ont reçu des offres</span>
+      </div>
+      <div class="sc-num-item fade-up">
+        <span class="sc-num">+50K€</span>
+        <span class="sc-num-label">de bourses<br>décrochées au total</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sc-cta">
+  <div class="sc-cta-inner">
+    <p class="sc-cta-eyebrow">Prochaine session</p>
+    <h2 class="sc-cta-title">Réserve ta place<br>au Showcase 2025</h2>
+    <p class="sc-cta-sub">Les places sont limitées. Candidature gratuite, sélection sur dossier.</p>
+    <a href="index.html#contact" class="sc-btn-red">Candidater maintenant →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">NEXT<span>MOOV</span> USA</div>
+        <p>L'agence de recrutement sportif universitaire américain pour les athlètes français.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/nextmoov.usa/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@nextmoov.usa" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.78 1.52V7.12a4.85 4.85 0 01-1.01-.43z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Pages</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="athletes.html">Nos athlètes</a></li>
+          <li><a href="temoignages.html">Témoignages</a></li>
+          <li><a href="showcase.html">Showcase</a></li>
+          <li><a href="videos.html">Vidéos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Sports</h4>
+        <ul class="footer-links">
+          <li><a href="athletes.html">Football / Soccer</a></li>
+          <li><a href="athletes.html">Basketball</a></li>
+          <li><a href="athletes.html">Natation</a></li>
+          <li><a href="athletes.html">Tennis</a></li>
+          <li><a href="athletes.html">Athlétisme</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:contact@nextmoovusa.com">contact@nextmoovusa.com</a></li>
+          <li><a href="index.html#contact">Formulaire de contact</a></li>
+          <li><a href="https://www.instagram.com/nextmoov.usa/" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 NextMoov USA. Tous droits réservés.</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* LIVRABLES */
+  .sc-deliverables{padding:96px 24px;background:#fff;}
+  .sc-deliverables .section-title{color:var(--navy);margin-bottom:48px;}
+  .sc-deliv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  @media(max-width:900px){.sc-deliv-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:500px){.sc-deliv-grid{grid-template-columns:1fr;}}
+  .sc-deliv-card{background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--r);padding:28px;transition:transform .2s,box-shadow .2s;}
+  .sc-deliv-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,7,105,.1);}
+  .sc-deliv-icon{font-size:2rem;margin-bottom:12px;}
+  .sc-deliv-card h3{font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:8px;}
+  .sc-deliv-card p{font-size:.9rem;color:var(--text-2);line-height:1.6;margin-bottom:14px;}
+  .sc-deliv-list{list-style:none;display:flex;flex-direction:column;gap:6px;}
+  .sc-deliv-list li{font-size:.85rem;color:var(--text-2);padding-left:18px;position:relative;}
+  .sc-deliv-list li::before{content:'✓';position:absolute;left:0;color:#2d8a4e;font-weight:700;}
+
+  /* CHIFFRES */
+  .sc-numbers{background:var(--navy);padding:72px 24px;}
+  .sc-numbers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;}
+  @media(max-width:640px){.sc-numbers-grid{grid-template-columns:repeat(2,1fr);}}
+  .sc-num-item{display:flex;flex-direction:column;gap:8px;}
+  .sc-num{font-family:'Anton',sans-serif;font-size:2.8rem;color:var(--gold);}
+  .sc-num-label{font-family:'Oswald',sans-serif;font-size:.85rem;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.08em;line-height:1.4;}
+
+  /* CTA */
+  .sc-cta{background:linear-gradient(135deg,var(--red),#8b0000);padding:96px 24px;text-align:center;color:#fff;}
+  .sc-cta-eyebrow{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:12px;}
+  .sc-cta-title{font-family:'Anton',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.1;margin-bottom:16px;}
+  .sc-cta-sub{color:rgba(255,255,255,.8);font-size:1.05rem;margin-bottom:36px;}
+  .sc-cta .sc-btn-red{background:#fff;color:var(--red);}
+  .sc-cta .sc-btn-red:hover{background:rgba(255,255,255,.9);}
+
+  /* FOOTER */
+  footer{background:var(--navy);color:rgba(255,255,255,.75);padding:64px 24px 32px;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+  .footer-logo{font-family:'Anton',sans-serif;font-size:1.4rem;color:#fff;margin-bottom:12px;}
+  .footer-logo span{color:var(--gold);}
+  .footer-brand p{font-size:.9rem;line-height:1.6;max-width:260px;}
+  .footer-socials{display:flex;gap:14px;margin-top:20px;}
+  .footer-socials a{color:rgba(255,255,255,.6);transition:color .2s;}
+  .footer-socials a:hover{color:#fff;}
+  .footer-heading{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:16px;}
+  .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .footer-links a{font-size:.9rem;color:rgba(255,255,255,.6);transition:color .2s;}
+  .footer-links a:hover{color:#fff;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;font-size:.85rem;text-align:center;}
+  @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
+</style>
+
+
+<!-- FAQ -->
+<section class="sc-faq">
+  <div class="container">
+    <p class="section-eyebrow text-center fade-up">Questions fréquentes</p>
+    <h2 class="section-title text-center fade-up">Tout ce que tu dois savoir</h2>
+    <div class="faq-list" id="faqList">
+      <div class="faq-item fade-up">
+        <button class="faq-q">Qui peut participer au Showcase ? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a"><p>Tout athlète français (ou francophone) âgé de 16 à 25 ans pratiquant un sport universitaire américain (soccer, basketball, natation, tennis, athlétisme, golf, baseball…). Aucun niveau minimum n'est requis pour candidater — c'est notre équipe qui évalue ton potentiel.</p></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q">Le Showcase est-il payant ? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a"><p>La candidature est gratuite. La participation au Showcase fait partie de nos offres d'accompagnement. Contacte-nous pour connaître les tarifs et formules disponibles selon ton profil.</p></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q">Où se déroule le Showcase ? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a"><p>Les Showcases ont lieu en France, dans des installations sportives professionnelles. Le lieu exact est communiqué lors de la sélection. Nous organisons plusieurs sessions par an dans différentes villes.</p></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q">Est-ce qu'une participation garantit un placement ? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a"><p>Aucun résultat n'est garanti dans le recrutement sportif — c'est une réalité. Cependant, 100% des athlètes sélectionnés pour nos Showcases ont reçu au moins une offre d'université américaine. Notre sélection rigoureuse en amont est notre meilleure garantie.</p></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q">Mon niveau d'anglais est faible. Est-ce un problème ? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a"><p>Non. NextMoov gère toutes les communications avec les coachs américains en anglais. De plus, toutes les universités partenaires disposent de programmes de soutien linguistique pour les étudiants internationaux. Ton niveau d'anglais s'améliorera rapidement une fois sur place.</p></div>
+      </div>
+      <div class="faq-item fade-up">
+        <button class="faq-q">Combien de temps dure le processus de placement ? <span class="faq-arrow">↓</span></button>
+        <div class="faq-a"><p>En moyenne 3 à 6 mois entre le Showcase et la signature avec une université. Cela dépend de la disponibilité des programmes, du niveau ciblé et de la réactivité des coachs. Certains placements se font en moins de 2 mois.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MINI TEMOIGNAGES -->
+<section class="sc-temos">
+  <div class="container">
+    <p class="section-eyebrow text-center fade-up">Ils sont passés par le Showcase</p>
+    <h2 class="section-title text-center fade-up">Ce qu'ils en disent</h2>
+    <div class="sc-temos-grid">
+      <div class="sc-temo-card fade-up">
+        <div class="sc-temo-stars">★★★★★</div>
+        <p class="sc-temo-quote">"Le Showcase a été un tournant. En une journée, j'avais un dossier béton et des contacts directs avec des coachs NCAA. Deux mois après, je signais à Monroe CC."</p>
+        <div class="sc-temo-author">
+          <img src="https://i.imgur.com/QoAtGsT.jpeg" alt="Nolan ROUSSE" class="sc-temo-photo"/>
+          <div><strong>Nolan ROUSSE</strong><span>Soccer · Monroe CC, New York</span></div>
+        </div>
+      </div>
+      <div class="sc-temo-card fade-up">
+        <div class="sc-temo-stars">★★★★★</div>
+        <p class="sc-temo-quote">"La vidéo highlight qu'ils ont montée était incroyable. C'est exactement ce format qui a convaincu le coach de Mohawk Valley de me proposer une scholarship."</p>
+        <div class="sc-temo-author">
+          <img src="https://i.imgur.com/hNZWvfU.jpeg" alt="Pablo CABRAL" class="sc-temo-photo"/>
+          <div><strong>Pablo CABRAL</strong><span>Soccer · Mohawk Valley CC, NY</span></div>
+        </div>
+      </div>
+      <div class="sc-temo-card fade-up">
+        <div class="sc-temo-stars">★★★★★</div>
+        <p class="sc-temo-quote">"Sans le Showcase, je n'aurais jamais su comment me vendre aux coachs américains. NextMoov a mis en valeur des aspects de mon jeu que je ne savais même pas mettre en avant."</p>
+        <div class="sc-temo-author">
+          <img src="https://i.imgur.com/yDp5ULR.jpeg" alt="Luca MOREAU-COTIN" class="sc-temo-photo"/>
+          <div><strong>Luca MOREAU-COTIN</strong><span>Soccer · NEO CC, Ohio</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* FAQ */
+  .sc-faq{padding:96px 24px;background:var(--bg-soft);}
+  .sc-faq .section-title{color:var(--navy);margin-bottom:48px;}
+  .faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:12px;}
+  .faq-item{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+  .faq-q{
+    width:100%;text-align:left;padding:20px 24px;
+    font-family:'Oswald',sans-serif;font-size:1rem;font-weight:600;color:var(--navy);
+    background:none;border:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;
+    transition:background .2s;
+  }
+  .faq-q:hover{background:var(--bg-soft);}
+  .faq-arrow{font-size:1.1rem;transition:transform .3s;flex-shrink:0;margin-left:12px;}
+  .faq-item.open .faq-arrow{transform:rotate(180deg);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-item.open .faq-a{max-height:300px;}
+  .faq-a p{padding:0 24px 20px;font-size:.95rem;color:var(--text-2);line-height:1.7;}
+
+  /* MINI TEMOS */
+  .sc-temos{padding:96px 24px;background:#fff;}
+  .sc-temos .section-title{color:var(--navy);margin-bottom:48px;}
+  .sc-temos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media(max-width:860px){.sc-temos-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto;}}
+  .sc-temo-card{background:var(--bg-soft);border:1px solid var(--border);border-radius:var(--r);padding:28px;}
+  .sc-temo-stars{color:#f59e0b;font-size:1rem;margin-bottom:14px;}
+  .sc-temo-quote{font-size:.95rem;color:var(--text-2);line-height:1.65;font-style:italic;margin-bottom:20px;}
+  .sc-temo-author{display:flex;align-items:center;gap:12px;}
+  .sc-temo-photo{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);}
+  .sc-temo-author div{display:flex;flex-direction:column;gap:2px;}
+  .sc-temo-author strong{font-family:'Oswald',sans-serif;font-size:.95rem;color:var(--text);}
+  .sc-temo-author span{font-size:.8rem;color:var(--text-3);}
+</style>
+
+
+<style>
+  /* DATES */
+  .sc-dates{padding:96px 24px;background:#fff;}
+  .sc-dates .section-title{color:var(--navy);margin-bottom:8px;}
+  .accent-line{width:60px;height:3px;background:var(--gold);border-radius:2px;margin:0 auto 24px;}
+  .sc-dates-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  @media(max-width:1000px){.sc-dates-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.sc-dates-grid{grid-template-columns:1fr;}}
+
+  .sc-date-card{
+    background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;
+    padding:24px;display:flex;flex-direction:column;gap:16px;
+    transition:transform .2s,box-shadow .2s;
+  }
+  .sc-date-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,7,105,.1);}
+  .sc-date-card--hot{border-color:var(--navy);background:linear-gradient(160deg,#f0f4ff 0%,#e8eeff 100%);}
+
+  .sc-date-header{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+  .sc-date-badge{font-family:'Oswald',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:20px;background:var(--border);color:var(--text-2);}
+  .sc-badge-open{background:#d1fae5;color:#065f46;}
+  .sc-badge-coming{background:#fef3c7;color:#92400e;}
+  .sc-date-sport{font-family:'Oswald',sans-serif;font-size:.78rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;}
+
+  .sc-date-date{display:flex;align-items:baseline;gap:8px;}
+  .sc-date-day{font-family:'Anton',sans-serif;font-size:2.6rem;color:var(--navy);line-height:1;}
+  .sc-date-month{font-family:'Oswald',sans-serif;font-size:.95rem;color:var(--text-2);font-weight:500;}
+
+  .sc-date-lieu{display:flex;align-items:center;gap:6px;font-size:.88rem;color:var(--text-2);}
+
+  .sc-date-spots{font-family:'Oswald',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.04em;color:#065f46;margin-top:auto;}
+  .sc-spots-low{color:#b45309;}
+  .sc-spots-full{color:var(--text-3);}
+
+  .sc-date-btn{
+    width:100%;padding:12px;border-radius:8px;
+    font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    cursor:pointer;border:none;transition:background .2s,transform .2s;
+  }
+  .sc-btn-register{background:var(--navy);color:#fff;}
+  .sc-btn-register:hover{background:#0009a8;transform:translateY(-1px);}
+  .sc-btn-notify{background:transparent;color:var(--navy);border:2px solid var(--navy);}
+  .sc-btn-notify:hover{background:var(--navy);color:#fff;}
+  .sc-btn-disabled{background:var(--border);color:var(--text-3);cursor:not-allowed;}
+
+  /* MODAL */
+  .sc-modal{
+    position:fixed;inset:0;z-index:200;
+    background:rgba(0,0,0,.55);backdrop-filter:blur(4px);
+    display:flex;align-items:center;justify-content:center;padding:24px;
+    opacity:0;pointer-events:none;transition:opacity .25s;
+  }
+  .sc-modal.open{opacity:1;pointer-events:auto;}
+  .sc-modal-box{
+    background:#fff;border-radius:16px;padding:36px;width:100%;max-width:500px;
+    position:relative;max-height:90vh;overflow-y:auto;
+    transform:translateY(20px);transition:transform .25s;
+  }
+  .sc-modal.open .sc-modal-box{transform:translateY(0);}
+  .sc-modal-close{
+    position:absolute;top:16px;right:16px;
+    background:var(--bg-soft);border:none;border-radius:50%;
+    width:32px;height:32px;cursor:pointer;
+    font-size:1rem;color:var(--text-2);transition:background .2s;
+  }
+  .sc-modal-close:hover{background:var(--border);}
+  .sc-modal-eyebrow{font-family:'Oswald',sans-serif;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+  .sc-modal-title{font-family:'Anton',sans-serif;font-size:1.4rem;color:var(--navy);margin-bottom:4px;}
+  .sc-modal-sport{font-family:'Oswald',sans-serif;font-size:.85rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:24px;}
+  .sc-modal-form{display:flex;flex-direction:column;gap:12px;}
+  .sc-form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:420px){.sc-form-row{grid-template-columns:1fr;}}
+  .sc-modal-form input,
+  .sc-modal-form select,
+  .sc-modal-form textarea{
+    width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;
+    font-family:'Nunito',sans-serif;font-size:.95rem;color:var(--text);background:#fff;
+    transition:border-color .2s;outline:none;
+  }
+  .sc-modal-form input:focus,
+  .sc-modal-form select:focus,
+  .sc-modal-form textarea:focus{border-color:var(--navy);}
+  .sc-modal-form textarea{resize:vertical;}
+  .sc-form-success{text-align:center;padding:32px 0;}
+  .sc-form-success p{font-family:'Oswald',sans-serif;font-size:1.1rem;color:#065f46;font-weight:600;}
+</style>
+
+<script>
+// Showcase events — fallback data
+const defaultShowcase = [
+  { title:'Showcase Paris — 19 Avr. 2025', sports:'Soccer', event_date:'2025-04-19', location:'Paris — Stade Charléty', capacity:0, registration_url:'' },
+  { title:'Showcase Lyon — 17 Mai 2025', sports:'Soccer · Basketball', event_date:'2025-05-17', location:'Lyon — Groupama OL Training', capacity:4, registration_url:'#' },
+  { title:'Showcase Bordeaux — 14 Juin 2025', sports:'Multi-sports', event_date:'2025-06-14', location:'Bordeaux — Stade Matmut Atlantique', capacity:12, registration_url:'#' },
+  { title:'Showcase Toulouse — 6 Sept. 2025', sports:'Soccer · Tennis', event_date:'2025-09-06', location:'Toulouse — Stadium Municipal', capacity:null, registration_url:'' }
+];
+let showcaseEvents = [...defaultShowcase];
+
+const scObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); scObserver.unobserve(e.target); }});
+}, { threshold: 0.1 });
+
+function formatEvDate(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  const months = ['Jan.','Fév.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'];
+  return { day: String(d.getDate()).padStart(2,'0'), month: months[d.getMonth()] + ' ' + d.getFullYear() };
+}
+
+function renderShowcase() {
+  const grid = document.getElementById('scDatesGrid');
+  if (!showcaseEvents.length) {
+    grid.innerHTML = '<p style="text-align:center;color:#94a3b8;grid-column:1/-1;padding:3rem">Aucun showcase prévu pour le moment.</p>';
+    return;
+  }
+  const now = new Date();
+  const pin = '<svg width="14" height="14" viewBox="0 0 24 24" fill="var(--navy)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>';
+  grid.innerHTML = showcaseEvents.map(ev => {
+    const { day, month } = formatEvDate(ev.event_date);
+    const isPast = new Date(ev.event_date + 'T23:59:00') < now;
+    const hasReg = ev.registration_url && ev.registration_url !== '' && ev.registration_url !== '#';
+    const cap = ev.capacity !== null && ev.capacity !== undefined ? parseInt(ev.capacity) : null;
+    const sports = ev.sports || '';
+    const title = (ev.title || '').replace(/'/g,"\\'");
+    const sportsE = sports.replace(/'/g,"\\'");
+    let badge, badgeCls, btn, btnCls, btnAttr, spots, spotsCls;
+    if (isPast || cap === 0) {
+      badge='Complet'; badgeCls=''; btn='Complet'; btnCls='sc-btn-disabled'; btnAttr='disabled'; spots='0 place restante'; spotsCls='sc-spots-full';
+    } else if (hasReg || (ev.registration_url === '#')) {
+      badge='Inscriptions ouvertes'; badgeCls='sc-badge-open'; btn='S\'inscrire →'; btnCls='sc-btn-register'; btnAttr=`onclick="openModal('${title}','${sportsE}')"`;
+      spots = cap ? `${cap} place${cap>1?'s':''} restante${cap>1?'s':''}` : 'Places disponibles';
+      spotsCls = cap && cap <= 5 ? 'sc-spots-low' : '';
+    } else {
+      badge='Bientôt'; badgeCls='sc-badge-coming'; btn='Être notifié →'; btnCls='sc-btn-notify'; btnAttr=`onclick="openModal('${title}','${sportsE}')"`;
+      spots='Ouverture des inscriptions prochainement'; spotsCls='';
+    }
+    return `<div class="sc-date-card fade-up">
+      <div class="sc-date-header"><div class="sc-date-badge ${badgeCls}">${badge}</div><div class="sc-date-sport">${sports}</div></div>
+      <div class="sc-date-date"><span class="sc-date-day">${day}</span><span class="sc-date-month">${month}</span></div>
+      <div class="sc-date-lieu">${pin}${ev.location||''}</div>
+      <div class="sc-date-spots ${spotsCls}">${spots}</div>
+      <button class="sc-date-btn ${btnCls}" ${btnAttr}>${btn}</button>
+    </div>`;
+  }).join('');
+  grid.querySelectorAll('.fade-up').forEach(el => scObserver.observe(el));
+}
+
+(async () => {
+  try {
+    const data = await fetch('/api.php?action=showcase').then(r => r.json());
+    if (Array.isArray(data) && data.length) showcaseEvents = data;
+  } catch(e) {}
+  renderShowcase();
+})();
+
+// Modal
+function openModal(title, sport) {
+  document.getElementById('scModalTitle').textContent = title;
+  document.getElementById('scModalSport').textContent = sport;
+  document.getElementById('scForm').style.display = 'flex';
+  document.getElementById('scSuccess').style.display = 'none';
+  document.getElementById('scModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('scModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function submitForm(e) {
+  e.preventDefault();
+  document.getElementById('scForm').style.display = 'none';
+  document.getElementById('scSuccess').style.display = 'block';
+  setTimeout(closeModal, 3200);
+}
+document.getElementById('scModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+if (window.scrollY > 40) navbar.classList.add('scrolled');
+
+// Burger menu
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+if (burger && navLinks) {
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navLinks.classList.remove('open');
+  }));
+}
+
+// IntersectionObserver fade-up
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

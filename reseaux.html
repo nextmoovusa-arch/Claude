@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Suit l'aventure — NextMoov USA</title>
+  <meta name="description" content="Suis NextMoov USA sur Instagram et TikTok @nextmoovusa — athlètes en action, résultats, coulisses."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --navy:#000769;--red:#B22234;--gold:#C0A060;
+      --bg:#FFFFFF;--bg-soft:#F0F4FF;
+      --text:#0F172A;--text-2:#475569;--text-3:#94A3B8;
+      --border:#E2E8F0;--r:10px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;}
+
+    /* NAVBAR */
+    #navbar{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between;
+      background:transparent;transition:background .3s,box-shadow .3s;
+    }
+    #navbar.scrolled{background:var(--navy);box-shadow:0 2px 16px rgba(0,0,0,.25);}
+    .nav-logo{font-family:'Anton',sans-serif;font-size:1.3rem;letter-spacing:.04em;color:#fff;white-space:nowrap;}
+    .nav-logo span{color:var(--gold);}
+    #navLinks{display:flex;align-items:center;gap:16px;}
+    #navLinks a{font-family:'Oswald',sans-serif;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.85);letter-spacing:.05em;text-transform:uppercase;padding:4px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap;}
+    #navLinks a:hover,#navLinks a.active{color:#fff;border-color:var(--gold);}
+    .nav-cta{background:var(--red);color:#fff!important;border:none!important;padding:7px 14px!important;border-radius:6px!important;transition:background .2s!important;}
+    .nav-cta:hover{background:#9a1b2b!important;}
+    #burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+    #burger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
+    #burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    #burger.open span:nth-child(2){opacity:0;}
+    #burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    @media(max-width:1024px){
+      #burger{display:flex;}
+      #navLinks{
+        position:fixed;top:64px;left:0;right:0;
+        background:var(--navy);flex-direction:column;align-items:flex-start;
+        padding:16px 24px 24px;gap:16px;
+        transform:translateY(-110%);opacity:0;transition:transform .3s,opacity .3s;pointer-events:none;
+      }
+      #navLinks.open{transform:translateY(0);opacity:1;pointer-events:auto;}
+    }
+
+    /* UTILS */
+    .fade-up{opacity:0;transform:translateY(28px);transition:opacity .55s,transform .55s;}
+    .fade-up.visible{opacity:1;transform:none;}
+    .container{max-width:1100px;margin:0 auto;}
+    .section-eyebrow{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+    .section-title{font-family:'Anton',sans-serif;font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:20px;}
+    .text-center{text-align:center;}
+  
+    /* NAV LOGO IMAGE */
+    .nav-logo-link{display:flex;align-items:center;flex-shrink:0;}
+    .nav-logo-img{height:38px;width:auto;display:block;transition:opacity .2s,transform .2s;}
+    .nav-logo-link:hover .nav-logo-img{opacity:.88;transform:scale(1.04);}
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a class="nav-logo-link" href="index.html"><img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img"></a>
+  <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div id="navLinks">
+    <a href="index.html">Accueil</a>
+    <a href="athletes.html">Athlètes</a>
+    <a href="temoignages.html">Témoignages</a>
+    <a href="showcase.html">Showcase</a>
+    <a href="videos.html">Vidéos</a>
+    <a href="ecosysteme.html">Écosystème</a>
+    <a href="index.html#contact" class="nav-cta">Intégrer la Sélection</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="rs-hero">
+  <div class="rs-hero-inner">
+    <p class="rs-eyebrow fade-up">Communauté & Contenu</p>
+    <h1 class="rs-hero-title fade-up">Suit l'aventure<br><span>NEXTMOOV</span></h1>
+    <p class="rs-hero-sub fade-up">Nos athlètes, leurs performances, leur quotidien. En direct depuis nos réseaux.</p>
+    <div class="rs-platforms fade-up">
+      <a href="https://www.instagram.com/nextmoovusa/" target="_blank" rel="noopener" class="rs-platform-icon" style="--c:#e1306c" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <a href="https://www.tiktok.com/@nextmoovusa" target="_blank" rel="noopener" class="rs-platform-icon" style="--c:#69c9d0" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.78 1.52V7.12a4.85 4.85 0 01-1.01-.43z"/></svg>
+      </a>
+      <a href="#" target="_blank" rel="noopener" class="rs-platform-icon" style="--c:#ff0000" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      </a>
+      <a href="#" target="_blank" rel="noopener" class="rs-platform-icon" style="--c:#1da1f2" aria-label="Twitter/X">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.256 5.622 5.909-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="#" target="_blank" rel="noopener" class="rs-platform-icon" style="--c:#0077b5" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- RÉSEAUX OFFICIELS -->
+<section class="rs-official">
+  <div class="container">
+    <p class="section-eyebrow text-center fade-up">Nos réseaux officiels</p>
+    <h2 class="section-title text-center fade-up" style="color:var(--navy)">Choisissez votre plateforme</h2>
+    <div class="rs-networks-grid">
+
+      <!-- INSTAGRAM -->
+      <div class="rs-net-card fade-up" style="--accent:#e1306c">
+        <div class="rs-net-header">
+          <div class="rs-net-icon" style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          <div>
+            <h3 class="rs-net-name">Instagram</h3>
+            <p class="rs-net-handle">@nextmoovusa</p>
+          </div>
+          <div class="rs-net-followers"><span>4,8K</span>abonnés</div>
+        </div>
+        <p class="rs-net-desc">Photos, Reels, stories — les résultats de nos athlètes, les coulisses des Showcases et les moments forts de chaque placement.</p>
+        <div class="rs-net-previews">
+          <div class="rs-preview" style="background:linear-gradient(135deg,#e1306c,#833ab4)"><span>📸</span></div>
+          <div class="rs-preview" style="background:linear-gradient(135deg,#f77737,#e1306c)"><span>🎬</span></div>
+          <div class="rs-preview" style="background:linear-gradient(135deg,#405de6,#833ab4)"><span>🏆</span></div>
+        </div>
+        <a href="https://www.instagram.com/nextmoovusa/" target="_blank" rel="noopener" class="rs-net-btn" style="--c:#e1306c">Nous suivre sur Instagram →</a>
+      </div>
+
+      <!-- TIKTOK -->
+      <div class="rs-net-card fade-up" style="--accent:#69c9d0">
+        <div class="rs-net-header">
+          <div class="rs-net-icon" style="background:#010101">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.78 1.52V7.12a4.85 4.85 0 01-1.01-.43z"/></svg>
+          </div>
+          <div>
+            <h3 class="rs-net-name">TikTok</h3>
+            <p class="rs-net-handle">@nextmoovusa</p>
+          </div>
+          <div class="rs-net-followers"><span>12,3K</span>abonnés</div>
+        </div>
+        <p class="rs-net-desc">Vidéos courtes et impactantes : highlights d'athlètes, conseils pour partir aux USA, témoignages et moments de vie en université américaine.</p>
+        <div class="rs-net-previews">
+          <div class="rs-preview" style="background:linear-gradient(135deg,#010101,#69c9d0)"><span>▶️</span></div>
+          <div class="rs-preview" style="background:linear-gradient(135deg,#ff0050,#010101)"><span>⚽</span></div>
+          <div class="rs-preview" style="background:linear-gradient(135deg,#69c9d0,#ff0050)"><span>🎓</span></div>
+        </div>
+        <a href="https://www.tiktok.com/@nextmoovusa" target="_blank" rel="noopener" class="rs-net-btn" style="--c:#010101">Nous suivre sur TikTok →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* HERO */
+  .rs-hero{
+    background:linear-gradient(135deg,#000510 0%,var(--navy) 50%,#0d0b4a 100%);
+    padding:130px 24px 90px;text-align:center;color:#fff;position:relative;overflow:hidden;
+  }
+  .rs-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 100%,rgba(192,160,96,.12),transparent);pointer-events:none;}
+  .rs-hero-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+  .rs-eyebrow{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .rs-hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.05;margin-bottom:18px;text-transform:uppercase;display:inline-block;transition:transform .28s ease;}
+  .rs-hero-title:hover{transform:scale(1.06);}
+  .rs-hero-title span{color:var(--gold);}
+  .rs-hero-sub{font-size:1.1rem;color:rgba(255,255,255,.72);max-width:500px;margin:0 auto 40px;line-height:1.7;}
+  .rs-platforms{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+  .rs-platform-icon{
+    width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.1);
+    display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);
+    transition:background .25s,color .25s,transform .25s;
+  }
+  .rs-platform-icon svg{width:24px;height:24px;}
+  .rs-platform-icon:hover{background:var(--c);color:#fff;transform:translateY(-4px) scale(1.1);}
+
+  /* NETWORKS */
+  .rs-official{padding:80px 24px;}
+  .rs-official .section-title{margin-bottom:48px;}
+  .rs-networks-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  @media(max-width:700px){.rs-networks-grid{grid-template-columns:1fr;}}
+
+  .rs-net-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:28px;transition:transform .2s,box-shadow .2s;}
+  .rs-net-card:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(0,7,105,.1);}
+  .rs-net-header{display:flex;align-items:center;gap:16px;margin-bottom:14px;}
+  .rs-net-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .rs-net-name{font-family:'Oswald',sans-serif;font-size:1.05rem;font-weight:700;color:var(--text);}
+  .rs-net-handle{font-size:.82rem;color:var(--text-3);margin-top:2px;}
+  .rs-net-followers{margin-left:auto;text-align:center;flex-shrink:0;}
+  .rs-net-followers span{display:block;font-family:'Anton',sans-serif;font-size:1.3rem;color:var(--navy);}
+  .rs-net-followers{font-size:.72rem;color:var(--text-3);text-transform:uppercase;letter-spacing:.06em;}
+  .rs-net-desc{font-size:.9rem;color:var(--text-2);line-height:1.65;margin-bottom:16px;}
+  .rs-net-previews{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px;}
+  .rs-preview{aspect-ratio:1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;}
+  .rs-net-btn{
+    display:block;text-align:center;
+    background:var(--c);color:#fff;
+    font-family:'Oswald',sans-serif;font-size:.85rem;font-weight:600;
+    letter-spacing:.07em;text-transform:uppercase;padding:11px 16px;border-radius:8px;
+    transition:opacity .2s,transform .2s;
+  }
+  .rs-net-btn:hover{opacity:.88;transform:translateY(-1px);}
+</style>
+
+<!-- ATHLÈTES À SUIVRE -->
+<section class="rs-athletes">
+  <div class="container">
+    <p class="section-eyebrow text-center fade-up">Nos athlètes</p>
+    <h2 class="section-title text-center fade-up" style="color:var(--navy)">Ils postent, ils performent,<br>ils inspirent</h2>
+    <div class="rs-ath-grid">
+      <div class="rs-ath-card fade-up">
+        <img src="https://i.imgur.com/QoAtGsT.jpeg" alt="Nolan ROUSSE" class="rs-ath-photo"/>
+        <div class="rs-ath-info">
+          <strong>Nolan ROUSSE</strong>
+          <span>⚽ Soccer</span>
+          <span class="rs-ath-badge placed">Placé ✓</span>
+        </div>
+        <div class="rs-ath-socials">
+          <a href="#" class="rs-ath-soc" style="--c:#e1306c" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="#" class="rs-ath-soc" style="--c:#010101" aria-label="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.78 1.52V7.12a4.85 4.85 0 01-1.01-.43z"/></svg></a>
+        </div>
+      </div>
+      <div class="rs-ath-card fade-up">
+        <img src="https://i.imgur.com/hNZWvfU.jpeg" alt="Pablo CABRAL" class="rs-ath-photo"/>
+        <div class="rs-ath-info"><strong>Pablo CABRAL</strong><span>⚽ Soccer</span><span class="rs-ath-badge placed">Placé ✓</span></div>
+        <div class="rs-ath-socials">
+          <a href="#" class="rs-ath-soc" style="--c:#e1306c" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        </div>
+      </div>
+      <div class="rs-ath-card fade-up">
+        <img src="https://i.imgur.com/yDp5ULR.jpeg" alt="Luca MOREAU-COTIN" class="rs-ath-photo"/>
+        <div class="rs-ath-info"><strong>Luca MOREAU-COTIN</strong><span>⚽ Soccer</span><span class="rs-ath-badge placed">Placé ✓</span></div>
+        <div class="rs-ath-socials">
+          <a href="#" class="rs-ath-soc" style="--c:#e1306c" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="#" class="rs-ath-soc" style="--c:#010101" aria-label="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.78 1.52V7.12a4.85 4.85 0 01-1.01-.43z"/></svg></a>
+        </div>
+      </div>
+      <div class="rs-ath-card fade-up">
+        <img src="https://i.imgur.com/gVGYhjW.jpeg" alt="Alexandre DESCALZO" class="rs-ath-photo"/>
+        <div class="rs-ath-info"><strong>Alexandre DESCALZO</strong><span>⚽ Soccer</span><span class="rs-ath-badge placed">Placé ✓</span></div>
+        <div class="rs-ath-socials">
+          <a href="#" class="rs-ath-soc" style="--c:#e1306c" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        </div>
+      </div>
+      <div class="rs-ath-card fade-up">
+        <img src="https://i.imgur.com/FkD1upj.jpeg" alt="Iliess BARI" class="rs-ath-photo"/>
+        <div class="rs-ath-info"><strong>Iliess BARI</strong><span>⚽ Soccer</span><span class="rs-ath-badge placed">Placé ✓</span></div>
+        <div class="rs-ath-socials">
+          <a href="#" class="rs-ath-soc" style="--c:#e1306c" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+          <a href="#" class="rs-ath-soc" style="--c:#010101" aria-label="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.78 1.52V7.12a4.85 4.85 0 01-1.01-.43z"/></svg></a>
+        </div>
+      </div>
+      <div class="rs-ath-card fade-up">
+        <div class="rs-ath-placeholder">🏀</div>
+        <div class="rs-ath-info"><strong>Karim BENALI</strong><span>🏀 Basketball</span><span class="rs-ath-badge placed">Placé ✓</span></div>
+        <div class="rs-ath-socials">
+          <a href="#" class="rs-ath-soc" style="--c:#e1306c" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEED SIMULÉ -->
+<section class="rs-feed">
+  <div class="container">
+    <p class="section-eyebrow text-center fade-up">Le feed NEXTMOOV</p>
+    <h2 class="section-title text-center fade-up" style="color:var(--navy)">Derniers contenus</h2>
+    <div class="rs-feed-grid" id="feedGrid"></div>
+    <p class="rs-feed-note fade-up">Contenus illustratifs — Suivez nos vrais comptes pour le contenu live</p>
+  </div>
+</section>
+
+<style>
+  /* ATHLETES */
+  .rs-athletes{padding:80px 24px;background:var(--bg-soft);}
+  .rs-athletes .section-title{margin-bottom:48px;}
+  .rs-ath-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;}
+  @media(max-width:1000px){.rs-ath-grid{grid-template-columns:repeat(3,1fr);}}
+  @media(max-width:560px){.rs-ath-grid{grid-template-columns:repeat(2,1fr);}}
+
+  .rs-ath-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;transition:transform .2s,box-shadow .2s;}
+  .rs-ath-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,7,105,.1);}
+  .rs-ath-photo{width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);margin:0 auto 10px;}
+  .rs-ath-placeholder{width:64px;height:64px;border-radius:50%;background:var(--bg-soft);font-size:1.8rem;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;border:2px solid var(--border);}
+  .rs-ath-info{display:flex;flex-direction:column;gap:3px;margin-bottom:10px;}
+  .rs-ath-info strong{font-family:'Oswald',sans-serif;font-size:.85rem;color:var(--text);}
+  .rs-ath-info span{font-size:.75rem;color:var(--text-3);}
+  .rs-ath-badge{display:inline-block;font-size:.68rem;font-weight:700;padding:2px 8px;border-radius:10px;font-family:'Oswald',sans-serif;letter-spacing:.06em;text-transform:uppercase;}
+  .rs-ath-badge.placed{background:#dcfce7;color:#166534;}
+  .rs-ath-badge.searching{background:#dbeafe;color:#1e40af;}
+  .rs-ath-socials{display:flex;justify-content:center;gap:8px;}
+  .rs-ath-soc{width:28px;height:28px;border-radius:50%;background:var(--bg-soft);display:flex;align-items:center;justify-content:center;color:var(--text-3);transition:background .2s,color .2s;}
+  .rs-ath-soc:hover{background:var(--c);color:#fff;}
+
+  /* FEED */
+  .rs-feed{padding:80px 24px;}
+  .rs-feed .section-title{margin-bottom:48px;}
+  .rs-feed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;}
+  @media(max-width:700px){.rs-feed-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:440px){.rs-feed-grid{grid-template-columns:1fr;}}
+
+  .rs-post{border-radius:12px;overflow:hidden;position:relative;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+  .rs-post:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,.15);}
+  .rs-post-visual{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:2.2rem;position:relative;}
+  .rs-post-platform{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.5);}
+  .rs-post-platform svg{width:14px;height:14px;}
+  .rs-post-type{position:absolute;top:10px;left:10px;font-size:.65rem;font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:rgba(0,0,0,.5);color:#fff;}
+  .rs-post-overlay{
+    position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8) 0%,transparent 50%);
+    opacity:0;transition:opacity .2s;display:flex;align-items:flex-end;padding:12px;
+  }
+  .rs-post:hover .rs-post-overlay{opacity:1;}
+  .rs-post-overlay-btn{font-family:'Oswald',sans-serif;font-size:.75rem;font-weight:600;color:#fff;letter-spacing:.06em;text-transform:uppercase;}
+  .rs-post-body{background:#fff;border:1px solid var(--border);border-top:none;padding:12px;}
+  .rs-post-caption{font-size:.82rem;color:var(--text-2);line-height:1.5;margin-bottom:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .rs-post-meta{display:flex;justify-content:space-between;font-size:.75rem;color:var(--text-3);}
+  .rs-feed-note{text-align:center;font-size:.82rem;color:var(--text-3);font-style:italic;margin-top:8px;}
+</style>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">NEXT<span>MOOV</span> USA</div>
+        <p>L'agence de recrutement sportif universitaire américain pour les athlètes français.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/nextmoovusa/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@nextmoovusa" target="_blank" rel="noopener" aria-label="TikTok">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.78 1.52V7.12a4.85 4.85 0 01-1.01-.43z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Pages</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="athletes.html">Athlètes</a></li>
+          <li><a href="temoignages.html">Témoignages</a></li>
+          <li><a href="showcase.html">Showcase</a></li>
+          <li><a href="videos.html">Vidéos</a></li>
+          <li><a href="ecosysteme.html">Écosystème</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Réseaux</h4>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/nextmoovusa/" target="_blank">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@nextmoovusa" target="_blank">TikTok</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">Twitter / X</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:contact@nextmoovusa.com">contact@nextmoovusa.com</a></li>
+          <li><a href="index.html#contact">Formulaire</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 NextMoov USA. Tous droits réservés.</div>
+  </div>
+</footer>
+
+<style>
+  /* NEWSLETTER */
+  .rs-newsletter{background:linear-gradient(135deg,var(--navy),#0a0d5e);padding:80px 24px;}
+  .rs-nl-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  @media(max-width:760px){.rs-nl-inner{grid-template-columns:1fr;gap:28px;}}
+  .rs-nl-inputs{display:flex;gap:10px;margin-bottom:10px;}
+  .rs-nl-inputs input{flex:1;padding:12px 16px;border:1.5px solid rgba(255,255,255,.2);border-radius:8px;background:rgba(255,255,255,.1);color:#fff;font-family:'Nunito',sans-serif;font-size:.95rem;}
+  .rs-nl-inputs input::placeholder{color:rgba(255,255,255,.45);}
+  .rs-nl-inputs input:focus{outline:none;border-color:var(--gold);}
+  .rs-nl-inputs button{background:var(--gold);color:var(--navy);font-family:'Oswald',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:12px 24px;border:none;border-radius:8px;cursor:pointer;white-space:nowrap;transition:background .2s;}
+  .rs-nl-inputs button:hover{background:#d4b870;}
+  .rs-nl-rgpd{font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.5;}
+  .rs-nl-success{margin-top:10px;padding:12px 16px;background:rgba(134,239,172,.15);border:1px solid rgba(134,239,172,.4);border-radius:8px;font-size:.9rem;color:#86efac;}
+  @media(max-width:480px){.rs-nl-inputs{flex-direction:column;}}
+
+  /* FOOTER */
+  footer{background:var(--navy);color:rgba(255,255,255,.75);padding:64px 24px 32px;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+  .footer-logo{font-family:'Anton',sans-serif;font-size:1.4rem;color:#fff;margin-bottom:12px;}
+  .footer-logo span{color:var(--gold);}
+  .footer-brand p{font-size:.9rem;line-height:1.6;max-width:260px;}
+  .footer-socials{display:flex;gap:14px;margin-top:20px;}
+  .footer-socials a{color:rgba(255,255,255,.6);transition:color .2s;}
+  .footer-socials a:hover{color:#fff;}
+  .footer-heading{font-family:'Oswald',sans-serif;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:16px;}
+  .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .footer-links a{font-size:.9rem;color:rgba(255,255,255,.6);transition:color .2s;}
+  .footer-links a:hover{color:#fff;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;font-size:.85rem;text-align:center;}
+  @media(max-width:768px){.footer-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:480px){.footer-grid{grid-template-columns:1fr;}}
+</style>
+
+<script>
+const igSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
+const ttSvg = `<svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.78 1.52V7.12a4.85 4.85 0 01-1.01-.43z"/></svg>`;
+
+const feedPosts = [
+  { bg:'linear-gradient(135deg,#e1306c,#833ab4)', emoji:'⚽', type:'Reel', platform:'ig', platformSvg:igSvg, caption:'Nolan ROUSSE signe à Monroe CC New York 🇺🇸 Un parcours incroyable, une fierté pour toute l\'équipe.', date:'Il y a 2 j', stats:'4,2K vues' },
+  { bg:'linear-gradient(135deg,#ff0050,#010101)', emoji:'🏀', type:'Vidéo', platform:'tt', platformSvg:ttSvg, caption:'Comment on prépare un dossier de recrutement NCAA ? Voici notre process en 60 secondes.', date:'Il y a 4 j', stats:'18,7K vues' },
+  { bg:'linear-gradient(135deg,#f77737,#e1306c)', emoji:'🎓', type:'Photo', platform:'ig', platformSvg:igSvg, caption:'Pablo CABRAL sur le campus de Mohawk Valley CC. Rêve devenu réalité. ✨', date:'Il y a 1 sem', stats:'1,8K likes' },
+  { bg:'linear-gradient(135deg,#405de6,#833ab4)', emoji:'🎬', type:'Reel', platform:'ig', platformSvg:igSvg, caption:'Les 3 grandes ligues du sport universitaire américain — tu sais faire la différence entre NCAA, NAIA et NJCAA ?', date:'Il y a 1 sem', stats:'6,1K vues' },
+  { bg:'linear-gradient(135deg,#010101,#69c9d0)', emoji:'🏆', type:'Vidéo', platform:'tt', platformSvg:ttSvg, caption:'Showcase NEXTMOOV 2025 — les coulisses. Émotion garantie. 🔥', date:'Il y a 2 sem', stats:'32K vues' },
+  { bg:'linear-gradient(135deg,#69c9d0,#ff0050)', emoji:'💬', type:'Témoignage', platform:'tt', platformSvg:ttSvg, caption:'Luca raconte son arrivée à NEO Community College en Ohio. Frissons. 🙏', date:'Il y a 2 sem', stats:'11,4K vues' },
+  { bg:'linear-gradient(135deg,#833ab4,#e1306c)', emoji:'✈️', type:'Photo', platform:'ig', platformSvg:igSvg, caption:'Décollage pour les USA ! Alexandre et Luca partent ensemble à Columbus, Ohio. Bon courage les gars !', date:'Il y a 3 sem', stats:'2,4K likes' },
+  { bg:'linear-gradient(135deg,#e1306c,#f77737)', emoji:'📋', type:'Reel', platform:'ig', platformSvg:igSvg, caption:'Les bourses universitaires aux États-Unis — combien ça couvre vraiment ? On démystifie tout ici.', date:'Il y a 3 sem', stats:'8,9K vues' },
+  { bg:'linear-gradient(135deg,#000769,#405de6)', emoji:'🇫🇷', type:'Vidéo', platform:'tt', platformSvg:ttSvg, caption:'Le lancement officiel de NEXTMOOV USA. Merci pour votre soutien incroyable depuis le 1er jour. 🙌', date:'Il y a 1 mois', stats:'47K vues' },
+];
+</script>
+
+
+<script>
+function renderFeed() {
+  const grid = document.getElementById('feedGrid');
+  feedPosts.forEach((p, i) => {
+    const post = document.createElement('div');
+    post.className = 'rs-post fade-up';
+    post.style.animationDelay = (i * 60) + 'ms';
+    post.innerHTML = `
+      <div class="rs-post-visual" style="background:${p.bg}">
+        ${p.emoji}
+        <div class="rs-post-platform">${p.platformSvg}</div>
+        <span class="rs-post-type">${p.type}</span>
+        <div class="rs-post-overlay">
+          <span class="rs-post-overlay-btn">Voir sur ${p.platform === 'ig' ? 'Instagram' : 'TikTok'} →</span>
+        </div>
+      </div>
+      <div class="rs-post-body">
+        <p class="rs-post-caption">${p.caption}</p>
+        <div class="rs-post-meta"><span>${p.date}</span><span>👁 ${p.stats}</span></div>
+      </div>
+    `;
+    grid.appendChild(post);
+  });
+  document.querySelectorAll('.rs-post.fade-up').forEach(el => observer.observe(el));
+}
+
+// Newsletter form
+document.getElementById('nlForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type=submit]');
+  btn.textContent = 'Envoi…';
+  btn.disabled = true;
+  setTimeout(() => {
+    document.getElementById('nlSuccess').style.display = 'block';
+    btn.textContent = 'Je m\'abonne →';
+    btn.disabled = false;
+    this.reset();
+  }, 700);
+});
+
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+if (window.scrollY > 40) navbar.classList.add('scrolled');
+
+// Burger
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+if (burger && navLinks) {
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navLinks.classList.remove('open');
+  }));
+}
+
+// IntersectionObserver
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.07 });
+document.querySelectorAll('.fade-up:not(.rs-post)').forEach(el => observer.observe(el));
+
+renderFeed();
+</script>
+
+</body>
+</html>
