@@ -29,22 +29,16 @@
     ::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:#f1f5f9;} ::-webkit-scrollbar-thumb{background:rgba(0,7,105,.25);border-radius:3px;}
 
     /* ── NAVBAR ── */
-    #navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 0;transition:background .3s,box-shadow .3s,padding .3s;}
-    #navbar.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 1px 20px rgba(0,7,105,.1);padding:.65rem 0;}
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 0;background:var(--navy);transition:box-shadow .3s,padding .3s;}
+    #navbar.scrolled{background:var(--navy);box-shadow:0 2px 24px rgba(0,0,0,.35);padding:.65rem 0;}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1140px;margin:0 auto;padding:0 1.5rem;}
-    .nav-logo-text{font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:2px;color:#fff;transition:color .3s;}
-    .nav-logo-text span{color:var(--red);}
-    #navbar.scrolled .nav-logo-text{color:var(--navy);}
     #navLinks{display:flex;align-items:center;gap:1.2rem;}
     #navLinks a{font-family:'Oswald',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,.85);transition:color .2s;white-space:nowrap;}
-    #navbar.scrolled #navLinks a{color:var(--text-2);}
     #navLinks a:hover,#navLinks a.active{color:#fff;}
-    #navbar.scrolled #navLinks a:hover,#navbar.scrolled #navLinks a.active{color:var(--navy);font-weight:600;}
     #navLinks a.nav-cta{background:var(--red);color:#fff;padding:.45rem 1.1rem;border-radius:5px;}
     #navLinks a.nav-cta:hover{background:#C8283E;}
     #burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;background:none;border:none;z-index:1100;}
     #burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
-    #navbar.scrolled #burger span{background:var(--navy);}
     #burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
     #burger.open span:nth-child(2){opacity:0;}
     #burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
@@ -132,7 +126,7 @@
 <!-- NAVBAR -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo-link"><img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img" onerror="this.style.display='none'"><span class="nav-logo-text">NEXT<span>MOOV</span></span></a>
+    <a href="index.html" class="nav-logo-link"><img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img"></a>
     <div id="navLinks">
       <a href="index.html">Accueil</a>
       <a href="athletes.html" class="active">Athlètes</a>

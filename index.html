@@ -21,7 +21,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <meta name="theme-color" content="#000769">
 
@@ -50,7 +50,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 15px; }
     body {
-      font-family: 'Nunito', sans-serif;
+      font-family: 'Manrope', sans-serif;
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
@@ -156,12 +156,12 @@
       top: 0; left: 0; right: 0;
       z-index: 1000;
       padding: 1rem 0;
-      transition: background .3s, box-shadow .3s, padding .3s;
+      background: var(--navy);
+      transition: box-shadow .3s, padding .3s;
     }
     #navbar.scrolled {
-      background: rgba(255,255,255,.96);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 1px 20px rgba(0,7,105,.1);
+      background: var(--navy);
+      box-shadow: 0 2px 24px rgba(0,0,0,.35);
       padding: .65rem 0;
     }
 
@@ -214,11 +214,11 @@
       transition: color .2s;
       white-space: nowrap;
     }
-    #navbar.scrolled .nav-menu a { color: var(--text-2); }
+    #navbar.scrolled .nav-menu a { color: rgba(255,255,255,.85); }
     .nav-menu a:hover,
     .nav-menu a.active { color: #fff; }
     #navbar.scrolled .nav-menu a:hover,
-    #navbar.scrolled .nav-menu a.active { color: var(--navy); font-weight: 600; }
+    #navbar.scrolled .nav-menu a.active { color: #fff; }
 
     .nav-cta {
       background: var(--red) !important;
@@ -246,7 +246,7 @@
       border-radius: 2px;
       transition: all .3s;
     }
-    #navbar.scrolled .hamburger span { background: var(--navy); }
+    #navbar.scrolled .hamburger span { background: #fff; }
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -372,7 +372,7 @@
         display: none;
         position: fixed;
         inset: 0;
-        background: rgba(0,7,105,.97);
+        background: var(--navy);
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -383,7 +383,7 @@
       .nav-menu a { font-size: 1.1rem; color: rgba(255,255,255,.85) !important; }
       .nav-menu a:hover { color: #fff !important; }
       .hamburger { display: flex; }
-      #navbar.scrolled .hamburger span { background: var(--navy); }
+      #navbar.scrolled .hamburger span { background: #fff; }
 
       .hero-btns { flex-direction: column; align-items: center; }
       .hero-btns .btn { width: 240px; justify-content: center; }
@@ -1449,33 +1449,59 @@
     #sports { background: var(--bg-soft); padding: 7rem 0; }
     .sports-grid {
       display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 1rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
       margin-top: 2.5rem;
     }
+    @media (max-width: 900px) { .sports-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 560px) { .sports-grid { grid-template-columns: repeat(2, 1fr); } }
+
     .sport-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.4rem .8rem;
-      text-align: center;
-      transition: transform .25s, box-shadow .25s, border-color .25s;
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      cursor: default;
+      box-shadow: 0 4px 20px rgba(0,0,0,.18);
+      transition: transform .3s, box-shadow .3s;
     }
     .sport-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(0,7,105,.1);
-      border-color: var(--navy);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,.3);
     }
-    .sport-icon { font-size: 2rem; margin-bottom: .5rem; display: block; }
+    .sport-photo {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform .55s ease;
+    }
+    .sport-card:hover .sport-photo { transform: scale(1.07); }
+    .sport-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.25) 55%, transparent 100%);
+    }
+    .sport-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.2rem 1rem;
+    }
     .sport-name {
-      font-family: Oswald, sans-serif;
-      font-size: .85rem;
-      font-weight: 600;
-      color: var(--navy);
-      letter-spacing: .5px;
+      font-family: 'Anton', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: .25rem;
+    }
+    .sport-genders {
+      font-family: 'Oswald', sans-serif;
+      font-size: .68rem;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,.6);
       text-transform: uppercase;
     }
-    .sport-genders { font-family: Nunito, sans-serif; font-size: .72rem; color: var(--text-3); margin-top: .25rem; }
 
     /* --- Showcase --- */
     #showcase { background: var(--bg); padding: 7rem 0; }
@@ -1806,15 +1832,7 @@
   <div class="nav-inner">
 
     <a href="#hero" class="nav-logo" aria-label="NextMoov USA">
-      <!-- Logo image : remplace src="" par l'URL de ton logo -->
-      <img
-        src=""
-        alt="NextMoov USA"
-        class="nav-logo-img"
-        id="logoImg"
-        onerror="this.style.display='none'"
-      >
-      <span class="nav-logo-text">NEXT<span>MOOV</span></span>
+      <img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img" id="logoImg">
     </a>
 
     <ul class="nav-menu" id="navMenu" role="list">
@@ -1824,7 +1842,7 @@
       <li><a href="showcase.html">Showcase</a></li>
       <li><a href="videos.html">Vidéos</a></li>
       <li><a href="ecosysteme.html">Écosystème</a></li>
-      <li><a href="#contact" class="nav-cta">Intégrer la Sélection</a></li>
+      <li><a href="https://tally.so/r/RG4eVp" target="_blank" rel="noopener noreferrer" class="nav-cta">Intégrer la Sélection</a></li>
     </ul>
 
     <button
@@ -1945,6 +1963,56 @@
 </section>
 
 <!-- ================================================================
+     SECTION GALERIE PHOTOS
+================================================================ -->
+<section id="galerie" style="padding:5rem 0;background:#0F172A;overflow:hidden;">
+  <div class="container">
+    <p class="section-eyebrow fade-up" style="color:rgba(255,255,255,.5);text-align:left;">L'aventure en images</p>
+    <h2 class="section-title fade-up" style="color:#fff;text-align:left;margin-bottom:2rem;">LE SPORT UNIVERSITAIRE AMÉRICAIN</h2>
+
+    <!-- Rangée 1 : image large + deux petits -->
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin-bottom:12px;" class="fade-up">
+      <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;position:relative;">
+        <img src="https://images.unsplash.com/photo-1540747913346-19212a4cf655?w=900&q=80" alt="Terrain de football universitaire américain" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div style="border-radius:16px;overflow:hidden;aspect-ratio:4/3;position:relative;">
+        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&q=80" alt="Basketball universitaire" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div style="border-radius:16px;overflow:hidden;aspect-ratio:4/3;position:relative;">
+        <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600&q=80" alt="Athlétisme universitaire" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+    </div>
+
+    <!-- Rangée 2 : trois images égales -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px;" class="fade-up">
+      <div style="border-radius:16px;overflow:hidden;aspect-ratio:4/3;position:relative;">
+        <img src="https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=700&q=80" alt="Soccer terrain vert" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div style="border-radius:16px;overflow:hidden;aspect-ratio:4/3;position:relative;">
+        <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?w=700&q=80" alt="Natation compétition" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div style="border-radius:16px;overflow:hidden;aspect-ratio:4/3;position:relative;">
+        <img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=700&q=80" alt="Tennis universitaire" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+    </div>
+
+    <!-- Rangée 3 : petite + large -->
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:12px;" class="fade-up">
+      <div style="border-radius:16px;overflow:hidden;aspect-ratio:1/1;position:relative;">
+        <img src="https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=600&q=80" alt="Volleyball universitaire" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+      </div>
+      <div style="border-radius:16px;overflow:hidden;aspect-ratio:16/9;position:relative;">
+        <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=900&q=80" alt="Stade universitaire américain" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+        <div style="position:absolute;bottom:1.5rem;left:1.5rem;background:rgba(0,7,105,.85);backdrop-filter:blur(8px);padding:.7rem 1.2rem;border-radius:10px;border-left:3px solid #C0A060;">
+          <div style="font-family:'Anton',sans-serif;font-size:1.1rem;color:#fff;letter-spacing:1px;">NOS ATHLÈTES</div>
+          <div style="font-family:'Oswald',sans-serif;font-size:.72rem;color:rgba(255,255,255,.7);letter-spacing:2px;text-transform:uppercase;margin-top:.2rem;">Dans les meilleures universités US</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
      SECTION PROGRAMME — TIMELINE 5 ÉTAPES
 ================================================================ -->
 <section id="programme" aria-labelledby="prog-title">
@@ -1966,7 +2034,7 @@
 
         <!-- ANNÉE 0 -->
         <div class="tl-item year-zero fade-up" style="transition-delay:.05s">
-          <div class="tl-bubble" aria-hidden="true">📋</div>
+          <div class="tl-bubble" aria-hidden="true">0</div>
           <div class="tl-label">Année 0</div>
           <div class="tl-title">Placement &amp; Préparation</div>
           <p class="tl-desc">Placement universitaire, cours d'anglais pris en charge, frais administratifs, montage vidéo highlight, traduction des bulletins, toutes les démarches.</p>
@@ -1979,7 +2047,7 @@
 
         <!-- ANNÉE 1 -->
         <div class="tl-item fade-up" style="transition-delay:.1s">
-          <div class="tl-bubble" aria-hidden="true">🚀</div>
+          <div class="tl-bubble" aria-hidden="true">1</div>
           <div class="tl-label">Année 1</div>
           <div class="tl-title">Intégration &amp; Lancement</div>
           <p class="tl-desc">Arrivée aux USA, premières compétitions, permis de conduire américain, job sur le campus, accompagnement sportif personnalisé (muscu, assouplissement).</p>
@@ -1992,7 +2060,7 @@
 
         <!-- ANNÉE 2 -->
         <div class="tl-item fade-up" style="transition-delay:.2s">
-          <div class="tl-bubble" aria-hidden="true">📈</div>
+          <div class="tl-bubble" aria-hidden="true">2</div>
           <div class="tl-label">Année 2</div>
           <div class="tl-title">Montée en Puissance</div>
           <p class="tl-desc">Développement des performances, construction du réseau universitaire et professionnel. Tu t'affirmes sportivement et académiquement.</p>
@@ -2005,7 +2073,7 @@
 
         <!-- ANNÉE 3 -->
         <div class="tl-item fade-up" style="transition-delay:.3s">
-          <div class="tl-bubble" aria-hidden="true">⭐</div>
+          <div class="tl-bubble" aria-hidden="true">3</div>
           <div class="tl-label">Année 3</div>
           <div class="tl-title">Leadership &amp; Vision</div>
           <p class="tl-desc">Tu deviens un leader dans ton équipe. Construction de la vision professionnelle, spécialisation académique, opportunités de visibilité.</p>
@@ -2018,7 +2086,7 @@
 
         <!-- ANNÉE 4 -->
         <div class="tl-item fade-up" style="transition-delay:.4s">
-          <div class="tl-bubble" aria-hidden="true">🏆</div>
+          <div class="tl-bubble" aria-hidden="true">4</div>
           <div class="tl-label">Année 4</div>
           <div class="tl-title">Diplôme &amp; Transition</div>
           <p class="tl-desc">Obtention du diplôme américain, transition vers la vie professionnelle ou le haut niveau sportif. Intégration au réseau alumni NextMoov.</p>
@@ -2046,22 +2114,6 @@
 
     <div class="athletes-grid" id="athletesGrid"></div>
 
-    <button class="admin-btn" onclick="askAdmin('adminPanelAthletes')">⚙ Admin</button>
-    <div class="admin-panel" id="adminPanelAthletes">
-      <div class="admin-panel-title">Ajouter un athlète</div>
-      <div class="form-grid-2">
-        <div class="fg"><label>Prénom *</label><input id="aPrenom" placeholder="Lucas"></div>
-        <div class="fg"><label>Nom *</label><input id="aNom" placeholder="MARTIN"></div>
-        <div class="fg"><label>Sport *</label><input id="aSport" placeholder="Basketball"></div>
-        <div class="fg"><label>Université</label><input id="aUniv" placeholder="UCLA, Californie"></div>
-      </div>
-      <div class="fg"><label>Citation</label><input id="aQuote" placeholder="NextMoov a changé ma vision..."></div>
-      <div class="fg"><label>Parcours</label><textarea id="aParcours" placeholder="Son parcours..."></textarea></div>
-      <div class="fg"><label>Motivation</label><textarea id="aMotiv" placeholder="Sa motivation..."></textarea></div>
-      <div class="fg"><label>Message</label><textarea id="aMessage" placeholder="Son message..."></textarea></div>
-      <div class="fg"><label>URL Photo</label><input id="aPhoto" type="url" placeholder="https://..."></div>
-      <button class="btn btn-navy" onclick="addAthlete()" style="margin-top:.4rem;">Ajouter</button>
-    </div>
   </div>
 </section>
 
@@ -2077,19 +2129,6 @@
 
     <div class="agents-grid" id="agentsGrid"></div>
 
-    <button class="admin-btn" onclick="askAdmin('adminPanelAgents')">⚙ Admin</button>
-    <div class="admin-panel" id="adminPanelAgents">
-      <div class="admin-panel-title">Ajouter un agent</div>
-      <div class="form-grid-2">
-        <div class="fg"><label>Prénom *</label><input id="agPrenom" placeholder="Samuel"></div>
-        <div class="fg"><label>Nom *</label><input id="agNom" placeholder="KÖNG"></div>
-        <div class="fg"><label>Rôle</label><input id="agRole" placeholder="Fondateur &amp; Agent Principal"></div>
-        <div class="fg"><label>Sports suivis</label><input id="agSports" placeholder="Soccer, Basketball, Tennis"></div>
-      </div>
-      <div class="fg"><label>Description</label><textarea id="agDesc" placeholder="Présentation de l'agent..."></textarea></div>
-      <div class="fg"><label>URL Photo</label><input id="agPhoto" type="url" placeholder="https://..."></div>
-      <button class="btn btn-navy" onclick="addAgent()" style="margin-top:.4rem;">Ajouter</button>
-    </div>
   </div>
 </section>
 
@@ -2123,25 +2162,6 @@
       <button class="caro-btn" id="temoNext" aria-label="Suivant">&#8594;</button>
     </div>
 
-    <button class="admin-btn" style="margin-top:1.2rem;" onclick="askAdmin('adminPanelTemo')">⚙ Admin</button>
-    <div class="admin-panel" id="adminPanelTemo">
-      <div class="admin-panel-title">Ajouter un témoignage</div>
-      <div class="form-grid-2">
-        <div class="fg"><label>Prénom *</label><input id="tPrenom" placeholder="Sofia"></div>
-        <div class="fg"><label>Sport</label><input id="tSport" placeholder="Natation"></div>
-        <div class="fg"><label>Université</label><input id="tUniv" placeholder="University of Texas"></div>
-        <div class="fg"><label>Note</label>
-          <select id="tNote">
-            <option value="5">★★★★★</option>
-            <option value="4">★★★★☆</option>
-            <option value="3">★★★☆☆</option>
-          </select>
-        </div>
-      </div>
-      <div class="fg"><label>Témoignage *</label><textarea id="tTexte" placeholder="Son témoignage authentique..."></textarea></div>
-      <div class="fg"><label>URL Photo</label><input id="tPhoto" type="url" placeholder="https://..."></div>
-      <button class="btn btn-navy" onclick="addTemo()" style="margin-top:.4rem;">Ajouter</button>
-    </div>
   </div>
 </section>
 
@@ -2172,19 +2192,6 @@
       </a>
     </div>
 
-    <button class="admin-btn" style="margin-top:1.2rem;" onclick="askAdmin('adminPanelVideos')">⚙ Admin</button>
-    <div class="admin-panel" id="adminPanelVideos">
-      <div class="admin-panel-title">Ajouter une vidéo</div>
-      <div class="form-grid-2">
-        <div class="fg"><label>Légende *</label><input id="vCaption" placeholder="Premier jour sur le campus..."></div>
-        <div class="fg"><label>Plateforme</label>
-          <select id="vPlatform"><option value="instagram">Instagram</option><option value="tiktok">TikTok</option></select>
-        </div>
-      </div>
-      <div class="fg"><label>URL embed (lien Instagram/TikTok)</label><input id="vUrl" type="url" placeholder="https://www.instagram.com/p/CODE/embed/"></div>
-      <div class="fg"><label>URL miniature</label><input id="vThumb" type="url" placeholder="https://..."></div>
-      <button class="btn btn-navy" onclick="addVideo()" style="margin-top:.4rem;">Ajouter</button>
-    </div>
   </div>
 </section>
 
@@ -2246,7 +2253,7 @@
       </div>
       <div class="forfait-item fade-up" style="transition-delay:.35s">
         <span class="forfait-item-num">07</span>
-        <span class="forfait-item-text">Mise en relation directe avec les coachs NCAA</span>
+        <span class="forfait-item-text">Mise en relation directe avec les coachs NCAA, NAIA et JUCO</span>
       </div>
       <div class="forfait-item fade-up" style="transition-delay:.40s">
         <span class="forfait-item-num">08</span>
@@ -2276,43 +2283,64 @@
     <p class="section-eyebrow eyebrow-red fade-up">Disciplines</p>
     <h2 class="section-title fade-up" id="sports-title">7 SPORTS — HOMMES &amp; FEMMES</h2>
     <div class="accent-line fade-up"></div>
-    <p class="section-sub fade-up">Nous recrutons dans les meilleures universités NCAA et NAIA pour ces disciplines.</p>
+    <p class="section-sub fade-up">Nous recrutons dans les meilleures universités <strong>NCAA, NAIA et JUCO</strong> pour ces disciplines.</p>
 
     <div class="sports-grid fade-up">
       <div class="sport-card">
-        <span class="sport-icon">⚽</span>
-        <div class="sport-name">Soccer</div>
-        <div class="sport-genders">H / F</div>
+        <div class="sport-photo" style="background-image:url('https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&q=80')"></div>
+        <div class="sport-overlay"></div>
+        <div class="sport-content">
+          <div class="sport-name" style="color:#FF6B6B">Soccer</div>
+          <div class="sport-genders">Hommes &amp; Femmes</div>
+        </div>
       </div>
       <div class="sport-card">
-        <span class="sport-icon">🏀</span>
-        <div class="sport-name">Basketball</div>
-        <div class="sport-genders">H / F</div>
+        <div class="sport-photo" style="background-image:url('https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&q=80')"></div>
+        <div class="sport-overlay"></div>
+        <div class="sport-content">
+          <div class="sport-name" style="color:#FFB347">Basketball</div>
+          <div class="sport-genders">Hommes &amp; Femmes</div>
+        </div>
       </div>
       <div class="sport-card">
-        <span class="sport-icon">🏐</span>
-        <div class="sport-name">Volleyball</div>
-        <div class="sport-genders">H / F</div>
+        <div class="sport-photo" style="background-image:url('https://images.unsplash.com/photo-1612872087720-bb876e2e67d1?w=600&q=80')"></div>
+        <div class="sport-overlay"></div>
+        <div class="sport-content">
+          <div class="sport-name" style="color:#4ECDC4">Volleyball</div>
+          <div class="sport-genders">Hommes &amp; Femmes</div>
+        </div>
       </div>
       <div class="sport-card">
-        <span class="sport-icon">🎾</span>
-        <div class="sport-name">Tennis</div>
-        <div class="sport-genders">H / F</div>
+        <div class="sport-photo" style="background-image:url('https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?w=600&q=80')"></div>
+        <div class="sport-overlay"></div>
+        <div class="sport-content">
+          <div class="sport-name" style="color:#F9E64F">Tennis</div>
+          <div class="sport-genders">Hommes &amp; Femmes</div>
+        </div>
       </div>
       <div class="sport-card">
-        <span class="sport-icon">⛳</span>
-        <div class="sport-name">Golf</div>
-        <div class="sport-genders">H / F</div>
+        <div class="sport-photo" style="background-image:url('https://images.unsplash.com/photo-1587174486073-ae5e5cff23aa?w=600&q=80')"></div>
+        <div class="sport-overlay"></div>
+        <div class="sport-content">
+          <div class="sport-name" style="color:#A8E6CF">Golf</div>
+          <div class="sport-genders">Hommes &amp; Femmes</div>
+        </div>
       </div>
       <div class="sport-card">
-        <span class="sport-icon">🏊</span>
-        <div class="sport-name">Natation</div>
-        <div class="sport-genders">H / F</div>
+        <div class="sport-photo" style="background-image:url('https://images.unsplash.com/photo-1530549387789-4c1017266635?w=600&q=80')"></div>
+        <div class="sport-overlay"></div>
+        <div class="sport-content">
+          <div class="sport-name" style="color:#74B9FF">Natation</div>
+          <div class="sport-genders">Hommes &amp; Femmes</div>
+        </div>
       </div>
       <div class="sport-card">
-        <span class="sport-icon">🏃</span>
-        <div class="sport-name">Athlétisme</div>
-        <div class="sport-genders">H / F</div>
+        <div class="sport-photo" style="background-image:url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=600&q=80')"></div>
+        <div class="sport-overlay"></div>
+        <div class="sport-content">
+          <div class="sport-name" style="color:#D7A1F9">Athlétisme</div>
+          <div class="sport-genders">Hommes &amp; Femmes</div>
+        </div>
       </div>
     </div>
   </div>
@@ -2330,18 +2358,6 @@
 
     <div class="showcase-grid" id="showcaseGrid"></div>
 
-    <button class="admin-btn" onclick="askAdmin('adminPanelShowcase')">⚙ Admin</button>
-    <div class="admin-panel" id="adminPanelShowcase">
-      <div class="admin-panel-title">Ajouter un Showcase</div>
-      <div class="form-grid-2">
-        <div class="fg"><label>Ville *</label><input id="scCity" placeholder="Paris"></div>
-        <div class="fg"><label>Date *</label><input id="scDate" placeholder="15 Juin 2025"></div>
-        <div class="fg"><label>Places disponibles</label><input id="scSpots" placeholder="12 places"></div>
-        <div class="fg"><label>Lien de réservation</label><input id="scLink" type="url" placeholder="https://tally.so/..."></div>
-      </div>
-      <div class="fg"><label>Description</label><textarea id="scDesc" placeholder="Détails sur le showcase..."></textarea></div>
-      <button class="btn btn-navy" onclick="addShowcase()" style="margin-top:.4rem;">Ajouter</button>
-    </div>
   </div>
 </section>
 
@@ -2358,23 +2374,16 @@
       <div class="contact-info">
         <p class="contact-info-title">Tu as le niveau ?<br><span>Fais-le savoir.</span></p>
         <p>Remplis le formulaire, un agent NextMoov USA te contacte dans les 48h pour une évaluation gratuite de ton profil sportif et académique.</p>
-        <div class="contact-detail"><span class="contact-detail-icon">📍</span> France / Europe</div>
-        <div class="contact-detail"><span class="contact-detail-icon">📧</span> nextmoovusa@gmail.com</div>
-        <div class="contact-detail"><span class="contact-detail-icon">📲</span> WhatsApp : 06 32 48 86 33</div>
-        <div class="contact-detail"><span class="contact-detail-icon">📸</span> Instagram : @nextmoovusa</div>
-        <div class="contact-detail"><span class="contact-detail-icon">🎵</span> TikTok : @nextmoovusa</div>
-        <div class="contact-detail"><span class="contact-detail-icon">⏱</span> Réponse sous 48h</div>
+        <div class="contact-detail"><span class="contact-detail-icon">→</span> France / Europe</div>
+        <div class="contact-detail"><span class="contact-detail-icon">→</span> nextmoovusa@gmail.com</div>
+        <div class="contact-detail"><span class="contact-detail-icon">→</span> WhatsApp : 06 32 48 86 33</div>
+        <div class="contact-detail"><span class="contact-detail-icon">→</span> Instagram : @nextmoovusa</div>
+        <div class="contact-detail"><span class="contact-detail-icon">→</span> TikTok : @nextmoovusa</div>
+        <div class="contact-detail"><span class="contact-detail-icon">→</span> Réponse sous 48h</div>
       </div>
 
       <div class="contact-form-area">
-        <!-- Pour activer Tally : décommente la ligne iframe et remplace TALLY_FORM_ID -->
-        <!-- <iframe class="tally-iframe" src="https://tally.so/embed/TALLY_FORM_ID" loading="lazy" title="Formulaire de contact NextMoov USA"></iframe> -->
-        <div class="tally-placeholder">
-          <span class="tally-icon">📋</span>
-          <strong style="font-family:Oswald,sans-serif;color:var(--navy);font-size:1rem;letter-spacing:1px;">FORMULAIRE TALLY</strong>
-          <p>Intègre ton formulaire Tally en remplaçant <code>TALLY_FORM_ID</code> dans le code source par l'identifiant de ton formulaire.</p>
-          <a href="https://tally.so" target="_blank" rel="noopener noreferrer">Créer mon formulaire sur Tally →</a>
-        </div>
+        <iframe class="tally-iframe" src="https://tally.so/embed/RG4eVp" loading="lazy" title="Formulaire NextMoov USA — Intégrer la Sélection" allowtransparency="true" frameborder="0"></iframe>
       </div>
     </div>
   </div>
@@ -2391,9 +2400,15 @@
         <div class="footer-brand-logo">NEXTMOOV USA</div>
         <p class="footer-tagline">L'agence de recrutement sportif universitaire américain qui t'accompagne du premier jour jusqu'au diplôme. Honnêteté totale. Résultats concrets.</p>
         <div class="footer-socials">
-          <a href="https://www.instagram.com/nextmoovusa" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram">📸</a>
-          <a href="https://www.tiktok.com/@nextmoovusa" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="TikTok">🎵</a>
-          <a href="https://wa.me/33632488633" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="WhatsApp">💬</a>
+          <a href="https://www.instagram.com/nextmoovusa" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.tiktok.com/@nextmoovusa" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V9.05a8.16 8.16 0 004.78 1.52V7.12a4.85 4.85 0 01-1.01-.43z"/></svg>
+          </a>
+          <a href="https://wa.me/33632488633" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
         </div>
       </div>
 
@@ -2434,10 +2449,8 @@
     </div>
 
     <div class="footer-bottom">
-      <span>© 2026 NEXTMOOV USA. Tous droits réservés.</span>
-      <span>
-        <button class="footer-admin-link" onclick="openAdminPage()" style="background:none;border:none;color:inherit;font-family:inherit;font-size:inherit;cursor:pointer;">⚙ Admin</button>
-      </span>
+      <span>© 2026 NEXTMOOV USA — Tous droits réservés.</span>
+      <span><a href="admin/" style="color:inherit;opacity:.4;font-size:.7rem;">Admin</a></span>
     </div>
   </div>
 </footer>
@@ -3144,57 +3157,57 @@
   })();
   renderVideos();
 
-  /* ---------- SHOWCASE ---------- */
-  let showcasesData = load('nm_showcases', []);
+  /* ---------- SHOWCASE — chargé depuis l'API (même source que showcase.html) ---------- */
+  const defaultShowcases = [
+    { title:'Showcase Paris', sports:'Soccer · Basketball', event_date:'2025-06-14', location:'Paris — Stade Charléty', capacity:12, registration_url:'https://tally.so/r/RG4eVp', is_published:1 },
+    { title:'Showcase Lyon', sports:'Multi-sports', event_date:'2025-09-06', location:'Lyon — Groupama OL Training', capacity:null, registration_url:'', is_published:1 }
+  ];
 
-  function renderShowcases() {
+  function formatShowcaseDate(dateStr) {
+    const d = new Date(dateStr + 'T12:00:00');
+    const months = ['Jan.','Fév.','Mars','Avr.','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'];
+    return months[d.getMonth()] + ' ' + d.getFullYear();
+  }
+
+  function renderShowcases(data) {
     const grid = document.getElementById('showcaseGrid');
     if (!grid) return;
-    if (!showcasesData.length) {
-      grid.innerHTML = `<p style="color:var(--text-3);font-family:Nunito,sans-serif;font-size:.9rem;grid-column:1/-1;text-align:center;padding:2rem 0;">Aucun showcase programmé pour l'instant. Revenez bientôt.</p>`;
+    if (!data || !data.length) {
+      grid.innerHTML = `<p style="color:var(--text-3);font-family:'Manrope',sans-serif;font-size:.9rem;grid-column:1/-1;text-align:center;padding:2rem 0;">Aucun showcase programmé pour l'instant. Revenez bientôt.</p>`;
       return;
     }
-    grid.innerHTML = showcasesData.map((s, i) => `
+    grid.innerHTML = data.map(s => {
+      const dateLabel = s.event_date ? formatShowcaseDate(s.event_date) : '';
+      const city = (s.title || s.location || '').replace(/Showcase\s*/i,'').replace(/—.*/,'').trim();
+      const hasReg = s.registration_url && s.registration_url !== '#';
+      const cap = s.capacity !== null && s.capacity !== undefined ? parseInt(s.capacity) : null;
+      return `
       <div class="showcase-card fade-up">
         <div class="showcase-card-header">
-          <div class="showcase-date">${esc(s.date)}</div>
-          <div class="showcase-city">${esc(s.city)}</div>
-          ${s.spots ? `<span class="showcase-spots">${esc(s.spots)}</span>` : ''}
+          <div class="showcase-date">${esc(dateLabel)}</div>
+          <div class="showcase-city">${esc(city || s.location || '')}</div>
+          ${s.sports ? `<span class="showcase-spots">${esc(s.sports)}</span>` : ''}
         </div>
         <div class="showcase-card-body">
-          ${s.desc ? `<p class="showcase-desc">${esc(s.desc)}</p>` : ''}
-          ${s.link
-            ? `<a href="${escA(s.link)}" target="_blank" rel="noopener noreferrer" class="btn btn-navy" style="text-decoration:none;display:inline-flex;justify-content:center;width:100%;box-sizing:border-box;">Réserver ma place</a>`
-            : `<button class="btn btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" style="width:100%;justify-content:center;">Me faire contacter</button>`}
-          <button style="margin-top:.5rem;background:none;border:none;color:var(--text-3);font-size:.75rem;cursor:pointer;font-family:Nunito,sans-serif;display:block;" onclick="deleteShowcase(${i})">Supprimer</button>
+          ${s.description ? `<p class="showcase-desc">${esc(s.description)}</p>` : ''}
+          ${s.location ? `<p class="showcase-desc" style="margin-bottom:.5rem;"><strong>Lieu :</strong> ${esc(s.location)}</p>` : ''}
+          ${hasReg
+            ? `<a href="${escA(s.registration_url)}" target="_blank" rel="noopener noreferrer" class="btn btn-navy" style="text-decoration:none;display:inline-flex;justify-content:center;width:100%;box-sizing:border-box;">Réserver ma place</a>`
+            : `<a href="https://tally.so/r/RG4eVp" target="_blank" rel="noopener noreferrer" class="btn btn-navy" style="text-decoration:none;display:inline-flex;justify-content:center;width:100%;box-sizing:border-box;">Candidater</a>`}
         </div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
+    observeFadeUps();
   }
 
-  function deleteShowcase(i) {
-    if (!confirm('Supprimer ce showcase ?')) return;
-    showcasesData.splice(i, 1);
-    save('nm_showcases', showcasesData);
-    renderShowcases();
-  }
-
-  function addShowcase() {
-    const city = document.getElementById('scCity').value.trim();
-    const date = document.getElementById('scDate').value.trim();
-    if (!city || !date) { alert('Ville et date requises.'); return; }
-    showcasesData.push({
-      city, date,
-      spots: document.getElementById('scSpots').value.trim(),
-      link:  document.getElementById('scLink').value.trim(),
-      desc:  document.getElementById('scDesc').value.trim()
-    });
-    save('nm_showcases', showcasesData);
-    renderShowcases();
-    document.getElementById('adminPanelShowcase').style.display = 'none';
-    ['scCity','scDate','scSpots','scLink','scDesc'].forEach(id => document.getElementById(id).value = '');
-  }
-
-  renderShowcases();
+  (async () => {
+    try {
+      const data = await fetch('/api.php?action=showcase').then(r => r.json());
+      renderShowcases(Array.isArray(data) && data.length ? data : defaultShowcases);
+    } catch(e) {
+      renderShowcases(defaultShowcases);
+    }
+  })();
 
   /* ============================================================
      ÉTAPE 6 — Admin Dashboard + JS final polish

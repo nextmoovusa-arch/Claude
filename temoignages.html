@@ -8,12 +8,12 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23000769'/><text x='50%25' y='56%25' font-family='Arial Black' font-size='13' font-weight='900' fill='%23fff' text-anchor='middle' dominant-baseline='middle'>NM</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root{--navy:#000769;--red:#B22234;--gold:#C0A060;--bg:#fff;--bg-soft:#F0F4FF;--text:#0F172A;--text-2:#475569;--text-3:#94A3B8;--border:#E2E8F0;--r:10px;}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;font-size:15px;}
-    body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
     h1,h2,h3,h4{font-family:'Oswald',sans-serif;letter-spacing:.5px;}
     img{max-width:100%;display:block;}
     a{color:inherit;text-decoration:none;}
@@ -29,22 +29,16 @@
     ::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:#f1f5f9;} ::-webkit-scrollbar-thumb{background:rgba(0,7,105,.25);border-radius:3px;}
 
     /* NAVBAR */
-    #navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 0;transition:background .3s,box-shadow .3s,padding .3s;}
-    #navbar.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 1px 20px rgba(0,7,105,.1);padding:.65rem 0;}
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 0;background:var(--navy);transition:box-shadow .3s,padding .3s;}
+    #navbar.scrolled{background:var(--navy);box-shadow:0 2px 24px rgba(0,0,0,.35);padding:.65rem 0;}
     .nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1140px;margin:0 auto;padding:0 1.5rem;}
-    .nav-logo-text{font-family:'Oswald',sans-serif;font-size:1.35rem;font-weight:700;letter-spacing:2px;color:#fff;transition:color .3s;}
-    .nav-logo-text span{color:var(--red);}
-    #navbar.scrolled .nav-logo-text{color:var(--navy);}
     #navLinks{display:flex;align-items:center;gap:1.2rem;}
     #navLinks a{font-family:'Oswald',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,.85);transition:color .2s;white-space:nowrap;}
-    #navbar.scrolled #navLinks a{color:var(--text-2);}
     #navLinks a:hover,#navLinks a.active{color:#fff;}
-    #navbar.scrolled #navLinks a:hover,#navbar.scrolled #navLinks a.active{color:var(--navy);font-weight:600;}
     #navLinks a.nav-cta{background:var(--red);color:#fff;padding:.45rem 1.1rem;border-radius:5px;}
     #navLinks a.nav-cta:hover{background:#C8283E;}
     #burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;background:none;border:none;z-index:1100;}
     #burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
-    #navbar.scrolled #burger span{background:var(--navy);}
     #burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
     #burger.open span:nth-child(2){opacity:0;}
     #burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
@@ -58,7 +52,7 @@
 
     /* HERO */
     .hero{position:relative;height:55vh;min-height:360px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-    .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1920&q=80') center/cover no-repeat;filter:brightness(.4);}
+    .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1920&q=80') center/cover no-repeat;filter:brightness(.45);}
     .hero-content{position:relative;text-align:center;color:#fff;padding:0 1.5rem;}
     .hero-eyebrow{font-family:'Oswald',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
     .hero-title{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);line-height:1;text-transform:uppercase;color:#fff;margin-bottom:1rem;}
@@ -104,7 +98,7 @@
 <!-- NAVBAR -->
 <nav id="navbar">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo-link"><img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img" onerror="this.style.display='none'"><span class="nav-logo-text">NEXT<span>MOOV</span></span></a>
+    <a href="index.html" class="nav-logo-link"><img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img"></a>
     <div id="navLinks">
       <a href="index.html">Accueil</a>
       <a href="athletes.html">Athlètes</a>
@@ -112,7 +106,7 @@
       <a href="showcase.html">Showcase</a>
       <a href="videos.html">Vidéos</a>
       <a href="ecosysteme.html">Écosystème</a>
-      <a href="index.html#contact" class="nav-cta">Intégrer la Sélection</a>
+      <a href="https://tally.so/r/RG4eVp" target="_blank" rel="noopener noreferrer" class="nav-cta">Intégrer la Sélection</a>
     </div>
     <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -125,7 +119,7 @@
   <a href="showcase.html">Showcase</a>
   <a href="videos.html">Vidéos</a>
   <a href="ecosysteme.html">Écosystème</a>
-  <a href="index.html#contact" class="nav-cta">Intégrer la Sélection</a>
+  <a href="https://tally.so/r/RG4eVp" target="_blank" rel="noopener noreferrer" class="nav-cta">Intégrer la Sélection</a>
 </div>
 
 <!-- HERO -->
@@ -153,12 +147,12 @@
   <div class="container">
     <h2>Tu veux écrire ton propre témoignage ?</h2>
     <p>Rejoins les athlètes NextMoov USA et lance ta carrière aux États-Unis.</p>
-    <a href="index.html#contact" class="btn btn-red">Intégrer la Sélection</a>
+    <a href="https://tally.so/r/RG4eVp" target="_blank" rel="noopener noreferrer" class="btn btn-red">Intégrer la Sélection</a>
   </div>
 </section>
 
-<footer>
-  <p><strong>NextMoov USA</strong> &copy; 2025 — Tous droits réservés</p>
+<footer style="background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:2rem 1.5rem;font-size:.8rem;">
+  <p>© 2026 NEXTMOOV USA — Tous droits réservés</p>
 </footer>
 
 <script>
@@ -190,8 +184,8 @@
         <p class="temo-quote">${t.quote || ''}</p>
         <div class="temo-author">
           ${t.photo_url
-            ? `<img src="${t.photo_url}" alt="${t.athlete_name}" class="temo-photo" loading="lazy" onerror="this.outerHTML='<div class=\\'temo-photo-ph\\'>👤</div>'">`
-            : '<div class="temo-photo-ph">👤</div>'}
+            ? `<img src="${t.photo_url}" alt="${t.athlete_name}" class="temo-photo" loading="lazy" onerror="this.style.display='none'">`
+            : '<div class="temo-photo-ph" style="font-family:Oswald,sans-serif;font-size:.9rem;color:var(--navy);">NM</div>'}
           <div>
             <div class="temo-name">${t.athlete_name || ''}</div>
             <div class="temo-meta">${[t.university_us, t.season].filter(Boolean).join(' · ')}</div>

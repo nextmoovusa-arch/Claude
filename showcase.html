@@ -7,7 +7,7 @@
   <meta name="description" content="Découvrez le Showcase NextMoov USA — comment on met en valeur vos athlètes face aux coachs universitaires américains."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet"/>
   <style>
     :root{
       --navy:#000769;--red:#B22234;--gold:#C0A060;
@@ -17,7 +17,7 @@
     }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
-    body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    body{font-family:'Manrope',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
     a{color:inherit;text-decoration:none;}
     img{display:block;max-width:100%;}
 
@@ -25,9 +25,9 @@
     #navbar{
       position:fixed;top:0;left:0;right:0;z-index:100;
       padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;
-      background:transparent;transition:background .3s,box-shadow .3s;
+      background:var(--navy);transition:box-shadow .3s;
     }
-    #navbar.scrolled{background:var(--navy);box-shadow:0 2px 16px rgba(0,0,0,.25);}
+    #navbar.scrolled{background:var(--navy);box-shadow:0 2px 24px rgba(0,0,0,.35);}
     .nav-logo{font-family:'Anton',sans-serif;font-size:1.35rem;letter-spacing:.04em;color:#fff;}
     .nav-logo span{color:var(--gold);}
     #navLinks{display:flex;align-items:center;gap:20px;}
@@ -64,7 +64,7 @@
 <body>
 
 <nav id="navbar">
-  <a class="nav-logo-link" href="index.html"><img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img"></a>
+  <a class="nav-logo-link" href="index.html" aria-label="NextMoov USA"><img src="img/logo.png" alt="NextMoov USA" class="nav-logo-img"></a>
   <button id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
   <div id="navLinks">
     <a href="index.html">Accueil</a>
@@ -73,7 +73,7 @@
     <a href="showcase.html" class="active">Showcase</a>
     <a href="videos.html">Vidéos</a>
     <a href="ecosysteme.html">Écosystème</a>
-    <a href="index.html#contact" class="nav-cta">Intégrer la Sélection</a>
+    <a href="https://tally.so/r/RG4eVp" target="_blank" rel="noopener noreferrer" class="nav-cta">Intégrer la Sélection</a>
   </div>
 </nav>
 
@@ -103,26 +103,26 @@
         <p class="section-eyebrow">Le concept</p>
         <h2 class="section-title">Un événement unique<br>en France</h2>
         <p class="section-body">Le Showcase NextMoov USA est un événement sportif organisé en France où des athlètes sélectionnés sont filmés, évalués et présentés directement à des coachs universitaires américains.</p>
-        <p class="section-body">Contrairement à un simple envoi de vidéo, le Showcase offre un contexte réel de compétition, une production professionnelle et une mise en avant personnalisée auprès des programmes NCAA et NAIA.</p>
+        <p class="section-body">Contrairement à un simple envoi de vidéo, le Showcase offre un contexte réel de compétition, une production professionnelle et une mise en avant personnalisée auprès des programmes <strong>NCAA, NAIA et JUCO</strong>.</p>
       </div>
       <div class="sc-what-cards fade-up">
         <div class="sc-what-card">
-          <div class="sc-what-icon">🎯</div>
+          <div class="sc-what-icon" style="font-size:1.4rem;color:var(--gold);font-family:'Anton',sans-serif;">01</div>
           <h3>Sélection exigeante</h3>
           <p>Seuls les athlètes avec un réel potentiel de placement sont retenus. Chaque profil est étudié en amont.</p>
         </div>
         <div class="sc-what-card">
-          <div class="sc-what-icon">🎬</div>
+          <div class="sc-what-icon" style="font-size:1.4rem;color:var(--gold);font-family:'Anton',sans-serif;">02</div>
           <h3>Production pro</h3>
           <p>Vidéo highlight, photos d'action, statistiques — tout est produit sur place par notre équipe.</p>
         </div>
         <div class="sc-what-card">
-          <div class="sc-what-icon">🤝</div>
+          <div class="sc-what-icon" style="font-size:1.4rem;color:var(--gold);font-family:'Anton',sans-serif;">03</div>
           <h3>Contact direct</h3>
           <p>Les coachs américains reçoivent ton dossier complet. Certains sont présents en visio pendant l'événement.</p>
         </div>
         <div class="sc-what-card">
-          <div class="sc-what-icon">📈</div>
+          <div class="sc-what-icon" style="font-size:1.4rem;color:var(--gold);font-family:'Anton',sans-serif;">04</div>
           <h3>Résultats prouvés</h3>
           <p>Tous les athlètes placés par NextMoov sont passés par notre processus de valorisation Showcase.</p>
         </div>
@@ -162,7 +162,7 @@
         <div class="sc-step-num">04</div>
         <div class="sc-step-content">
           <h3>Production du dossier</h3>
-          <p>Dans les jours qui suivent : montage vidéo highlight, traduction du profil en anglais, mise en page du dossier de recrutement aux standards NCAA/NAIA.</p>
+          <p>Dans les jours qui suivent : montage vidéo highlight, traduction du profil en anglais, mise en page du dossier de recrutement aux standards <strong>NCAA/NAIA/JUCO</strong>.</p>
         </div>
       </div>
       <div class="sc-step fade-up">
@@ -350,7 +350,7 @@
     <p class="sc-cta-eyebrow">Prochaine session</p>
     <h2 class="sc-cta-title">Réserve ta place<br>au Showcase 2025</h2>
     <p class="sc-cta-sub">Les places sont limitées. Candidature gratuite, sélection sur dossier.</p>
-    <a href="index.html#contact" class="sc-btn-red">Candidater maintenant →</a>
+    <a href="https://tally.so/r/RG4eVp" target="_blank" rel="noopener noreferrer" class="sc-btn-red">Candidater maintenant →</a>
   </div>
 </section>
 
@@ -400,7 +400,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 NextMoov USA. Tous droits réservés.</span>
+      <span>© 2026 NEXTMOOV USA — Tous droits réservés.</span>
     </div>
   </div>
 </footer>
