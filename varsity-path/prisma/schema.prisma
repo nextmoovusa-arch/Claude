@@ -1,0 +1,360 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── ENUMS ────────────────────────────────────────────────────────────────────
+
+enum Role {
+  AGENT
+  ATHLETE
+  FAMILY
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  DONE
+  BLOCKED
+  CANCELLED
+}
+
+enum TaskCategory {
+  ACADEMIC
+  ADMINISTRATIVE
+  SPORTS
+  STRATEGY
+  COMMUNICATION
+  FINANCIAL
+}
+
+enum AthleteStatus {
+  PROSPECT
+  SIGNED
+  IN_FILE
+  IN_CAMPAIGN
+  OFFERS_RECEIVED
+  COMMITTED
+  NLI_SIGNED
+  ARRIVED_US
+  ABANDONED
+}
+
+enum Division {
+  NCAA_D1
+  NCAA_D2
+  NCAA_D3
+  NAIA
+  NJCAA_D1
+  NJCAA_D2
+  NJCAA_D3
+  PREP_SCHOOL
+}
+
+enum StepStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  SKIPPED
+}
+
+enum EmailStatus {
+  DRAFT
+  SENT
+  OPENED
+  CLICKED
+  REPLIED
+  BOUNCED
+}
+
+// ─── MODELS ───────────────────────────────────────────────────────────────────
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  role      Role
+  clerkId   String?  @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  athlete  Athlete? @relation("AthleteUser")
+  family   Family?  @relation("FamilyUser")
+  tasks    Task[]   @relation("AssignedTasks")
+  messages Message[]
+}
+
+model Athlete {
+  id        String        @id @default(cuid())
+  userId    String        @unique
+  status    AthleteStatus @default(PROSPECT)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  // Identité
+  firstName   String
+  lastName    String
+  dateOfBirth DateTime?
+  nationality String?
+  languages   String[]
+  address     String?
+  passportNumber String?
+  passportExpiry DateTime?
+
+  // Profil sportif
+  primaryPosition   String?
+  secondaryPosition String?
+  dominantFoot      String?
+  heightCm          Int?
+  weightKg          Int?
+  currentClub       String?
+  clubHistory       String[]
+  achievements      String?
+  seasonStats       String?
+
+  // Vidéo
+  highlightUrl      String?
+  highlightPlatform String?
+  highlightDate     DateTime?
+
+  // Académique
+  schoolSystem      String?
+  currentGradeLevel String?
+  gpaConverted      Float?
+  coreCoursesCount  Int?
+
+  // Tests
+  satScore    Int?
+  satDate     DateTime?
+  actScore    Int?
+  actDate     DateTime?
+  toeflScore  Int?
+  toeflDate   DateTime?
+  duolingoScore Int?
+  duolingoDate  DateTime?
+  ieltsScore  Float?
+  ieltsDate   DateTime?
+
+  // NCAA
+  ncaaEligibilityId     String?
+  ncaaRegistrationStatus String?
+  amateurismValidated   Boolean @default(false)
+
+  // Stratégie
+  targetDivisions    Division[]
+  preferredRegions   String[]
+  familyBudgetUsd    Int?
+  minScholarshipPct  Int?
+  targetMajor        String?
+  agentNotes         String?
+
+  user       User         @relation("AthleteUser", fields: [userId], references: [id])
+  families   Family[]
+  tasks      Task[]
+  steps      Step[]
+  campaigns  Campaign[]
+  documents  Document[]
+  events     Event[]
+}
+
+model Family {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  athleteId String
+  relation  String?
+  createdAt DateTime @default(now())
+
+  user    User    @relation("FamilyUser", fields: [userId], references: [id])
+  athlete Athlete @relation(fields: [athleteId], references: [id])
+}
+
+model University {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Localisation
+  city       String?
+  state      String?
+  region     String?
+  country    String  @default("USA")
+  latitude   Float?
+  longitude  Float?
+
+  // Classification
+  division   Division?
+  conference String?
+  enrollment Int?
+  type       String?
+
+  // Académique
+  satAvgLow  Int?
+  satAvgHigh Int?
+  actAvgLow  Int?
+  actAvgHigh Int?
+  acceptanceRate Float?
+
+  // Financier
+  tuitionInState    Int?
+  tuitionOutOfState Int?
+  roomAndBoard      Int?
+
+  // Sport
+  rosterSize        Int?
+  scholarshipsTotal Float?
+  websiteUrl        String?
+  athleticsUrl      String?
+
+  agentNotes String?
+
+  coaches          Coach[]
+  campaignContacts CampaignContact[]
+}
+
+model Coach {
+  id           String   @id @default(cuid())
+  universityId String
+  firstName    String
+  lastName     String
+  email        String?
+  phone        String?
+  title        String?
+  sport        String   @default("Men's Soccer")
+  isHeadCoach  Boolean  @default(false)
+  linkedinUrl  String?
+  twitterUrl   String?
+  notes        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  university       University        @relation(fields: [universityId], references: [id])
+  campaignContacts CampaignContact[]
+}
+
+model Task {
+  id          String       @id @default(cuid())
+  athleteId   String
+  assigneeId  String?
+  title       String
+  description String?
+  category    TaskCategory
+  status      TaskStatus   @default(TODO)
+  priority    Int          @default(2)
+  dueDate     DateTime?
+  completedAt DateTime?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  athlete  Athlete @relation(fields: [athleteId], references: [id])
+  assignee User?   @relation("AssignedTasks", fields: [assigneeId], references: [id])
+}
+
+model Step {
+  id             String     @id @default(cuid())
+  athleteId      String
+  order          Int
+  title          String
+  description    String?
+  status         StepStatus @default(PENDING)
+  plannedDate    DateTime?
+  completedDate  DateTime?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  athlete Athlete @relation(fields: [athleteId], references: [id])
+}
+
+model Campaign {
+  id          String   @id @default(cuid())
+  athleteId   String
+  templateId  String?
+  subject     String
+  bodyHtml    String
+  sentAt      DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  athlete   Athlete           @relation(fields: [athleteId], references: [id])
+  template  EmailTemplate?    @relation(fields: [templateId], references: [id])
+  contacts  CampaignContact[]
+}
+
+model CampaignContact {
+  id           String      @id @default(cuid())
+  campaignId   String
+  coachId      String
+  universityId String
+  status       EmailStatus @default(DRAFT)
+  sentAt       DateTime?
+  openedAt     DateTime?
+  repliedAt    DateTime?
+  gmailMessageId String?
+  notes        String?
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  campaign   Campaign   @relation(fields: [campaignId], references: [id])
+  coach      Coach      @relation(fields: [coachId], references: [id])
+  university University @relation(fields: [universityId], references: [id])
+}
+
+model EmailTemplate {
+  id          String   @id @default(cuid())
+  name        String
+  subject     String
+  bodyHtml    String
+  variables   String[]
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  campaigns Campaign[]
+}
+
+model Document {
+  id         String   @id @default(cuid())
+  athleteId  String
+  name       String
+  category   String
+  fileUrl    String
+  fileSize   Int?
+  mimeType   String?
+  isShared   Boolean  @default(false)
+  uploadedAt DateTime @default(now())
+
+  athlete Athlete @relation(fields: [athleteId], references: [id])
+}
+
+model Event {
+  id          String    @id @default(cuid())
+  athleteId   String
+  title       String
+  description String?
+  type        String
+  startDate   DateTime
+  endDate     DateTime?
+  location    String?
+  zoomUrl     String?
+  isImportant Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+
+  athlete Athlete @relation(fields: [athleteId], references: [id])
+}
+
+model Message {
+  id         String   @id @default(cuid())
+  senderId   String
+  receiverId String
+  athleteId  String?
+  content    String
+  readAt     DateTime?
+  createdAt  DateTime @default(now())
+
+  sender   User @relation(fields: [senderId], references: [id])
+}
