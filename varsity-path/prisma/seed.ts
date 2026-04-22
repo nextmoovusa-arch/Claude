@@ -17,6 +17,33 @@ interface UniversityData {
   coaches: Coach[];
 }
 
+function generateSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function extractNamesFromEmail(email: string): { firstName: string; lastName: string } {
+  const local = email.split("@")[0];
+  // Try common patterns: first.last, flast, firstl
+  const dotPattern = local.match(/^([a-z]+)\.([a-z]+)$/i);
+  if (dotPattern) {
+    return {
+      firstName: capitalize(dotPattern[1]),
+      lastName: capitalize(dotPattern[2]),
+    };
+  }
+  // Fallback — treat entire local part as last name
+  return { firstName: "", lastName: capitalize(local) };
+}
+
+function capitalize(str: string): string {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+}
+
 async function main() {
   console.log("🌱 Starting seed process...\n");
 
@@ -32,48 +59,61 @@ async function main() {
 
   for (const file of files) {
     const filePath = path.join(seedDir, file);
-    const data: UniversityData[] = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+    const data: UniversityData[] = JSON.parse(
+      fs.readFileSync(filePath, "utf-8")
+    );
 
-    console.log(`📄 Processing ${file}...`);
+    process.stdout.write(`📄 Processing ${file}...`);
 
     for (const uni of data) {
-      // Upsert university
+      const slug = generateSlug(uni.name);
+
       const university = await prisma.university.upsert({
-        where: { name: uni.name },
+        where: { slug },
         update: {
           city: uni.city,
           state: uni.state,
-          division: uni.division,
+          division: uni.division as never,
         },
         create: {
           name: uni.name,
+          slug,
           city: uni.city,
           state: uni.state,
-          division: uni.division,
+          division: uni.division as never,
         },
       });
 
-      // Upsert coaches for this university
       for (const coachData of uni.coaches) {
-        await prisma.coach.upsert({
-          where: { email: coachData.email },
-          update: {
-            isHeadCoach: coachData.isHeadCoach,
-            universityId: university.id,
-          },
-          create: {
-            email: coachData.email,
-            isHeadCoach: coachData.isHeadCoach,
-            universityId: university.id,
-          },
+        const { firstName, lastName } = extractNamesFromEmail(coachData.email);
+
+        // Check if a coach with this email already exists for this university
+        const existing = await prisma.coach.findFirst({
+          where: { email: coachData.email, universityId: university.id },
         });
+
+        if (existing) {
+          await prisma.coach.update({
+            where: { id: existing.id },
+            data: { isHeadCoach: coachData.isHeadCoach },
+          });
+        } else {
+          await prisma.coach.create({
+            data: {
+              email: coachData.email,
+              firstName,
+              lastName,
+              isHeadCoach: coachData.isHeadCoach,
+              universityId: university.id,
+            },
+          });
+        }
 
         totalCoaches++;
       }
 
       totalUniversities++;
 
-      // Track division stats
       if (!divisionStats[uni.division]) {
         divisionStats[uni.division] = { unis: 0, coaches: 0 };
       }
@@ -81,7 +121,7 @@ async function main() {
       divisionStats[uni.division].coaches += uni.coaches.length;
     }
 
-    console.log(`  ✓ ${data.length} universities processed\n`);
+    console.log(` ✓ ${data.length} universities`);
   }
 
   console.log("\n📊 ═══════════════════════════════════════");
@@ -89,14 +129,16 @@ async function main() {
   console.log("═══════════════════════════════════════\n");
 
   for (const [division, stats] of Object.entries(divisionStats)) {
-    console.log(`${division.padEnd(15)} → ${stats.unis.toString().padStart(3)} unis  |  ${stats.coaches.toString().padStart(3)} coaches`);
+    const d = division.padEnd(15);
+    const u = stats.unis.toString().padStart(3);
+    const c = stats.coaches.toString().padStart(4);
+    console.log(`${d} → ${u} universities  |  ${c} coaches`);
   }
 
   console.log("\n───────────────────────────────────────");
-  console.log(`Total Universities: ${totalUniversities}`);
-  console.log(`Total Coaches:      ${totalCoaches}`);
+  console.log(`Total Universities : ${totalUniversities}`);
+  console.log(`Total Coaches      : ${totalCoaches}`);
   console.log("═══════════════════════════════════════\n");
-
   console.log("✅ Seed completed successfully!");
 }
 
