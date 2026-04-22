@@ -6,5 +6,5 @@
     "noEmit": false,
     "outDir": "./.scripts-dist"
   },
-  "include": ["scripts/**/*.ts"]
+  "include": ["scripts/**/*.ts", "prisma/**/*.ts"]
 }
