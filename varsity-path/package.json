@@ -13,6 +13,7 @@
     "import-coaches": "npx ts-node --project tsconfig.scripts.json scripts/import-coaches.ts"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.31.4",
     "@prisma/client": "^7.7.0",
     "@radix-ui/react-checkbox": "^1.3.3",
     "@radix-ui/react-dialog": "^1.1.15",
