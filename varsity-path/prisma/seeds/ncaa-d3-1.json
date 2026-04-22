@@ -1,0 +1,22 @@
+[
+  { "name": "Huntingdon College", "city": "Montgomery", "state": "AL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@huntingdon.edu", "isHeadCoach": true }] },
+  { "name": "California Lutheran University", "city": "Thousand Oaks", "state": "CA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@callutheran.edu", "isHeadCoach": true }] },
+  { "name": "Chapman University", "city": "Orange", "state": "CA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@chapman.edu", "isHeadCoach": true }] },
+  { "name": "Claremont-Mudd-Scripps", "city": "Claremont", "state": "CA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@claremontmckenna.edu", "isHeadCoach": true }] },
+  { "name": "University of La Verne", "city": "La Verne", "state": "CA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@laverne.edu", "isHeadCoach": true }] },
+  { "name": "Occidental College", "city": "Los Angeles", "state": "CA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@oxy.edu", "isHeadCoach": true }] },
+  { "name": "Pomona-Pitzer Colleges", "city": "Claremont", "state": "CA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@pomona.edu", "isHeadCoach": true }] },
+  { "name": "University of Redlands", "city": "Redlands", "state": "CA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@redlands.edu", "isHeadCoach": true }] },
+  { "name": "Whittier College", "city": "Whittier", "state": "CA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@whittier.edu", "isHeadCoach": true }] },
+  { "name": "Colorado College", "city": "Colorado Springs", "state": "CO", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@coloradocollege.edu", "isHeadCoach": true }] },
+  { "name": "Connecticut College", "city": "New London", "state": "CT", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@conncoll.edu", "isHeadCoach": true }] },
+  { "name": "Eastern Connecticut State University", "city": "Willimantic", "state": "CT", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@easternct.edu", "isHeadCoach": true }] },
+  { "name": "Trinity College", "city": "Hartford", "state": "CT", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@trincoll.edu", "isHeadCoach": true }] },
+  { "name": "United States Coast Guard Academy", "city": "New London", "state": "CT", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@uscga.edu", "isHeadCoach": true }] },
+  { "name": "Wesleyan University", "city": "Middletown", "state": "CT", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@wesleyan.edu", "isHeadCoach": true }] },
+  { "name": "Western Connecticut State University", "city": "Danbury", "state": "CT", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@wcsu.edu", "isHeadCoach": true }] },
+  { "name": "Emory University", "city": "Atlanta", "state": "GA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@emory.edu", "isHeadCoach": true }] },
+  { "name": "LaGrange College", "city": "LaGrange", "state": "GA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@lagrange.edu", "isHeadCoach": true }] },
+  { "name": "Oglethorpe University", "city": "Atlanta", "state": "GA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@oglethorpe.edu", "isHeadCoach": true }] },
+  { "name": "Piedmont University", "city": "Demorest", "state": "GA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@piedmont.edu", "isHeadCoach": true }] }
+]

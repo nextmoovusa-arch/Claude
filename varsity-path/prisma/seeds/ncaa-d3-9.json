@@ -1,0 +1,22 @@
+[
+  { "name": "Case Western Reserve University", "city": "Cleveland", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@case.edu", "isHeadCoach": true }] },
+  { "name": "Denison University", "city": "Granville", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@denison.edu", "isHeadCoach": true }] },
+  { "name": "Heidelberg University", "city": "Tiffin", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@heidelberg.edu", "isHeadCoach": true }] },
+  { "name": "Hiram College", "city": "Hiram", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@hiram.edu", "isHeadCoach": true }] },
+  { "name": "John Carroll University", "city": "University Heights", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@jcu.edu", "isHeadCoach": true }] },
+  { "name": "Kenyon College", "city": "Gambier", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@kenyon.edu", "isHeadCoach": true }] },
+  { "name": "Marietta College", "city": "Marietta", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@marietta.edu", "isHeadCoach": true }] },
+  { "name": "Mount Union College", "city": "Alliance", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@mountunion.edu", "isHeadCoach": true }] },
+  { "name": "Muskingum University", "city": "New Concord", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@muskingum.edu", "isHeadCoach": true }] },
+  { "name": "Oberlin College", "city": "Oberlin", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@oberlin.edu", "isHeadCoach": true }] },
+  { "name": "Ohio Northern University", "city": "Ada", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@onu.edu", "isHeadCoach": true }] },
+  { "name": "Ohio Wesleyan University", "city": "Delaware", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@owu.edu", "isHeadCoach": true }] },
+  { "name": "Otterbein University", "city": "Westerville", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@otterbein.edu", "isHeadCoach": true }] },
+  { "name": "Wilmington College", "city": "Wilmington", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@wilmington.edu", "isHeadCoach": true }] },
+  { "name": "Wittenberg University", "city": "Springfield", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@wittenberg.edu", "isHeadCoach": true }] },
+  { "name": "College of Wooster", "city": "Wooster", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@wooster.edu", "isHeadCoach": true }] },
+  { "name": "Albright College", "city": "Reading", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@albright.edu", "isHeadCoach": true }] },
+  { "name": "Allegheny College", "city": "Meadville", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@allegheny.edu", "isHeadCoach": true }] },
+  { "name": "Arcadia University", "city": "Glenside", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@arcadia.edu", "isHeadCoach": true }] },
+  { "name": "Carnegie Mellon University", "city": "Pittsburgh", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@andrew.cmu.edu", "isHeadCoach": true }] }
+]

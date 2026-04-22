@@ -1,0 +1,22 @@
+[
+  { "name": "Ursinus College", "city": "Collegeville", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@ursinus.edu", "isHeadCoach": true }] },
+  { "name": "Widener University", "city": "Chester", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@widener.edu", "isHeadCoach": true }] },
+  { "name": "Wilkes University", "city": "Wilkes-Barre", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@wilkes.edu", "isHeadCoach": true }] },
+  { "name": "York College of Pennsylvania", "city": "York", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@ycp.edu", "isHeadCoach": true }] },
+  { "name": "Rhode Island College", "city": "Providence", "state": "RI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@ric.edu", "isHeadCoach": true }] },
+  { "name": "Roger Williams University", "city": "Bristol", "state": "RI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@rwu.edu", "isHeadCoach": true }] },
+  { "name": "Salve Regina University", "city": "Newport", "state": "RI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@salve.edu", "isHeadCoach": true }] },
+  { "name": "Averett University", "city": "Danville", "state": "VA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@averett.edu", "isHeadCoach": true }] },
+  { "name": "Bridgewater College", "city": "Bridgewater", "state": "VA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@bridgewater.edu", "isHeadCoach": true }] },
+  { "name": "Christopher Newport University", "city": "Newport News", "state": "VA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@cnu.edu", "isHeadCoach": true }] },
+  { "name": "Eastern Mennonite University", "city": "Harrisonburg", "state": "VA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@emu.edu", "isHeadCoach": true }] },
+  { "name": "Emory & Henry College", "city": "Emory", "state": "VA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@ehc.edu", "isHeadCoach": true }] },
+  { "name": "Ferrum College", "city": "Ferrum", "state": "VA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@ferrum.edu", "isHeadCoach": true }] },
+  { "name": "Hampden-Sydney College", "city": "Hampden-Sydney", "state": "VA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@hsc.edu", "isHeadCoach": true }] },
+  { "name": "Marymount University", "city": "Arlington", "state": "VA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@marymount.edu", "isHeadCoach": true }] },
+  { "name": "Randolph College", "city": "Lynchburg", "state": "VA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@randolphcollege.edu", "isHeadCoach": true }] },
+  { "name": "Randolph-Macon College", "city": "Ashland", "state": "VA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@rmc.edu", "isHeadCoach": true }] },
+  { "name": "Roanoke College", "city": "Salem", "state": "VA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@roanoke.edu", "isHeadCoach": true }] },
+  { "name": "Shenandoah University", "city": "Winchester", "state": "VA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@su.edu", "isHeadCoach": true }] },
+  { "name": "Virginia Wesleyan University", "city": "Virginia Beach", "state": "VA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@vwu.edu", "isHeadCoach": true }] }
+]

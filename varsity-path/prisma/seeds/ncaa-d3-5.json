@@ -1,0 +1,22 @@
+[
+  { "name": "Nichols College", "city": "Dudley", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@nichols.edu", "isHeadCoach": true }] },
+  { "name": "Salem State University", "city": "Salem", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@salemstate.edu", "isHeadCoach": true }] },
+  { "name": "Springfield College", "city": "Springfield", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@springfield.edu", "isHeadCoach": true }] },
+  { "name": "Suffolk University", "city": "Boston", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@suffolk.edu", "isHeadCoach": true }] },
+  { "name": "Tufts University", "city": "Medford", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@tufts.edu", "isHeadCoach": true }] },
+  { "name": "Westfield State University", "city": "Westfield", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@westfield.ma.edu", "isHeadCoach": true }] },
+  { "name": "Western New England University", "city": "Springfield", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@wne.edu", "isHeadCoach": true }] },
+  { "name": "Williams College", "city": "Williamstown", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@williams.edu", "isHeadCoach": true }] },
+  { "name": "Worcester Polytechnic Institute", "city": "Worcester", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@wpi.edu", "isHeadCoach": true }] },
+  { "name": "Worcester State University", "city": "Worcester", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@worcester.edu", "isHeadCoach": true }] },
+  { "name": "Adrian College", "city": "Adrian", "state": "MI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@adrian.edu", "isHeadCoach": true }] },
+  { "name": "Albion College", "city": "Albion", "state": "MI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@albion.edu", "isHeadCoach": true }] },
+  { "name": "Alma College", "city": "Alma", "state": "MI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@alma.edu", "isHeadCoach": true }] },
+  { "name": "Calvin University", "city": "Grand Rapids", "state": "MI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@calvin.edu", "isHeadCoach": true }] },
+  { "name": "Hope College", "city": "Holland", "state": "MI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@hope.edu", "isHeadCoach": true }] },
+  { "name": "Kalamazoo College", "city": "Kalamazoo", "state": "MI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@kzoo.edu", "isHeadCoach": true }] },
+  { "name": "Olivet College", "city": "Olivet", "state": "MI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@olivetcollege.edu", "isHeadCoach": true }] },
+  { "name": "Rochester University", "city": "Rochester Hills", "state": "MI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@rochesteru.edu", "isHeadCoach": true }] },
+  { "name": "Augsburg University", "city": "Minneapolis", "state": "MN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@augsburg.edu", "isHeadCoach": true }] },
+  { "name": "Bethel University", "city": "St. Paul", "state": "MN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@bethel.edu", "isHeadCoach": true }] }
+]

@@ -1,0 +1,22 @@
+[
+  { "name": "Carleton College", "city": "Northfield", "state": "MN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@carleton.edu", "isHeadCoach": true }] },
+  { "name": "Concordia College", "city": "Moorhead", "state": "MN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@cord.edu", "isHeadCoach": true }] },
+  { "name": "Gustavus Adolphus College", "city": "St. Peter", "state": "MN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@gustavus.edu", "isHeadCoach": true }] },
+  { "name": "Hamline University", "city": "St. Paul", "state": "MN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@hamline.edu", "isHeadCoach": true }] },
+  { "name": "Macalester College", "city": "St. Paul", "state": "MN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@macalester.edu", "isHeadCoach": true }] },
+  { "name": "University of Minnesota Morris", "city": "Morris", "state": "MN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@morris.umn.edu", "isHeadCoach": true }] },
+  { "name": "St. John's University", "city": "Collegeville", "state": "MN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@csbsju.edu", "isHeadCoach": true }] },
+  { "name": "St. Olaf College", "city": "Northfield", "state": "MN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@stolaf.edu", "isHeadCoach": true }] },
+  { "name": "Fontbonne University", "city": "St. Louis", "state": "MO", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@fontbonne.edu", "isHeadCoach": true }] },
+  { "name": "Maryville University", "city": "St. Louis", "state": "MO", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@maryville.edu", "isHeadCoach": true }] },
+  { "name": "Missouri Baptist University", "city": "St. Louis", "state": "MO", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@mobap.edu", "isHeadCoach": true }] },
+  { "name": "Missouri Valley College", "city": "Marshall", "state": "MO", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@moval.edu", "isHeadCoach": true }] },
+  { "name": "Washington University in St. Louis", "city": "St. Louis", "state": "MO", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@wustl.edu", "isHeadCoach": true }] },
+  { "name": "Webster University", "city": "Webster Groves", "state": "MO", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@webster.edu", "isHeadCoach": true }] },
+  { "name": "Westminster College", "city": "Fulton", "state": "MO", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@westminster-mo.edu", "isHeadCoach": true }] },
+  { "name": "Colby-Sawyer College", "city": "New London", "state": "NH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@colby-sawyer.edu", "isHeadCoach": true }] },
+  { "name": "Keene State College", "city": "Keene", "state": "NH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@keene.edu", "isHeadCoach": true }] },
+  { "name": "New England College", "city": "Henniker", "state": "NH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@nec.edu", "isHeadCoach": true }] },
+  { "name": "Plymouth State University", "city": "Plymouth", "state": "NH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@plymouth.edu", "isHeadCoach": true }] },
+  { "name": "Drew University", "city": "Madison", "state": "NJ", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@drew.edu", "isHeadCoach": true }] }
+]

@@ -1,0 +1,22 @@
+[
+  { "name": "Hanover College", "city": "Hanover", "state": "IN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@hanover.edu", "isHeadCoach": true }] },
+  { "name": "Manchester University", "city": "North Manchester", "state": "IN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@manchester.edu", "isHeadCoach": true }] },
+  { "name": "Rose-Hulman Institute of Technology", "city": "Terre Haute", "state": "IN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@rose-hulman.edu", "isHeadCoach": true }] },
+  { "name": "Trine University", "city": "Angola", "state": "IN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@trine.edu", "isHeadCoach": true }] },
+  { "name": "Wabash College", "city": "Crawfordsville", "state": "IN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@wabash.edu", "isHeadCoach": true }] },
+  { "name": "Buena Vista University", "city": "Storm Lake", "state": "IA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@bvu.edu", "isHeadCoach": true }] },
+  { "name": "Central College", "city": "Pella", "state": "IA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@central.edu", "isHeadCoach": true }] },
+  { "name": "Coe College", "city": "Cedar Rapids", "state": "IA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@coe.edu", "isHeadCoach": true }] },
+  { "name": "Cornell College", "city": "Mount Vernon", "state": "IA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@cornellcollege.edu", "isHeadCoach": true }] },
+  { "name": "Grinnell College", "city": "Grinnell", "state": "IA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@grinnell.edu", "isHeadCoach": true }] },
+  { "name": "Loras College", "city": "Dubuque", "state": "IA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@loras.edu", "isHeadCoach": true }] },
+  { "name": "Luther College", "city": "Decorah", "state": "IA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@luther.edu", "isHeadCoach": true }] },
+  { "name": "Simpson College", "city": "Indianola", "state": "IA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@simpson.edu", "isHeadCoach": true }] },
+  { "name": "Wartburg College", "city": "Waverly", "state": "IA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@wartburg.edu", "isHeadCoach": true }] },
+  { "name": "Berea College", "city": "Berea", "state": "KY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@berea.edu", "isHeadCoach": true }] },
+  { "name": "Centre College", "city": "Danville", "state": "KY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@centre.edu", "isHeadCoach": true }] },
+  { "name": "Thomas More University", "city": "Crestview Hills", "state": "KY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@thomasmore.edu", "isHeadCoach": true }] },
+  { "name": "Transylvania University", "city": "Lexington", "state": "KY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@transy.edu", "isHeadCoach": true }] },
+  { "name": "Bowdoin College", "city": "Brunswick", "state": "ME", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@bowdoin.edu", "isHeadCoach": true }] },
+  { "name": "Colby College", "city": "Waterville", "state": "ME", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@colby.edu", "isHeadCoach": true }] }
+]

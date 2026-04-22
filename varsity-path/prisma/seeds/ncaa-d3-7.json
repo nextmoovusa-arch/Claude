@@ -1,0 +1,22 @@
+[
+  { "name": "Kean University", "city": "Union", "state": "NJ", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@kean.edu", "isHeadCoach": true }] },
+  { "name": "Montclair State University", "city": "Montclair", "state": "NJ", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@montclair.edu", "isHeadCoach": true }] },
+  { "name": "New Jersey City University", "city": "Jersey City", "state": "NJ", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@njcu.edu", "isHeadCoach": true }] },
+  { "name": "Ramapo College of New Jersey", "city": "Mahwah", "state": "NJ", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@ramapo.edu", "isHeadCoach": true }] },
+  { "name": "Rowan University", "city": "Glassboro", "state": "NJ", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@rowan.edu", "isHeadCoach": true }] },
+  { "name": "Rutgers University-Camden", "city": "Camden", "state": "NJ", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@camden.rutgers.edu", "isHeadCoach": true }] },
+  { "name": "Rutgers University-Newark", "city": "Newark", "state": "NJ", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@newark.rutgers.edu", "isHeadCoach": true }] },
+  { "name": "Stevens Institute of Technology", "city": "Hoboken", "state": "NJ", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@stevens.edu", "isHeadCoach": true }] },
+  { "name": "William Paterson University", "city": "Wayne", "state": "NJ", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@wpunj.edu", "isHeadCoach": true }] },
+  { "name": "Alfred University", "city": "Alfred", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@alfred.edu", "isHeadCoach": true }] },
+  { "name": "Bard College", "city": "Annandale-on-Hudson", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@bard.edu", "isHeadCoach": true }] },
+  { "name": "SUNY Brockport", "city": "Brockport", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@brockport.edu", "isHeadCoach": true }] },
+  { "name": "SUNY Buffalo State", "city": "Buffalo", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@buffalostate.edu", "isHeadCoach": true }] },
+  { "name": "Clarkson University", "city": "Potsdam", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@clarkson.edu", "isHeadCoach": true }] },
+  { "name": "Elmira College", "city": "Elmira", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@elmira.edu", "isHeadCoach": true }] },
+  { "name": "SUNY Fredonia", "city": "Fredonia", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@fredonia.edu", "isHeadCoach": true }] },
+  { "name": "SUNY Geneseo", "city": "Geneseo", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@geneseo.edu", "isHeadCoach": true }] },
+  { "name": "Hamilton College", "city": "Clinton", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@hamilton.edu", "isHeadCoach": true }] },
+  { "name": "Hartwick College", "city": "Oneonta", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@hartwick.edu", "isHeadCoach": true }] },
+  { "name": "SUNY New Paltz", "city": "New Paltz", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@newpaltz.edu", "isHeadCoach": true }] }
+]

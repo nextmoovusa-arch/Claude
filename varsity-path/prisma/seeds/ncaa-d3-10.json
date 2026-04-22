@@ -1,0 +1,22 @@
+[
+  { "name": "Delaware Valley University", "city": "Doylestown", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@delval.edu", "isHeadCoach": true }] },
+  { "name": "DeSales University", "city": "Center Valley", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@desales.edu", "isHeadCoach": true }] },
+  { "name": "Dickinson College", "city": "Carlisle", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@dickinson.edu", "isHeadCoach": true }] },
+  { "name": "Eastern University", "city": "St. Davids", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@eastern.edu", "isHeadCoach": true }] },
+  { "name": "Elizabethtown College", "city": "Elizabethtown", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@etown.edu", "isHeadCoach": true }] },
+  { "name": "Franklin & Marshall College", "city": "Lancaster", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@fandm.edu", "isHeadCoach": true }] },
+  { "name": "Gettysburg College", "city": "Gettysburg", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@gettysburg.edu", "isHeadCoach": true }] },
+  { "name": "Haverford College", "city": "Haverford", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@haverford.edu", "isHeadCoach": true }] },
+  { "name": "Juniata College", "city": "Huntingdon", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@juniata.edu", "isHeadCoach": true }] },
+  { "name": "King's College", "city": "Wilkes-Barre", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@kings.edu", "isHeadCoach": true }] },
+  { "name": "Lebanon Valley College", "city": "Annville", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@lvc.edu", "isHeadCoach": true }] },
+  { "name": "Lycoming College", "city": "Williamsport", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@lycoming.edu", "isHeadCoach": true }] },
+  { "name": "Messiah University", "city": "Mechanicsburg", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@messiah.edu", "isHeadCoach": true }] },
+  { "name": "Misericordia University", "city": "Dallas", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@misericordia.edu", "isHeadCoach": true }] },
+  { "name": "Moravian University", "city": "Bethlehem", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@moravian.edu", "isHeadCoach": true }] },
+  { "name": "Muhlenberg College", "city": "Allentown", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@muhlenberg.edu", "isHeadCoach": true }] },
+  { "name": "Neumann University", "city": "Aston", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@neumann.edu", "isHeadCoach": true }] },
+  { "name": "Saint Vincent College", "city": "Latrobe", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@stvincent.edu", "isHeadCoach": true }] },
+  { "name": "Susquehanna University", "city": "Selinsgrove", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@susqu.edu", "isHeadCoach": true }] },
+  { "name": "Swarthmore College", "city": "Swarthmore", "state": "PA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@swarthmore.edu", "isHeadCoach": true }] }
+]

@@ -1,0 +1,22 @@
+[
+  { "name": "Washington and Lee University", "city": "Lexington", "state": "VA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@wlu.edu", "isHeadCoach": true }] },
+  { "name": "Beloit College", "city": "Beloit", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@beloit.edu", "isHeadCoach": true }] },
+  { "name": "Carroll University", "city": "Waukesha", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@carrollu.edu", "isHeadCoach": true }] },
+  { "name": "Carthage College", "city": "Kenosha", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@carthage.edu", "isHeadCoach": true }] },
+  { "name": "Concordia University Wisconsin", "city": "Mequon", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@cuw.edu", "isHeadCoach": true }] },
+  { "name": "Edgewood College", "city": "Madison", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@edgewood.edu", "isHeadCoach": true }] },
+  { "name": "Lakeland University", "city": "Plymouth", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@lakeland.edu", "isHeadCoach": true }] },
+  { "name": "Lawrence University", "city": "Appleton", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@lawrence.edu", "isHeadCoach": true }] },
+  { "name": "Marian University", "city": "Fond du Lac", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@marianuniversity.edu", "isHeadCoach": true }] },
+  { "name": "Milwaukee School of Engineering", "city": "Milwaukee", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@msoe.edu", "isHeadCoach": true }] },
+  { "name": "Ripon College", "city": "Ripon", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@ripon.edu", "isHeadCoach": true }] },
+  { "name": "St. Norbert College", "city": "De Pere", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@snc.edu", "isHeadCoach": true }] },
+  { "name": "UW-Eau Claire", "city": "Eau Claire", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@uwec.edu", "isHeadCoach": true }] },
+  { "name": "UW-La Crosse", "city": "La Crosse", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@uwlax.edu", "isHeadCoach": true }] },
+  { "name": "UW-Oshkosh", "city": "Oshkosh", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@uwosh.edu", "isHeadCoach": true }] },
+  { "name": "UW-River Falls", "city": "River Falls", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@uwrf.edu", "isHeadCoach": true }] },
+  { "name": "UW-Stevens Point", "city": "Stevens Point", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@uwsp.edu", "isHeadCoach": true }] },
+  { "name": "UW-Stout", "city": "Menomonie", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@uwstout.edu", "isHeadCoach": true }] },
+  { "name": "UW-Superior", "city": "Superior", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@uwsuper.edu", "isHeadCoach": true }] },
+  { "name": "UW-Whitewater", "city": "Whitewater", "state": "WI", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@uww.edu", "isHeadCoach": true }] }
+]

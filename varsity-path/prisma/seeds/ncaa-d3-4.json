@@ -1,0 +1,22 @@
+[
+  { "name": "Husson University", "city": "Bangor", "state": "ME", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@husson.edu", "isHeadCoach": true }] },
+  { "name": "University of Maine at Farmington", "city": "Farmington", "state": "ME", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@umf.maine.edu", "isHeadCoach": true }] },
+  { "name": "University of New England", "city": "Biddeford", "state": "ME", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@une.edu", "isHeadCoach": true }] },
+  { "name": "University of Southern Maine", "city": "Portland", "state": "ME", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@usm.maine.edu", "isHeadCoach": true }] },
+  { "name": "Goucher College", "city": "Towson", "state": "MD", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@goucher.edu", "isHeadCoach": true }] },
+  { "name": "Hood College", "city": "Frederick", "state": "MD", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@hood.edu", "isHeadCoach": true }] },
+  { "name": "Johns Hopkins University", "city": "Baltimore", "state": "MD", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@jhu.edu", "isHeadCoach": true }] },
+  { "name": "McDaniel College", "city": "Westminster", "state": "MD", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@mcdaniel.edu", "isHeadCoach": true }] },
+  { "name": "Salisbury University", "city": "Salisbury", "state": "MD", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@salisbury.edu", "isHeadCoach": true }] },
+  { "name": "Stevenson University", "city": "Owings Mills", "state": "MD", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@stevenson.edu", "isHeadCoach": true }] },
+  { "name": "Washington College", "city": "Chestertown", "state": "MD", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@washcoll.edu", "isHeadCoach": true }] },
+  { "name": "Babson College", "city": "Wellesley", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@babson.edu", "isHeadCoach": true }] },
+  { "name": "Bridgewater State University", "city": "Bridgewater", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@bridgew.edu", "isHeadCoach": true }] },
+  { "name": "Clark University", "city": "Worcester", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@clarku.edu", "isHeadCoach": true }] },
+  { "name": "Emerson College", "city": "Boston", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@emerson.edu", "isHeadCoach": true }] },
+  { "name": "Endicott College", "city": "Beverly", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@endicott.edu", "isHeadCoach": true }] },
+  { "name": "Fitchburg State University", "city": "Fitchburg", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@fitchburgstate.edu", "isHeadCoach": true }] },
+  { "name": "Framingham State University", "city": "Framingham", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@framingham.edu", "isHeadCoach": true }] },
+  { "name": "Gordon College", "city": "Wenham", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@gordon.edu", "isHeadCoach": true }] },
+  { "name": "Massachusetts Institute of Technology", "city": "Cambridge", "state": "MA", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@mit.edu", "isHeadCoach": true }] }
+]

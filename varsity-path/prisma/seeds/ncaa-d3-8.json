@@ -1,0 +1,22 @@
+[
+  { "name": "SUNY Oneonta", "city": "Oneonta", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@oneonta.edu", "isHeadCoach": true }] },
+  { "name": "SUNY Oswego", "city": "Oswego", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@oswego.edu", "isHeadCoach": true }] },
+  { "name": "SUNY Plattsburgh", "city": "Plattsburgh", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@plattsburgh.edu", "isHeadCoach": true }] },
+  { "name": "SUNY Potsdam", "city": "Potsdam", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@potsdam.edu", "isHeadCoach": true }] },
+  { "name": "SUNY Purchase College", "city": "Purchase", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@purchase.edu", "isHeadCoach": true }] },
+  { "name": "Rensselaer Polytechnic Institute", "city": "Troy", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@rpi.edu", "isHeadCoach": true }] },
+  { "name": "Rochester Institute of Technology", "city": "Rochester", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@rit.edu", "isHeadCoach": true }] },
+  { "name": "University of Rochester", "city": "Rochester", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@rochester.edu", "isHeadCoach": true }] },
+  { "name": "Skidmore College", "city": "Saratoga Springs", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@skidmore.edu", "isHeadCoach": true }] },
+  { "name": "St. Lawrence University", "city": "Canton", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@stlawu.edu", "isHeadCoach": true }] },
+  { "name": "Union College", "city": "Schenectady", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@union.edu", "isHeadCoach": true }] },
+  { "name": "Vassar College", "city": "Poughkeepsie", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@vassar.edu", "isHeadCoach": true }] },
+  { "name": "Yeshiva University", "city": "New York", "state": "NY", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@yu.edu", "isHeadCoach": true }] },
+  { "name": "Brevard College", "city": "Brevard", "state": "NC", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@brevard.edu", "isHeadCoach": true }] },
+  { "name": "Guilford College", "city": "Greensboro", "state": "NC", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@guilford.edu", "isHeadCoach": true }] },
+  { "name": "Methodist University", "city": "Fayetteville", "state": "NC", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@methodist.edu", "isHeadCoach": true }] },
+  { "name": "NC Wesleyan University", "city": "Rocky Mount", "state": "NC", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@ncwc.edu", "isHeadCoach": true }] },
+  { "name": "Warren Wilson College", "city": "Asheville", "state": "NC", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@warren-wilson.edu", "isHeadCoach": true }] },
+  { "name": "Baldwin Wallace University", "city": "Berea", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@bw.edu", "isHeadCoach": true }] },
+  { "name": "Capital University", "city": "Columbus", "state": "OH", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@capital.edu", "isHeadCoach": true }] }
+]

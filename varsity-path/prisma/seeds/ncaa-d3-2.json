@@ -1,0 +1,22 @@
+[
+  { "name": "Augustana College", "city": "Rock Island", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@augustana.edu", "isHeadCoach": true }] },
+  { "name": "Benedictine University", "city": "Lisle", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@ben.edu", "isHeadCoach": true }] },
+  { "name": "Dominican University", "city": "River Forest", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@dom.edu", "isHeadCoach": true }] },
+  { "name": "Elmhurst University", "city": "Elmhurst", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@elmhurst.edu", "isHeadCoach": true }] },
+  { "name": "Eureka College", "city": "Eureka", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "soccer@eureka.edu", "isHeadCoach": true }] },
+  { "name": "Greenville University", "city": "Greenville", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@greenville.edu", "isHeadCoach": true }] },
+  { "name": "Illinois College", "city": "Jacksonville", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@ic.edu", "isHeadCoach": true }] },
+  { "name": "Illinois Wesleyan University", "city": "Bloomington", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@iwu.edu", "isHeadCoach": true }] },
+  { "name": "Knox College", "city": "Galesburg", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@knox.edu", "isHeadCoach": true }] },
+  { "name": "Lake Forest College", "city": "Lake Forest", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@lakeforest.edu", "isHeadCoach": true }] },
+  { "name": "Millikin University", "city": "Decatur", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@millikin.edu", "isHeadCoach": true }] },
+  { "name": "Monmouth College", "city": "Monmouth", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@monmouthcollege.edu", "isHeadCoach": true }] },
+  { "name": "North Central College", "city": "Naperville", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@noctrl.edu", "isHeadCoach": true }] },
+  { "name": "North Park University", "city": "Chicago", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@northpark.edu", "isHeadCoach": true }] },
+  { "name": "Wheaton College", "city": "Wheaton", "state": "IL", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@wheaton.edu", "isHeadCoach": true }] },
+  { "name": "Anderson University", "city": "Anderson", "state": "IN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@anderson.edu", "isHeadCoach": true }] },
+  { "name": "DePauw University", "city": "Greencastle", "state": "IN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@depauw.edu", "isHeadCoach": true }] },
+  { "name": "Earlham College", "city": "Richmond", "state": "IN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@earlham.edu", "isHeadCoach": true }] },
+  { "name": "Franklin College", "city": "Franklin", "state": "IN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@franklincollege.edu", "isHeadCoach": true }] },
+  { "name": "Goshen College", "city": "Goshen", "state": "IN", "division": "NCAA_D3", "coaches": [{ "email": "msoccer@goshen.edu", "isHeadCoach": true }] }
+]
