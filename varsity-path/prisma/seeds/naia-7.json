@@ -1,0 +1,22 @@
+[
+  { "name": "Schreiner University", "city": "Kerrville", "state": "TX", "division": "NAIA", "coaches": [{ "email": "msoccer@schreiner.edu", "isHeadCoach": true }] },
+  { "name": "Lubbock Christian University", "city": "Lubbock", "state": "TX", "division": "NAIA", "coaches": [{ "email": "msoccer@lcu.edu", "isHeadCoach": true }] },
+  { "name": "Howard Payne University", "city": "Brownwood", "state": "TX", "division": "NAIA", "coaches": [{ "email": "msoccer@hputx.edu", "isHeadCoach": true }] },
+  { "name": "Texas Lutheran University", "city": "Seguin", "state": "TX", "division": "NAIA", "coaches": [{ "email": "msoccer@tlu.edu", "isHeadCoach": true }] },
+  { "name": "Westminster College", "city": "Salt Lake City", "state": "UT", "division": "NAIA", "coaches": [{ "email": "msoccer@westminster.edu", "isHeadCoach": true }] },
+  { "name": "Champlain College", "city": "Burlington", "state": "VT", "division": "NAIA", "coaches": [{ "email": "msoccer@champlain.edu", "isHeadCoach": true }] },
+  { "name": "Norwich University", "city": "Northfield", "state": "VT", "division": "NAIA", "coaches": [{ "email": "msoccer@norwich.edu", "isHeadCoach": true }] },
+  { "name": "Saint Michael's College", "city": "Colchester", "state": "VT", "division": "NAIA", "coaches": [{ "email": "msoccer@smcvt.edu", "isHeadCoach": true }] },
+  { "name": "Virginia State University", "city": "Ettrick", "state": "VA", "division": "NAIA", "coaches": [{ "email": "msoccer@vsu.edu", "isHeadCoach": true }] },
+  { "name": "Hampton University", "city": "Hampton", "state": "VA", "division": "NAIA", "coaches": [{ "email": "msoccer@hamptonuniv.edu", "isHeadCoach": true }] },
+  { "name": "Pacific Lutheran University", "city": "Tacoma", "state": "WA", "division": "NAIA", "coaches": [{ "email": "msoccer@plu.edu", "isHeadCoach": true }] },
+  { "name": "University of Puget Sound", "city": "Tacoma", "state": "WA", "division": "NAIA", "coaches": [{ "email": "msoccer@pugetsound.edu", "isHeadCoach": true }] },
+  { "name": "Whitworth University", "city": "Spokane", "state": "WA", "division": "NAIA", "coaches": [{ "email": "msoccer@whitworth.edu", "isHeadCoach": true }] },
+  { "name": "Bethany College", "city": "Bethany", "state": "WV", "division": "NAIA", "coaches": [{ "email": "msoccer@bethanywv.edu", "isHeadCoach": true }] },
+  { "name": "Ohio Valley University", "city": "Vienna", "state": "WV", "division": "NAIA", "coaches": [{ "email": "msoccer@ovu.edu", "isHeadCoach": true }] },
+  { "name": "Alderson Broaddus University", "city": "Philippi", "state": "WV", "division": "NAIA", "coaches": [{ "email": "msoccer@ab.edu", "isHeadCoach": true }] },
+  { "name": "Cardinal Stritch University", "city": "Milwaukee", "state": "WI", "division": "NAIA", "coaches": [{ "email": "msoccer@stritch.edu", "isHeadCoach": true }] },
+  { "name": "Viterbo University", "city": "La Crosse", "state": "WI", "division": "NAIA", "coaches": [{ "email": "msoccer@viterbo.edu", "isHeadCoach": true }] },
+  { "name": "Silver Lake College", "city": "Manitowoc", "state": "WI", "division": "NAIA", "coaches": [{ "email": "msoccer@sl.edu", "isHeadCoach": true }] },
+  { "name": "Black Hills State University", "city": "Spearfish", "state": "SD", "division": "NAIA", "coaches": [{ "email": "msoccer@bhsu.edu", "isHeadCoach": true }] }
+]

@@ -1,0 +1,22 @@
+[
+  { "name": "Cascade University", "city": "Portland", "state": "OR", "division": "NAIA", "coaches": [{ "email": "msoccer@cascade.edu", "isHeadCoach": true }] },
+  { "name": "Corban University", "city": "Salem", "state": "OR", "division": "NAIA", "coaches": [{ "email": "msoccer@corban.edu", "isHeadCoach": true }] },
+  { "name": "George Fox University", "city": "Newberg", "state": "OR", "division": "NAIA", "coaches": [{ "email": "msoccer@georgefox.edu", "isHeadCoach": true }] },
+  { "name": "Linfield University", "city": "McMinnville", "state": "OR", "division": "NAIA", "coaches": [{ "email": "msoccer@linfield.edu", "isHeadCoach": true }] },
+  { "name": "Pacific University", "city": "Forest Grove", "state": "OR", "division": "NAIA", "coaches": [{ "email": "msoccer@pacific.edu", "isHeadCoach": true }] },
+  { "name": "Warner Pacific University", "city": "Portland", "state": "OR", "division": "NAIA", "coaches": [{ "email": "msoccer@warnerpacific.edu", "isHeadCoach": true }] },
+  { "name": "Willamette University", "city": "Salem", "state": "OR", "division": "NAIA", "coaches": [{ "email": "msoccer@willamette.edu", "isHeadCoach": true }] },
+  { "name": "Cairn University", "city": "Langhorne", "state": "PA", "division": "NAIA", "coaches": [{ "email": "msoccer@cairn.edu", "isHeadCoach": true }] },
+  { "name": "Thiel College", "city": "Greenville", "state": "PA", "division": "NAIA", "coaches": [{ "email": "msoccer@thiel.edu", "isHeadCoach": true }] },
+  { "name": "University of Pittsburgh at Johnstown", "city": "Johnstown", "state": "PA", "division": "NAIA", "coaches": [{ "email": "msoccer@upj.pitt.edu", "isHeadCoach": true }] },
+  { "name": "University of Scranton", "city": "Scranton", "state": "PA", "division": "NAIA", "coaches": [{ "email": "msoccer@scranton.edu", "isHeadCoach": true }] },
+  { "name": "Geneva College", "city": "Beaver Falls", "state": "PA", "division": "NAIA", "coaches": [{ "email": "msoccer@geneva.edu", "isHeadCoach": true }] },
+  { "name": "Texas College", "city": "Tyler", "state": "TX", "division": "NAIA", "coaches": [{ "email": "msoccer@texascollege.edu", "isHeadCoach": true }] },
+  { "name": "Jarvis Christian College", "city": "Hawkins", "state": "TX", "division": "NAIA", "coaches": [{ "email": "msoccer@jarvis.edu", "isHeadCoach": true }] },
+  { "name": "Paul Quinn College", "city": "Dallas", "state": "TX", "division": "NAIA", "coaches": [{ "email": "msoccer@pqc.edu", "isHeadCoach": true }] },
+  { "name": "Our Lady of the Lake University", "city": "San Antonio", "state": "TX", "division": "NAIA", "coaches": [{ "email": "msoccer@ollusa.edu", "isHeadCoach": true }] },
+  { "name": "Austin College", "city": "Sherman", "state": "TX", "division": "NAIA", "coaches": [{ "email": "msoccer@austincollege.edu", "isHeadCoach": true }] },
+  { "name": "Hardin-Simmons University", "city": "Abilene", "state": "TX", "division": "NAIA", "coaches": [{ "email": "msoccer@hsutx.edu", "isHeadCoach": true }] },
+  { "name": "University of Dallas", "city": "Irving", "state": "TX", "division": "NAIA", "coaches": [{ "email": "msoccer@udallas.edu", "isHeadCoach": true }] },
+  { "name": "McMurry University", "city": "Abilene", "state": "TX", "division": "NAIA", "coaches": [{ "email": "msoccer@mcm.edu", "isHeadCoach": true }] }
+]

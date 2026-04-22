@@ -1,0 +1,22 @@
+[
+  { "name": "Stillman College", "city": "Tuscaloosa", "state": "AL", "division": "NAIA", "coaches": [{ "email": "msoccer@stillman.edu", "isHeadCoach": true }] },
+  { "name": "Tuskegee University", "city": "Tuskegee", "state": "AL", "division": "NAIA", "coaches": [{ "email": "msoccer@tuskegee.edu", "isHeadCoach": true }] },
+  { "name": "Miles College", "city": "Fairfield", "state": "AL", "division": "NAIA", "coaches": [{ "email": "msoccer@miles.edu", "isHeadCoach": true }] },
+  { "name": "Ottawa University Arizona", "city": "Phoenix", "state": "AZ", "division": "NAIA", "coaches": [{ "email": "msoccer@ottawa.edu", "isHeadCoach": true }] },
+  { "name": "Arizona Christian University", "city": "Glendale", "state": "AZ", "division": "NAIA", "coaches": [{ "email": "msoccer@arizonachristian.edu", "isHeadCoach": true }] },
+  { "name": "John Brown University", "city": "Siloam Springs", "state": "AR", "division": "NAIA", "coaches": [{ "email": "msoccer@jbu.edu", "isHeadCoach": true }] },
+  { "name": "Philander Smith College", "city": "Little Rock", "state": "AR", "division": "NAIA", "coaches": [{ "email": "msoccer@philander.edu", "isHeadCoach": true }] },
+  { "name": "University of Arkansas-Fort Smith", "city": "Fort Smith", "state": "AR", "division": "NAIA", "coaches": [{ "email": "msoccer@uafs.edu", "isHeadCoach": true }] },
+  { "name": "The Master's University", "city": "Santa Clarita", "state": "CA", "division": "NAIA", "coaches": [{ "email": "msoccer@masters.edu", "isHeadCoach": true }] },
+  { "name": "Simpson University", "city": "Redding", "state": "CA", "division": "NAIA", "coaches": [{ "email": "msoccer@simpson.edu", "isHeadCoach": true }] },
+  { "name": "Westmont College", "city": "Santa Barbara", "state": "CA", "division": "NAIA", "coaches": [{ "email": "msoccer@westmont.edu", "isHeadCoach": true }] },
+  { "name": "San Diego Christian College", "city": "El Cajon", "state": "CA", "division": "NAIA", "coaches": [{ "email": "msoccer@sdcc.edu", "isHeadCoach": true }] },
+  { "name": "Vanguard University", "city": "Costa Mesa", "state": "CA", "division": "NAIA", "coaches": [{ "email": "msoccer@vanguard.edu", "isHeadCoach": true }] },
+  { "name": "Colorado Christian University", "city": "Lakewood", "state": "CO", "division": "NAIA", "coaches": [{ "email": "msoccer@ccu.edu", "isHeadCoach": true }] },
+  { "name": "Wilmington University", "city": "New Castle", "state": "DE", "division": "NAIA", "coaches": [{ "email": "msoccer@wilmu.edu", "isHeadCoach": true }] },
+  { "name": "Webber International University", "city": "Babson", "state": "FL", "division": "NAIA", "coaches": [{ "email": "msoccer@webber.edu", "isHeadCoach": true }] },
+  { "name": "Florida Memorial University", "city": "Miami Gardens", "state": "FL", "division": "NAIA", "coaches": [{ "email": "msoccer@fmuniv.edu", "isHeadCoach": true }] },
+  { "name": "Bethune-Cookman University", "city": "Daytona Beach", "state": "FL", "division": "NAIA", "coaches": [{ "email": "msoccer@bethune.cookman.edu", "isHeadCoach": true }] },
+  { "name": "Edward Waters University", "city": "Jacksonville", "state": "FL", "division": "NAIA", "coaches": [{ "email": "msoccer@ewu.edu", "isHeadCoach": true }] },
+  { "name": "Trinity Baptist College", "city": "Jacksonville", "state": "FL", "division": "NAIA", "coaches": [{ "email": "msoccer@trinity.edu", "isHeadCoach": true }] }
+]

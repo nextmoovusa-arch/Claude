@@ -1,0 +1,22 @@
+[
+  { "name": "MidAmerica Nazarene University", "city": "Olathe", "state": "KS", "division": "NAIA", "coaches": [{ "email": "msoccer@mnu.edu", "isHeadCoach": true }] },
+  { "name": "Sterling College", "city": "Sterling", "state": "KS", "division": "NAIA", "coaches": [{ "email": "msoccer@sterling.edu", "isHeadCoach": true }] },
+  { "name": "Tabor College", "city": "Hillsboro", "state": "KS", "division": "NAIA", "coaches": [{ "email": "msoccer@tabor.edu", "isHeadCoach": true }] },
+  { "name": "Kansas Wesleyan University", "city": "Salina", "state": "KS", "division": "NAIA", "coaches": [{ "email": "msoccer@kwu.edu", "isHeadCoach": true }] },
+  { "name": "Alice Lloyd College", "city": "Pippa Passes", "state": "KY", "division": "NAIA", "coaches": [{ "email": "msoccer@alc.edu", "isHeadCoach": true }] },
+  { "name": "Asbury University", "city": "Wilmore", "state": "KY", "division": "NAIA", "coaches": [{ "email": "msoccer@asbury.edu", "isHeadCoach": true }] },
+  { "name": "Georgetown College", "city": "Georgetown", "state": "KY", "division": "NAIA", "coaches": [{ "email": "msoccer@georgetowncollege.edu", "isHeadCoach": true }] },
+  { "name": "Lindsey Wilson College", "city": "Columbia", "state": "KY", "division": "NAIA", "coaches": [{ "email": "msoccer@lindsey.edu", "isHeadCoach": true }] },
+  { "name": "Pikeville College", "city": "Pikeville", "state": "KY", "division": "NAIA", "coaches": [{ "email": "msoccer@upike.edu", "isHeadCoach": true }] },
+  { "name": "Union College", "city": "Barbourville", "state": "KY", "division": "NAIA", "coaches": [{ "email": "msoccer@unionky.edu", "isHeadCoach": true }] },
+  { "name": "Louisiana College", "city": "Pineville", "state": "LA", "division": "NAIA", "coaches": [{ "email": "msoccer@lacollege.edu", "isHeadCoach": true }] },
+  { "name": "Centenary College of Louisiana", "city": "Shreveport", "state": "LA", "division": "NAIA", "coaches": [{ "email": "msoccer@centenary.edu", "isHeadCoach": true }] },
+  { "name": "Dillard University", "city": "New Orleans", "state": "LA", "division": "NAIA", "coaches": [{ "email": "msoccer@dillard.edu", "isHeadCoach": true }] },
+  { "name": "Xavier University of Louisiana", "city": "New Orleans", "state": "LA", "division": "NAIA", "coaches": [{ "email": "msoccer@xula.edu", "isHeadCoach": true }] },
+  { "name": "Newbury College", "city": "Brookline", "state": "MA", "division": "NAIA", "coaches": [{ "email": "msoccer@newbury.edu", "isHeadCoach": true }] },
+  { "name": "Massachusetts Maritime Academy", "city": "Buzzards Bay", "state": "MA", "division": "NAIA", "coaches": [{ "email": "msoccer@maritime.edu", "isHeadCoach": true }] },
+  { "name": "Aquinas College", "city": "Grand Rapids", "state": "MI", "division": "NAIA", "coaches": [{ "email": "msoccer@aquinas.edu", "isHeadCoach": true }] },
+  { "name": "Davenport University", "city": "Grand Rapids", "state": "MI", "division": "NAIA", "coaches": [{ "email": "msoccer@davenport.edu", "isHeadCoach": true }] },
+  { "name": "Lawrence Technological University", "city": "Southfield", "state": "MI", "division": "NAIA", "coaches": [{ "email": "msoccer@lawrence.tech.edu", "isHeadCoach": true }] },
+  { "name": "Mississippi College", "city": "Clinton", "state": "MS", "division": "NAIA", "coaches": [{ "email": "msoccer@mc.edu", "isHeadCoach": true }] }
+]

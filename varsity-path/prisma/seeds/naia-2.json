@@ -1,0 +1,22 @@
+[
+  { "name": "Reinhardt University", "city": "Waleska", "state": "GA", "division": "NAIA", "coaches": [{ "email": "msoccer@reinhardt.edu", "isHeadCoach": true }] },
+  { "name": "Truett McConnell University", "city": "Cleveland", "state": "GA", "division": "NAIA", "coaches": [{ "email": "msoccer@truett.edu", "isHeadCoach": true }] },
+  { "name": "Georgia Gwinnett College", "city": "Lawrenceville", "state": "GA", "division": "NAIA", "coaches": [{ "email": "msoccer@ggc.edu", "isHeadCoach": true }] },
+  { "name": "Saint Xavier University", "city": "Chicago", "state": "IL", "division": "NAIA", "coaches": [{ "email": "msoccer@sxu.edu", "isHeadCoach": true }] },
+  { "name": "Trinity Christian College", "city": "Palos Heights", "state": "IL", "division": "NAIA", "coaches": [{ "email": "msoccer@tcc.edu", "isHeadCoach": true }] },
+  { "name": "Olivet Nazarene University", "city": "Bourbonnais", "state": "IL", "division": "NAIA", "coaches": [{ "email": "msoccer@olivet.edu", "isHeadCoach": true }] },
+  { "name": "Judson University", "city": "Elgin", "state": "IL", "division": "NAIA", "coaches": [{ "email": "msoccer@judson.edu", "isHeadCoach": true }] },
+  { "name": "University of Saint Francis", "city": "Fort Wayne", "state": "IN", "division": "NAIA", "coaches": [{ "email": "msoccer@sf.edu", "isHeadCoach": true }] },
+  { "name": "Grace College", "city": "Winona Lake", "state": "IN", "division": "NAIA", "coaches": [{ "email": "msoccer@grace.edu", "isHeadCoach": true }] },
+  { "name": "Huntington University", "city": "Huntington", "state": "IN", "division": "NAIA", "coaches": [{ "email": "msoccer@huntington.edu", "isHeadCoach": true }] },
+  { "name": "Martin University", "city": "Indianapolis", "state": "IN", "division": "NAIA", "coaches": [{ "email": "msoccer@martin.edu", "isHeadCoach": true }] },
+  { "name": "Bethel College", "city": "Mishawaka", "state": "IN", "division": "NAIA", "coaches": [{ "email": "msoccer@bethelcollege.edu", "isHeadCoach": true }] },
+  { "name": "Briar Cliff University", "city": "Sioux City", "state": "IA", "division": "NAIA", "coaches": [{ "email": "msoccer@briarcliff.edu", "isHeadCoach": true }] },
+  { "name": "Dordt University", "city": "Sioux Center", "state": "IA", "division": "NAIA", "coaches": [{ "email": "msoccer@dordt.edu", "isHeadCoach": true }] },
+  { "name": "Morningside University", "city": "Sioux City", "state": "IA", "division": "NAIA", "coaches": [{ "email": "msoccer@morningside.edu", "isHeadCoach": true }] },
+  { "name": "Northwestern College", "city": "Orange City", "state": "IA", "division": "NAIA", "coaches": [{ "email": "msoccer@nwciowa.edu", "isHeadCoach": true }] },
+  { "name": "Saint Ambrose University", "city": "Davenport", "state": "IA", "division": "NAIA", "coaches": [{ "email": "msoccer@sau.edu", "isHeadCoach": true }] },
+  { "name": "William Penn University", "city": "Oskaloosa", "state": "IA", "division": "NAIA", "coaches": [{ "email": "msoccer@wmpenn.edu", "isHeadCoach": true }] },
+  { "name": "Benedictine College", "city": "Atchison", "state": "KS", "division": "NAIA", "coaches": [{ "email": "msoccer@benedictine.edu", "isHeadCoach": true }] },
+  { "name": "Bethany College", "city": "Lindsborg", "state": "KS", "division": "NAIA", "coaches": [{ "email": "msoccer@bethanylb.edu", "isHeadCoach": true }] }
+]

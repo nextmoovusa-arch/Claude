@@ -1,0 +1,22 @@
+[
+  { "name": "Mississippi Valley State University", "city": "Itta Bena", "state": "MS", "division": "NAIA", "coaches": [{ "email": "msoccer@mvsu.edu", "isHeadCoach": true }] },
+  { "name": "Rust College", "city": "Holly Springs", "state": "MS", "division": "NAIA", "coaches": [{ "email": "msoccer@rustcollege.edu", "isHeadCoach": true }] },
+  { "name": "Tougaloo College", "city": "Tougaloo", "state": "MS", "division": "NAIA", "coaches": [{ "email": "msoccer@tougaloo.edu", "isHeadCoach": true }] },
+  { "name": "William Carey University", "city": "Hattiesburg", "state": "MS", "division": "NAIA", "coaches": [{ "email": "msoccer@wmcarey.edu", "isHeadCoach": true }] },
+  { "name": "Central Methodist University", "city": "Fayette", "state": "MO", "division": "NAIA", "coaches": [{ "email": "msoccer@centralmethodist.edu", "isHeadCoach": true }] },
+  { "name": "Columbia College", "city": "Columbia", "state": "MO", "division": "NAIA", "coaches": [{ "email": "msoccer@ccis.edu", "isHeadCoach": true }] },
+  { "name": "Evangel University", "city": "Springfield", "state": "MO", "division": "NAIA", "coaches": [{ "email": "msoccer@evangel.edu", "isHeadCoach": true }] },
+  { "name": "Drury University", "city": "Springfield", "state": "MO", "division": "NAIA", "coaches": [{ "email": "msoccer@drury.edu", "isHeadCoach": true }] },
+  { "name": "Missouri University of Science and Technology", "city": "Rolla", "state": "MO", "division": "NAIA", "coaches": [{ "email": "msoccer@mst.edu", "isHeadCoach": true }] },
+  { "name": "Carroll College", "city": "Helena", "state": "MT", "division": "NAIA", "coaches": [{ "email": "msoccer@carroll.edu", "isHeadCoach": true }] },
+  { "name": "Montana Tech", "city": "Butte", "state": "MT", "division": "NAIA", "coaches": [{ "email": "msoccer@mtech.edu", "isHeadCoach": true }] },
+  { "name": "Montana Western", "city": "Dillon", "state": "MT", "division": "NAIA", "coaches": [{ "email": "msoccer@umwestern.edu", "isHeadCoach": true }] },
+  { "name": "Rocky Mountain College", "city": "Billings", "state": "MT", "division": "NAIA", "coaches": [{ "email": "msoccer@rocky.edu", "isHeadCoach": true }] },
+  { "name": "Midland University", "city": "Fremont", "state": "NE", "division": "NAIA", "coaches": [{ "email": "msoccer@midlandu.edu", "isHeadCoach": true }] },
+  { "name": "Peru State College", "city": "Peru", "state": "NE", "division": "NAIA", "coaches": [{ "email": "msoccer@peru.edu", "isHeadCoach": true }] },
+  { "name": "Union College", "city": "Lincoln", "state": "NE", "division": "NAIA", "coaches": [{ "email": "msoccer@ucollege.edu", "isHeadCoach": true }] },
+  { "name": "York College", "city": "York", "state": "NE", "division": "NAIA", "coaches": [{ "email": "msoccer@york.edu", "isHeadCoach": true }] },
+  { "name": "Doane University", "city": "Crete", "state": "NE", "division": "NAIA", "coaches": [{ "email": "msoccer@doane.edu", "isHeadCoach": true }] },
+  { "name": "Hastings College", "city": "Hastings", "state": "NE", "division": "NAIA", "coaches": [{ "email": "msoccer@hastings.edu", "isHeadCoach": true }] },
+  { "name": "Great Basin College", "city": "Elko", "state": "NV", "division": "NAIA", "coaches": [{ "email": "msoccer@gbcnv.edu", "isHeadCoach": true }] }
+]

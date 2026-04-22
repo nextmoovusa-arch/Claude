@@ -1,0 +1,22 @@
+[
+  { "name": "Centenary University", "city": "Hackettstown", "state": "NJ", "division": "NAIA", "coaches": [{ "email": "msoccer@centenary.edu", "isHeadCoach": true }] },
+  { "name": "Caldwell University", "city": "Caldwell", "state": "NJ", "division": "NAIA", "coaches": [{ "email": "msoccer@caldwell.edu", "isHeadCoach": true }] },
+  { "name": "New Mexico Institute of Mining & Technology", "city": "Socorro", "state": "NM", "division": "NAIA", "coaches": [{ "email": "msoccer@nmt.edu", "isHeadCoach": true }] },
+  { "name": "Nyack College", "city": "Nyack", "state": "NY", "division": "NAIA", "coaches": [{ "email": "msoccer@nyack.edu", "isHeadCoach": true }] },
+  { "name": "St. Thomas Aquinas College", "city": "Sparkill", "state": "NY", "division": "NAIA", "coaches": [{ "email": "msoccer@stac.edu", "isHeadCoach": true }] },
+  { "name": "Pace University", "city": "New York", "state": "NY", "division": "NAIA", "coaches": [{ "email": "msoccer@pace.edu", "isHeadCoach": true }] },
+  { "name": "City College of New York", "city": "New York", "state": "NY", "division": "NAIA", "coaches": [{ "email": "msoccer@ccny.cuny.edu", "isHeadCoach": true }] },
+  { "name": "College of Mount Saint Vincent", "city": "Bronx", "state": "NY", "division": "NAIA", "coaches": [{ "email": "msoccer@cmsv.edu", "isHeadCoach": true }] },
+  { "name": "York College CUNY", "city": "Jamaica", "state": "NY", "division": "NAIA", "coaches": [{ "email": "msoccer@york.cuny.edu", "isHeadCoach": true }] },
+  { "name": "Houghton University", "city": "Houghton", "state": "NY", "division": "NAIA", "coaches": [{ "email": "msoccer@houghton.edu", "isHeadCoach": true }] },
+  { "name": "Fayetteville State University", "city": "Fayetteville", "state": "NC", "division": "NAIA", "coaches": [{ "email": "msoccer@uncfsu.edu", "isHeadCoach": true }] },
+  { "name": "Johnson C. Smith University", "city": "Charlotte", "state": "NC", "division": "NAIA", "coaches": [{ "email": "msoccer@jcsu.edu", "isHeadCoach": true }] },
+  { "name": "Saint Augustine's University", "city": "Raleigh", "state": "NC", "division": "NAIA", "coaches": [{ "email": "msoccer@st-aug.edu", "isHeadCoach": true }] },
+  { "name": "Shaw University", "city": "Raleigh", "state": "NC", "division": "NAIA", "coaches": [{ "email": "msoccer@shawu.edu", "isHeadCoach": true }] },
+  { "name": "Mount Vernon Nazarene University", "city": "Mount Vernon", "state": "OH", "division": "NAIA", "coaches": [{ "email": "msoccer@mvnu.edu", "isHeadCoach": true }] },
+  { "name": "Cedarville University", "city": "Cedarville", "state": "OH", "division": "NAIA", "coaches": [{ "email": "msoccer@cedarville.edu", "isHeadCoach": true }] },
+  { "name": "Rio Grande", "city": "Rio Grande", "state": "OH", "division": "NAIA", "coaches": [{ "email": "msoccer@rio.edu", "isHeadCoach": true }] },
+  { "name": "Oklahoma City University", "city": "Oklahoma City", "state": "OK", "division": "NAIA", "coaches": [{ "email": "msoccer@okcu.edu", "isHeadCoach": true }] },
+  { "name": "Oklahoma Christian University", "city": "Edmond", "state": "OK", "division": "NAIA", "coaches": [{ "email": "msoccer@oc.edu", "isHeadCoach": true }] },
+  { "name": "Wayland Baptist University", "city": "Plainview", "state": "TX", "division": "NAIA", "coaches": [{ "email": "msoccer@wbu.edu", "isHeadCoach": true }] }
+]
