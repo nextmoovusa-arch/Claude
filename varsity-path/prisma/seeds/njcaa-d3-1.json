@@ -1,0 +1,22 @@
+[
+  { "name": "Moberly Area Community College", "city": "Moberly", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@macc.edu", "isHeadCoach": true }] },
+  { "name": "State Fair Community College", "city": "Sedalia", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@sfcc.edu", "isHeadCoach": true }] },
+  { "name": "St. Charles Community College", "city": "St. Peters", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@stchas.edu", "isHeadCoach": true }] },
+  { "name": "Jefferson College", "city": "Hillsboro", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@jeffco.edu", "isHeadCoach": true }] },
+  { "name": "Mineral Area College", "city": "Park Hills", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@mineralarea.edu", "isHeadCoach": true }] },
+  { "name": "East Central College", "city": "Union", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@eastcentral.edu", "isHeadCoach": true }] },
+  { "name": "Meramec College", "city": "St. Louis", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@stlcc.edu", "isHeadCoach": true }] },
+  { "name": "Metropolitan Community College", "city": "Kansas City", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@mccks.edu", "isHeadCoach": true }] },
+  { "name": "Crowder College", "city": "Neosho", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@crowder.edu", "isHeadCoach": true }] },
+  { "name": "Ozarks Technical Community College", "city": "Springfield", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@otc.edu", "isHeadCoach": true }] },
+  { "name": "Three Rivers College", "city": "Poplar Bluff", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@trcc.edu", "isHeadCoach": true }] },
+  { "name": "Texas County Technical Institute", "city": "Houston", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@tcti.edu", "isHeadCoach": true }] },
+  { "name": "Cape Girardeau Career and Technology Center", "city": "Cape Girardeau", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@capetech.edu", "isHeadCoach": true }] },
+  { "name": "Vatterott College", "city": "St. Louis", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@vatterott.edu", "isHeadCoach": true }] },
+  { "name": "Hannibal-LaGrange University", "city": "Hannibal", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@hlg.edu", "isHeadCoach": true }] },
+  { "name": "Northwest Missouri State University", "city": "Maryville", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@nwmissouri.edu", "isHeadCoach": true }] },
+  { "name": "Missouri University of Science and Technology", "city": "Rolla", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@mst.edu", "isHeadCoach": true }] },
+  { "name": "Southeast Missouri State University", "city": "Cape Girardeau", "state": "MO", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@semo.edu", "isHeadCoach": true }] },
+  { "name": "Southern Illinois University Edwardsville", "city": "Edwardsville", "state": "IL", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@siue.edu", "isHeadCoach": true }] },
+  { "name": "University of Illinois Springfield", "city": "Springfield", "state": "IL", "division": "NJCAA_D3", "coaches": [{ "email": "msoccer@uis.edu", "isHeadCoach": true }] }
+]

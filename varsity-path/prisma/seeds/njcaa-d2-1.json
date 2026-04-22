@@ -1,0 +1,22 @@
+[
+  { "name": "Iowa Central Community College", "city": "Fort Dodge", "state": "IA", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@iowacentral.edu", "isHeadCoach": true }] },
+  { "name": "Kirkwood Community College", "city": "Cedar Rapids", "state": "IA", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@kirkwood.edu", "isHeadCoach": true }] },
+  { "name": "Iowa Lakes Community College", "city": "Estherville", "state": "IA", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@iowalakes.edu", "isHeadCoach": true }] },
+  { "name": "Muscatine Community College", "city": "Muscatine", "state": "IA", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@muscatineicc.edu", "isHeadCoach": true }] },
+  { "name": "Casper College", "city": "Casper", "state": "WY", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@caspercollege.edu", "isHeadCoach": true }] },
+  { "name": "Eastern Wyoming College", "city": "Torrington", "state": "WY", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@ewc.wy.edu", "isHeadCoach": true }] },
+  { "name": "Laramie County Community College", "city": "Cheyenne", "state": "WY", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@lccc.wy.edu", "isHeadCoach": true }] },
+  { "name": "Northwest College", "city": "Powell", "state": "WY", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@nwc.edu", "isHeadCoach": true }] },
+  { "name": "Western Wyoming Community College", "city": "Rock Springs", "state": "WY", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@wwcc.wy.edu", "isHeadCoach": true }] },
+  { "name": "Sheridan College", "city": "Sheridan", "state": "WY", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@sheridancollege.edu", "isHeadCoach": true }] },
+  { "name": "Colorado Northwestern Community College", "city": "Rangely", "state": "CO", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@cncc.edu", "isHeadCoach": true }] },
+  { "name": "Otero Junior College", "city": "La Junta", "state": "CO", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@ojc.edu", "isHeadCoach": true }] },
+  { "name": "Pikes Peak Community College", "city": "Colorado Springs", "state": "CO", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@ppcc.edu", "isHeadCoach": true }] },
+  { "name": "Trinidad State Junior College", "city": "Trinidad", "state": "CO", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@trinidadstate.edu", "isHeadCoach": true }] },
+  { "name": "Lamar Community College", "city": "Lamar", "state": "CO", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@lamarcc.edu", "isHeadCoach": true }] },
+  { "name": "Colorado Mesa University", "city": "Grand Junction", "state": "CO", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@coloradomesa.edu", "isHeadCoach": true }] },
+  { "name": "Morgan Community College", "city": "Fort Morgan", "state": "CO", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@morgancc.edu", "isHeadCoach": true }] },
+  { "name": "Northeastern Junior College", "city": "Sterling", "state": "CO", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@njc.edu", "isHeadCoach": true }] },
+  { "name": "Aims Community College", "city": "Greeley", "state": "CO", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@aims.edu", "isHeadCoach": true }] },
+  { "name": "Front Range Community College", "city": "Westminster", "state": "CO", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@frontrange.edu", "isHeadCoach": true }] }
+]

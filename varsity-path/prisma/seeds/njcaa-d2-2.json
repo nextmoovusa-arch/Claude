@@ -1,0 +1,22 @@
+[
+  { "name": "Independence Community College", "city": "Independence", "state": "KS", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@indcc.edu", "isHeadCoach": true }] },
+  { "name": "Dodge City Community College", "city": "Dodge City", "state": "KS", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@dccc.edu", "isHeadCoach": true }] },
+  { "name": "Cloud County Community College", "city": "Concordia", "state": "KS", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@cloudcc.edu", "isHeadCoach": true }] },
+  { "name": "Coffeyville Community College", "city": "Coffeyville", "state": "KS", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@coffeyville.edu", "isHeadCoach": true }] },
+  { "name": "Colby Community College", "city": "Colby", "state": "KS", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@colbycc.edu", "isHeadCoach": true }] },
+  { "name": "Fort Scott Community College", "city": "Fort Scott", "state": "KS", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@fortscott.edu", "isHeadCoach": true }] },
+  { "name": "Garden City Community College", "city": "Garden City", "state": "KS", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@gcccks.edu", "isHeadCoach": true }] },
+  { "name": "Hutchinson Community College", "city": "Hutchinson", "state": "KS", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@hutchcc.edu", "isHeadCoach": true }] },
+  { "name": "Pratt Community College", "city": "Pratt", "state": "KS", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@prattcc.edu", "isHeadCoach": true }] },
+  { "name": "Seward County Community College", "city": "Liberal", "state": "KS", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@sccc.edu", "isHeadCoach": true }] },
+  { "name": "Butler Community College", "city": "El Dorado", "state": "KS", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@butlercc.edu", "isHeadCoach": true }] },
+  { "name": "Kansas City Kansas Community College", "city": "Kansas City", "state": "KS", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@kckcc.edu", "isHeadCoach": true }] },
+  { "name": "Barton County Community College", "city": "Great Bend", "state": "KS", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@bartonccc.edu", "isHeadCoach": true }] },
+  { "name": "Highland Community College", "city": "Highland", "state": "KS", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@highlandcc.edu", "isHeadCoach": true }] },
+  { "name": "Iowa Central Community College", "city": "Fort Dodge", "state": "IA", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@iowacentral.edu", "isHeadCoach": true }] },
+  { "name": "Iowa Western Community College", "city": "Council Bluffs", "state": "IA", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@iwcc.edu", "isHeadCoach": true }] },
+  { "name": "Western Iowa Tech Community College", "city": "Sioux City", "state": "IA", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@witcc.edu", "isHeadCoach": true }] },
+  { "name": "Indian Hills Community College", "city": "Ottumwa", "state": "IA", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@indianhills.edu", "isHeadCoach": true }] },
+  { "name": "Southeastern Community College", "city": "West Burlington", "state": "IA", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@scciowa.edu", "isHeadCoach": true }] },
+  { "name": "Northeast Iowa Community College", "city": "Calmar", "state": "IA", "division": "NJCAA_D2", "coaches": [{ "email": "msoccer@nicc.edu", "isHeadCoach": true }] }
+]
