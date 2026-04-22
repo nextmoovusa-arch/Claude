@@ -1,0 +1,23 @@
+[
+  { "name": "Chadron State College", "city": "Chadron", "state": "NE", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@csc.edu", "isHeadCoach": true }] },
+  { "name": "University of Nebraska Kearney", "city": "Kearney", "state": "NE", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@unk.edu", "isHeadCoach": true }] },
+  { "name": "Wayne State College", "city": "Wayne", "state": "NE", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@wayne.edu", "isHeadCoach": true }] },
+  { "name": "Southern New Hampshire University", "city": "Manchester", "state": "NH", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@snhu.edu", "isHeadCoach": true }] },
+  { "name": "Felician University", "city": "Lodi", "state": "NJ", "division": "NCAA_D2", "coaches": [{ "email": "soccer@felician.edu", "isHeadCoach": true }] },
+  { "name": "Eastern New Mexico University", "city": "Portales", "state": "NM", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@enmu.edu", "isHeadCoach": true }] },
+  { "name": "New Mexico Highlands University", "city": "Las Vegas", "state": "NM", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@nmhu.edu", "isHeadCoach": true }] },
+  { "name": "Western New Mexico University", "city": "Silver City", "state": "NM", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@wnmu.edu", "isHeadCoach": true }] },
+  { "name": "Dominican College", "city": "Orangeburg", "state": "NY", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@dominican.edu", "isHeadCoach": true }] },
+  { "name": "Mercy University", "city": "Dobbs Ferry", "state": "NY", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@mercy.edu", "isHeadCoach": true }] },
+  { "name": "Molloy University", "city": "Rockville Centre", "state": "NY", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@molloy.edu", "isHeadCoach": true }] },
+  { "name": "New York Institute of Technology", "city": "Old Westbury", "state": "NY", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@nyit.edu", "isHeadCoach": true }] },
+  { "name": "Queens College CUNY", "city": "Flushing", "state": "NY", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@qc.cuny.edu", "isHeadCoach": true }] },
+  { "name": "Roberts Wesleyan University", "city": "Rochester", "state": "NY", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@roberts.edu", "isHeadCoach": true }] },
+  { "name": "Barton College", "city": "Wilson", "state": "NC", "division": "NCAA_D2", "coaches": [{ "email": "soccer@barton.edu", "isHeadCoach": true }] },
+  { "name": "Belmont Abbey College", "city": "Belmont", "state": "NC", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@belmontabbeync.edu", "isHeadCoach": true }] },
+  { "name": "Catawba College", "city": "Salisbury", "state": "NC", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@catawba.edu", "isHeadCoach": true }] },
+  { "name": "Chowan University", "city": "Murfreesboro", "state": "NC", "division": "NCAA_D2", "coaches": [{ "email": "soccer@chowan.edu", "isHeadCoach": true }] },
+  { "name": "Lenoir-Rhyne University", "city": "Hickory", "state": "NC", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@lr.edu", "isHeadCoach": true }] },
+  { "name": "Mars Hill University", "city": "Mars Hill", "state": "NC", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@mhu.edu", "isHeadCoach": true }] },
+  { "name": "Pfeiffer University", "city": "Misenheimer", "state": "NC", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@pfeiffer.edu", "isHeadCoach": true }] }
+]

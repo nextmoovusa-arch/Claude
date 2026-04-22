@@ -1,0 +1,22 @@
+[
+  { "name": "Dakota State University", "city": "Madison", "state": "SD", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@dsu.edu", "isHeadCoach": true }] },
+  { "name": "Northern State University", "city": "Aberdeen", "state": "SD", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@northern.edu", "isHeadCoach": true }] },
+  { "name": "South Dakota School of Mines & Technology", "city": "Rapid City", "state": "SD", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@mines.sd.edu", "isHeadCoach": true }] },
+  { "name": "Carson-Newman University", "city": "Jefferson City", "state": "TN", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@cn.edu", "isHeadCoach": true }] },
+  { "name": "Christian Brothers University", "city": "Memphis", "state": "TN", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@cbu.edu", "isHeadCoach": true }] },
+  { "name": "Lee University", "city": "Cleveland", "state": "TN", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@leeuniversity.edu", "isHeadCoach": true }] },
+  { "name": "Lincoln Memorial University", "city": "Harrogate", "state": "TN", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@lmunet.edu", "isHeadCoach": true }] },
+  { "name": "Tusculum University", "city": "Greeneville", "state": "TN", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@tusculum.edu", "isHeadCoach": true }] },
+  { "name": "Angelo State University", "city": "San Angelo", "state": "TX", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@angelo.edu", "isHeadCoach": true }] },
+  { "name": "Texas A&M University-Commerce", "city": "Commerce", "state": "TX", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@tamuc.edu", "isHeadCoach": true }] },
+  { "name": "Texas A&M University-Kingsville", "city": "Kingsville", "state": "TX", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@tamuk.edu", "isHeadCoach": true }] },
+  { "name": "University of Texas of the Permian Basin", "city": "Odessa", "state": "TX", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@utpb.edu", "isHeadCoach": true }] },
+  { "name": "University of Texas at Tyler", "city": "Tyler", "state": "TX", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@uttyler.edu", "isHeadCoach": true }] },
+  { "name": "West Texas A&M University", "city": "Canyon", "state": "TX", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@wtamu.edu", "isHeadCoach": true }] },
+  { "name": "Virginia Union University", "city": "Richmond", "state": "VA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@vuu.edu", "isHeadCoach": true }] },
+  { "name": "Bluefield University", "city": "Bluefield", "state": "VA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@bluefield.edu", "isHeadCoach": true }] },
+  { "name": "Central Washington University", "city": "Ellensburg", "state": "WA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@cwu.edu", "isHeadCoach": true }] },
+  { "name": "Seattle Pacific University", "city": "Seattle", "state": "WA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@spu.edu", "isHeadCoach": true }] },
+  { "name": "Western Washington University", "city": "Bellingham", "state": "WA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@wwu.edu", "isHeadCoach": true }] },
+  { "name": "Concord University", "city": "Athens", "state": "WV", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@concord.edu", "isHeadCoach": true }] }
+]

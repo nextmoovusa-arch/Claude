@@ -1,0 +1,22 @@
+[
+  { "name": "St. Augustine's University", "city": "Raleigh", "state": "NC", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@st-aug.edu", "isHeadCoach": true }] },
+  { "name": "Wingate University", "city": "Wingate", "state": "NC", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@wingate.edu", "isHeadCoach": true }] },
+  { "name": "Ashland University", "city": "Ashland", "state": "OH", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@ashland.edu", "isHeadCoach": true }] },
+  { "name": "Lake Erie College", "city": "Painesville", "state": "OH", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@lec.edu", "isHeadCoach": true }] },
+  { "name": "Malone University", "city": "Canton", "state": "OH", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@malone.edu", "isHeadCoach": true }] },
+  { "name": "Ohio Dominican University", "city": "Columbus", "state": "OH", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@ohiodominican.edu", "isHeadCoach": true }] },
+  { "name": "Tiffin University", "city": "Tiffin", "state": "OH", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@tiffin.edu", "isHeadCoach": true }] },
+  { "name": "Urbana University", "city": "Urbana", "state": "OH", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@urbana.edu", "isHeadCoach": true }] },
+  { "name": "Walsh University", "city": "North Canton", "state": "OH", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@walsh.edu", "isHeadCoach": true }] },
+  { "name": "Cameron University", "city": "Lawton", "state": "OK", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@cameron.edu", "isHeadCoach": true }] },
+  { "name": "University of Central Oklahoma", "city": "Edmond", "state": "OK", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@uco.edu", "isHeadCoach": true }] },
+  { "name": "East Central University", "city": "Ada", "state": "OK", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@ecu.edu", "isHeadCoach": true }] },
+  { "name": "Northeastern State University", "city": "Tahlequah", "state": "OK", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@nsuok.edu", "isHeadCoach": true }] },
+  { "name": "Northwestern Oklahoma State University", "city": "Alva", "state": "OK", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@nwosu.edu", "isHeadCoach": true }] },
+  { "name": "Oklahoma Baptist University", "city": "Shawnee", "state": "OK", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@okbu.edu", "isHeadCoach": true }] },
+  { "name": "Rogers State University", "city": "Claremore", "state": "OK", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@rsu.edu", "isHeadCoach": true }] },
+  { "name": "Southeastern Oklahoma State University", "city": "Durant", "state": "OK", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@sosu.edu", "isHeadCoach": true }] },
+  { "name": "Southwestern Oklahoma State University", "city": "Weatherford", "state": "OK", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@swosu.edu", "isHeadCoach": true }] },
+  { "name": "Western Oregon University", "city": "Monmouth", "state": "OR", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@wou.edu", "isHeadCoach": true }] },
+  { "name": "Bloomsburg University of Pennsylvania", "city": "Bloomsburg", "state": "PA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@bloomu.edu", "isHeadCoach": true }] }
+]

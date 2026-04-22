@@ -1,0 +1,22 @@
+[
+  { "name": "Chestnut Hill College", "city": "Philadelphia", "state": "PA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@chc.edu", "isHeadCoach": true }] },
+  { "name": "East Stroudsburg University of Pennsylvania", "city": "East Stroudsburg", "state": "PA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@esu.edu", "isHeadCoach": true }] },
+  { "name": "Indiana University of Pennsylvania", "city": "Indiana", "state": "PA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@iup.edu", "isHeadCoach": true }] },
+  { "name": "Kutztown University of Pennsylvania", "city": "Kutztown", "state": "PA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@kutztownuniversity.edu", "isHeadCoach": true }] },
+  { "name": "Lock Haven University of Pennsylvania", "city": "Lock Haven", "state": "PA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@lhu.edu", "isHeadCoach": true }] },
+  { "name": "Mansfield University of Pennsylvania", "city": "Mansfield", "state": "PA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@mansfield.edu", "isHeadCoach": true }] },
+  { "name": "Millersville University of Pennsylvania", "city": "Millersville", "state": "PA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@millersville.edu", "isHeadCoach": true }] },
+  { "name": "Shippensburg University of Pennsylvania", "city": "Shippensburg", "state": "PA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@ship.edu", "isHeadCoach": true }] },
+  { "name": "Slippery Rock University of Pennsylvania", "city": "Slippery Rock", "state": "PA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@sru.edu", "isHeadCoach": true }] },
+  { "name": "West Chester University of Pennsylvania", "city": "West Chester", "state": "PA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@wcupa.edu", "isHeadCoach": true }] },
+  { "name": "California University of Pennsylvania", "city": "California", "state": "PA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@calu.edu", "isHeadCoach": true }] },
+  { "name": "Edinboro University of Pennsylvania", "city": "Edinboro", "state": "PA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@edinboro.edu", "isHeadCoach": true }] },
+  { "name": "Clarion University of Pennsylvania", "city": "Clarion", "state": "PA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@clarion.edu", "isHeadCoach": true }] },
+  { "name": "Coker University", "city": "Hartsville", "state": "SC", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@coker.edu", "isHeadCoach": true }] },
+  { "name": "Erskine College", "city": "Due West", "state": "SC", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@erskine.edu", "isHeadCoach": true }] },
+  { "name": "Francis Marion University", "city": "Florence", "state": "SC", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@fmarion.edu", "isHeadCoach": true }] },
+  { "name": "Limestone University", "city": "Gaffney", "state": "SC", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@limestone.edu", "isHeadCoach": true }] },
+  { "name": "Newberry College", "city": "Newberry", "state": "SC", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@newberry.edu", "isHeadCoach": true }] },
+  { "name": "North Greenville University", "city": "Tigerville", "state": "SC", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@ngu.edu", "isHeadCoach": true }] },
+  { "name": "Augustana University", "city": "Sioux Falls", "state": "SD", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@augie.edu", "isHeadCoach": true }] }
+]

@@ -1,0 +1,12 @@
+[
+  { "name": "Davis & Elkins College", "city": "Elkins", "state": "WV", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@dewv.edu", "isHeadCoach": true }] },
+  { "name": "Fairmont State University", "city": "Fairmont", "state": "WV", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@fairmontstate.edu", "isHeadCoach": true }] },
+  { "name": "Glenville State University", "city": "Glenville", "state": "WV", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@glenville.edu", "isHeadCoach": true }] },
+  { "name": "Salem University", "city": "Salem", "state": "WV", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@salemu.edu", "isHeadCoach": true }] },
+  { "name": "Shepherd University", "city": "Shepherdstown", "state": "WV", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@shepherd.edu", "isHeadCoach": true }] },
+  { "name": "West Liberty University", "city": "West Liberty", "state": "WV", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@westliberty.edu", "isHeadCoach": true }] },
+  { "name": "West Virginia State University", "city": "Institute", "state": "WV", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@wvstate.edu", "isHeadCoach": true }] },
+  { "name": "West Virginia Wesleyan College", "city": "Buckhannon", "state": "WV", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@wvwc.edu", "isHeadCoach": true }] },
+  { "name": "Wheeling University", "city": "Wheeling", "state": "WV", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@wheeling.edu", "isHeadCoach": true }] },
+  { "name": "University of Wisconsin-Parkside", "city": "Kenosha", "state": "WI", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@uwp.edu", "isHeadCoach": true }] }
+]
