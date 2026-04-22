@@ -1,0 +1,22 @@
+[
+  { "name": "Barry University", "city": "Miami Shores", "state": "FL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@barry.edu", "isHeadCoach": true }] },
+  { "name": "Eckerd College", "city": "St. Petersburg", "state": "FL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@eckerd.edu", "isHeadCoach": true }] },
+  { "name": "Florida Southern College", "city": "Lakeland", "state": "FL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@flsouthern.edu", "isHeadCoach": true }] },
+  { "name": "Florida Institute of Technology", "city": "Melbourne", "state": "FL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@fit.edu", "isHeadCoach": true }] },
+  { "name": "Lynn University", "city": "Boca Raton", "state": "FL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@lynn.edu", "isHeadCoach": true }] },
+  { "name": "Nova Southeastern University", "city": "Davie", "state": "FL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@nova.edu", "isHeadCoach": true }] },
+  { "name": "Palm Beach Atlantic University", "city": "West Palm Beach", "state": "FL", "division": "NCAA_D2", "coaches": [{ "email": "soccer@pba.edu", "isHeadCoach": true }] },
+  { "name": "Rollins College", "city": "Winter Park", "state": "FL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@rollins.edu", "isHeadCoach": true }] },
+  { "name": "Saint Leo University", "city": "Saint Leo", "state": "FL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@saintleo.edu", "isHeadCoach": true }] },
+  { "name": "University of Tampa", "city": "Tampa", "state": "FL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@ut.edu", "isHeadCoach": true }] },
+  { "name": "Clayton State University", "city": "Morrow", "state": "GA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@clayton.edu", "isHeadCoach": true }] },
+  { "name": "Columbus State University", "city": "Columbus", "state": "GA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@columbusstate.edu", "isHeadCoach": true }] },
+  { "name": "Emmanuel College", "city": "Franklin Springs", "state": "GA", "division": "NCAA_D2", "coaches": [{ "email": "soccer@ec.edu", "isHeadCoach": true }] },
+  { "name": "Georgia College", "city": "Milledgeville", "state": "GA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@gcsu.edu", "isHeadCoach": true }] },
+  { "name": "Georgia Southwestern State University", "city": "Americus", "state": "GA", "division": "NCAA_D2", "coaches": [{ "email": "soccer@gsw.edu", "isHeadCoach": true }] },
+  { "name": "University of North Georgia", "city": "Dahlonega", "state": "GA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@northgeorgia.edu", "isHeadCoach": true }] },
+  { "name": "Shorter University", "city": "Rome", "state": "GA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@shorter.edu", "isHeadCoach": true }] },
+  { "name": "Young Harris College", "city": "Young Harris", "state": "GA", "division": "NCAA_D2", "coaches": [{ "email": "soccer@yhc.edu", "isHeadCoach": true }] },
+  { "name": "University of West Georgia", "city": "Carrollton", "state": "GA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@westga.edu", "isHeadCoach": true }] },
+  { "name": "Lander University", "city": "Greenwood", "state": "SC", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@lander.edu", "isHeadCoach": true }] }
+]

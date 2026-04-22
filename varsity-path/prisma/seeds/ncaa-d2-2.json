@@ -1,0 +1,22 @@
+[
+  { "name": "Point Loma Nazarene University", "city": "San Diego", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@pointloma.edu", "isHeadCoach": true }] },
+  { "name": "San Francisco State University", "city": "San Francisco", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@sfsu.edu", "isHeadCoach": true }] },
+  { "name": "Sonoma State University", "city": "Rohnert Park", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@sonoma.edu", "isHeadCoach": true }] },
+  { "name": "Cal State Stanislaus", "city": "Turlock", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@csustan.edu", "isHeadCoach": true }] },
+  { "name": "Academy of Art University", "city": "San Francisco", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "soccer@academyart.edu", "isHeadCoach": true }] },
+  { "name": "Biola University", "city": "La Mirada", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@biola.edu", "isHeadCoach": true }] },
+  { "name": "Dominican University of California", "city": "San Rafael", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@dominican.edu", "isHeadCoach": true }] },
+  { "name": "Holy Names University", "city": "Oakland", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "soccer@hnu.edu", "isHeadCoach": true }] },
+  { "name": "Adams State University", "city": "Alamosa", "state": "CO", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@adams.edu", "isHeadCoach": true }] },
+  { "name": "Colorado Mesa University", "city": "Grand Junction", "state": "CO", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@coloradomesa.edu", "isHeadCoach": true }] },
+  { "name": "Colorado School of Mines", "city": "Golden", "state": "CO", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@mines.edu", "isHeadCoach": true }] },
+  { "name": "Colorado State University Pueblo", "city": "Pueblo", "state": "CO", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@csupueblo.edu", "isHeadCoach": true }] },
+  { "name": "Fort Lewis College", "city": "Durango", "state": "CO", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@fortlewis.edu", "isHeadCoach": true }] },
+  { "name": "Metropolitan State University of Denver", "city": "Denver", "state": "CO", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@msudenver.edu", "isHeadCoach": true }] },
+  { "name": "Regis University", "city": "Denver", "state": "CO", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@regis.edu", "isHeadCoach": true }] },
+  { "name": "Western Colorado University", "city": "Gunnison", "state": "CO", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@western.edu", "isHeadCoach": true }] },
+  { "name": "University of New Haven", "city": "West Haven", "state": "CT", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@newhaven.edu", "isHeadCoach": true }] },
+  { "name": "Southern Connecticut State University", "city": "New Haven", "state": "CT", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@southernct.edu", "isHeadCoach": true }] },
+  { "name": "Post University", "city": "Waterbury", "state": "CT", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@post.edu", "isHeadCoach": true }] },
+  { "name": "Adelphi University", "city": "Garden City", "state": "NY", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@adelphi.edu", "isHeadCoach": true }] }
+]

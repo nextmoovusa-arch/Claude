@@ -1,0 +1,22 @@
+[
+  { "name": "Ferris State University", "city": "Big Rapids", "state": "MI", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@ferris.edu", "isHeadCoach": true }] },
+  { "name": "Grand Valley State University", "city": "Allendale", "state": "MI", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@gvsu.edu", "isHeadCoach": true }] },
+  { "name": "Lake Superior State University", "city": "Sault Ste. Marie", "state": "MI", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@lssu.edu", "isHeadCoach": true }] },
+  { "name": "Michigan Technological University", "city": "Houghton", "state": "MI", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@mtu.edu", "isHeadCoach": true }] },
+  { "name": "Northwood University", "city": "Midland", "state": "MI", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@northwood.edu", "isHeadCoach": true }] },
+  { "name": "Saginaw Valley State University", "city": "University Center", "state": "MI", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@svsu.edu", "isHeadCoach": true }] },
+  { "name": "Wayne State University", "city": "Detroit", "state": "MI", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@wayne.edu", "isHeadCoach": true }] },
+  { "name": "Bemidji State University", "city": "Bemidji", "state": "MN", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@bemidjistate.edu", "isHeadCoach": true }] },
+  { "name": "Minnesota State University Mankato", "city": "Mankato", "state": "MN", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@mnsu.edu", "isHeadCoach": true }] },
+  { "name": "Minnesota State University Moorhead", "city": "Moorhead", "state": "MN", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@mnstate.edu", "isHeadCoach": true }] },
+  { "name": "St. Cloud State University", "city": "St. Cloud", "state": "MN", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@stcloudstate.edu", "isHeadCoach": true }] },
+  { "name": "Southwest Minnesota State University", "city": "Marshall", "state": "MN", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@smsu.edu", "isHeadCoach": true }] },
+  { "name": "Winona State University", "city": "Winona", "state": "MN", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@winona.edu", "isHeadCoach": true }] },
+  { "name": "University of Central Missouri", "city": "Warrensburg", "state": "MO", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@ucmo.edu", "isHeadCoach": true }] },
+  { "name": "Lincoln University", "city": "Jefferson City", "state": "MO", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@lincolnu.edu", "isHeadCoach": true }] },
+  { "name": "Missouri Southern State University", "city": "Joplin", "state": "MO", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@mssu.edu", "isHeadCoach": true }] },
+  { "name": "Missouri Western State University", "city": "St. Joseph", "state": "MO", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@missouriwestern.edu", "isHeadCoach": true }] },
+  { "name": "Northwest Missouri State University", "city": "Maryville", "state": "MO", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@nwmissouri.edu", "isHeadCoach": true }] },
+  { "name": "Southwest Baptist University", "city": "Bolivar", "state": "MO", "division": "NCAA_D2", "coaches": [{ "email": "soccer@sbuniv.edu", "isHeadCoach": true }] },
+  { "name": "Truman State University", "city": "Kirksville", "state": "MO", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@truman.edu", "isHeadCoach": true }] }
+]

@@ -1,0 +1,22 @@
+[
+  { "name": "University of Alabama in Huntsville", "city": "Huntsville", "state": "AL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@uah.edu", "isHeadCoach": true }] },
+  { "name": "University of West Alabama", "city": "Livingston", "state": "AL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@uwa.edu", "isHeadCoach": true }] },
+  { "name": "Spring Hill College", "city": "Mobile", "state": "AL", "division": "NCAA_D2", "coaches": [{ "email": "soccer@shc.edu", "isHeadCoach": true }] },
+  { "name": "University of Montevallo", "city": "Montevallo", "state": "AL", "division": "NCAA_D2", "coaches": [{ "email": "athletics@montevallo.edu", "isHeadCoach": true }] },
+  { "name": "Auburn University at Montgomery", "city": "Montgomery", "state": "AL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@aum.edu", "isHeadCoach": true }] },
+  { "name": "Harding University", "city": "Searcy", "state": "AR", "division": "NCAA_D2", "coaches": [{ "email": "soccer@harding.edu", "isHeadCoach": true }] },
+  { "name": "Henderson State University", "city": "Arkadelphia", "state": "AR", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@hsu.edu", "isHeadCoach": true }] },
+  { "name": "Ouachita Baptist University", "city": "Arkadelphia", "state": "AR", "division": "NCAA_D2", "coaches": [{ "email": "soccer@obu.edu", "isHeadCoach": true }] },
+  { "name": "Southern Arkansas University", "city": "Magnolia", "state": "AR", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@saumag.edu", "isHeadCoach": true }] },
+  { "name": "Arkansas Tech University", "city": "Russellville", "state": "AR", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@atu.edu", "isHeadCoach": true }] },
+  { "name": "Azusa Pacific University", "city": "Azusa", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@apu.edu", "isHeadCoach": true }] },
+  { "name": "Cal Poly Pomona", "city": "Pomona", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@cpp.edu", "isHeadCoach": true }] },
+  { "name": "Cal State Dominguez Hills", "city": "Carson", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@csudh.edu", "isHeadCoach": true }] },
+  { "name": "Cal State East Bay", "city": "Hayward", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@csueastbay.edu", "isHeadCoach": true }] },
+  { "name": "Cal State Los Angeles", "city": "Los Angeles", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@calstatela.edu", "isHeadCoach": true }] },
+  { "name": "Cal State Monterey Bay", "city": "Seaside", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@csumb.edu", "isHeadCoach": true }] },
+  { "name": "Cal State San Bernardino", "city": "San Bernardino", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@csusb.edu", "isHeadCoach": true }] },
+  { "name": "Chico State", "city": "Chico", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@csuchico.edu", "isHeadCoach": true }] },
+  { "name": "Fresno Pacific University", "city": "Fresno", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "soccer@fresno.edu", "isHeadCoach": true }] },
+  { "name": "Notre Dame de Namur University", "city": "Belmont", "state": "CA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@ndnu.edu", "isHeadCoach": true }] }
+]

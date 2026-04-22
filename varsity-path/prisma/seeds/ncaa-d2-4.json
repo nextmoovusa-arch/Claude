@@ -1,0 +1,22 @@
+[
+  { "name": "BYU Hawaii", "city": "Laie", "state": "HI", "division": "NCAA_D2", "coaches": [{ "email": "soccer@byuh.edu", "isHeadCoach": true }] },
+  { "name": "Chaminade University", "city": "Honolulu", "state": "HI", "division": "NCAA_D2", "coaches": [{ "email": "soccer@chaminade.edu", "isHeadCoach": true }] },
+  { "name": "Hawaii Pacific University", "city": "Honolulu", "state": "HI", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@hpu.edu", "isHeadCoach": true }] },
+  { "name": "Northwest Nazarene University", "city": "Nampa", "state": "ID", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@nnu.edu", "isHeadCoach": true }] },
+  { "name": "Lewis University", "city": "Romeoville", "state": "IL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@lewisu.edu", "isHeadCoach": true }] },
+  { "name": "McKendree University", "city": "Lebanon", "state": "IL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@mckendree.edu", "isHeadCoach": true }] },
+  { "name": "Quincy University", "city": "Quincy", "state": "IL", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@quincy.edu", "isHeadCoach": true }] },
+  { "name": "University of Indianapolis", "city": "Indianapolis", "state": "IN", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@uindy.edu", "isHeadCoach": true }] },
+  { "name": "Purdue University Northwest", "city": "Hammond", "state": "IN", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@pnw.edu", "isHeadCoach": true }] },
+  { "name": "Upper Iowa University", "city": "Fayette", "state": "IA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@uiu.edu", "isHeadCoach": true }] },
+  { "name": "Emporia State University", "city": "Emporia", "state": "KS", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@emporia.edu", "isHeadCoach": true }] },
+  { "name": "Fort Hays State University", "city": "Hays", "state": "KS", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@fhsu.edu", "isHeadCoach": true }] },
+  { "name": "Pittsburg State University", "city": "Pittsburg", "state": "KS", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@pittstate.edu", "isHeadCoach": true }] },
+  { "name": "Washburn University", "city": "Topeka", "state": "KS", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@washburn.edu", "isHeadCoach": true }] },
+  { "name": "Campbellsville University", "city": "Campbellsville", "state": "KY", "division": "NCAA_D2", "coaches": [{ "email": "soccer@campbellsville.edu", "isHeadCoach": true }] },
+  { "name": "Kentucky Wesleyan College", "city": "Owensboro", "state": "KY", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@kwc.edu", "isHeadCoach": true }] },
+  { "name": "Assumption University", "city": "Worcester", "state": "MA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@assumption.edu", "isHeadCoach": true }] },
+  { "name": "Bentley University", "city": "Waltham", "state": "MA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@bentley.edu", "isHeadCoach": true }] },
+  { "name": "American International College", "city": "Springfield", "state": "MA", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@aic.edu", "isHeadCoach": true }] },
+  { "name": "Le Moyne College", "city": "Syracuse", "state": "NY", "division": "NCAA_D2", "coaches": [{ "email": "msoccer@lemoyne.edu", "isHeadCoach": true }] }
+]
