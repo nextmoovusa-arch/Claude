@@ -109,14 +109,18 @@ export default function TemplatesPage() {
     setDraftBody(t.bodyHtml);
   };
 
+  const extractVars = (text: string) =>
+    Array.from(new Set((text.match(/\{\{(\w+)\}\}/g) ?? []).map((v) => v.slice(2, -2))));
+
   const handleSave = () => {
+    const variables = extractVars(draftSubject + " " + draftBody);
     if (isCreating) {
       const newT: Template = {
         id: String(Date.now()),
         name: draftName,
         subject: draftSubject,
         bodyHtml: draftBody,
-        variables: [],
+        variables,
         isActive: true,
         createdAt: new Date().toISOString().split("T")[0],
       };
@@ -127,11 +131,17 @@ export default function TemplatesPage() {
       setTemplates((prev) =>
         prev.map((t) =>
           t.id === selectedId
-            ? { ...t, name: draftName, subject: draftSubject, bodyHtml: draftBody }
+            ? { ...t, name: draftName, subject: draftSubject, bodyHtml: draftBody, variables }
             : t
         )
       );
     }
+  };
+
+  const toggleActive = (id: string) => {
+    setTemplates((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, isActive: !t.isActive } : t))
+    );
   };
 
   const handleDuplicate = (t: Template) => {
@@ -185,7 +195,11 @@ export default function TemplatesPage() {
                   className="flex-1 text-left min-w-0"
                 >
                   <div className="flex items-center gap-2 mb-1">
-                    <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${t.isActive ? "bg-green-500" : "bg-stone"}`} />
+                    <button
+                      onClick={(e) => { e.stopPropagation(); toggleActive(t.id); }}
+                      title={t.isActive ? "Désactiver" : "Activer"}
+                      className={`w-1.5 h-1.5 rounded-full flex-shrink-0 transition-colors ${t.isActive ? "bg-green-500 hover:bg-stone" : "bg-stone hover:bg-green-500"}`}
+                    />
                     <p className="font-medium text-ink text-sm truncate">{t.name}</p>
                   </div>
                   <p className="text-xs text-graphite font-mono truncate">{t.subject}</p>

@@ -13,6 +13,7 @@ import {
   Settings,
   FileText,
   Search,
+  TrendingUp,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { GlobalSearch } from "./global-search"
@@ -25,6 +26,7 @@ const navItems = [
   { href: "/admin/calendar", label: "Calendrier", icon: Calendar },
   { href: "/admin/campaigns", label: "Campagnes", icon: Mail },
   { href: "/admin/templates", label: "Templates", icon: FileText },
+  { href: "/admin/reports", label: "Rapports", icon: TrendingUp },
   { href: "/admin/settings", label: "Paramètres", icon: Settings },
 ]
 
