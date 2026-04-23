@@ -95,7 +95,18 @@ type Tab = "parcours" | "profil" | "academique" | "strategie";
 
 export default function AthletePage({ params }: { params: { id: string } }) {
   const [tab, setTab] = useState<Tab>("parcours");
-  const athlete = MOCK_ATHLETE;
+  const [athlete, setAthlete] = useState(MOCK_ATHLETE);
+
+  const toggleStep = (order: number) => {
+    setAthlete((prev) => ({
+      ...prev,
+      steps: prev.steps.map((s) =>
+        s.order === order
+          ? { ...s, status: s.status === "COMPLETED" ? "IN_PROGRESS" : ("COMPLETED" as StepStatus), completedDate: s.status !== "COMPLETED" ? new Date().toISOString().split("T")[0] : undefined }
+          : s
+      ),
+    }));
+  };
 
   const completedSteps = athlete.steps.filter((s) => s.status === "COMPLETED").length;
   const statusCfg = STATUS_CONFIG[athlete.status] ?? STATUS_CONFIG["PROSPECT"];
@@ -172,14 +183,16 @@ export default function AthletePage({ params }: { params: { id: string } }) {
           {JOURNEY_STEPS.map((step) => {
             const stepData = athlete.steps.find((s) => s.order === step.order);
             const status: StepStatus = stepData?.status ?? "PENDING";
+            const isClickable = status === "COMPLETED" || status === "IN_PROGRESS";
             return (
               <div
                 key={step.order}
+                onClick={() => isClickable && toggleStep(step.order)}
                 className={`flex items-start gap-4 p-4 rounded-lg border transition-colors ${
                   status === "COMPLETED"
-                    ? "bg-green-50 border-green-200"
+                    ? "bg-green-50 border-green-200 cursor-pointer hover:bg-green-100"
                     : status === "IN_PROGRESS"
-                    ? "bg-blue-50 border-navy/30"
+                    ? "bg-blue-50 border-navy/30 cursor-pointer hover:bg-blue-100"
                     : "bg-white border-line"
                 }`}
               >
