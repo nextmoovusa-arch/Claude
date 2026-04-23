@@ -242,16 +242,6 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {/* DB setup banner */}
-      <div className="mt-8 border border-gold bg-cream px-6 py-5 rounded-lg">
-        <p className="font-mono text-xs uppercase tracking-widest text-gold mb-2">Configuration requise</p>
-        <p className="text-sm text-graphite mb-3">Connectez votre base de données PostgreSQL pour afficher les vraies données.</p>
-        <div className="font-mono text-sm text-graphite space-y-1">
-          <p>1. Renseignez <span className="text-ink">DATABASE_URL</span> dans <span className="text-ink">.env</span></p>
-          <p>2. Lancez <span className="text-ink">npx prisma migrate dev --name init</span></p>
-          <p>3. Importez les coachs avec <span className="text-ink">npm run db:seed</span></p>
-        </div>
-      </div>
     </div>
   );
 }
