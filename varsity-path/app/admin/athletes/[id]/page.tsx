@@ -4,27 +4,67 @@ import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
-  User, BookOpen, Trophy, FileText, Calendar,
-  CheckCircle2, Circle, Clock, ChevronLeft,
-  Target, GraduationCap, Globe, Edit3,
-  Upload, Download, Trash2, FolderOpen,
-  Building2, Plus, X, Star, ExternalLink
+  User, Trophy, FileText, CheckCircle2, Circle, Clock, ChevronLeft,
+  Target, GraduationCap, Globe, Edit3, Upload, Download, Trash2,
+  FolderOpen, Building2, Plus, X, ExternalLink, AlertCircle
 } from "lucide-react";
 import Link from "next/link";
 
-type StepStatus = "COMPLETED" | "IN_PROGRESS" | "PENDING" | "SKIPPED";
+// ── Suivi du projet ────────────────────────────────────────────────────────
+type TaskStatus = "Pas nécessaire" | "Pas commencé" | "En cours" | "Terminé";
+type TaskEffort = "Faible" | "Moyenne" | "Élevé";
+type TaskType =
+  | "1. Création du dossier" | "2. Montage vidéo" | "3. Anglais"
+  | "4. Démarchage" | "5.1 Inscription Universitaire" | "5.2 Eligibility center"
+  | "6. VISA" | "7. Préparation au départ" | "8. Suivi athlète" | "Tests académiques";
 
-const JOURNEY_STEPS = [
-  { order: 1, title: "Signature du contrat", description: "Contrat d'accompagnement signé par la famille" },
-  { order: 2, title: "Dossier identité complet", description: "Passeport, photos, documents d'état civil" },
-  { order: 3, title: "Profil sportif validé", description: "Vidéo highlight + statistiques saison" },
-  { order: 4, title: "Bilan académique", description: "Notes, diplômes, système scolaire analysé" },
-  { order: 5, title: "Tests standardisés", description: "SAT/ACT planifié ou passé, TOEFL/IELTS si nécessaire" },
-  { order: 6, title: "Inscription NCAA Eligibility Center", description: "Profil créé et amateurisme validé" },
-  { order: 7, title: "Sélection des universités cibles", description: "Liste de 20-40 universités validée" },
-  { order: 8, title: "Campagne d'emails envoyée", description: "Premier contact avec les coachs ciblés" },
-  { order: 9, title: "Offres reçues & négociation", description: "Au moins une offre officielle reçue" },
-  { order: 10, title: "NLI signé & inscription", description: "National Letter of Intent signé, visa en cours" },
+interface Task {
+  id: string;
+  title: string;
+  type: TaskType;
+  status: TaskStatus;
+  effort?: TaskEffort;
+  dueDate?: string;
+  notes?: string;
+}
+
+const TASK_TYPES: TaskType[] = [
+  "1. Création du dossier", "2. Montage vidéo", "3. Anglais",
+  "4. Démarchage", "5.1 Inscription Universitaire", "5.2 Eligibility center",
+  "6. VISA", "7. Préparation au départ", "8. Suivi athlète", "Tests académiques",
+];
+
+const TASK_TYPE_COLORS: Record<TaskType, string> = {
+  "1. Création du dossier":       "bg-green-100 text-green-800",
+  "2. Montage vidéo":             "bg-yellow-100 text-yellow-800",
+  "3. Anglais":                   "bg-red-100 text-red-700",
+  "4. Démarchage":                "bg-pink-100 text-pink-800",
+  "5.1 Inscription Universitaire":"bg-blue-100 text-blue-800",
+  "5.2 Eligibility center":       "bg-stone/20 text-graphite",
+  "6. VISA":                      "bg-graphite/10 text-graphite",
+  "7. Préparation au départ":     "bg-amber-100 text-amber-800",
+  "8. Suivi athlète":             "bg-purple-100 text-purple-800",
+  "Tests académiques":            "bg-orange-100 text-orange-800",
+};
+
+const TASK_STATUS_CONFIG: Record<TaskStatus, { icon: React.ReactNode; color: string }> = {
+  "Terminé":        { icon: <CheckCircle2 className="w-4 h-4 text-green-600" />, color: "text-green-700 bg-green-50" },
+  "En cours":       { icon: <Clock className="w-4 h-4 text-blue-600" />,        color: "text-blue-700 bg-blue-50" },
+  "Pas commencé":   { icon: <Circle className="w-4 h-4 text-stone" />,          color: "text-graphite bg-paper" },
+  "Pas nécessaire": { icon: <Circle className="w-4 h-4 text-line" />,           color: "text-stone bg-paper line-through" },
+};
+
+const MOCK_TASKS: Task[] = [
+  { id: "t1", title: "Création du dossier athlète", type: "1. Création du dossier", status: "Terminé", effort: "Moyenne" },
+  { id: "t2", title: "Highlight vidéo 3 min", type: "2. Montage vidéo", status: "Terminé", effort: "Élevé" },
+  { id: "t3", title: "Cours d'anglais — TOEFL prep", type: "3. Anglais", status: "En cours", effort: "Élevé", dueDate: "2026-06-01" },
+  { id: "t4", title: "Campagne emails NCAA D1", type: "4. Démarchage", status: "En cours", effort: "Élevé" },
+  { id: "t5", title: "Inscription NCAA Eligibility Center", type: "5.2 Eligibility center", status: "Pas commencé", effort: "Moyenne", dueDate: "2026-05-01" },
+  { id: "t6", title: "SAT / ACT", type: "Tests académiques", status: "Terminé", effort: "Élevé" },
+  { id: "t7", title: "TOEFL", type: "Tests académiques", status: "En cours", effort: "Élevé", dueDate: "2026-06-15" },
+  { id: "t8", title: "Visa F-1", type: "6. VISA", status: "Pas commencé" },
+  { id: "t9", title: "Inscription universitaire", type: "5.1 Inscription Universitaire", status: "Pas commencé" },
+  { id: "t10", title: "Préparation au départ USA", type: "7. Préparation au départ", status: "Pas commencé" },
 ];
 
 const STATUS_CONFIG: Record<string, { label: string; color: string }> = {
@@ -62,26 +102,7 @@ const MOCK_ATHLETE = {
   targetMajor: "Business Administration",
   agentNotes: "Excellent profil. Physique et technique. TOEFL à repasser en juin pour viser 100+.",
   highlightUrl: "https://youtube.com/watch?v=example",
-  steps: [
-    { order: 1, status: "COMPLETED" as StepStatus, completedDate: "2026-01-10" },
-    { order: 2, status: "COMPLETED" as StepStatus, completedDate: "2026-01-20" },
-    { order: 3, status: "COMPLETED" as StepStatus, completedDate: "2026-02-01" },
-    { order: 4, status: "COMPLETED" as StepStatus, completedDate: "2026-02-15" },
-    { order: 5, status: "COMPLETED" as StepStatus, completedDate: "2026-03-01" },
-    { order: 6, status: "IN_PROGRESS" as StepStatus },
-    { order: 7, status: "IN_PROGRESS" as StepStatus },
-    { order: 8, status: "PENDING" as StepStatus },
-    { order: 9, status: "PENDING" as StepStatus },
-    { order: 10, status: "PENDING" as StepStatus },
-  ],
 };
-
-function StepIcon({ status }: { status: StepStatus }) {
-  if (status === "COMPLETED") return <CheckCircle2 className="w-5 h-5 text-green-600" />;
-  if (status === "IN_PROGRESS") return <Clock className="w-5 h-5 text-navy" />;
-  if (status === "SKIPPED") return <Circle className="w-5 h-5 text-stone" />;
-  return <Circle className="w-5 h-5 text-line" />;
-}
 
 function InfoRow({ label, value }: { label: string; value?: string | number | null }) {
   if (!value) return null;
@@ -161,11 +182,24 @@ const MOCK_DOCS: AthleteDoc[] = [
   { id: "d5", name: "Bulletin_S1_2025.pdf", category: "ACADEMIQUE", uploadedAt: "2026-02-15", sizeKb: 560, mimeType: "application/pdf" },
 ];
 
-type Tab = "parcours" | "profil" | "academique" | "strategie" | "universites" | "documents";
+type Tab = "taches" | "profil" | "academique" | "strategie" | "universites" | "documents";
+
+const TAB_LABELS: Record<Tab, string> = {
+  taches:     "Suivi du projet",
+  profil:     "Profil sportif",
+  academique: "Académique",
+  strategie:  "Stratégie",
+  universites:"Universités ciblées",
+  documents:  "Documents",
+};
 
 export default function AthletePage({ params }: { params: { id: string } }) {
-  const [tab, setTab] = useState<Tab>("parcours");
-  const [athlete, setAthlete] = useState(MOCK_ATHLETE);
+  const [tab, setTab] = useState<Tab>("taches");
+  const [athlete] = useState(MOCK_ATHLETE);
+  const [tasks, setTasks] = useState<Task[]>(MOCK_TASKS);
+  const [taskFilter, setTaskFilter] = useState<string>("Tous");
+  const [showAddTask, setShowAddTask] = useState(false);
+  const [newTask, setNewTask] = useState<Partial<Task>>({ type: "1. Création du dossier", status: "Pas commencé" });
   const [docs, setDocs] = useState<AthleteDoc[]>(MOCK_DOCS);
   const [docFilter, setDocFilter] = useState<DocCategory | "ALL">("ALL");
   const [shortlist, setShortlist] = useState<ShortlistEntry[]>(MOCK_SHORTLIST);
@@ -176,18 +210,7 @@ export default function AthletePage({ params }: { params: { id: string } }) {
   const [compareIds, setCompareIds] = useState<string[]>([]);
   const [showCompare, setShowCompare] = useState(false);
 
-  const toggleStep = (order: number) => {
-    setAthlete((prev) => ({
-      ...prev,
-      steps: prev.steps.map((s) =>
-        s.order === order
-          ? { ...s, status: s.status === "COMPLETED" ? "IN_PROGRESS" : ("COMPLETED" as StepStatus), completedDate: s.status !== "COMPLETED" ? new Date().toISOString().split("T")[0] : undefined }
-          : s
-      ),
-    }));
-  };
-
-  const completedSteps = athlete.steps.filter((s) => s.status === "COMPLETED").length;
+  const completedTasks = tasks.filter((t) => t.status === "Terminé").length;
   const statusCfg = STATUS_CONFIG[athlete.status] ?? STATUS_CONFIG["PROSPECT"];
 
   return (
@@ -236,90 +259,160 @@ export default function AthletePage({ params }: { params: { id: string } }) {
       </div>
 
       {/* Progress bar */}
-      <div className="mb-8 bg-white border border-line rounded-lg p-5">
-        <div className="flex justify-between items-center mb-3">
-          <span className="text-sm font-mono text-graphite">Progression du parcours</span>
-          <span className="text-sm font-mono font-semibold text-navy">
-            {completedSteps} / {athlete.steps.length} étapes
-          </span>
+      <div className="mb-6 bg-white border border-line rounded-lg p-5">
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-sm text-graphite">Tâches terminées</span>
+          <span className="text-sm font-semibold text-navy">{completedTasks} / {tasks.filter(t => t.status !== "Pas nécessaire").length}</span>
         </div>
-        <div className="w-full bg-stone rounded-full h-2">
+        <div className="w-full bg-stone/20 rounded-full h-1.5">
           <div
-            className="bg-navy h-2 rounded-full transition-all"
-            style={{ width: `${(completedSteps / athlete.steps.length) * 100}%` }}
+            className="bg-navy h-1.5 rounded-full transition-all"
+            style={{ width: `${tasks.filter(t => t.status !== "Pas nécessaire").length > 0 ? (completedTasks / tasks.filter(t => t.status !== "Pas nécessaire").length) * 100 : 0}%` }}
           />
         </div>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 mb-6 border-b border-line">
-        {(["parcours", "profil", "academique", "strategie", "universites", "documents"] as Tab[]).map((t) => {
-          const TAB_LABELS: Record<Tab, string> = {
-            parcours: "Parcours",
-            profil: "Profil",
-            academique: "Académique",
-            strategie: "Stratégie",
-            universites: `Universités (${shortlist.length})`,
-            documents: `Documents (${docs.length})`,
-          };
-          return (
-            <button
-              key={t}
-              onClick={() => setTab(t)}
-              className={`px-5 py-2.5 text-sm font-mono transition-colors border-b-2 -mb-px whitespace-nowrap ${
-                tab === t
-                  ? "border-navy text-navy font-semibold"
-                  : "border-transparent text-graphite hover:text-ink"
-              }`}
-            >
-              {TAB_LABELS[t]}
-            </button>
-          );
-        })}
+      <div className="flex gap-1 mb-6 border-b border-line overflow-x-auto">
+        {(["taches", "profil", "academique", "strategie", "universites", "documents"] as Tab[]).map((t) => (
+          <button
+            key={t}
+            onClick={() => setTab(t)}
+            className={`px-4 py-2.5 text-sm transition-colors border-b-2 -mb-px whitespace-nowrap ${
+              tab === t ? "border-navy text-navy font-semibold" : "border-transparent text-graphite hover:text-ink"
+            }`}
+          >
+            {t === "universites" ? `Universités (${shortlist.length})` : t === "documents" ? `Documents (${docs.length})` : t === "taches" ? `Suivi du projet (${tasks.length})` : TAB_LABELS[t]}
+          </button>
+        ))}
       </div>
 
-      {/* Tab: Parcours */}
-      {tab === "parcours" && (
-        <div className="space-y-2">
-          {JOURNEY_STEPS.map((step) => {
-            const stepData = athlete.steps.find((s) => s.order === step.order);
-            const status: StepStatus = stepData?.status ?? "PENDING";
-            const isClickable = status === "COMPLETED" || status === "IN_PROGRESS";
-            return (
-              <div
-                key={step.order}
-                onClick={() => isClickable && toggleStep(step.order)}
-                className={`flex items-start gap-4 p-4 rounded-lg border transition-colors ${
-                  status === "COMPLETED"
-                    ? "bg-green-50 border-green-200 cursor-pointer hover:bg-green-100"
-                    : status === "IN_PROGRESS"
-                    ? "bg-blue-50 border-navy/30 cursor-pointer hover:bg-blue-100"
-                    : "bg-white border-line"
-                }`}
+      {/* Tab: Suivi du projet */}
+      {tab === "taches" && (
+        <div>
+          {/* Toolbar */}
+          <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
+            <div className="flex gap-1.5 flex-wrap">
+              <button
+                onClick={() => setTaskFilter("Tous")}
+                className={`px-3 py-1.5 text-xs rounded transition-colors ${taskFilter === "Tous" ? "bg-navy text-paper" : "bg-white border border-line text-graphite hover:border-navy"}`}
               >
-                <div className="mt-0.5">
-                  <StepIcon status={status} />
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono text-graphite">Étape {step.order}</span>
-                    {status === "IN_PROGRESS" && (
-                      <span className="text-xs font-mono font-semibold text-navy bg-navy/10 px-2 py-0.5 rounded">
-                        En cours
-                      </span>
-                    )}
-                  </div>
-                  <p className="font-medium text-ink mt-0.5">{step.title}</p>
-                  <p className="text-sm text-graphite mt-0.5">{step.description}</p>
-                </div>
-                {stepData?.completedDate && (
-                  <span className="text-xs font-mono text-graphite whitespace-nowrap">
-                    {new Date(stepData.completedDate).toLocaleDateString("fr-FR")}
-                  </span>
-                )}
+                Toutes ({tasks.length})
+              </button>
+              {(["En cours", "Pas commencé", "Terminé", "Pas nécessaire"] as TaskStatus[]).map((s) => (
+                <button key={s} onClick={() => setTaskFilter(s)}
+                  className={`px-3 py-1.5 text-xs rounded transition-colors ${taskFilter === s ? "bg-navy text-paper" : "bg-white border border-line text-graphite hover:border-navy"}`}>
+                  {s} ({tasks.filter(t => t.status === s).length})
+                </button>
+              ))}
+            </div>
+            <button onClick={() => setShowAddTask(true)}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-navy text-paper text-sm rounded hover:bg-navy/90">
+              <Plus className="w-4 h-4" /> Ajouter une tâche
+            </button>
+          </div>
+
+          {/* Stats rapides */}
+          <div className="grid grid-cols-4 gap-px border border-line bg-line rounded-lg overflow-hidden mb-4">
+            {([["En cours", "text-blue-700"], ["Pas commencé", "text-graphite"], ["Terminé", "text-green-700"], ["Pas nécessaire", "text-stone"]] as [TaskStatus, string][]).map(([s, color]) => (
+              <div key={s} className="bg-white px-4 py-3 text-center">
+                <p className={`text-2xl font-bold ${color}`}>{tasks.filter(t => t.status === s).length}</p>
+                <p className="text-xs text-graphite mt-0.5">{s}</p>
               </div>
-            );
-          })}
+            ))}
+          </div>
+
+          {/* Grouped by type */}
+          <div className="space-y-1">
+            {(taskFilter === "Tous" ? TASK_TYPES : TASK_TYPES).map((type) => {
+              const typeTasks = tasks.filter(t => t.type === type && (
+                taskFilter === "Tous" || (t.status as string) === taskFilter
+              ));
+              if (typeTasks.length === 0) return null;
+              return (
+                <div key={type}>
+                  <p className="text-xs font-semibold text-graphite uppercase tracking-widest px-1 pt-3 pb-1">{type}</p>
+                  {typeTasks.map(task => {
+                    const cfg = TASK_STATUS_CONFIG[task.status];
+                    return (
+                      <div key={task.id} className="flex items-center gap-3 bg-white border border-line rounded px-4 py-3 mb-1 hover:bg-paper/60 transition-colors">
+                        <button onClick={() => setTasks(prev => prev.map(t => t.id === task.id ? {
+                          ...t,
+                          status: t.status === "Terminé" ? "En cours" : t.status === "En cours" ? "Pas commencé" : t.status === "Pas commencé" ? "Terminé" : "Pas commencé"
+                        } : t))}>
+                          {cfg.icon}
+                        </button>
+                        <div className="flex-1 min-w-0">
+                          <p className={`text-sm font-medium ${task.status === "Pas nécessaire" ? "line-through text-stone" : "text-ink"}`}>{task.title}</p>
+                          {task.notes && <p className="text-xs text-graphite mt-0.5 truncate">{task.notes}</p>}
+                        </div>
+                        <div className="flex items-center gap-2 flex-shrink-0">
+                          {task.dueDate && (
+                            <span className={`text-xs font-mono ${new Date(task.dueDate) < new Date() && task.status !== "Terminé" ? "text-red-flag font-semibold" : "text-graphite"}`}>
+                              {new Date(task.dueDate).toLocaleDateString("fr-FR")}
+                            </span>
+                          )}
+                          {task.effort && (
+                            <span className={`text-xs px-2 py-0.5 rounded font-mono ${task.effort === "Élevé" ? "bg-red-50 text-red-700" : task.effort === "Moyenne" ? "bg-amber-50 text-amber-700" : "bg-green-50 text-green-700"}`}>
+                              {task.effort}
+                            </span>
+                          )}
+                          <span className={`text-xs px-2 py-0.5 rounded ${TASK_TYPE_COLORS[task.type]}`}>{task.type}</span>
+                          <button onClick={() => setTasks(prev => prev.filter(t => t.id !== task.id))} className="text-graphite hover:text-red-flag">
+                            <X className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Ajouter tâche modal */}
+          {showAddTask && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+              <div className="bg-white border border-line rounded-lg w-full max-w-md p-6 shadow-xl">
+                <div className="flex items-center justify-between mb-5">
+                  <h2 className="text-sm font-semibold uppercase tracking-widest text-graphite">Nouvelle tâche</h2>
+                  <button onClick={() => setShowAddTask(false)}><X className="w-4 h-4 text-graphite" /></button>
+                </div>
+                <div className="space-y-3">
+                  <input placeholder="Nom de la tâche *" value={newTask.title ?? ""} onChange={e => setNewTask(p => ({...p, title: e.target.value}))}
+                    className="w-full border border-line rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-navy" />
+                  <select value={newTask.type} onChange={e => setNewTask(p => ({...p, type: e.target.value as TaskType}))}
+                    className="w-full border border-line rounded px-3 py-2 text-sm bg-white focus:outline-none focus:ring-1 focus:ring-navy">
+                    {TASK_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
+                  </select>
+                  <select value={newTask.status} onChange={e => setNewTask(p => ({...p, status: e.target.value as TaskStatus}))}
+                    className="w-full border border-line rounded px-3 py-2 text-sm bg-white focus:outline-none focus:ring-1 focus:ring-navy">
+                    {(["Pas commencé", "En cours", "Terminé", "Pas nécessaire"] as TaskStatus[]).map(s => <option key={s} value={s}>{s}</option>)}
+                  </select>
+                  <select value={newTask.effort ?? ""} onChange={e => setNewTask(p => ({...p, effort: e.target.value as TaskEffort}))}
+                    className="w-full border border-line rounded px-3 py-2 text-sm bg-white focus:outline-none focus:ring-1 focus:ring-navy">
+                    <option value="">Effort (optionnel)</option>
+                    {(["Faible", "Moyenne", "Élevé"] as TaskEffort[]).map(e => <option key={e} value={e}>{e}</option>)}
+                  </select>
+                  <input type="date" value={newTask.dueDate ?? ""} onChange={e => setNewTask(p => ({...p, dueDate: e.target.value}))}
+                    className="w-full border border-line rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-navy" />
+                  <input placeholder="Notes" value={newTask.notes ?? ""} onChange={e => setNewTask(p => ({...p, notes: e.target.value}))}
+                    className="w-full border border-line rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-navy" />
+                </div>
+                <button
+                  onClick={() => {
+                    if (!newTask.title) return;
+                    setTasks(prev => [...prev, { id: String(Date.now()), title: newTask.title!, type: newTask.type!, status: newTask.status!, effort: newTask.effort, dueDate: newTask.dueDate, notes: newTask.notes }]);
+                    setNewTask({ type: "1. Création du dossier", status: "Pas commencé" });
+                    setShowAddTask(false);
+                  }}
+                  className="w-full mt-4 py-2 bg-navy text-paper text-sm rounded hover:bg-navy/90"
+                >
+                  Ajouter
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
