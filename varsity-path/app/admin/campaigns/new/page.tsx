@@ -6,8 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useRouter } from "next/navigation";
 import {
-  ChevronLeft, Mail, Search, Check, X, Filter
+  ChevronLeft, Mail, Search, Loader2
 } from "lucide-react";
 
 type AthleteOption = { id: string; firstName: string; lastName: string };
@@ -80,6 +81,9 @@ export default function NewCampaignPage() {
   const [selectedState, setSelectedState] = useState("");
   const [selectedCoaches, setSelectedCoaches] = useState<string[]>([]);
   const [showPreview, setShowPreview] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [error, setError] = useState("");
+  const router = useRouter();
 
   const athlete = useMemo(
     () => MOCK_ATHLETES.find((a) => a.id === athleteId),
@@ -120,6 +124,27 @@ export default function NewCampaignPage() {
   };
 
   const isFormValid = athleteId && subject && bodyHtml && selectedCoaches.length > 0;
+
+  const handleSend = async () => {
+    if (!isFormValid) return;
+    setIsSending(true);
+    setError("");
+    try {
+      const res = await fetch("/api/campaigns", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ athleteId, subject, bodyHtml, coachIds: selectedCoaches }),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      const campaign = await res.json();
+      // Then send immediately
+      await fetch(`/api/campaigns/${campaign.id}/send`, { method: "POST" });
+      router.push(`/admin/campaigns/${campaign.id}`);
+    } catch (e) {
+      setError("Erreur lors de l'envoi. Vérifiez la connexion à la base de données.");
+      setIsSending(false);
+    }
+  };
 
   return (
     <div className="p-8 max-w-7xl mx-auto">
@@ -311,14 +336,23 @@ export default function NewCampaignPage() {
           <Button
             variant={isFormValid ? "primary" : "outline"}
             size="lg"
-            disabled={!isFormValid}
+            disabled={!isFormValid || isSending}
+            onClick={handleSend}
             className="w-full"
           >
-            <Mail className="w-4 h-4 mr-2" />
-            Envoyer la campagne
+            {isSending ? (
+              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+            ) : (
+              <Mail className="w-4 h-4 mr-2" />
+            )}
+            {isSending ? "Envoi en cours..." : "Envoyer la campagne"}
           </Button>
 
-          {!isFormValid && (
+          {error && (
+            <p className="text-xs text-red-flag font-mono text-center">{error}</p>
+          )}
+
+          {!isFormValid && !error && (
             <p className="text-xs text-graphite font-mono text-center">
               {!athleteId && "Sélectionnez un athlète"}
               {athleteId && !subject && "Ajoutez un sujet"}

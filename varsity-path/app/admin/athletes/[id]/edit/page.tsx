@@ -56,11 +56,21 @@ export default function EditAthletePage({ params }: { params: { id: string } }) 
 
   const handleSave = async () => {
     setIsSaving(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setSaveMessage("Changements enregistrés avec succès");
-    setIsSaving(false);
-    setTimeout(() => setSaveMessage(""), 3000);
+    setSaveMessage("");
+    try {
+      const res = await fetch(`/api/athletes/${params.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error();
+      setSaveMessage("Changements enregistrés avec succès");
+    } catch {
+      setSaveMessage("Erreur — vérifiez la connexion à la base de données.");
+    } finally {
+      setIsSaving(false);
+      setTimeout(() => setSaveMessage(""), 4000);
+    }
   };
 
   return (
@@ -81,8 +91,8 @@ export default function EditAthletePage({ params }: { params: { id: string } }) 
 
       {/* Save Message */}
       {saveMessage && (
-        <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-          <p className="text-sm text-green-900 font-mono">{saveMessage}</p>
+        <div className={`mb-6 p-4 border rounded-lg ${saveMessage.startsWith("Erreur") ? "bg-red-50 border-red-200" : "bg-green-50 border-green-200"}`}>
+          <p className={`text-sm font-mono ${saveMessage.startsWith("Erreur") ? "text-red-900" : "text-green-900"}`}>{saveMessage}</p>
         </div>
       )}
 

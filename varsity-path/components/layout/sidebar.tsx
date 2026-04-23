@@ -10,6 +10,7 @@ import {
   BarChart3,
   Calendar,
   Settings,
+  FileText,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -20,6 +21,7 @@ const navItems = [
   { href: "/admin/tasks", label: "Tâches", icon: ListTodo },
   { href: "/admin/calendar", label: "Calendrier", icon: Calendar },
   { href: "/admin/campaigns", label: "Campagnes", icon: Mail },
+  { href: "/admin/templates", label: "Templates", icon: FileText },
   { href: "/admin/settings", label: "Paramètres", icon: Settings },
 ]
 
