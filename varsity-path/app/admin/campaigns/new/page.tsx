@@ -11,7 +11,13 @@ import {
   ChevronLeft, Mail, Search, Loader2
 } from "lucide-react";
 
-type AthleteOption = { id: string; firstName: string; lastName: string };
+type AthleteOption = {
+  id: string; firstName: string; lastName: string;
+  position: string; country: string; age: string;
+  currentClub: string; gpa: string; toefl: string;
+  highlightUrl: string; email: string;
+};
+type TemplateOption = { id: string; name: string; subject: string; body: string };
 type UniversityOption = {
   id: string;
   name: string;
@@ -22,9 +28,61 @@ type UniversityOption = {
 };
 
 const MOCK_ATHLETES: AthleteOption[] = [
-  { id: "1", firstName: "Lucas", lastName: "Martins" },
-  { id: "2", firstName: "Sofia", lastName: "Chen" },
-  { id: "3", firstName: "Emma", lastName: "Bergström" },
+  { id: "1", firstName: "Lucas", lastName: "Martins",   position: "midfielder",      country: "France",  age: "18", currentClub: "Paris FC U19",       gpa: "3.4", toefl: "98", highlightUrl: "https://youtube.com/watch?v=example", email: "lucas@example.com" },
+  { id: "2", firstName: "Sofia", lastName: "Chen",      position: "forward",         country: "China",   age: "17", currentClub: "Shanghai FC Academy", gpa: "3.7", toefl: "102",highlightUrl: "https://youtube.com/watch?v=sofia",   email: "sofia@example.com" },
+  { id: "3", firstName: "Emma",  lastName: "Bergström", position: "center-back",     country: "Sweden",  age: "19", currentClub: "Hammarby IF U21",     gpa: "3.1", toefl: "95", highlightUrl: "https://youtube.com/watch?v=emma",    email: "emma@example.com" },
+];
+
+const MOCK_TEMPLATES: TemplateOption[] = [
+  {
+    id: "1",
+    name: "Contact initial — Soccer masculin",
+    subject: "Student-athlete inquiry — {{position}} from {{country}}",
+    body: `Dear Coach {{coachLastName}},
+
+My name is {{athleteFirstName}} {{athleteLastName}}, a {{age}}-year-old {{position}} from {{country}}.
+
+I am writing to express my strong interest in playing soccer for {{universityName}}. I have followed your program closely and believe it would be an excellent fit for both my athletic and academic goals.
+
+Sporting profile:
+- Current club: {{currentClub}}
+- GPA (converted): {{gpa}}/4.0
+- TOEFL: {{toefl}}
+- Highlight video: {{highlightUrl}}
+
+I would be honored to discuss the possibility of joining your program. Please do not hesitate to contact me for any additional information.
+
+Best regards,
+{{athleteFirstName}} {{athleteLastName}}
+{{athleteEmail}}`,
+  },
+  {
+    id: "2",
+    name: "Relance — 7 jours sans réponse",
+    subject: "Following up — {{athleteFirstName}} {{athleteLastName}} — {{position}}",
+    body: `Dear Coach {{coachLastName}},
+
+I wanted to follow up on my previous email regarding {{athleteFirstName}} {{athleteLastName}}.
+
+I remain very interested in your program at {{universityName}} and would love to schedule a brief call to discuss opportunities.
+
+Highlight: {{highlightUrl}}
+
+Thank you for your time.
+
+Best regards,
+{{athleteFirstName}} {{athleteLastName}}`,
+  },
+  {
+    id: "3",
+    name: "Contact initial — Soccer féminin",
+    subject: "Female student-athlete inquiry — {{position}} from {{country}}",
+    body: `Dear Coach {{coachLastName}},
+
+My name is {{athleteFirstName}} {{athleteLastName}}, a {{age}}-year-old {{position}} from {{country}}.
+
+I am very interested in joining the women's soccer program at {{universityName}}...`,
+  },
 ];
 
 const MOCK_UNIVERSITIES: UniversityOption[] = [
@@ -74,6 +132,7 @@ const MOCK_UNIVERSITIES: UniversityOption[] = [
 
 export default function NewCampaignPage() {
   const [athleteId, setAthleteId] = useState("");
+  const [templateId, setTemplateId] = useState("");
   const [subject, setSubject] = useState("");
   const [bodyHtml, setBodyHtml] = useState("");
   const [search, setSearch] = useState("");
@@ -89,6 +148,29 @@ export default function NewCampaignPage() {
     () => MOCK_ATHLETES.find((a) => a.id === athleteId),
     [athleteId]
   );
+
+  function applyTemplate(tId: string, aId: string) {
+    const tpl = MOCK_TEMPLATES.find((t) => t.id === tId);
+    const ath = MOCK_ATHLETES.find((a) => a.id === aId);
+    if (!tpl) return;
+    const vars: Record<string, string> = {
+      coachLastName: "[Coach]",
+      universityName: "[Université]",
+      athleteFirstName: ath?.firstName ?? "",
+      athleteLastName:  ath?.lastName ?? "",
+      position:    ath?.position ?? "",
+      country:     ath?.country ?? "",
+      age:         ath?.age ?? "",
+      currentClub: ath?.currentClub ?? "",
+      gpa:         ath?.gpa ?? "",
+      toefl:       ath?.toefl ?? "",
+      highlightUrl:ath?.highlightUrl ?? "",
+      athleteEmail:ath?.email ?? "",
+    };
+    const fill = (s: string) => s.replace(/\{\{(\w+)\}\}/g, (_, k) => vars[k] ?? `{{${k}}}`);
+    setSubject(fill(tpl.subject));
+    setBodyHtml(fill(tpl.body));
+  }
 
   const filteredUniversities = useMemo(() => {
     return MOCK_UNIVERSITIES.filter((u) => {
@@ -172,7 +254,10 @@ export default function NewCampaignPage() {
             </Label>
             <select
               value={athleteId}
-              onChange={(e) => setAthleteId(e.target.value)}
+              onChange={(e) => {
+                setAthleteId(e.target.value);
+                if (templateId) applyTemplate(templateId, e.target.value);
+              }}
               className="w-full border border-line rounded px-3 py-2 text-sm font-mono bg-white text-ink focus:outline-none focus:border-navy"
             >
               <option value="">Sélectionnez un athlète</option>
@@ -182,6 +267,37 @@ export default function NewCampaignPage() {
                 </option>
               ))}
             </select>
+          </div>
+
+          {/* Template selector */}
+          <div className="bg-white border border-line rounded-lg p-5">
+            <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-3 block">
+              Template email
+            </Label>
+            <div className="grid grid-cols-3 gap-2 mb-3">
+              {MOCK_TEMPLATES.map((t) => (
+                <button
+                  key={t.id}
+                  onClick={() => {
+                    setTemplateId(t.id);
+                    applyTemplate(t.id, athleteId);
+                  }}
+                  className={`text-left p-3 border rounded-lg text-xs font-mono transition-colors ${
+                    templateId === t.id
+                      ? "border-navy bg-navy/5 text-navy"
+                      : "border-line text-graphite hover:border-graphite"
+                  }`}
+                >
+                  <p className="font-semibold mb-1 leading-tight">{t.name}</p>
+                  <p className="text-stone truncate">{t.subject.slice(0, 40)}…</p>
+                </button>
+              ))}
+            </div>
+            {templateId && (
+              <p className="text-xs font-mono text-graphite">
+                Template appliqué · modifiez librement le sujet et le corps ci-dessous
+              </p>
+            )}
           </div>
 
           {/* Email composition */}

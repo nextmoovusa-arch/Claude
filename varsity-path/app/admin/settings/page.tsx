@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { CheckCircle2, Database, Mail, Key, Shield } from "lucide-react";
+import { CheckCircle2, Database, Mail, Key, Shield, Send } from "lucide-react";
 
 type ConnectionStatus = "idle" | "testing" | "ok" | "error";
 
@@ -20,6 +20,10 @@ export default function SettingsPage() {
   const [clerkStatus, setClerkStatus] = useState<ConnectionStatus>("idle");
   const [agencyName, setAgencyName] = useState("NEXTMOOV USA");
   const [primarySport, setPrimarySport] = useState("Men's Soccer");
+  const [senderName, setSenderName] = useState("NEXTMOOV USA Recruiting");
+  const [delayBetweenSends, setDelayBetweenSends] = useState("30");
+  const [followUpDays, setFollowUpDays] = useState("7");
+  const [maxPerDay, setMaxPerDay] = useState("100");
   const [savedMessage, setSavedMessage] = useState("");
 
   const testDb = async () => {
@@ -212,6 +216,63 @@ export default function SettingsPage() {
           <p className="text-xs text-graphite font-mono mt-2">
             Ajoutez les clés dans <code className="bg-stone px-1 rounded">.env.local</code> — l'authentification s'activera automatiquement.
           </p>
+        </div>
+
+        {/* Email sending preferences */}
+        <div className="bg-white border border-line rounded-lg p-6">
+          <h2 className="text-sm font-mono uppercase tracking-widest text-graphite mb-6 flex items-center gap-2">
+            <Send className="w-4 h-4" /> Envoi d'emails — Comportement
+          </h2>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">
+                Nom expéditeur
+              </Label>
+              <Input
+                value={senderName}
+                onChange={(e) => setSenderName(e.target.value)}
+                placeholder="NEXTMOOV USA Recruiting"
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">
+                Délai entre envois (secondes)
+              </Label>
+              <Input
+                type="number"
+                min="10"
+                max="300"
+                value={delayBetweenSends}
+                onChange={(e) => setDelayBetweenSends(e.target.value)}
+              />
+              <p className="text-xs font-mono text-stone mt-1">Recommandé : 30–60s pour éviter les filtres spam</p>
+            </div>
+            <div>
+              <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">
+                Délai relance auto (jours)
+              </Label>
+              <Input
+                type="number"
+                min="3"
+                max="30"
+                value={followUpDays}
+                onChange={(e) => setFollowUpDays(e.target.value)}
+              />
+            </div>
+            <div>
+              <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">
+                Maximum emails/jour
+              </Label>
+              <Input
+                type="number"
+                min="10"
+                max="500"
+                value={maxPerDay}
+                onChange={(e) => setMaxPerDay(e.target.value)}
+              />
+              <p className="text-xs font-mono text-stone mt-1">Limite Gmail gratuit : ~500/jour</p>
+            </div>
+          </div>
         </div>
 
         <Button variant="primary" size="lg" onClick={handleSave}>

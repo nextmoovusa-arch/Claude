@@ -17,9 +17,14 @@ const MOCK_ATHLETES = [
     status: "IN_CAMPAIGN" as AthleteStatus,
     currentClub: "Paris FC U19",
     primaryPosition: "Milieu offensif",
+    nationality: "Français / Brésilien",
     gpaConverted: 3.4,
+    toeflScore: 98,
     targetDivisions: ["NCAA_D1", "NCAA_D2"] as Division[],
     createdAt: new Date("2026-01-15"),
+    stepsCompleted: 5,
+    stepsTotal: 10,
+    shortlistCount: 5,
   },
   {
     id: "2",
@@ -28,9 +33,14 @@ const MOCK_ATHLETES = [
     status: "IN_FILE" as AthleteStatus,
     currentClub: "Shanghai FC Academy",
     primaryPosition: "Avant-centre",
+    nationality: "Chinoise",
     gpaConverted: 3.7,
+    toeflScore: 102,
     targetDivisions: ["NCAA_D1"] as Division[],
     createdAt: new Date("2026-02-03"),
+    stepsCompleted: 2,
+    stepsTotal: 10,
+    shortlistCount: 0,
   },
   {
     id: "3",
@@ -39,9 +49,14 @@ const MOCK_ATHLETES = [
     status: "PROSPECT" as AthleteStatus,
     currentClub: "Hammarby IF U21",
     primaryPosition: "Défenseure centrale",
+    nationality: "Suédoise",
     gpaConverted: 3.1,
+    toeflScore: 95,
     targetDivisions: ["NCAA_D2", "NAIA"] as Division[],
     createdAt: new Date("2026-03-20"),
+    stepsCompleted: 0,
+    stepsTotal: 10,
+    shortlistCount: 0,
   },
 ];
 
@@ -151,8 +166,8 @@ export default function AthletesPage() {
       {/* Table */}
       <div className="border border-line rounded-lg overflow-hidden bg-white">
         {/* Header */}
-        <div className="grid grid-cols-[2fr_1.5fr_1fr_1fr_1fr_120px] border-b border-line bg-paper">
-          {["Athlète", "Club actuel", "Poste", "GPA", "Divisions", "Statut"].map((h) => (
+        <div className="grid grid-cols-[2fr_1.5fr_1fr_1.2fr_1fr_100px] border-b border-line bg-paper">
+          {["Athlète", "Club · Poste", "Parcours", "Académique", "Divisions", "Statut"].map((h) => (
             <div key={h} className="px-4 py-3">
               <span className="font-mono text-xs uppercase tracking-widest text-graphite">{h}</span>
             </div>
@@ -160,47 +175,58 @@ export default function AthletesPage() {
         </div>
 
         {/* Rows */}
-        {filtered.map((athlete, i) => (
-          <Link
-            key={athlete.id}
-            href={`/admin/athletes/${athlete.id}`}
-            className={`grid grid-cols-[2fr_1.5fr_1fr_1fr_1fr_120px] items-center hover:bg-paper transition-colors ${
-              i < filtered.length - 1 ? "border-b border-line" : ""
-            } ${i % 2 === 0 ? "bg-white" : "bg-paper/40"}`}
-          >
-            <div className="px-4 py-4">
-              <p className="font-medium text-ink text-sm">
-                {athlete.firstName} {athlete.lastName}
-              </p>
-              <p className="font-mono text-xs text-graphite mt-0.5">
-                Ajouté le {athlete.createdAt.toLocaleDateString("fr-FR")}
-              </p>
-            </div>
-            <div className="px-4 py-4">
-              <p className="text-sm text-graphite">{athlete.currentClub}</p>
-            </div>
-            <div className="px-4 py-4">
-              <p className="text-sm text-graphite">{athlete.primaryPosition}</p>
-            </div>
-            <div className="px-4 py-4">
-              <span className="font-mono text-sm text-ink">
-                {athlete.gpaConverted?.toFixed(1) ?? "—"}
-              </span>
-            </div>
-            <div className="px-4 py-4 flex flex-wrap gap-1">
-              {athlete.targetDivisions.map((d) => (
-                <Badge key={d} variant="default" className="text-xs">
-                  {DIVISION_SHORT[d] ?? d}
+        {filtered.map((athlete, i) => {
+          const pct = Math.round((athlete.stepsCompleted / athlete.stepsTotal) * 100);
+          return (
+            <Link
+              key={athlete.id}
+              href={`/admin/athletes/${athlete.id}`}
+              className={`grid grid-cols-[2fr_1.5fr_1fr_1.2fr_1fr_100px] items-center hover:bg-paper transition-colors ${
+                i < filtered.length - 1 ? "border-b border-line" : ""
+              } ${i % 2 === 0 ? "bg-white" : "bg-paper/40"}`}
+            >
+              <div className="px-4 py-4">
+                <p className="font-medium text-ink text-sm">{athlete.firstName} {athlete.lastName}</p>
+                <p className="font-mono text-xs text-graphite mt-0.5">{athlete.nationality}</p>
+              </div>
+              <div className="px-4 py-4">
+                <p className="text-sm text-ink">{athlete.currentClub}</p>
+                <p className="text-xs font-mono text-graphite mt-0.5">{athlete.primaryPosition}</p>
+              </div>
+              <div className="px-4 py-4">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className={`text-xs font-mono font-bold ${pct === 100 ? "text-green-700" : pct >= 50 ? "text-navy" : "text-graphite"}`}>
+                    {pct}%
+                  </span>
+                  <span className="text-xs font-mono text-stone">{athlete.stepsCompleted}/{athlete.stepsTotal}</span>
+                </div>
+                <div className="w-full bg-stone/20 rounded-full h-1.5">
+                  <div
+                    className={`h-1.5 rounded-full ${pct === 100 ? "bg-green-600" : "bg-navy"}`}
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
+                {athlete.shortlistCount > 0 && (
+                  <p className="text-xs font-mono text-graphite mt-1">{athlete.shortlistCount} univ. ciblées</p>
+                )}
+              </div>
+              <div className="px-4 py-4">
+                <p className="text-sm font-mono text-ink">GPA {athlete.gpaConverted?.toFixed(1) ?? "—"}</p>
+                <p className="text-xs font-mono text-graphite mt-0.5">TOEFL {athlete.toeflScore ?? "—"}</p>
+              </div>
+              <div className="px-4 py-4 flex flex-wrap gap-1">
+                {athlete.targetDivisions.map((d) => (
+                  <Badge key={d} variant="default" className="text-xs">{DIVISION_SHORT[d] ?? d}</Badge>
+                ))}
+              </div>
+              <div className="px-4 py-4">
+                <Badge variant={STATUS_BADGE_VARIANT[athlete.status]}>
+                  {ATHLETE_STATUS_LABELS[athlete.status]}
                 </Badge>
-              ))}
-            </div>
-            <div className="px-4 py-4">
-              <Badge variant={STATUS_BADGE_VARIANT[athlete.status]}>
-                {ATHLETE_STATUS_LABELS[athlete.status]}
-              </Badge>
-            </div>
-          </Link>
-        ))}
+              </div>
+            </Link>
+          );
+        })}
 
         {filtered.length === 0 && (
           <div className="py-12 text-center text-graphite font-mono text-sm">
