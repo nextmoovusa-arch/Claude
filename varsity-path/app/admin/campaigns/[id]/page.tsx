@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import {
   ChevronLeft, Mail, Eye, MessageSquare, Send, RefreshCw,
   CheckCircle2, Clock, AlertCircle, XCircle, Edit3, Save, X,
-  Copy, ExternalLink
+  Copy, ExternalLink, Plus
 } from "lucide-react";
 
 type EmailStatus = "DRAFT" | "SENT" | "OPENED" | "REPLIED" | "BOUNCED";
@@ -80,6 +80,9 @@ export default function CampaignDetailPage({ params }: { params: { id: string } 
   const [expandedReply, setExpandedReply] = useState<string | null>(null);
   const [showEmailPreview, setShowEmailPreview] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [showRelanceModal, setShowRelanceModal] = useState(false);
+  const [relanceSelected, setRelanceSelected] = useState<Set<string>>(new Set());
+  const [relanceSent, setRelanceSent] = useState(false);
 
   const stats = useMemo(() => {
     const sent = contacts.filter((c) => c.status !== "DRAFT").length;
@@ -160,7 +163,12 @@ export default function CampaignDetailPage({ params }: { params: { id: string } 
               <Eye className="w-4 h-4 mr-2" />
               {showEmailPreview ? "Masquer" : "Voir"} l'email
             </Button>
-            <Button variant="primary" size="sm">
+            <Button variant="primary" size="sm" onClick={() => {
+              const nonReplied = contacts.filter((c) => c.status === "SENT" || c.status === "OPENED");
+              setRelanceSelected(new Set(nonReplied.map((c) => c.id)));
+              setRelanceSent(false);
+              setShowRelanceModal(true);
+            }}>
               <RefreshCw className="w-4 h-4 mr-2" />
               Relance auto
             </Button>
@@ -388,6 +396,100 @@ export default function CampaignDetailPage({ params }: { params: { id: string } 
           </tbody>
         </table>
       </div>
+
+      {/* Relance modal */}
+      {showRelanceModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          <div className="bg-white border border-line rounded-lg w-full max-w-lg mx-4 shadow-xl">
+            <div className="flex items-center justify-between p-6 border-b border-line">
+              <div>
+                <h2 className="text-sm font-mono uppercase tracking-widest text-graphite">Relance automatique</h2>
+                <p className="text-xs font-mono text-stone mt-0.5">Contacts n'ayant pas répondu</p>
+              </div>
+              <button onClick={() => setShowRelanceModal(false)}>
+                <X className="w-4 h-4 text-graphite hover:text-ink" />
+              </button>
+            </div>
+
+            {relanceSent ? (
+              <div className="p-8 text-center">
+                <CheckCircle2 className="w-10 h-10 text-green-600 mx-auto mb-3" />
+                <p className="font-medium text-ink mb-1">Relance planifiée !</p>
+                <p className="text-sm font-mono text-graphite">
+                  {relanceSelected.size} email{relanceSelected.size > 1 ? "s" : ""} seront envoyés dans les prochaines minutes.
+                </p>
+                <button
+                  onClick={() => setShowRelanceModal(false)}
+                  className="mt-5 px-4 py-2 bg-navy text-paper text-sm font-mono rounded hover:bg-navy/90 transition-colors"
+                >
+                  Fermer
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="divide-y divide-line max-h-72 overflow-y-auto">
+                  {contacts
+                    .filter((c) => c.status === "SENT" || c.status === "OPENED")
+                    .map((c) => {
+                      const cfg = STATUS_CONFIG[c.status];
+                      return (
+                        <label key={c.id} className="flex items-center gap-3 px-5 py-3 cursor-pointer hover:bg-paper transition-colors">
+                          <input
+                            type="checkbox"
+                            checked={relanceSelected.has(c.id)}
+                            onChange={(e) => {
+                              setRelanceSelected((prev) => {
+                                const next = new Set(prev);
+                                if (e.target.checked) next.add(c.id);
+                                else next.delete(c.id);
+                                return next;
+                              });
+                            }}
+                            className="w-4 h-4 accent-navy"
+                          />
+                          <div className="flex-1 min-w-0">
+                            <p className="text-sm font-medium text-ink truncate">{c.coachName}</p>
+                            <p className="text-xs font-mono text-graphite truncate">{c.universityName}</p>
+                          </div>
+                          <span className={`px-2 py-0.5 rounded text-xs font-mono flex-shrink-0 ${cfg.color}`}>
+                            {cfg.label}
+                          </span>
+                        </label>
+                      );
+                    })}
+                  {contacts.filter((c) => c.status === "SENT" || c.status === "OPENED").length === 0 && (
+                    <p className="px-5 py-8 text-center text-sm font-mono text-graphite">
+                      Tous les contacts ont répondu ou rejeté — aucune relance nécessaire.
+                    </p>
+                  )}
+                </div>
+
+                <div className="p-5 border-t border-line flex items-center justify-between gap-3">
+                  <p className="text-xs font-mono text-graphite">
+                    {relanceSelected.size} contact{relanceSelected.size > 1 ? "s" : ""} sélectionné{relanceSelected.size > 1 ? "s" : ""}
+                  </p>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setShowRelanceModal(false)}
+                      className="px-4 py-2 text-sm font-mono border border-line rounded text-graphite hover:text-ink transition-colors"
+                    >
+                      Annuler
+                    </button>
+                    <button
+                      onClick={() => setRelanceSent(true)}
+                      disabled={relanceSelected.size === 0}
+                      className="px-4 py-2 text-sm font-mono bg-navy text-paper rounded hover:bg-navy/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center gap-2"
+                    >
+                      <Send className="w-4 h-4" />
+                      Envoyer la relance
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
 
       {copied && (
         <div className="fixed bottom-6 right-6 bg-ink text-paper text-xs font-mono px-4 py-2 rounded shadow-lg">
