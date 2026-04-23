@@ -12,11 +12,14 @@ function makeSlug(name: string) {
   return name.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
 }
 
+const GENERIC_PREFIXES = /^(m|w|men|women|mens|womens|msoccer|wsoccer|mensoccer|womensoccer|soccer|athletics|calsoccer|smsoccer|ucdavissoccer|lmusoccer|coaching|coach|sports|athletic)/i
+
 function extractNames(email: string) {
   const local = email.split("@")[0]
+  if (GENERIC_PREFIXES.test(local)) return { firstName: "", lastName: "" }
   const dot = local.match(/^([a-z]+)\.([a-z]+)$/i)
   if (dot) return { firstName: dot[1][0].toUpperCase() + dot[1].slice(1).toLowerCase(), lastName: dot[2][0].toUpperCase() + dot[2].slice(1).toLowerCase() }
-  return { firstName: "", lastName: local[0].toUpperCase() + local.slice(1).toLowerCase() }
+  return { firstName: "", lastName: "" }
 }
 
 export async function GET(req: NextRequest) {

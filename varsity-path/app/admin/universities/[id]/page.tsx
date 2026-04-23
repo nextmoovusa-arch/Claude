@@ -101,6 +101,11 @@ export default function UniversityDetailPage({ params }: { params: { id: string 
   const headCoach = useMemo(() => coaches.find((c) => c.isHeadCoach), [coaches]);
   const assistantCoaches = useMemo(() => coaches.filter((c) => !c.isHeadCoach), [coaches]);
 
+  function coachName(coach: Coach) {
+    const full = `${coach.firstName ?? ""} ${coach.lastName ?? ""}`.trim();
+    return full || null;
+  }
+
   if (loading) {
     return (
       <div className="p-8 flex items-center justify-center min-h-64">
@@ -283,7 +288,10 @@ export default function UniversityDetailPage({ params }: { params: { id: string 
                       </button>
                     )}
                   </div>
-                  <p className="font-medium text-ink text-sm">{headCoach.firstName} {headCoach.lastName}</p>
+                  {coachName(headCoach)
+                    ? <p className="font-medium text-ink text-sm">{coachName(headCoach)}</p>
+                    : <p className="text-xs font-mono text-graphite italic">Nom non renseigné</p>
+                  }
                   {headCoach.title && <p className="text-xs text-graphite font-mono mt-1">{headCoach.title}</p>}
                   {headCoach.email && (
                     <a href={`mailto:${headCoach.email}`} className="flex items-center gap-1 text-xs text-navy font-mono mt-2 hover:underline">
@@ -302,7 +310,10 @@ export default function UniversityDetailPage({ params }: { params: { id: string 
                 {assistantCoaches.map((coach) => (
                   <div key={coach.id} className="pb-3 border-b border-line last:border-0">
                     <div className="flex items-start justify-between gap-2">
-                      <p className="font-medium text-ink text-sm">{coach.firstName} {coach.lastName}</p>
+                      {coachName(coach)
+                        ? <p className="font-medium text-ink text-sm">{coachName(coach)}</p>
+                        : <p className="text-xs font-mono text-graphite italic">Nom non renseigné</p>
+                      }
                       {coach.email && (
                         <button onClick={() => openCompose(coach)} className="inline-flex items-center gap-1 text-xs font-mono text-navy hover:underline flex-shrink-0">
                           <Mail className="w-3 h-3" /> Composer
