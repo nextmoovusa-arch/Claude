@@ -29,9 +29,8 @@ const config: Config = {
         line: "#D4D4D4",
       },
       fontFamily: {
-        anton: ["Anton", "sans-serif"],
-        playfair: ["Playfair Display", "serif"],
-        garamond: ["EB Garamond", "serif"],
+        sans: ["Plus Jakarta Sans", "sans-serif"],
+        display: ["Plus Jakarta Sans", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
       borderRadius: {
