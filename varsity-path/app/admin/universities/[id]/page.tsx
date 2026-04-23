@@ -90,8 +90,9 @@ export default function UniversityDetailPage({ params }: { params: { id: string 
     const fill = (s: string) => s.replace(/\{\{(\w+)\}\}/g, (_, k) => vars[k] ?? `{{${k}}}`);
     setComposeCoach(coach);
     setComposeSubject(fill(tpl.subject));
+    const greeting = coach.lastName ? `Dear Coach ${coach.lastName},` : `Dear Coach,`;
     setComposeBody(fill(
-      `Dear Coach ${coach.lastName},\n\nMy name is ${vars.athleteFirstName} ${vars.athleteLastName}, a ${vars.age}-year-old ${vars.position} from ${vars.country}.\n\nI am writing to express my strong interest in playing soccer for ${university.name}. I have followed your program closely and believe it would be an excellent fit for both my athletic and academic goals.\n\nSporting profile:\n- Current club: ${vars.currentClub}\n- GPA (converted): ${vars.gpa}/4.0\n- TOEFL: ${vars.toefl}\n- Highlight video: ${vars.highlightUrl}\n\nI would be honored to discuss the possibility of joining your program.\n\nBest regards,\n${vars.athleteFirstName} ${vars.athleteLastName}\n${vars.athleteEmail}`
+      `${greeting}\n\nMy name is ${vars.athleteFirstName} ${vars.athleteLastName}, a ${vars.age}-year-old ${vars.position} from ${vars.country}.\n\nI am writing to express my strong interest in playing soccer for ${university.name}. I have followed your program closely and believe it would be an excellent fit for both my athletic and academic goals.\n\nSporting profile:\n- Current club: ${vars.currentClub}\n- GPA (converted): ${vars.gpa}/4.0\n- TOEFL: ${vars.toefl}\n- Highlight video: ${vars.highlightUrl}\n\nI would be honored to discuss the possibility of joining your program.\n\nBest regards,\n${vars.athleteFirstName} ${vars.athleteLastName}\n${vars.athleteEmail}`
     ));
     setComposeSent(false);
     setComposeCopied(false);
