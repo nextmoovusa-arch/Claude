@@ -16,7 +16,7 @@ function StatusDot({ status }: { status: "connected" | "disconnected" | "pending
 
 export default function SettingsPage() {
   const [dbStatus, setDbStatus] = useState<ConnectionStatus>("idle");
-  const [gmailStatus, setGmailStatus] = useState<ConnectionStatus>("idle");
+  const [mailjetStatus, setMailjetStatus] = useState<ConnectionStatus>("idle");
   const [clerkStatus, setClerkStatus] = useState<ConnectionStatus>("idle");
   const [agencyName, setAgencyName] = useState("NEXTMOOV USA");
   const [primarySport, setPrimarySport] = useState("Men's Soccer");
@@ -30,6 +30,16 @@ export default function SettingsPage() {
     setDbStatus("testing");
     await new Promise((r) => setTimeout(r, 1500));
     setDbStatus("error");
+  };
+
+  const testMailjet = async () => {
+    setMailjetStatus("testing");
+    try {
+      const res = await fetch("/api/settings/test-mailjet", { method: "POST" });
+      setMailjetStatus(res.ok ? "ok" : "error");
+    } catch {
+      setMailjetStatus("error");
+    }
   };
 
   const handleSave = () => {
@@ -133,48 +143,94 @@ export default function SettingsPage() {
           </div>
         </div>
 
-        {/* Gmail */}
+        {/* Mailjet */}
         <div className="bg-white border border-line rounded-lg p-6">
           <h2 className="text-sm font-mono uppercase tracking-widest text-graphite mb-6 flex items-center gap-2">
-            <Mail className="w-4 h-4" /> Gmail API (Tracking emails)
+            <Mail className="w-4 h-4" /> Mailjet (Envoi & Tracking)
           </h2>
 
           <div className="flex items-center gap-3 mb-4">
-            <StatusDot status="disconnected" />
-            <span className="text-sm font-mono text-graphite">Non configurée</span>
+            <StatusDot status={mailjetStatus === "ok" ? "connected" : mailjetStatus === "testing" ? "pending" : "disconnected"} />
+            <span className="text-sm font-mono text-graphite">
+              {mailjetStatus === "idle" && "Non testée"}
+              {mailjetStatus === "testing" && "Test en cours..."}
+              {mailjetStatus === "ok" && "Connectée — clés valides"}
+              {mailjetStatus === "error" && "Clés invalides ou manquantes dans .env"}
+            </span>
           </div>
 
           <div className="grid grid-cols-2 gap-4 mb-4">
             <div>
               <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">
-                Client ID
+                MAILJET_API_KEY
               </Label>
-              <Input
-                type="password"
-                placeholder="••••••••"
-                className="font-mono"
-                readOnly
-              />
+              <div className="flex gap-2">
+                <Input
+                  type="password"
+                  placeholder="••••••••••••••••••••••••••••••••"
+                  className="flex-1 font-mono"
+                  readOnly
+                />
+              </div>
             </div>
             <div>
               <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">
-                Client Secret
+                MAILJET_SECRET_KEY
+              </Label>
+              <div className="flex gap-2">
+                <Input
+                  type="password"
+                  placeholder="••••••••••••••••••••••••••••••••"
+                  className="flex-1 font-mono"
+                  readOnly
+                />
+                <Button variant="outline" size="sm" onClick={testMailjet}>
+                  {mailjetStatus === "testing" ? "Test..." : "Tester"}
+                </Button>
+              </div>
+            </div>
+            <div>
+              <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">
+                MAILJET_SENDER_EMAIL
               </Label>
               <Input
-                type="password"
-                placeholder="••••••••"
+                type="email"
+                placeholder="recruiting@nextmoovusa.com"
+                className="font-mono"
+                readOnly
+              />
+              <p className="text-xs font-mono text-stone mt-1">Doit être vérifié dans Mailjet</p>
+            </div>
+            <div>
+              <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">
+                MAILJET_SENDER_NAME
+              </Label>
+              <Input
+                placeholder="NEXTMOOV USA Recruiting"
                 className="font-mono"
                 readOnly
               />
             </div>
           </div>
 
-          <div className="bg-paper border border-line rounded p-4 space-y-1.5 text-xs font-mono text-graphite">
-            <p className="font-semibold uppercase tracking-widest mb-2">Fonctionnalités requises</p>
-            <p>✓ Envoi d'emails depuis l'agence</p>
-            <p>✓ Tracking des ouvertures (Gmail API v2)</p>
-            <p>✓ Détection des réponses automatiques</p>
-            <p>✓ Relance automatique après 7 jours sans réponse</p>
+          <div className="bg-paper border border-line rounded p-4 space-y-2">
+            <p className="text-xs font-mono font-semibold text-graphite uppercase tracking-widest">
+              Étapes de configuration
+            </p>
+            <div className="space-y-1.5 text-xs font-mono text-graphite">
+              <p>1. Créez un compte sur <span className="text-navy">mailjet.com</span> et vérifiez votre domaine expéditeur</p>
+              <p>2. Copiez API Key + Secret Key dans <code className="bg-stone px-1 rounded">.env</code></p>
+              <p>3. Configurez le webhook Mailjet → <code className="bg-stone px-1 rounded">/api/webhooks/mailjet</code></p>
+              <p>4. Activez les événements : <code className="bg-stone px-1 rounded">open, click, bounce, spam</code></p>
+            </div>
+          </div>
+
+          <div className="mt-4 bg-paper border border-line rounded p-4 space-y-1.5 text-xs font-mono text-graphite">
+            <p className="font-semibold uppercase tracking-widest mb-2">Fonctionnalités incluses</p>
+            <p>✓ Envoi en masse (jusqu'à 50 messages/requête)</p>
+            <p>✓ Tracking des ouvertures et clics</p>
+            <p>✓ Détection des bounces et spams</p>
+            <p>✓ Relance automatique ciblée après X jours sans réponse</p>
           </div>
         </div>
 
