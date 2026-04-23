@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import {
   User, BookOpen, Trophy, FileText, Calendar,
   CheckCircle2, Circle, Clock, ChevronLeft,
-  Target, GraduationCap, Globe, Edit3
+  Target, GraduationCap, Globe, Edit3,
+  Upload, Download, Trash2, FolderOpen
 } from "lucide-react";
 import Link from "next/link";
 
@@ -91,11 +92,46 @@ function InfoRow({ label, value }: { label: string; value?: string | number | nu
   );
 }
 
-type Tab = "parcours" | "profil" | "academique" | "strategie";
+type DocCategory = "IDENTITE" | "ACADEMIQUE" | "SPORTIF" | "JURIDIQUE";
+
+interface AthleteDoc {
+  id: string;
+  name: string;
+  category: DocCategory;
+  uploadedAt: string;
+  sizeKb: number;
+  mimeType: string;
+}
+
+const DOC_CATEGORY_LABELS: Record<DocCategory, string> = {
+  IDENTITE: "Identité",
+  ACADEMIQUE: "Académique",
+  SPORTIF: "Sportif",
+  JURIDIQUE: "Juridique",
+};
+
+const DOC_CATEGORY_COLORS: Record<DocCategory, string> = {
+  IDENTITE: "bg-navy/10 text-navy",
+  ACADEMIQUE: "bg-amber-100 text-amber-800",
+  SPORTIF: "bg-green-100 text-green-800",
+  JURIDIQUE: "bg-red-flag/10 text-red-flag",
+};
+
+const MOCK_DOCS: AthleteDoc[] = [
+  { id: "d1", name: "Passeport_LucasMartins.pdf", category: "IDENTITE", uploadedAt: "2026-01-20", sizeKb: 842, mimeType: "application/pdf" },
+  { id: "d2", name: "Relevés_notes_2025.pdf", category: "ACADEMIQUE", uploadedAt: "2026-02-01", sizeKb: 1240, mimeType: "application/pdf" },
+  { id: "d3", name: "Highlight_2026.mp4", category: "SPORTIF", uploadedAt: "2026-02-10", sizeKb: 84200, mimeType: "video/mp4" },
+  { id: "d4", name: "Contrat_accompagnement.pdf", category: "JURIDIQUE", uploadedAt: "2026-01-10", sizeKb: 320, mimeType: "application/pdf" },
+  { id: "d5", name: "Bulletin_S1_2025.pdf", category: "ACADEMIQUE", uploadedAt: "2026-02-15", sizeKb: 560, mimeType: "application/pdf" },
+];
+
+type Tab = "parcours" | "profil" | "academique" | "strategie" | "documents";
 
 export default function AthletePage({ params }: { params: { id: string } }) {
   const [tab, setTab] = useState<Tab>("parcours");
   const [athlete, setAthlete] = useState(MOCK_ATHLETE);
+  const [docs, setDocs] = useState<AthleteDoc[]>(MOCK_DOCS);
+  const [docFilter, setDocFilter] = useState<DocCategory | "ALL">("ALL");
 
   const toggleStep = (order: number) => {
     setAthlete((prev) => ({
@@ -162,7 +198,7 @@ export default function AthletePage({ params }: { params: { id: string } }) {
 
       {/* Tabs */}
       <div className="flex gap-1 mb-6 border-b border-line">
-        {(["parcours", "profil", "academique", "strategie"] as Tab[]).map((t) => (
+        {(["parcours", "profil", "academique", "strategie", "documents"] as Tab[]).map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
@@ -281,6 +317,119 @@ export default function AthletePage({ params }: { params: { id: string } }) {
             <InfoRow label="Statut" value="Non commencé" />
             <InfoRow label="Amateurisme validé" value="Non" />
           </div>
+        </div>
+      )}
+
+      {/* Tab: Documents */}
+      {tab === "documents" && (
+        <div>
+          {/* Toolbar */}
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex gap-1.5">
+              {(["ALL", "IDENTITE", "ACADEMIQUE", "SPORTIF", "JURIDIQUE"] as const).map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setDocFilter(cat)}
+                  className={`px-3 py-1.5 text-xs font-mono rounded transition-colors ${
+                    docFilter === cat
+                      ? "bg-navy text-paper"
+                      : "bg-white border border-line text-graphite hover:border-graphite"
+                  }`}
+                >
+                  {cat === "ALL" ? "Tous" : DOC_CATEGORY_LABELS[cat]}
+                </button>
+              ))}
+            </div>
+            <label className="cursor-pointer">
+              <input type="file" className="hidden" multiple onChange={(e) => {
+                const files = Array.from(e.target.files ?? []);
+                const newDocs: AthleteDoc[] = files.map((f) => ({
+                  id: String(Date.now() + Math.random()),
+                  name: f.name,
+                  category: "IDENTITE",
+                  uploadedAt: new Date().toISOString().split("T")[0],
+                  sizeKb: Math.round(f.size / 1024),
+                  mimeType: f.type,
+                }));
+                setDocs((prev) => [...newDocs, ...prev]);
+                e.target.value = "";
+              }} />
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-navy text-paper text-sm font-mono rounded hover:bg-navy/90 transition-colors">
+                <Upload className="w-4 h-4" />
+                Ajouter un document
+              </span>
+            </label>
+          </div>
+
+          {/* Doc list */}
+          <div className="bg-white border border-line rounded-lg overflow-hidden">
+            {docs.filter((d) => docFilter === "ALL" || d.category === docFilter).length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-16 text-graphite">
+                <FolderOpen className="w-10 h-10 mb-3 text-stone" />
+                <p className="text-sm font-mono">Aucun document dans cette catégorie</p>
+              </div>
+            ) : (
+              <table className="w-full text-sm">
+                <thead className="border-b border-line bg-paper">
+                  <tr>
+                    <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Nom</th>
+                    <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Catégorie</th>
+                    <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Taille</th>
+                    <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Ajouté le</th>
+                    <th className="px-5 py-3" />
+                  </tr>
+                </thead>
+                <tbody>
+                  {docs
+                    .filter((d) => docFilter === "ALL" || d.category === docFilter)
+                    .map((doc) => (
+                      <tr key={doc.id} className="border-b border-line last:border-0 hover:bg-paper/50 transition-colors">
+                        <td className="px-5 py-3">
+                          <div className="flex items-center gap-2">
+                            <FileText className="w-4 h-4 text-graphite flex-shrink-0" />
+                            <span className="font-medium text-ink truncate max-w-xs">{doc.name}</span>
+                          </div>
+                        </td>
+                        <td className="px-5 py-3">
+                          <span className={`px-2 py-0.5 rounded text-xs font-mono ${DOC_CATEGORY_COLORS[doc.category]}`}>
+                            {DOC_CATEGORY_LABELS[doc.category]}
+                          </span>
+                        </td>
+                        <td className="px-5 py-3 font-mono text-graphite text-xs">
+                          {doc.sizeKb >= 1024
+                            ? `${(doc.sizeKb / 1024).toFixed(1)} MB`
+                            : `${doc.sizeKb} KB`}
+                        </td>
+                        <td className="px-5 py-3 font-mono text-graphite text-xs">
+                          {new Date(doc.uploadedAt + "T12:00").toLocaleDateString("fr-FR")}
+                        </td>
+                        <td className="px-5 py-3">
+                          <div className="flex items-center gap-2 justify-end">
+                            <button
+                              title="Télécharger"
+                              className="p-1 text-graphite hover:text-navy transition-colors"
+                            >
+                              <Download className="w-4 h-4" />
+                            </button>
+                            <button
+                              title="Supprimer"
+                              onClick={() => setDocs((prev) => prev.filter((d) => d.id !== doc.id))}
+                              className="p-1 text-graphite hover:text-red-flag transition-colors"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+
+          <p className="text-xs font-mono text-stone mt-3">
+            {docs.length} document{docs.length !== 1 ? "s" : ""} · Formats acceptés: PDF, JPG, PNG, MP4, DOCX
+          </p>
         </div>
       )}
 

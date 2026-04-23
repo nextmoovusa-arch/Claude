@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Link from "next/link";
 import {
-  CheckSquare, Square, Circle, ChevronDown, Plus,
+  CheckSquare, Square, Plus, X,
   User, BookOpen, Trophy, DollarSign, MessageSquare, FileText
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 type TaskStatus = "TODO" | "IN_PROGRESS" | "DONE" | "BLOCKED" | "CANCELLED";
 type TaskCategory = "ACADEMIC" | "ADMINISTRATIVE" | "SPORTS" | "STRATEGY" | "COMMUNICATION" | "FINANCIAL";
@@ -122,11 +124,26 @@ function StatusIcon({ status }: { status: TaskStatus }) {
   return <Square className="w-5 h-5 text-graphite" />;
 }
 
+const ATHLETES_LIST = [
+  { id: "1", name: "Lucas Martins" },
+  { id: "2", name: "Sofia Chen" },
+  { id: "3", name: "Emma Bergström" },
+];
+
 export default function TasksPage() {
   const [tasks, setTasks] = useState<Task[]>(MOCK_TASKS);
   const [filterStatus, setFilterStatus] = useState<TaskStatus | "">("");
   const [filterCategory, setFilterCategory] = useState<TaskCategory | "">("");
   const [filterAthlete, setFilterAthlete] = useState("");
+  const [showModal, setShowModal] = useState(false);
+
+  // New task form state
+  const [newTitle, setNewTitle] = useState("");
+  const [newDescription, setNewDescription] = useState("");
+  const [newCategory, setNewCategory] = useState<TaskCategory>("ACADEMIC");
+  const [newPriority, setNewPriority] = useState<1 | 2 | 3>(2);
+  const [newAthleteId, setNewAthleteId] = useState("1");
+  const [newDueDate, setNewDueDate] = useState("");
 
   const filtered = useMemo(() => {
     return tasks.filter((t) => {
@@ -157,6 +174,25 @@ export default function TasksPage() {
     );
   };
 
+  const handleCreate = () => {
+    if (!newTitle) return;
+    const athlete = ATHLETES_LIST.find((a) => a.id === newAthleteId);
+    const task: Task = {
+      id: String(Date.now()),
+      title: newTitle,
+      description: newDescription || undefined,
+      category: newCategory,
+      status: "TODO",
+      priority: newPriority,
+      athleteName: athlete?.name ?? "",
+      athleteId: newAthleteId,
+      dueDate: newDueDate || undefined,
+    };
+    setTasks((prev) => [task, ...prev]);
+    setShowModal(false);
+    setNewTitle(""); setNewDescription(""); setNewDueDate("");
+  };
+
   return (
     <div className="p-8 max-w-7xl mx-auto">
       {/* Header */}
@@ -169,7 +205,7 @@ export default function TasksPage() {
             {filtered.length} tâches · suivi des actions en cours
           </p>
         </div>
-        <Button variant="primary" size="lg">
+        <Button variant="primary" size="lg" onClick={() => setShowModal(true)}>
           <Plus className="w-4 h-4 mr-2" />
           Nouvelle tâche
         </Button>
@@ -300,6 +336,92 @@ export default function TasksPage() {
           </div>
         )}
       </div>
+
+      {/* New task modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-ink/40 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg border border-line w-full max-w-md shadow-xl">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-line">
+              <h2 className="font-display uppercase tracking-wider text-navy">Nouvelle tâche</h2>
+              <button onClick={() => setShowModal(false)}>
+                <X className="w-5 h-5 text-graphite hover:text-ink" />
+              </button>
+            </div>
+            <div className="p-6 space-y-4">
+              <div>
+                <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">Titre *</Label>
+                <Input
+                  placeholder="Ex: Renouveler le passeport"
+                  value={newTitle}
+                  onChange={(e) => setNewTitle(e.target.value)}
+                  autoFocus
+                />
+              </div>
+              <div>
+                <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">Description</Label>
+                <Textarea
+                  placeholder="Détails optionnels..."
+                  value={newDescription}
+                  onChange={(e) => setNewDescription(e.target.value)}
+                  className="min-h-16"
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">Athlète</Label>
+                  <select
+                    value={newAthleteId}
+                    onChange={(e) => setNewAthleteId(e.target.value)}
+                    className="w-full border border-line rounded px-3 py-2 text-sm font-mono bg-white text-ink focus:outline-none focus:border-navy"
+                  >
+                    {ATHLETES_LIST.map((a) => (
+                      <option key={a.id} value={a.id}>{a.name}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">Catégorie</Label>
+                  <select
+                    value={newCategory}
+                    onChange={(e) => setNewCategory(e.target.value as TaskCategory)}
+                    className="w-full border border-line rounded px-3 py-2 text-sm font-mono bg-white text-ink focus:outline-none focus:border-navy"
+                  >
+                    {Object.entries(CATEGORY_CONFIG).map(([k, v]) => (
+                      <option key={k} value={k}>{v.label}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">Priorité</Label>
+                  <select
+                    value={newPriority}
+                    onChange={(e) => setNewPriority(Number(e.target.value) as 1 | 2 | 3)}
+                    className="w-full border border-line rounded px-3 py-2 text-sm font-mono bg-white text-ink focus:outline-none focus:border-navy"
+                  >
+                    <option value={1}>Haute</option>
+                    <option value={2}>Normale</option>
+                    <option value={3}>Basse</option>
+                  </select>
+                </div>
+                <div>
+                  <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">Échéance</Label>
+                  <Input
+                    type="date"
+                    value={newDueDate}
+                    onChange={(e) => setNewDueDate(e.target.value)}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="flex gap-3 px-6 pb-6">
+              <Button variant="primary" onClick={handleCreate} disabled={!newTitle} className="flex-1">
+                <Plus className="w-4 h-4 mr-2" /> Créer la tâche
+              </Button>
+              <Button variant="outline" onClick={() => setShowModal(false)}>Annuler</Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

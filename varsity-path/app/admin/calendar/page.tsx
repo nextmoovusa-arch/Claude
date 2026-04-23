@@ -1,7 +1,10 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { ChevronLeft, ChevronRight, Calendar, Clock, MapPin, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, MapPin, Star, Plus, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 type EventType = "EXAM" | "DEADLINE" | "MEETING" | "VISIT" | "MATCH" | "INTERNAL";
 
@@ -123,15 +126,41 @@ function getFirstDayOfMonth(year: number, month: number) {
 
 export default function CalendarPage() {
   const today = new Date("2026-04-22");
-  const [viewDate, setViewDate] = useState({ year: 2026, month: 3 }); // April 2026 (0-indexed)
+  const [viewDate, setViewDate] = useState({ year: 2026, month: 3 });
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
+  const [events, setEvents] = useState<CalendarEvent[]>(MOCK_EVENTS);
+  const [showForm, setShowForm] = useState(false);
+
+  // New event form state
+  const [newTitle, setNewTitle] = useState("");
+  const [newType, setNewType] = useState<EventType>("MEETING");
+  const [newDate, setNewDate] = useState(today.toISOString().split("T")[0]);
+  const [newLocation, setNewLocation] = useState("");
+  const [newImportant, setNewImportant] = useState(false);
 
   const daysInMonth = getDaysInMonth(viewDate.year, viewDate.month);
   const firstDay = getFirstDayOfMonth(viewDate.year, viewDate.month);
 
+  const handleAddEvent = () => {
+    if (!newTitle) return;
+    setEvents((prev) => [
+      ...prev,
+      {
+        id: String(Date.now()),
+        title: newTitle,
+        type: newType,
+        startDate: newDate,
+        location: newLocation || undefined,
+        isImportant: newImportant,
+      },
+    ]);
+    setShowForm(false);
+    setNewTitle(""); setNewLocation(""); setNewImportant(false);
+  };
+
   const eventsByDate = useMemo(() => {
     const map: Record<string, CalendarEvent[]> = {};
-    MOCK_EVENTS.forEach((event) => {
+    events.forEach((event) => {
       const date = event.startDate;
       if (!map[date]) map[date] = [];
       map[date].push(event);
@@ -146,7 +175,7 @@ export default function CalendarPage() {
 
   const upcomingEvents = useMemo(() => {
     const todayStr = today.toISOString().split("T")[0];
-    return MOCK_EVENTS
+    return events
       .filter((e) => e.startDate >= todayStr)
       .sort((a, b) => a.startDate.localeCompare(b.startDate))
       .slice(0, 5);
@@ -171,13 +200,19 @@ export default function CalendarPage() {
   return (
     <div className="p-8 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="mb-8">
-        <h1 className="text-3xl font-display uppercase tracking-wider text-navy mb-1">
-          Calendrier
-        </h1>
-        <p className="text-sm text-graphite font-mono">
-          Événements, échéances et rendez-vous
-        </p>
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h1 className="text-3xl font-display uppercase tracking-wider text-navy mb-1">
+            Calendrier
+          </h1>
+          <p className="text-sm text-graphite font-mono">
+            Événements, échéances et rendez-vous
+          </p>
+        </div>
+        <Button variant="primary" size="lg" onClick={() => setShowForm(true)}>
+          <Plus className="w-4 h-4 mr-2" />
+          Ajouter un événement
+        </Button>
       </div>
 
       <div className="grid grid-cols-3 gap-6">
@@ -344,6 +379,105 @@ export default function CalendarPage() {
           </div>
         </div>
       </div>
+
+      {/* Add Event Modal */}
+      {showForm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          <div className="bg-white border border-line rounded-lg w-full max-w-md mx-4 p-6 shadow-xl">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-sm font-mono uppercase tracking-widest text-graphite">
+                Nouvel événement
+              </h2>
+              <button onClick={() => setShowForm(false)}>
+                <X className="w-4 h-4 text-graphite hover:text-ink" />
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div>
+                <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">
+                  Titre *
+                </Label>
+                <Input
+                  placeholder="Ex: Réunion famille..."
+                  value={newTitle}
+                  onChange={(e) => setNewTitle(e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">
+                  Type
+                </Label>
+                <select
+                  value={newType}
+                  onChange={(e) => setNewType(e.target.value as EventType)}
+                  className="w-full border border-line rounded px-3 py-2 text-sm font-mono bg-white text-ink focus:outline-none focus:ring-1 focus:ring-navy"
+                >
+                  {Object.entries(EVENT_LABELS).map(([type, label]) => (
+                    <option key={type} value={type}>{label}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">
+                  Date *
+                </Label>
+                <Input
+                  type="date"
+                  value={newDate}
+                  onChange={(e) => setNewDate(e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Label className="text-xs font-mono uppercase tracking-widest text-graphite mb-2 block">
+                  Lieu
+                </Label>
+                <Input
+                  placeholder="Ex: Zoom, Bureau Paris..."
+                  value={newLocation}
+                  onChange={(e) => setNewLocation(e.target.value)}
+                />
+              </div>
+
+              <div className="flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  id="important"
+                  checked={newImportant}
+                  onChange={(e) => setNewImportant(e.target.checked)}
+                  className="w-4 h-4 rounded border-line accent-navy"
+                />
+                <label htmlFor="important" className="text-sm font-mono text-ink cursor-pointer">
+                  Marquer comme important
+                </label>
+              </div>
+
+              <div className="flex gap-3 pt-2">
+                <Button
+                  variant="primary"
+                  onClick={handleAddEvent}
+                  disabled={!newTitle || !newDate}
+                  className="flex-1"
+                >
+                  <Plus className="w-4 h-4 mr-2" />
+                  Ajouter
+                </Button>
+                <Button
+                  variant="outline"
+                  onClick={() => setShowForm(false)}
+                  className="flex-1"
+                >
+                  <X className="w-4 h-4 mr-2" />
+                  Annuler
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
