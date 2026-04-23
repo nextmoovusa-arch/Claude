@@ -213,12 +213,24 @@ export default function AthletePage({ params }: { params: { id: string } }) {
             {new Date(athlete.dateOfBirth).toLocaleDateString("fr-FR")}
           </p>
         </div>
-        <Link href={`/admin/athletes/${params.id}/edit`}>
-          <Button variant="outline" size="sm">
-            <Edit3 className="w-4 h-4 mr-2" />
-            Modifier
-          </Button>
-        </Link>
+        <div className="flex gap-2">
+          <a
+            href={`/portal/${params.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="outline" size="sm">
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Portail athlète
+            </Button>
+          </a>
+          <Link href={`/admin/athletes/${params.id}/edit`}>
+            <Button variant="outline" size="sm">
+              <Edit3 className="w-4 h-4 mr-2" />
+              Modifier
+            </Button>
+          </Link>
+        </div>
       </div>
 
       {/* Progress bar */}
