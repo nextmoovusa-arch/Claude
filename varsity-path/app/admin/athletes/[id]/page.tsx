@@ -7,7 +7,8 @@ import {
   User, BookOpen, Trophy, FileText, Calendar,
   CheckCircle2, Circle, Clock, ChevronLeft,
   Target, GraduationCap, Globe, Edit3,
-  Upload, Download, Trash2, FolderOpen
+  Upload, Download, Trash2, FolderOpen,
+  Building2, Plus, X, Star, ExternalLink
 } from "lucide-react";
 import Link from "next/link";
 
@@ -92,6 +93,41 @@ function InfoRow({ label, value }: { label: string; value?: string | number | nu
   );
 }
 
+// ── Shortlist ──────────────────────────────────────────────────────────────
+type ShortlistStatus = "PROSPECT" | "CONTACTED" | "RESPONDED" | "OFFER" | "COMMITTED" | "REJECTED";
+
+interface ShortlistEntry {
+  id: string;
+  universityId: string;
+  universityName: string;
+  city: string;
+  state: string;
+  division: string;
+  status: ShortlistStatus;
+  scholarshipPct?: number;
+  notes?: string;
+  priority: "HIGH" | "MEDIUM" | "LOW";
+  addedAt: string;
+}
+
+const SHORTLIST_STATUS_CONFIG: Record<ShortlistStatus, { label: string; color: string }> = {
+  PROSPECT:  { label: "Prospect",  color: "bg-stone text-ink" },
+  CONTACTED: { label: "Contacté",  color: "bg-navy/10 text-navy" },
+  RESPONDED: { label: "A répondu", color: "bg-amber-100 text-amber-800" },
+  OFFER:     { label: "Offre",     color: "bg-green-100 text-green-800" },
+  COMMITTED: { label: "Engagé",    color: "bg-green-700 text-white" },
+  REJECTED:  { label: "Refusé",    color: "bg-red-100 text-red-700" },
+};
+
+const MOCK_SHORTLIST: ShortlistEntry[] = [
+  { id: "s1", universityId: "1", universityName: "University of Virginia", city: "Charlottesville", state: "VA", division: "NCAA D1", status: "CONTACTED", priority: "HIGH", addedAt: "2026-03-01", notes: "Visite officielle prévue 20 mai" },
+  { id: "s2", universityId: "2", universityName: "Duke University", city: "Durham", state: "NC", division: "NCAA D1", status: "RESPONDED", priority: "HIGH", addedAt: "2026-03-01", notes: "Intéressé, demande vidéo supplémentaire" },
+  { id: "s3", universityId: "3", universityName: "Indiana University", city: "Bloomington", state: "IN", division: "NCAA D1", status: "PROSPECT", priority: "MEDIUM", addedAt: "2026-03-05" },
+  { id: "s4", universityId: "10", universityName: "Creighton University", city: "Omaha", state: "NE", division: "NCAA D1", status: "CONTACTED", priority: "MEDIUM", addedAt: "2026-03-10" },
+  { id: "s5", universityId: "5", universityName: "Grand Valley State University", city: "Allendale", state: "MI", division: "NCAA D2", status: "OFFER", scholarshipPct: 60, priority: "LOW", addedAt: "2026-03-15", notes: "60% scholarship offert" },
+];
+
+// ── Documents ───────────────────────────────────────────────────────────────
 type DocCategory = "IDENTITE" | "ACADEMIQUE" | "SPORTIF" | "JURIDIQUE";
 
 interface AthleteDoc {
@@ -125,13 +161,18 @@ const MOCK_DOCS: AthleteDoc[] = [
   { id: "d5", name: "Bulletin_S1_2025.pdf", category: "ACADEMIQUE", uploadedAt: "2026-02-15", sizeKb: 560, mimeType: "application/pdf" },
 ];
 
-type Tab = "parcours" | "profil" | "academique" | "strategie" | "documents";
+type Tab = "parcours" | "profil" | "academique" | "strategie" | "universites" | "documents";
 
 export default function AthletePage({ params }: { params: { id: string } }) {
   const [tab, setTab] = useState<Tab>("parcours");
   const [athlete, setAthlete] = useState(MOCK_ATHLETE);
   const [docs, setDocs] = useState<AthleteDoc[]>(MOCK_DOCS);
   const [docFilter, setDocFilter] = useState<DocCategory | "ALL">("ALL");
+  const [shortlist, setShortlist] = useState<ShortlistEntry[]>(MOCK_SHORTLIST);
+  const [shortlistFilter, setShortlistFilter] = useState<ShortlistStatus | "ALL">("ALL");
+  const [showAddUni, setShowAddUni] = useState(false);
+  const [newUniSearch, setNewUniSearch] = useState("");
+  const [editingShortlistId, setEditingShortlistId] = useState<string | null>(null);
 
   const toggleStep = (order: number) => {
     setAthlete((prev) => ({
@@ -198,19 +239,29 @@ export default function AthletePage({ params }: { params: { id: string } }) {
 
       {/* Tabs */}
       <div className="flex gap-1 mb-6 border-b border-line">
-        {(["parcours", "profil", "academique", "strategie", "documents"] as Tab[]).map((t) => (
-          <button
-            key={t}
-            onClick={() => setTab(t)}
-            className={`px-5 py-2.5 text-sm font-mono capitalize transition-colors border-b-2 -mb-px ${
-              tab === t
-                ? "border-navy text-navy font-semibold"
-                : "border-transparent text-graphite hover:text-ink"
-            }`}
-          >
-            {t}
-          </button>
-        ))}
+        {(["parcours", "profil", "academique", "strategie", "universites", "documents"] as Tab[]).map((t) => {
+          const TAB_LABELS: Record<Tab, string> = {
+            parcours: "Parcours",
+            profil: "Profil",
+            academique: "Académique",
+            strategie: "Stratégie",
+            universites: `Universités (${shortlist.length})`,
+            documents: `Documents (${docs.length})`,
+          };
+          return (
+            <button
+              key={t}
+              onClick={() => setTab(t)}
+              className={`px-5 py-2.5 text-sm font-mono transition-colors border-b-2 -mb-px whitespace-nowrap ${
+                tab === t
+                  ? "border-navy text-navy font-semibold"
+                  : "border-transparent text-graphite hover:text-ink"
+              }`}
+            >
+              {TAB_LABELS[t]}
+            </button>
+          );
+        })}
       </div>
 
       {/* Tab: Parcours */}
@@ -317,6 +368,249 @@ export default function AthletePage({ params }: { params: { id: string } }) {
             <InfoRow label="Statut" value="Non commencé" />
             <InfoRow label="Amateurisme validé" value="Non" />
           </div>
+        </div>
+      )}
+
+      {/* Tab: Universités ciblées */}
+      {tab === "universites" && (
+        <div>
+          {/* Toolbar */}
+          <div className="flex items-center justify-between mb-4 gap-4">
+            <div className="flex gap-1.5 flex-wrap">
+              {(["ALL", "PROSPECT", "CONTACTED", "RESPONDED", "OFFER", "COMMITTED", "REJECTED"] as const).map((s) => (
+                <button
+                  key={s}
+                  onClick={() => setShortlistFilter(s)}
+                  className={`px-3 py-1.5 text-xs font-mono rounded transition-colors ${
+                    shortlistFilter === s
+                      ? "bg-navy text-paper"
+                      : "bg-white border border-line text-graphite hover:border-graphite"
+                  }`}
+                >
+                  {s === "ALL" ? `Toutes (${shortlist.length})` : SHORTLIST_STATUS_CONFIG[s].label}
+                </button>
+              ))}
+            </div>
+            <button
+              onClick={() => setShowAddUni(true)}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-navy text-paper text-sm font-mono rounded hover:bg-navy/90 transition-colors flex-shrink-0"
+            >
+              <Plus className="w-4 h-4" />
+              Ajouter université
+            </button>
+          </div>
+
+          {/* Summary counts */}
+          <div className="grid grid-cols-5 gap-px border border-line bg-line mb-4">
+            {(["CONTACTED", "RESPONDED", "OFFER", "COMMITTED", "REJECTED"] as ShortlistStatus[]).map((s) => {
+              const count = shortlist.filter((e) => e.status === s).length;
+              const cfg = SHORTLIST_STATUS_CONFIG[s];
+              return (
+                <div key={s} className="bg-white px-4 py-3 text-center">
+                  <p className="text-2xl font-mono text-ink">{count}</p>
+                  <p className="text-xs font-mono text-graphite mt-0.5">{cfg.label}</p>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Shortlist table */}
+          <div className="bg-white border border-line rounded-lg overflow-hidden">
+            {shortlist.filter((e) => shortlistFilter === "ALL" || e.status === shortlistFilter).length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-16 text-graphite">
+                <Building2 className="w-10 h-10 mb-3 text-stone" />
+                <p className="text-sm font-mono">Aucune université dans cette catégorie</p>
+              </div>
+            ) : (
+              <table className="w-full text-sm">
+                <thead className="border-b border-line bg-paper">
+                  <tr>
+                    <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Université</th>
+                    <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Division</th>
+                    <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Statut</th>
+                    <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Priorité</th>
+                    <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Notes</th>
+                    <th className="px-5 py-3" />
+                  </tr>
+                </thead>
+                <tbody>
+                  {shortlist
+                    .filter((e) => shortlistFilter === "ALL" || e.status === shortlistFilter)
+                    .map((entry) => {
+                      const cfg = SHORTLIST_STATUS_CONFIG[entry.status];
+                      const isEditing = editingShortlistId === entry.id;
+                      return (
+                        <tr key={entry.id} className="border-b border-line last:border-0 hover:bg-paper/50 transition-colors">
+                          <td className="px-5 py-3">
+                            <p className="font-medium text-ink">{entry.universityName}</p>
+                            <p className="text-xs font-mono text-graphite">{entry.city}, {entry.state}</p>
+                          </td>
+                          <td className="px-5 py-3">
+                            <span className="text-xs font-mono bg-navy/10 text-navy px-2 py-0.5 rounded">
+                              {entry.division}
+                            </span>
+                          </td>
+                          <td className="px-5 py-3">
+                            {isEditing ? (
+                              <select
+                                value={entry.status}
+                                onChange={(e) => {
+                                  setShortlist((prev) => prev.map((x) =>
+                                    x.id === entry.id ? { ...x, status: e.target.value as ShortlistStatus } : x
+                                  ));
+                                }}
+                                className="text-xs font-mono border border-line rounded px-2 py-1 bg-white"
+                              >
+                                {Object.entries(SHORTLIST_STATUS_CONFIG).map(([k, v]) => (
+                                  <option key={k} value={k}>{v.label}</option>
+                                ))}
+                              </select>
+                            ) : (
+                              <span className={`px-2 py-0.5 rounded text-xs font-mono ${cfg.color}`}>
+                                {cfg.label}
+                                {entry.scholarshipPct && ` · ${entry.scholarshipPct}%`}
+                              </span>
+                            )}
+                          </td>
+                          <td className="px-5 py-3">
+                            <span className={`text-xs font-mono ${
+                              entry.priority === "HIGH" ? "text-red-flag font-semibold" :
+                              entry.priority === "MEDIUM" ? "text-navy" : "text-graphite"
+                            }`}>
+                              {entry.priority === "HIGH" ? "Haute" : entry.priority === "MEDIUM" ? "Moyenne" : "Basse"}
+                            </span>
+                          </td>
+                          <td className="px-5 py-3 max-w-xs">
+                            {isEditing ? (
+                              <input
+                                value={entry.notes ?? ""}
+                                onChange={(e) => setShortlist((prev) => prev.map((x) =>
+                                  x.id === entry.id ? { ...x, notes: e.target.value } : x
+                                ))}
+                                className="w-full text-xs font-mono border border-line rounded px-2 py-1"
+                                placeholder="Notes..."
+                              />
+                            ) : (
+                              <p className="text-xs text-graphite truncate">{entry.notes ?? "—"}</p>
+                            )}
+                          </td>
+                          <td className="px-5 py-3">
+                            <div className="flex items-center gap-1.5 justify-end">
+                              {isEditing ? (
+                                <button
+                                  onClick={() => setEditingShortlistId(null)}
+                                  className="p-1 text-green-600 hover:text-green-700"
+                                  title="Confirmer"
+                                >
+                                  <CheckCircle2 className="w-4 h-4" />
+                                </button>
+                              ) : (
+                                <button
+                                  onClick={() => setEditingShortlistId(entry.id)}
+                                  className="p-1 text-graphite hover:text-navy"
+                                  title="Modifier statut"
+                                >
+                                  <Edit3 className="w-4 h-4" />
+                                </button>
+                              )}
+                              <a
+                                href={`/admin/universities/${entry.universityId}`}
+                                className="p-1 text-graphite hover:text-navy"
+                                title="Voir fiche université"
+                              >
+                                <ExternalLink className="w-4 h-4" />
+                              </a>
+                              <button
+                                onClick={() => setShortlist((prev) => prev.filter((x) => x.id !== entry.id))}
+                                className="p-1 text-graphite hover:text-red-flag"
+                                title="Retirer de la liste"
+                              >
+                                <X className="w-4 h-4" />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                </tbody>
+              </table>
+            )}
+          </div>
+
+          <p className="text-xs font-mono text-stone mt-3">
+            {shortlist.length} université{shortlist.length !== 1 ? "s" : ""} dans la liste de ciblage
+          </p>
+
+          {/* Add university modal */}
+          {showAddUni && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+              <div className="bg-white border border-line rounded-lg w-full max-w-lg mx-4 p-6 shadow-xl">
+                <div className="flex items-center justify-between mb-5">
+                  <h2 className="text-sm font-mono uppercase tracking-widest text-graphite">
+                    Ajouter une université
+                  </h2>
+                  <button onClick={() => { setShowAddUni(false); setNewUniSearch(""); }}>
+                    <X className="w-4 h-4 text-graphite hover:text-ink" />
+                  </button>
+                </div>
+
+                <input
+                  type="text"
+                  placeholder="Rechercher une université..."
+                  value={newUniSearch}
+                  onChange={(e) => setNewUniSearch(e.target.value)}
+                  className="w-full border border-line rounded px-3 py-2 text-sm font-mono mb-3 focus:outline-none focus:ring-1 focus:ring-navy"
+                  autoFocus
+                />
+
+                <div className="space-y-1 max-h-64 overflow-y-auto">
+                  {[
+                    { id: "1", name: "University of Virginia", city: "Charlottesville", state: "VA", division: "NCAA D1" },
+                    { id: "2", name: "Duke University", city: "Durham", state: "NC", division: "NCAA D1" },
+                    { id: "3", name: "Indiana University", city: "Bloomington", state: "IN", division: "NCAA D1" },
+                    { id: "4", name: "Wake Forest University", city: "Winston-Salem", state: "NC", division: "NCAA D1" },
+                    { id: "5", name: "Grand Valley State University", city: "Allendale", state: "MI", division: "NCAA D2" },
+                    { id: "6", name: "Adelphi University", city: "Garden City", state: "NY", division: "NCAA D2" },
+                    { id: "7", name: "Messiah University", city: "Mechanicsburg", state: "PA", division: "NCAA D3" },
+                    { id: "8", name: "George Fox University", city: "Newberg", state: "OR", division: "NAIA" },
+                    { id: "9", name: "Hutchinson Community College", city: "Hutchinson", state: "KS", division: "NJCAA D1" },
+                    { id: "10", name: "Creighton University", city: "Omaha", state: "NE", division: "NCAA D1" },
+                  ]
+                    .filter((u) =>
+                      !shortlist.some((e) => e.universityId === u.id) &&
+                      (newUniSearch === "" || u.name.toLowerCase().includes(newUniSearch.toLowerCase()) || u.state.toLowerCase().includes(newUniSearch.toLowerCase()))
+                    )
+                    .map((u) => (
+                      <button
+                        key={u.id}
+                        onClick={() => {
+                          setShortlist((prev) => [
+                            ...prev,
+                            {
+                              id: String(Date.now()),
+                              universityId: u.id,
+                              universityName: u.name,
+                              city: u.city,
+                              state: u.state,
+                              division: u.division,
+                              status: "PROSPECT",
+                              priority: "MEDIUM",
+                              addedAt: new Date().toISOString().split("T")[0],
+                            },
+                          ]);
+                          setShowAddUni(false);
+                          setNewUniSearch("");
+                        }}
+                        className="w-full text-left px-4 py-3 rounded hover:bg-paper transition-colors border border-transparent hover:border-line"
+                      >
+                        <p className="text-sm font-medium text-ink">{u.name}</p>
+                        <p className="text-xs font-mono text-graphite">{u.city}, {u.state} · {u.division}</p>
+                      </button>
+                    ))}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
 

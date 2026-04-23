@@ -268,8 +268,31 @@ export default function UniversityDetailPage({
           </div>
         </div>
 
-        {/* Right: Coaches */}
-        <div className="col-span-1">
+        {/* Right: Coaches + Athletes targeting */}
+        <div className="col-span-1 space-y-6">
+          {/* Athletes targeting this university */}
+          <div className="bg-white border border-line rounded-lg p-5">
+            <h3 className="text-xs font-mono uppercase tracking-widest text-graphite mb-4 flex items-center gap-2">
+              <Users className="w-4 h-4" /> Athlètes ciblant cette université
+            </h3>
+            <div className="space-y-3">
+              {[
+                { id: "1", name: "Lucas Martins", status: "CONTACTED", statusLabel: "Contacté", color: "bg-navy/10 text-navy" },
+              ].map((a) => (
+                <Link
+                  key={a.id}
+                  href={`/admin/athletes/${a.id}`}
+                  className="flex items-center justify-between py-2 border-b border-line last:border-0 hover:text-navy transition-colors"
+                >
+                  <p className="text-sm font-medium text-ink hover:text-navy">{a.name}</p>
+                  <span className={`px-2 py-0.5 rounded text-xs font-mono ${a.color}`}>
+                    {a.statusLabel}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+
           <div className="bg-white border border-line rounded-lg p-5">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xs font-mono uppercase tracking-widest text-graphite flex items-center gap-2">
