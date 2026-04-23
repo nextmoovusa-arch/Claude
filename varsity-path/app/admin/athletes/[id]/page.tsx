@@ -173,6 +173,8 @@ export default function AthletePage({ params }: { params: { id: string } }) {
   const [showAddUni, setShowAddUni] = useState(false);
   const [newUniSearch, setNewUniSearch] = useState("");
   const [editingShortlistId, setEditingShortlistId] = useState<string | null>(null);
+  const [compareIds, setCompareIds] = useState<string[]>([]);
+  const [showCompare, setShowCompare] = useState(false);
 
   const toggleStep = (order: number) => {
     setAthlete((prev) => ({
@@ -403,13 +405,23 @@ export default function AthletePage({ params }: { params: { id: string } }) {
                 </button>
               ))}
             </div>
-            <button
-              onClick={() => setShowAddUni(true)}
-              className="inline-flex items-center gap-2 px-4 py-2 bg-navy text-paper text-sm font-mono rounded hover:bg-navy/90 transition-colors flex-shrink-0"
-            >
-              <Plus className="w-4 h-4" />
-              Ajouter université
-            </button>
+            <div className="flex gap-2 flex-shrink-0">
+              {compareIds.length >= 2 && (
+                <button
+                  onClick={() => setShowCompare(true)}
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-amber-600 text-white text-sm font-mono rounded hover:bg-amber-700 transition-colors"
+                >
+                  Comparer ({compareIds.length})
+                </button>
+              )}
+              <button
+                onClick={() => setShowAddUni(true)}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-navy text-paper text-sm font-mono rounded hover:bg-navy/90 transition-colors"
+              >
+                <Plus className="w-4 h-4" />
+                Ajouter université
+              </button>
+            </div>
           </div>
 
           {/* Summary counts */}
@@ -437,6 +449,7 @@ export default function AthletePage({ params }: { params: { id: string } }) {
               <table className="w-full text-sm">
                 <thead className="border-b border-line bg-paper">
                   <tr>
+                    <th className="px-3 py-3 text-xs font-mono text-graphite text-center w-8" title="Sélectionner pour comparer">≡</th>
                     <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Université</th>
                     <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Division</th>
                     <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Statut</th>
@@ -453,6 +466,21 @@ export default function AthletePage({ params }: { params: { id: string } }) {
                       const isEditing = editingShortlistId === entry.id;
                       return (
                         <tr key={entry.id} className="border-b border-line last:border-0 hover:bg-paper/50 transition-colors">
+                          <td className="px-3 py-3 text-center">
+                            <input
+                              type="checkbox"
+                              checked={compareIds.includes(entry.id)}
+                              onChange={(e) => {
+                                if (e.target.checked) {
+                                  setCompareIds((prev) => prev.length < 3 ? [...prev, entry.id] : prev);
+                                } else {
+                                  setCompareIds((prev) => prev.filter((id) => id !== entry.id));
+                                }
+                              }}
+                              className="w-3.5 h-3.5 accent-navy"
+                              title="Comparer"
+                            />
+                          </td>
                           <td className="px-5 py-3">
                             <p className="font-medium text-ink">{entry.universityName}</p>
                             <p className="text-xs font-mono text-graphite">{entry.city}, {entry.state}</p>
@@ -551,7 +579,78 @@ export default function AthletePage({ params }: { params: { id: string } }) {
 
           <p className="text-xs font-mono text-stone mt-3">
             {shortlist.length} université{shortlist.length !== 1 ? "s" : ""} dans la liste de ciblage
+            {compareIds.length > 0 && ` · ${compareIds.length} sélectionnée${compareIds.length > 1 ? "s" : ""} pour comparaison`}
           </p>
+
+          {/* University comparison modal */}
+          {showCompare && compareIds.length >= 2 && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+              <div className="bg-white border border-line rounded-lg w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-xl">
+                <div className="flex items-center justify-between p-6 border-b border-line sticky top-0 bg-white z-10">
+                  <h2 className="text-sm font-mono uppercase tracking-widest text-graphite">
+                    Comparaison universités
+                  </h2>
+                  <div className="flex gap-2">
+                    <button onClick={() => { setCompareIds([]); setShowCompare(false); }} className="text-xs font-mono text-graphite hover:text-ink">
+                      Effacer sélection
+                    </button>
+                    <button onClick={() => setShowCompare(false)}>
+                      <X className="w-4 h-4 text-graphite hover:text-ink ml-4" />
+                    </button>
+                  </div>
+                </div>
+
+                {(() => {
+                  const compared = shortlist.filter((e) => compareIds.includes(e.id));
+                  const UNI_DATA: Record<string, { sat: string; acceptance: string; tuition: string; scholarships: string; rosterSize: string }> = {
+                    "1":  { sat: "1480–1570", acceptance: "19%",  tuition: "$48k/an", scholarships: "11.5", rosterSize: "23 joueurs" },
+                    "2":  { sat: "1500–1580", acceptance: "6%",   tuition: "$59k/an", scholarships: "9.9",  rosterSize: "27 joueurs" },
+                    "3":  { sat: "1180–1400", acceptance: "82%",  tuition: "$37k/an", scholarships: "9.9",  rosterSize: "28 joueurs" },
+                    "10": { sat: "1250–1430", acceptance: "67%",  tuition: "$42k/an", scholarships: "9.9",  rosterSize: "25 joueurs" },
+                    "5":  { sat: "1080–1270", acceptance: "83%",  tuition: "$18k/an", scholarships: "9.0",  rosterSize: "31 joueurs" },
+                  };
+
+                  const rows = [
+                    { label: "Division", key: "division" as const, fn: (e: typeof compared[0]) => e.division },
+                    { label: "Localisation", key: "location" as const, fn: (e: typeof compared[0]) => `${e.city}, ${e.state}` },
+                    { label: "Statut", key: "status" as const, fn: (e: typeof compared[0]) => SHORTLIST_STATUS_CONFIG[e.status].label },
+                    { label: "SAT moyen", key: "sat" as const, fn: (e: typeof compared[0]) => UNI_DATA[e.universityId]?.sat ?? "—" },
+                    { label: "Taux d'acceptation", key: "acceptance" as const, fn: (e: typeof compared[0]) => UNI_DATA[e.universityId]?.acceptance ?? "—" },
+                    { label: "Frais (out-of-state)", key: "tuition" as const, fn: (e: typeof compared[0]) => UNI_DATA[e.universityId]?.tuition ?? "—" },
+                    { label: "Bourses (équiv.)", key: "scholarships" as const, fn: (e: typeof compared[0]) => UNI_DATA[e.universityId]?.scholarships ?? "—" },
+                    { label: "Effectif équipe", key: "roster" as const, fn: (e: typeof compared[0]) => UNI_DATA[e.universityId]?.rosterSize ?? "—" },
+                    { label: "Notes agent", key: "notes" as const, fn: (e: typeof compared[0]) => e.notes ?? "—" },
+                  ];
+
+                  return (
+                    <table className="w-full text-sm">
+                      <thead className="border-b border-line bg-paper">
+                        <tr>
+                          <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite w-40">Critère</th>
+                          {compared.map((e) => (
+                            <th key={e.id} className="text-left px-5 py-3">
+                              <p className="font-semibold text-ink">{e.universityName}</p>
+                              <p className="text-xs font-mono text-graphite font-normal">{e.city}, {e.state}</p>
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {rows.map((row, ri) => (
+                          <tr key={row.key} className={`border-b border-line last:border-0 ${ri % 2 === 0 ? "bg-white" : "bg-paper/50"}`}>
+                            <td className="px-5 py-3 text-xs font-mono text-graphite uppercase tracking-widest">{row.label}</td>
+                            {compared.map((e) => (
+                              <td key={e.id} className="px-5 py-3 font-medium text-ink">{row.fn(e)}</td>
+                            ))}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  );
+                })()}
+              </div>
+            </div>
+          )}
 
           {/* Add university modal */}
           {showAddUni && (

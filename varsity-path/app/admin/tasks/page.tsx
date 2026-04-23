@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import {
   CheckSquare, Square, Plus, X,
-  User, BookOpen, Trophy, DollarSign, MessageSquare, FileText
+  User, BookOpen, Trophy, DollarSign, MessageSquare, FileText, Target
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -26,11 +26,11 @@ interface Task {
   completedAt?: string;
 }
 
-const CATEGORY_CONFIG: Record<TaskCategory, { label: string; color: string; icon: React.ComponentType<{ className: string }> }> = {
+const CATEGORY_CONFIG: Record<TaskCategory, { label: string; color: string; icon: React.ElementType }> = {
   ACADEMIC: { label: "Académique", color: "text-blue-700 bg-blue-50", icon: BookOpen },
   ADMINISTRATIVE: { label: "Administratif", color: "text-purple-700 bg-purple-50", icon: FileText },
   SPORTS: { label: "Sportif", color: "text-green-700 bg-green-50", icon: Trophy },
-  STRATEGY: { label: "Stratégie", color: "text-navy bg-blue-50", icon: ChevronDown },
+  STRATEGY: { label: "Stratégie", color: "text-navy bg-blue-50", icon: Target },
   COMMUNICATION: { label: "Communication", color: "text-amber-700 bg-amber-50", icon: MessageSquare },
   FINANCIAL: { label: "Financier", color: "text-red-flag bg-red-50", icon: DollarSign },
 };
@@ -155,7 +155,7 @@ export default function TasksPage() {
   }, [tasks, filterStatus, filterCategory, filterAthlete]);
 
   const athletes = useMemo(
-    () => [...new Set(tasks.map((t) => t.athleteName))],
+    () => Array.from(new Set(tasks.map((t) => t.athleteName))),
     [tasks]
   );
 
