@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
-import { auth } from "@clerk/nextjs"
 import { prisma } from "@/lib/prisma"
 
 export async function GET() {
-  const { userId } = auth()
-  if (!userId) return NextResponse.json({ error: "Non autorisé" }, { status: 401 })
 
   const athletes = await prisma.athlete.findMany({
     orderBy: { createdAt: "desc" },
@@ -25,19 +22,7 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const { userId } = auth()
-  if (!userId) return NextResponse.json({ error: "Non autorisé" }, { status: 401 })
-
   const body = await req.json()
-
-  // Récupérer ou créer le User agent
-  const agentUser = await prisma.user.findFirst({ where: { clerkId: userId } })
-  if (!agentUser) {
-    return NextResponse.json(
-      { error: "Compte agent introuvable — synchronisez votre profil Clerk" },
-      { status: 400 }
-    )
-  }
 
   // Créer un User pour l'athlète si email fourni
   let athleteUserId: string

@@ -93,7 +93,7 @@ function InfoRow({ label, value }: { label: string; value?: string | number | nu
 
 type Tab = "parcours" | "profil" | "academique" | "strategie";
 
-export default function AthletePage() {
+export default function AthletePage({ params }: { params: { id: string } }) {
   const [tab, setTab] = useState<Tab>("parcours");
   const athlete = MOCK_ATHLETE;
 
@@ -125,10 +125,12 @@ export default function AthletePage() {
             {new Date(athlete.dateOfBirth).toLocaleDateString("fr-FR")}
           </p>
         </div>
-        <Button variant="outline" size="sm">
-          <Edit3 className="w-4 h-4 mr-2" />
-          Modifier
-        </Button>
+        <Link href={`/admin/athletes/${params.id}/edit`}>
+          <Button variant="outline" size="sm">
+            <Edit3 className="w-4 h-4 mr-2" />
+            Modifier
+          </Button>
+        </Link>
       </div>
 
       {/* Progress bar */}

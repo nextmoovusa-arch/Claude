@@ -204,7 +204,8 @@ export default function CampaignsPage() {
               return (
                 <tr
                   key={campaign.id}
-                  className={`border-b border-line last:border-0 hover:bg-paper transition-colors ${
+                  onClick={() => window.location.href = `/admin/campaigns/${campaign.id}`}
+                  className={`border-b border-line last:border-0 hover:bg-paper transition-colors cursor-pointer ${
                     i % 2 === 0 ? "bg-white" : "bg-paper/40"
                   }`}
                 >

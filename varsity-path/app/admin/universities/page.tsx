@@ -173,6 +173,7 @@ export default function UniversitiesPage() {
             {filtered.map((uni, i) => (
               <tr
                 key={uni.id}
+                onClick={() => window.location.href = `/admin/universities/${uni.id}`}
                 className={`border-b border-line last:border-0 hover:bg-paper transition-colors cursor-pointer ${
                   i % 2 === 0 ? "bg-white" : "bg-paper/40"
                 }`}
