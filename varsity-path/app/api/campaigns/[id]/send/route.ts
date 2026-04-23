@@ -98,13 +98,13 @@ export async function POST(
       athleteEmail:     campaign.athlete.email ?? "",
       coachLastName:    contact.coach.lastName,
       universityName:   contact.coach.university?.name ?? "",
-      position:         (campaign.athlete as any).primaryPosition ?? "",
-      country:          (campaign.athlete as any).nationality ?? "",
+      position:         (campaign.athlete as Record<string, unknown>).primaryPosition as string ?? "",
+      country:          (campaign.athlete as Record<string, unknown>).nationality as string ?? "",
       age:              "",
-      currentClub:      (campaign.athlete as any).currentClub ?? "",
-      gpa:              (campaign.athlete as any).gpaConverted?.toString() ?? "",
-      toefl:            (campaign.athlete as any).toeflScore?.toString() ?? "",
-      highlightUrl:     (campaign.athlete as any).highlightUrl ?? "",
+      currentClub:      (campaign.athlete as Record<string, unknown>).currentClub as string ?? "",
+      gpa:              ((campaign.athlete as Record<string, unknown>).gpaConverted as number)?.toString() ?? "",
+      toefl:            ((campaign.athlete as Record<string, unknown>).toeflScore as number)?.toString() ?? "",
+      highlightUrl:     (campaign.athlete as Record<string, unknown>).highlightUrl as string ?? "",
     }
 
     return {
@@ -124,8 +124,9 @@ export async function POST(
     const result = await sendViaMailjet(messages)
     sent   = result.sent
     failed = result.failed
-  } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 502 })
+  } catch (err) {
+    const message = err instanceof Error ? err.message : "Erreur inconnue"
+    return NextResponse.json({ error: message }, { status: 502 })
   }
 
   const now = new Date()
