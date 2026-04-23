@@ -148,6 +148,34 @@ const MOCK_SHORTLIST: ShortlistEntry[] = [
   { id: "s5", universityId: "5", universityName: "Grand Valley State University", city: "Allendale", state: "MI", division: "NCAA D2", status: "OFFER", scholarshipPct: 60, priority: "LOW", addedAt: "2026-03-15", notes: "60% scholarship offert" },
 ];
 
+// ── Offres universitaires ──────────────────────────────────────────────────
+type OfferDivision = "NCAA DI" | "NCAA DII" | "NCAA DIII" | "NAIA" | "JUCO DI" | "JUCO DII" | "JUCO DIII" | "CCCAA";
+
+interface UniversityOffer {
+  id: string;
+  universityName: string;
+  division: OfferDivision;
+  cityState: string;
+  budgetUsd?: number;
+  details?: string;
+}
+
+const OFFER_DIVISION_COLORS: Record<OfferDivision, string> = {
+  "NCAA DI":   "bg-blue-100 text-blue-800",
+  "NCAA DII":  "bg-blue-100 text-blue-800",
+  "NCAA DIII": "bg-blue-100 text-blue-800",
+  "NAIA":      "bg-pink-100 text-pink-800",
+  "JUCO DI":   "bg-green-100 text-green-800",
+  "JUCO DII":  "bg-green-100 text-green-800",
+  "JUCO DIII": "bg-green-100 text-green-800",
+  "CCCAA":     "bg-yellow-100 text-yellow-800",
+};
+
+const MOCK_OFFERS: UniversityOffer[] = [
+  { id: "o1", universityName: "Grand Valley State University", division: "NCAA DII", cityState: "Allendale, MI", budgetUsd: 18000, details: "60% scholarship athlétique. Équipe très compétitive, coach intéressé par le profil." },
+  { id: "o2", universityName: "Yavapai College", division: "JUCO DI", cityState: "Prescott, AZ", budgetUsd: 8000, details: "Bourse complète logement. Très bonne transition vers une D1 ou D2 après 2 ans." },
+];
+
 // ── Documents ───────────────────────────────────────────────────────────────
 type DocCategory = "IDENTITE" | "ACADEMIQUE" | "SPORTIF" | "JURIDIQUE";
 
@@ -182,10 +210,11 @@ const MOCK_DOCS: AthleteDoc[] = [
   { id: "d5", name: "Bulletin_S1_2025.pdf", category: "ACADEMIQUE", uploadedAt: "2026-02-15", sizeKb: 560, mimeType: "application/pdf" },
 ];
 
-type Tab = "taches" | "profil" | "academique" | "strategie" | "universites" | "documents";
+type Tab = "taches" | "offres" | "profil" | "academique" | "strategie" | "universites" | "documents";
 
 const TAB_LABELS: Record<Tab, string> = {
   taches:     "Suivi du projet",
+  offres:     "Offres reçues",
   profil:     "Profil sportif",
   academique: "Académique",
   strategie:  "Stratégie",
@@ -209,6 +238,9 @@ export default function AthletePage({ params }: { params: { id: string } }) {
   const [editingShortlistId, setEditingShortlistId] = useState<string | null>(null);
   const [compareIds, setCompareIds] = useState<string[]>([]);
   const [showCompare, setShowCompare] = useState(false);
+  const [offers, setOffers] = useState<UniversityOffer[]>(MOCK_OFFERS);
+  const [showAddOffer, setShowAddOffer] = useState(false);
+  const [newOffer, setNewOffer] = useState<Partial<UniversityOffer>>({ division: "NCAA DI" });
 
   const completedTasks = tasks.filter((t) => t.status === "Terminé").length;
   const statusCfg = STATUS_CONFIG[athlete.status] ?? STATUS_CONFIG["PROSPECT"];
@@ -274,7 +306,7 @@ export default function AthletePage({ params }: { params: { id: string } }) {
 
       {/* Tabs */}
       <div className="flex gap-1 mb-6 border-b border-line overflow-x-auto">
-        {(["taches", "profil", "academique", "strategie", "universites", "documents"] as Tab[]).map((t) => (
+        {(["taches", "offres", "profil", "academique", "strategie", "universites", "documents"] as Tab[]).map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
@@ -282,7 +314,7 @@ export default function AthletePage({ params }: { params: { id: string } }) {
               tab === t ? "border-navy text-navy font-semibold" : "border-transparent text-graphite hover:text-ink"
             }`}
           >
-            {t === "universites" ? `Universités (${shortlist.length})` : t === "documents" ? `Documents (${docs.length})` : t === "taches" ? `Suivi du projet (${tasks.length})` : TAB_LABELS[t]}
+            {t === "universites" ? `Universités (${shortlist.length})` : t === "documents" ? `Documents (${docs.length})` : t === "taches" ? `Suivi du projet (${tasks.length})` : t === "offres" ? `Offres reçues (${offers.length})` : TAB_LABELS[t]}
           </button>
         ))}
       </div>
@@ -409,6 +441,160 @@ export default function AthletePage({ params }: { params: { id: string } }) {
                   className="w-full mt-4 py-2 bg-navy text-paper text-sm rounded hover:bg-navy/90"
                 >
                   Ajouter
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Tab: Offres reçues */}
+      {tab === "offres" && (
+        <div>
+          {/* Header */}
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <p className="text-sm text-graphite">
+                {offers.length === 0
+                  ? "Aucune offre reçue pour le moment."
+                  : `${offers.length} offre${offers.length > 1 ? "s" : ""} universitaire${offers.length > 1 ? "s" : ""} reçue${offers.length > 1 ? "s" : ""}`}
+              </p>
+            </div>
+            <button
+              onClick={() => setShowAddOffer(true)}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-navy text-paper text-sm rounded hover:bg-navy/90"
+            >
+              <Plus className="w-4 h-4" />
+              Ajouter une offre
+            </button>
+          </div>
+
+          {offers.length === 0 ? (
+            <div className="bg-white border border-line rounded-lg flex flex-col items-center justify-center py-20 text-graphite">
+              <AlertCircle className="w-10 h-10 mb-3 text-stone" />
+              <p className="text-sm font-mono">Aucune offre reçue</p>
+              <p className="text-xs font-mono text-stone mt-1">Cliquez sur "Ajouter une offre" pour en enregistrer une</p>
+            </div>
+          ) : (
+            <div className="bg-white border border-line rounded-lg overflow-hidden">
+              <table className="w-full text-sm">
+                <thead className="border-b border-line bg-paper">
+                  <tr>
+                    <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Université</th>
+                    <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Division</th>
+                    <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Localisation</th>
+                    <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Budget (USD/an)</th>
+                    <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">Détails</th>
+                    <th className="px-5 py-3" />
+                  </tr>
+                </thead>
+                <tbody>
+                  {offers.map((offer) => (
+                    <tr key={offer.id} className="border-b border-line last:border-0 hover:bg-paper/50 transition-colors">
+                      <td className="px-5 py-3">
+                        <p className="font-medium text-ink">{offer.universityName}</p>
+                      </td>
+                      <td className="px-5 py-3">
+                        <span className={`px-2 py-0.5 rounded text-xs font-mono ${OFFER_DIVISION_COLORS[offer.division]}`}>
+                          {offer.division}
+                        </span>
+                      </td>
+                      <td className="px-5 py-3 font-mono text-graphite text-xs">{offer.cityState}</td>
+                      <td className="px-5 py-3">
+                        {offer.budgetUsd ? (
+                          <span className="font-mono text-ink font-semibold">
+                            ${offer.budgetUsd.toLocaleString("en-US")}
+                          </span>
+                        ) : (
+                          <span className="text-stone font-mono text-xs">—</span>
+                        )}
+                      </td>
+                      <td className="px-5 py-3 max-w-xs">
+                        <p className="text-xs text-graphite leading-relaxed line-clamp-2">{offer.details ?? "—"}</p>
+                      </td>
+                      <td className="px-5 py-3">
+                        <button
+                          onClick={() => setOffers((prev) => prev.filter((o) => o.id !== offer.id))}
+                          className="p-1 text-graphite hover:text-red-flag transition-colors"
+                          title="Supprimer"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          {/* Add offer modal */}
+          {showAddOffer && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+              <div className="bg-white border border-line rounded-lg w-full max-w-md p-6 shadow-xl">
+                <div className="flex items-center justify-between mb-5">
+                  <h2 className="text-sm font-semibold uppercase tracking-widest text-graphite">Nouvelle offre</h2>
+                  <button onClick={() => { setShowAddOffer(false); setNewOffer({ division: "NCAA DI" }); }}>
+                    <X className="w-4 h-4 text-graphite" />
+                  </button>
+                </div>
+                <div className="space-y-3">
+                  <input
+                    placeholder="Nom de l'université *"
+                    value={newOffer.universityName ?? ""}
+                    onChange={(e) => setNewOffer((p) => ({ ...p, universityName: e.target.value }))}
+                    className="w-full border border-line rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-navy"
+                  />
+                  <select
+                    value={newOffer.division}
+                    onChange={(e) => setNewOffer((p) => ({ ...p, division: e.target.value as OfferDivision }))}
+                    className="w-full border border-line rounded px-3 py-2 text-sm bg-white focus:outline-none focus:ring-1 focus:ring-navy"
+                  >
+                    {(["NCAA DI", "NCAA DII", "NCAA DIII", "NAIA", "JUCO DI", "JUCO DII", "JUCO DIII", "CCCAA"] as OfferDivision[]).map((d) => (
+                      <option key={d} value={d}>{d}</option>
+                    ))}
+                  </select>
+                  <input
+                    placeholder="Ville, État (ex: Durham, NC)"
+                    value={newOffer.cityState ?? ""}
+                    onChange={(e) => setNewOffer((p) => ({ ...p, cityState: e.target.value }))}
+                    className="w-full border border-line rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-navy"
+                  />
+                  <input
+                    type="number"
+                    placeholder="Budget annuel (USD)"
+                    value={newOffer.budgetUsd ?? ""}
+                    onChange={(e) => setNewOffer((p) => ({ ...p, budgetUsd: e.target.value ? Number(e.target.value) : undefined }))}
+                    className="w-full border border-line rounded px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-navy"
+                  />
+                  <textarea
+                    placeholder="Détails de l'offre (bourse, conditions, remarques...)"
+                    value={newOffer.details ?? ""}
+                    onChange={(e) => setNewOffer((p) => ({ ...p, details: e.target.value }))}
+                    rows={3}
+                    className="w-full border border-line rounded px-3 py-2 text-sm resize-none focus:outline-none focus:ring-1 focus:ring-navy"
+                  />
+                </div>
+                <button
+                  onClick={() => {
+                    if (!newOffer.universityName) return;
+                    setOffers((prev) => [
+                      ...prev,
+                      {
+                        id: String(Date.now()),
+                        universityName: newOffer.universityName!,
+                        division: newOffer.division ?? "NCAA DI",
+                        cityState: newOffer.cityState ?? "",
+                        budgetUsd: newOffer.budgetUsd,
+                        details: newOffer.details,
+                      },
+                    ]);
+                    setNewOffer({ division: "NCAA DI" });
+                    setShowAddOffer(false);
+                  }}
+                  className="w-full mt-4 py-2 bg-navy text-paper text-sm rounded hover:bg-navy/90"
+                >
+                  Enregistrer l'offre
                 </button>
               </div>
             </div>
