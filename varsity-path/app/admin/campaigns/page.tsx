@@ -93,7 +93,7 @@ function MetricBadge({
   value,
   color = "text-graphite",
 }: {
-  icon: React.ComponentType<{ className: string }>;
+  icon: React.ElementType;
   label: string;
   value: number;
   color?: string;
