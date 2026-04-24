@@ -3,14 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import {
   Plus, Mail, CheckCircle2, Clock, AlertCircle,
   Eye, MessageSquare, Send, ChevronRight
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 type CampaignStatus = "DRAFT" | "SENT" | "IN_PROGRESS" | "COMPLETED";
-type EmailStatus = "DRAFT" | "SENT" | "OPENED" | "REPLIED" | "BOUNCED";
 
 interface Campaign {
   id: string;
@@ -25,256 +24,173 @@ interface Campaign {
   sentAt?: string;
 }
 
-const STATUS_CONFIG: Record<CampaignStatus, { label: string; color: string; icon: JSX.Element }> = {
-  DRAFT: {
-    label: "Brouillon",
-    color: "bg-stone text-ink",
-    icon: <AlertCircle className="w-4 h-4" />,
-  },
-  SENT: {
-    label: "Envoyée",
-    color: "bg-blue-100 text-navy",
-    icon: <Send className="w-4 h-4" />,
-  },
-  IN_PROGRESS: {
-    label: "En cours",
-    color: "bg-amber-100 text-amber-900",
-    icon: <Clock className="w-4 h-4" />,
-  },
-  COMPLETED: {
-    label: "Complète",
-    color: "bg-green-100 text-green-900",
-    icon: <CheckCircle2 className="w-4 h-4" />,
-  },
+const STATUS_CONFIG: Record<CampaignStatus, { label: string; style: string }> = {
+  DRAFT:       { label: "Brouillon",  style: "bg-gray-100 text-gray-600" },
+  SENT:        { label: "Envoyée",    style: "bg-blue-50 text-blue-700" },
+  IN_PROGRESS: { label: "En cours",   style: "bg-amber-50 text-amber-700" },
+  COMPLETED:   { label: "Complète",   style: "bg-green-50 text-green-700" },
 };
 
-// Mock campaigns
+const STATUS_TABS: Array<{ value: CampaignStatus | ""; label: string }> = [
+  { value: "",            label: "Toutes" },
+  { value: "IN_PROGRESS",label: "En cours" },
+  { value: "SENT",       label: "Envoyées" },
+  { value: "DRAFT",      label: "Brouillons" },
+  { value: "COMPLETED",  label: "Complètes" },
+];
+
 const MOCK_CAMPAIGNS: Campaign[] = [
   {
-    id: "1",
-    athleteName: "Lucas Martins",
+    id: "1", athleteName: "Lucas Martins",
     subject: "Student-athlete inquiry — midfielder from France",
-    targetCount: 45,
-    sentCount: 45,
-    openedCount: 18,
-    repliedCount: 4,
-    status: "IN_PROGRESS",
-    createdAt: "2026-03-15",
-    sentAt: "2026-03-20",
+    targetCount: 45, sentCount: 45, openedCount: 18, repliedCount: 4,
+    status: "IN_PROGRESS", createdAt: "2026-03-15", sentAt: "2026-03-20",
   },
   {
-    id: "2",
-    athleteName: "Lucas Martins",
+    id: "2", athleteName: "Lucas Martins",
     subject: "Follow-up — NCAA D2 programs",
-    targetCount: 32,
-    sentCount: 28,
-    openedCount: 8,
-    repliedCount: 1,
-    status: "SENT",
-    createdAt: "2026-03-22",
-    sentAt: "2026-03-25",
+    targetCount: 32, sentCount: 28, openedCount: 8, repliedCount: 1,
+    status: "SENT", createdAt: "2026-03-22", sentAt: "2026-03-25",
   },
   {
-    id: "3",
-    athleteName: "Sofia Chen",
+    id: "3", athleteName: "Sofia Chen",
     subject: "Forward from China — looking for D1/D2 opportunities",
-    targetCount: 50,
-    sentCount: 0,
-    openedCount: 0,
-    repliedCount: 0,
-    status: "DRAFT",
-    createdAt: "2026-03-28",
+    targetCount: 50, sentCount: 0, openedCount: 0, repliedCount: 0,
+    status: "DRAFT", createdAt: "2026-03-28",
   },
 ];
 
-function MetricBadge({
-  icon: Icon,
-  label,
-  value,
-  color = "text-graphite",
-}: {
-  icon: React.ElementType;
-  label: string;
-  value: number;
-  color?: string;
-}) {
-  return (
-    <div className="flex items-center gap-1.5 text-xs">
-      <Icon className={`w-3.5 h-3.5 ${color}`} />
-      <span className="font-mono text-graphite">{label}:</span>
-      <span className="font-semibold text-ink">{value}</span>
-    </div>
-  );
-}
-
 export default function CampaignsPage() {
-  const [campaigns, setCampaigns] = useState<Campaign[]>(MOCK_CAMPAIGNS);
+  const [campaigns] = useState<Campaign[]>(MOCK_CAMPAIGNS);
+  const [activeTab, setActiveTab] = useState<CampaignStatus | "">("");
+
+  const filtered = activeTab ? campaigns.filter((c) => c.status === activeTab) : campaigns;
+
+  const totalSent    = campaigns.reduce((s, c) => s + c.sentCount, 0);
+  const totalOpened  = campaigns.reduce((s, c) => s + c.openedCount, 0);
+  const totalReplied = campaigns.reduce((s, c) => s + c.repliedCount, 0);
+  const openRate     = totalSent > 0 ? Math.round((totalOpened / totalSent) * 100) : 0;
 
   return (
-    <div className="p-8 max-w-7xl mx-auto">
+    <div className="p-6">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <div>
-          <h1 className="text-3xl font-display uppercase tracking-wider text-navy mb-1">
-            Campagnes
-          </h1>
-          <p className="text-sm text-graphite font-mono">
-            {campaigns.length} campagnes · suivi en temps réel des envois
-          </p>
+      <div className="flex items-center justify-between mb-5">
+        <div className="flex items-center gap-2.5">
+          <Mail className="w-5 h-5 text-stone" />
+          <h1 className="text-xl font-semibold text-ink">Campagnes</h1>
         </div>
         <Link href="/admin/campaigns/new">
-          <Button variant="primary" size="lg">
-            <Plus className="w-4 h-4 mr-2" />
+          <Button size="md">
+            <Plus className="w-4 h-4" />
             Nouvelle campagne
           </Button>
         </Link>
       </div>
 
-      {/* Stats bar */}
-      <div className="grid grid-cols-4 gap-4 mb-8">
-        <div className="bg-white border border-line rounded-lg p-4">
-          <p className="text-xs font-mono text-graphite uppercase tracking-widest mb-2">
-            Total envoyés
-          </p>
-          <p className="text-2xl font-display text-navy">
-            {campaigns.reduce((sum, c) => sum + c.sentCount, 0)}
-          </p>
-        </div>
-        <div className="bg-white border border-line rounded-lg p-4">
-          <p className="text-xs font-mono text-graphite uppercase tracking-widest mb-2">
-            Ouvertures
-          </p>
-          <p className="text-2xl font-display text-navy">
-            {campaigns.reduce((sum, c) => sum + c.openedCount, 0)}
-          </p>
-        </div>
-        <div className="bg-white border border-line rounded-lg p-4">
-          <p className="text-xs font-mono text-graphite uppercase tracking-widest mb-2">
-            Réponses
-          </p>
-          <p className="text-2xl font-display text-navy">
-            {campaigns.reduce((sum, c) => sum + c.repliedCount, 0)}
-          </p>
-        </div>
-        <div className="bg-white border border-line rounded-lg p-4">
-          <p className="text-xs font-mono text-graphite uppercase tracking-widest mb-2">
-            Taux d'ouverture
-          </p>
-          <p className="text-2xl font-display text-navy">
-            {campaigns.length > 0
-              ? Math.round(
-                  (campaigns.reduce((sum, c) => sum + c.openedCount, 0) /
-                    Math.max(campaigns.reduce((sum, c) => sum + c.sentCount, 0), 1)) *
-                    100
-                )
-              : 0}
-            %
-          </p>
-        </div>
+      {/* Stats */}
+      <div className="grid grid-cols-4 gap-4 mb-5">
+        {[
+          { label: "Emails envoyés",   value: totalSent,    icon: Send,         color: "text-blue-600",  bg: "bg-blue-50" },
+          { label: "Ouvertures",       value: totalOpened,  icon: Eye,          color: "text-violet-600",bg: "bg-violet-50" },
+          { label: "Réponses",         value: totalReplied, icon: MessageSquare,color: "text-green-600", bg: "bg-green-50" },
+          { label: "Taux d'ouverture", value: `${openRate}%`, icon: CheckCircle2, color: "text-amber-600", bg: "bg-amber-50" },
+        ].map(({ label, value, icon: Icon, color, bg }) => (
+          <div key={label} className="bg-white border border-line rounded-lg p-4">
+            <div className={`w-8 h-8 rounded-lg ${bg} flex items-center justify-center mb-3`}>
+              <Icon className={`w-4 h-4 ${color}`} />
+            </div>
+            <p className="text-2xl font-bold text-ink">{value}</p>
+            <p className="text-xs text-stone mt-0.5">{label}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* Status tabs */}
+      <div className="flex gap-1 mb-4">
+        {STATUS_TABS.map((tab) => {
+          const count = tab.value ? campaigns.filter((c) => c.status === tab.value).length : campaigns.length;
+          return (
+            <button
+              key={tab.value}
+              onClick={() => setActiveTab(tab.value)}
+              className={cn(
+                "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-colors",
+                activeTab === tab.value
+                  ? "bg-primary text-white font-medium"
+                  : "text-stone hover:bg-mist"
+              )}
+            >
+              {tab.label}
+              <span className={cn(
+                "text-xs px-1.5 py-0.5 rounded-full font-medium",
+                activeTab === tab.value ? "bg-white/20 text-white" : "bg-mist text-stone"
+              )}>{count}</span>
+            </button>
+          );
+        })}
       </div>
 
       {/* Table */}
-      <div className="border border-line rounded-lg overflow-hidden bg-white">
+      <div className="bg-white border border-line rounded-lg overflow-hidden">
         <table className="w-full">
           <thead>
             <tr className="border-b border-line bg-paper">
-              <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">
-                Athlète
-              </th>
-              <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">
-                Sujet
-              </th>
-              <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">
-                Statut
-              </th>
-              <th className="text-left px-5 py-3 text-xs font-mono uppercase tracking-widest text-graphite">
-                Métriques
-              </th>
-              <th className="px-5 py-3" />
+              <th className="text-left px-4 py-2.5 text-xs font-medium text-stone">Athlète</th>
+              <th className="text-left px-4 py-2.5 text-xs font-medium text-stone">Sujet</th>
+              <th className="text-left px-4 py-2.5 text-xs font-medium text-stone">Statut</th>
+              <th className="text-left px-4 py-2.5 text-xs font-medium text-stone">Métriques</th>
+              <th className="px-4 py-2.5" />
             </tr>
           </thead>
-          <tbody>
-            {campaigns.map((campaign, i) => {
-              const cfg = STATUS_CONFIG[campaign.status];
-              const openRate =
-                campaign.sentCount > 0
-                  ? Math.round((campaign.openedCount / campaign.sentCount) * 100)
-                  : 0;
-
+          <tbody className="divide-y divide-line">
+            {filtered.map((c) => {
+              const cfg = STATUS_CONFIG[c.status];
+              const openRate = c.sentCount > 0 ? Math.round((c.openedCount / c.sentCount) * 100) : 0;
               return (
                 <tr
-                  key={campaign.id}
-                  onClick={() => window.location.href = `/admin/campaigns/${campaign.id}`}
-                  className={`border-b border-line last:border-0 hover:bg-paper transition-colors cursor-pointer ${
-                    i % 2 === 0 ? "bg-white" : "bg-paper/40"
-                  }`}
+                  key={c.id}
+                  onClick={() => window.location.href = `/admin/campaigns/${c.id}`}
+                  className="hover:bg-paper transition-colors cursor-pointer"
                 >
-                  <td className="px-5 py-4">
-                    <span className="font-medium text-ink">{campaign.athleteName}</span>
+                  <td className="px-4 py-3 font-medium text-sm text-ink">{c.athleteName}</td>
+                  <td className="px-4 py-3 max-w-xs">
+                    <p className="text-sm text-graphite truncate">{c.subject}</p>
+                    <p className="text-xs text-stone mt-0.5">{c.createdAt}</p>
                   </td>
-                  <td className="px-5 py-4">
-                    <span className="text-sm text-graphite font-mono max-w-xs truncate block">
-                      {campaign.subject}
-                    </span>
-                  </td>
-                  <td className="px-5 py-4">
-                    <span
-                      className={`inline-flex items-center gap-2 px-2.5 py-1 rounded text-xs font-mono font-semibold ${cfg.color}`}
-                    >
-                      {cfg.icon}
+                  <td className="px-4 py-3">
+                    <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${cfg.style}`}>
                       {cfg.label}
                     </span>
                   </td>
-                  <td className="px-5 py-4">
-                    <div className="flex flex-wrap gap-3">
-                      <MetricBadge
-                        icon={Send}
-                        label="Envoyés"
-                        value={campaign.sentCount}
-                        color="text-navy"
-                      />
-                      <MetricBadge
-                        icon={Eye}
-                        label="Ouverts"
-                        value={campaign.openedCount}
-                        color="text-blue-600"
-                      />
-                      <MetricBadge
-                        icon={MessageSquare}
-                        label="Réponses"
-                        value={campaign.repliedCount}
-                        color="text-green-600"
-                      />
-                      <span className="text-xs font-mono text-graphite">
-                        Taux: <span className="font-semibold text-ink">{openRate}%</span>
-                      </span>
+                  <td className="px-4 py-3">
+                    <div className="flex items-center gap-4 text-xs text-stone">
+                      <span><span className="font-semibold text-graphite">{c.sentCount}</span> envoyés</span>
+                      <span><span className="font-semibold text-graphite">{c.openedCount}</span> ouverts</span>
+                      <span><span className="font-semibold text-green-600">{c.repliedCount}</span> réponses</span>
+                      {c.sentCount > 0 && (
+                        <span className="font-semibold text-primary">{openRate}%</span>
+                      )}
                     </div>
                   </td>
-                  <td className="px-5 py-4 text-right">
-                    <ChevronRight className="w-4 h-4 text-graphite ml-auto" />
+                  <td className="px-4 py-3 text-right">
+                    <ChevronRight className="w-4 h-4 text-stone ml-auto" />
                   </td>
                 </tr>
               );
             })}
-            {campaigns.length === 0 && (
+            {filtered.length === 0 && (
               <tr>
-                <td colSpan={5} className="px-5 py-12 text-center text-graphite font-mono text-sm">
-                  Aucune campagne créée. Commencez par{" "}
-                  <Link href="/admin/campaigns/new" className="text-navy underline">
-                    créer une campagne
+                <td colSpan={5} className="px-4 py-12 text-center text-sm text-stone">
+                  Aucune campagne.{" "}
+                  <Link href="/admin/campaigns/new" className="text-primary hover:underline">
+                    Créer une campagne
                   </Link>
-                  .
                 </td>
               </tr>
             )}
           </tbody>
         </table>
       </div>
-
-      {/* Help */}
-      <p className="mt-6 text-xs text-graphite font-mono text-center">
-        📧 Les campagnes utilisent Gmail API v2 pour tracker : ouvertures, clics, réponses.
-      </p>
     </div>
   );
 }
