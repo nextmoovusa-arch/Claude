@@ -87,9 +87,15 @@ const MOCK_ATHLETE = {
   status: "IN_CAMPAIGN",
   nationality: "Français / Brésilien",
   dateOfBirth: "2005-03-14",
+  city: "Paris",
+  phone: "+33 6 12 34 56 78",
+  email: "lucas.martins@gmail.com",
+  instagram: "@lucas.martins",
   currentClub: "Paris FC U19",
   primaryPosition: "Milieu offensif",
+  secondaryPosition: "Ailier droit",
   dominantFoot: "Droit",
+  sportLevel: "National",
   heightCm: 178,
   weightKg: 72,
   gpaConverted: 3.4,
@@ -102,6 +108,12 @@ const MOCK_ATHLETE = {
   targetMajor: "Business Administration",
   agentNotes: "Excellent profil. Physique et technique. TOEFL à repasser en juin pour viser 100+.",
   highlightUrl: "https://youtube.com/watch?v=example",
+  parentName: "Ricardo Martins",
+  parentPhone: "+33 6 98 76 54 32",
+  parentEmail: "ricardo.martins@gmail.com",
+  nextmoovEmail: "lucas.martins@nextmoov.fr",
+  nextmoovEmailPassword: "••••••••",
+  nextmoovPortalPassword: "••••••••",
 };
 
 function InfoRow({ label, value }: { label: string; value?: string | number | null }) {
@@ -605,23 +617,44 @@ export default function AthletePage({ params }: { params: { id: string } }) {
       {/* Tab: Profil */}
       {tab === "profil" && (
         <div className="grid grid-cols-2 gap-6">
+          {/* Identité */}
+          <div className="bg-white border border-line rounded-lg p-5">
+            <h3 className="text-xs font-mono uppercase tracking-widest text-graphite mb-4 flex items-center gap-2">
+              <User className="w-4 h-4" /> Identité
+            </h3>
+            <InfoRow label="Nationalité" value={athlete.nationality} />
+            <InfoRow label="Date de naissance" value={new Date(athlete.dateOfBirth).toLocaleDateString("fr-FR")} />
+            <InfoRow label="Ville" value={athlete.city} />
+            <InfoRow label="Téléphone" value={athlete.phone} />
+            <InfoRow label="Email" value={athlete.email} />
+            {athlete.instagram && (
+              <div className="flex justify-between py-2.5 border-b border-line last:border-0">
+                <span className="text-sm font-mono text-graphite">Instagram</span>
+                <span className="text-sm text-ink font-medium">{athlete.instagram}</span>
+              </div>
+            )}
+          </div>
+
+          {/* Profil sportif */}
           <div className="bg-white border border-line rounded-lg p-5">
             <h3 className="text-xs font-mono uppercase tracking-widest text-graphite mb-4 flex items-center gap-2">
               <Trophy className="w-4 h-4" /> Profil Sportif
             </h3>
             <InfoRow label="Poste principal" value={athlete.primaryPosition} />
+            <InfoRow label="Poste secondaire" value={athlete.secondaryPosition} />
             <InfoRow label="Pied fort" value={athlete.dominantFoot} />
+            <InfoRow label="Niveau" value={athlete.sportLevel} />
             <InfoRow label="Taille" value={athlete.heightCm ? `${athlete.heightCm} cm` : null} />
             <InfoRow label="Poids" value={athlete.weightKg ? `${athlete.weightKg} kg` : null} />
             <InfoRow label="Club actuel" value={athlete.currentClub} />
             {athlete.highlightUrl && (
-              <div className="flex justify-between py-2.5 border-b border-line">
+              <div className="flex justify-between py-2.5 border-b border-line last:border-0">
                 <span className="text-sm font-mono text-graphite">Highlight</span>
                 <a
                   href={athlete.highlightUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-navy underline font-mono"
+                  className="text-sm text-navy underline font-mono hover:text-navy/70"
                 >
                   Voir la vidéo →
                 </a>
@@ -629,12 +662,30 @@ export default function AthletePage({ params }: { params: { id: string } }) {
             )}
           </div>
 
+          {/* Famille & contacts */}
           <div className="bg-white border border-line rounded-lg p-5">
             <h3 className="text-xs font-mono uppercase tracking-widest text-graphite mb-4 flex items-center gap-2">
-              <User className="w-4 h-4" /> Identité
+              <User className="w-4 h-4" /> Famille &amp; Contacts
             </h3>
-            <InfoRow label="Nationalité" value={athlete.nationality} />
-            <InfoRow label="Date de naissance" value={new Date(athlete.dateOfBirth).toLocaleDateString("fr-FR")} />
+            <InfoRow label="Nom parent/tuteur" value={athlete.parentName} />
+            <InfoRow label="Téléphone parent" value={athlete.parentPhone} />
+            <InfoRow label="Email parent" value={athlete.parentEmail} />
+          </div>
+
+          {/* Accès NEXTMOOV */}
+          <div className="bg-white border border-line rounded-lg p-5">
+            <h3 className="text-xs font-mono uppercase tracking-widest text-graphite mb-4 flex items-center gap-2">
+              <Globe className="w-4 h-4" /> Accès NEXTMOOV
+            </h3>
+            <InfoRow label="Email NEXTMOOV" value={athlete.nextmoovEmail} />
+            <div className="flex justify-between py-2.5 border-b border-line">
+              <span className="text-sm font-mono text-graphite">Mdp email</span>
+              <span className="text-sm text-ink font-mono tracking-widest select-none">{athlete.nextmoovEmailPassword}</span>
+            </div>
+            <div className="flex justify-between py-2.5 border-b border-line last:border-0">
+              <span className="text-sm font-mono text-graphite">Mdp portail</span>
+              <span className="text-sm text-ink font-mono tracking-widest select-none">{athlete.nextmoovPortalPassword}</span>
+            </div>
           </div>
         </div>
       )}
