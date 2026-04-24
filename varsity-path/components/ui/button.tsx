@@ -6,20 +6,21 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-mono font-medium uppercase tracking-widest transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy disabled:pointer-events-none disabled:opacity-40",
+  "inline-flex items-center justify-center gap-1.5 whitespace-nowrap text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-40",
   {
     variants: {
       variant: {
-        primary: "bg-navy text-paper hover:bg-navy-600 border border-navy",
-        danger: "bg-red-flag text-paper hover:bg-red-dark border border-red-flag",
-        outline: "border border-line bg-transparent text-ink hover:bg-cream hover:border-graphite",
-        ghost: "text-graphite hover:bg-cream hover:text-ink",
-        gold: "border border-gold text-gold hover:bg-gold hover:text-paper",
+        primary: "bg-primary text-white hover:bg-primary-700 rounded-lg",
+        danger:  "bg-red-500 text-white hover:bg-red-600 rounded-lg",
+        outline: "border border-line bg-white text-graphite hover:bg-paper hover:border-mist rounded-lg",
+        ghost:   "text-graphite hover:bg-paper hover:text-ink rounded-lg",
+        gold:    "border border-amber-400 text-amber-600 hover:bg-amber-50 rounded-lg",
+        navy:    "bg-primary text-white hover:bg-primary-700 rounded-lg",
       },
       size: {
         sm: "h-7 px-3 text-xs",
-        md: "h-9 px-4",
-        lg: "h-11 px-6 text-base",
+        md: "h-8 px-3.5",
+        lg: "h-10 px-5 text-base",
       },
     },
     defaultVariants: {

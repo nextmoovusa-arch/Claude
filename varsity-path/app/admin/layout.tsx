@@ -12,5 +12,6 @@ export default function AdminLayout({
         {children}
       </main>
     </div>
+
   )
 }
