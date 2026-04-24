@@ -14,6 +14,7 @@ import {
   FileText,
   Search,
   TrendingUp,
+  UserSearch,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { GlobalSearch } from "./global-search"
@@ -21,6 +22,7 @@ import { GlobalSearch } from "./global-search"
 const navItems = [
   { href: "/admin", label: "Tableau de bord", icon: BarChart3, exact: true },
   { href: "/admin/athletes", label: "Athlètes", icon: Users },
+  { href: "/admin/prospects", label: "Prospects", icon: UserSearch },
   { href: "/admin/universities", label: "Universités", icon: Building2 },
   { href: "/admin/tasks", label: "Tâches", icon: ListTodo },
   { href: "/admin/calendar", label: "Calendrier", icon: Calendar },
