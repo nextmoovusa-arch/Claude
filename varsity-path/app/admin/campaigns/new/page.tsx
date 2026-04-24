@@ -141,10 +141,63 @@ export default function NewCampaignPage() {
   const preview = renderPreview(previewCoach);
 
   async function handleSend() {
+    if (!athlete) return;
     setSending(true);
-    await new Promise((r) => setTimeout(r, 1400));
-    setSending(false);
-    setSent(true);
+
+    try {
+      let recipients: { email: string; coachLastName?: string; universityName?: string }[] = [];
+
+      if (recipientType === "coaches") {
+        recipients = selectedCoaches.map((c) => ({
+          email: c.coachEmail,
+          coachLastName: c.coachLastName,
+          universityName: c.universityName,
+        }));
+      } else if (recipientType === "parents") {
+        recipients = [{ email: parentEmail }];
+      } else {
+        recipients = [{ email: athleteEmail }];
+      }
+
+      // Enrich subject/body variables for each recipient using athlete data
+      const baseVars = buildVars(athlete);
+      const enrichedSubject = subject.replace(/\{\{(\w+)\}\}/g, (_, k) => {
+        const v = baseVars[k as keyof typeof baseVars];
+        return v !== undefined ? String(v) : `{{${k}}}`;
+      });
+      const enrichedBody = body.replace(/\{\{(\w+)\}\}/g, (_, k) => {
+        const v = baseVars[k as keyof typeof baseVars];
+        return v !== undefined ? String(v) : `{{${k}}}`;
+      });
+
+      const res = await fetch("/api/mail/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          athleteId: athlete.id,
+          templateId,
+          subject: enrichedSubject,
+          body: enrichedBody,
+          recipients,
+        }),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ error: "Erreur serveur" }));
+        console.error("Erreur envoi:", err);
+        alert(`Erreur lors de l'envoi : ${err.error ?? "Erreur inconnue"}`);
+        return;
+      }
+
+      const data = await res.json();
+      console.log("Envoi terminé:", data);
+      setSent(true);
+    } catch (err) {
+      console.error("Erreur réseau:", err);
+      alert("Erreur réseau lors de l'envoi.");
+    } finally {
+      setSending(false);
+    }
   }
 
   const canStep2 = recipientType !== "" && athleteId !== "";
