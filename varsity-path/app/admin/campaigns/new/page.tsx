@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
@@ -12,23 +12,14 @@ import {
   type RecipientType, type EmailTemplate,
 } from "@/lib/email-templates";
 
-// ── Mock data ────────────────────────────────────────────────────────────────
 const MOCK_ATHLETES = [
   { id: "1", firstName: "Lucas",  lastName: "Martins",   position: "midfielder",  country: "France",  age: "18", currentClub: "Paris FC U19",       gpa: "3.4", toefl: "98",  sat: "1180", highlightUrl: "https://youtube.com/watch?v=example", email: "lucas.m@nextmoov.fr",  parentName: "Ricardo Martins", parentEmail: "ricardo.martins@gmail.com" },
   { id: "2", firstName: "Sofia",  lastName: "Chen",      position: "forward",     country: "China",   age: "17", currentClub: "Shanghai FC Academy", gpa: "3.7", toefl: "102", sat: "1260", highlightUrl: "https://youtube.com/watch?v=sofia",   email: "sofia.c@nextmoov.fr",  parentName: "Wei Chen",        parentEmail: "wei.chen@gmail.com" },
   { id: "3", firstName: "Emma",   lastName: "Bergström", position: "center-back", country: "Sweden",  age: "19", currentClub: "Hammarby IF U21",     gpa: "3.1", toefl: "95",  sat: "1080", highlightUrl: "https://youtube.com/watch?v=emma",    email: "emma.b@nextmoov.fr",   parentName: "Lars Bergström",  parentEmail: "lars.b@gmail.com" },
 ];
 
-const MOCK_UNIVERSITIES = [
-  { id: "u1", name: "University of Virginia",        city: "Charlottesville", state: "VA", division: "NCAA_D1", headCoach: { id: "hc1", firstName: "George",   lastName: "Gelnovatch", email: "ggelnovatch@virginia.edu" },  assistants: [{ id: "ac1", firstName: "David",  lastName: "Nazemba",  email: "dnazemba@virginia.edu" }] },
-  { id: "u2", name: "Duke University",               city: "Durham",          state: "NC", division: "NCAA_D1", headCoach: { id: "hc2", firstName: "John",     lastName: "Kerr",       email: "john.kerr@duke.edu" },        assistants: [] },
-  { id: "u3", name: "Indiana University",            city: "Bloomington",     state: "IN", division: "NCAA_D1", headCoach: { id: "hc3", firstName: "Todd",     lastName: "Yeagley",    email: "tyeagley@indiana.edu" },      assistants: [{ id: "ac2", firstName: "Chris",  lastName: "Zegers",   email: "czegers@indiana.edu" }] },
-  { id: "u4", name: "Creighton University",          city: "Omaha",           state: "NE", division: "NCAA_D1", headCoach: { id: "hc4", firstName: "Johnny",   lastName: "Torres",     email: "jtorres@creighton.edu" },     assistants: [] },
-  { id: "u5", name: "Grand Valley State University", city: "Allendale",       state: "MI", division: "NCAA_D2", headCoach: { id: "hc5", firstName: "Schellas", lastName: "Hyndman",    email: "shyndman@gvsu.edu" },         assistants: [{ id: "ac3", firstName: "Jeff",   lastName: "Dufour",   email: "jdufour@gvsu.edu" }] },
-  { id: "u6", name: "Wake Forest University",        city: "Winston-Salem",   state: "NC", division: "NCAA_D1", headCoach: { id: "hc6", firstName: "Bobby",    lastName: "Muuss",      email: "bmuuss@wfu.edu" },            assistants: [] },
-  { id: "u7", name: "Adelphi University",            city: "Garden City",     state: "NY", division: "NCAA_D2", headCoach: { id: "hc7", firstName: "Julio",    lastName: "Penas",      email: "jpenas@adelphi.edu" },        assistants: [] },
-  { id: "u8", name: "Messiah University",            city: "Mechanicsburg",   state: "PA", division: "NCAA_D3", headCoach: { id: "hc8", firstName: "Brad",     lastName: "McCarty",    email: "bmccarty@messiah.edu" },      assistants: [{ id: "ac4", firstName: "Lisa",   lastName: "Taylor",   email: "ltaylor@messiah.edu" }] },
-];
+type DbCoach = { id: string; firstName: string; lastName: string; email: string | null; isHeadCoach: boolean };
+type DbUniversity = { id: string; name: string; city: string | null; state: string | null; division: string | null; coaches: DbCoach[] };
 
 const DIVISIONS = ["NCAA_D1", "NCAA_D2", "NCAA_D3", "NAIA", "NJCAA_D1"];
 const DIV_LABELS: Record<string, string> = { NCAA_D1: "NCAA D1", NCAA_D2: "NCAA D2", NCAA_D3: "NCAA D3", NAIA: "NAIA", NJCAA_D1: "JUCO D1" };
@@ -48,6 +39,8 @@ export default function NewCampaignPage() {
   const [selectedCoaches, setSelectedCoaches] = useState<SelectedCoach[]>([]);
   const [search, setSearch] = useState("");
   const [filterDiv, setFilterDiv] = useState("");
+  const [universities, setUniversities] = useState<DbUniversity[]>([]);
+  const [loadingUnis, setLoadingUnis] = useState(false);
   const [filterState, setFilterState] = useState("");
   const [previewIdx, setPreviewIdx] = useState(0);
   const [parentEmail, setParentEmail] = useState("");
@@ -59,29 +52,45 @@ export default function NewCampaignPage() {
   const template = ALL_TEMPLATES.find((t) => t.id === templateId);
   const filteredTemplates = ALL_TEMPLATES.filter((t) => t.recipientType === recipientType);
 
-  const filteredUniversities = useMemo(() => {
-    return MOCK_UNIVERSITIES.filter((u) => {
-      const q = search.toLowerCase();
-      const matchSearch = !search || u.name.toLowerCase().includes(q) || u.city.toLowerCase().includes(q) || u.state.toLowerCase().includes(q);
-      const matchDiv = !filterDiv || u.division === filterDiv;
-      const matchState = !filterState || u.state === filterState;
-      return matchSearch && matchDiv && matchState;
-    });
+  // Fetch real universities from DB when step 3 opens for coaches
+  const fetchUniversities = useCallback(async () => {
+    setLoadingUnis(true);
+    const params = new URLSearchParams();
+    if (search) params.set("search", search);
+    if (filterDiv) params.set("division", filterDiv);
+    if (filterState) params.set("state", filterState);
+    try {
+      const res = await fetch(`/api/campaigns/coaches?${params}`);
+      if (res.ok) setUniversities(await res.json());
+    } finally {
+      setLoadingUnis(false);
+    }
   }, [search, filterDiv, filterState]);
 
-  function allCoachesOf(u: typeof MOCK_UNIVERSITIES[0]): SelectedCoach[] {
-    const all: SelectedCoach[] = [{ coachId: u.headCoach.id, coachFirstName: u.headCoach.firstName, coachLastName: u.headCoach.lastName, coachEmail: u.headCoach.email, universityId: u.id, universityName: u.name }];
-    u.assistants.forEach((a) => all.push({ coachId: a.id, coachFirstName: a.firstName, coachLastName: a.lastName, coachEmail: a.email, universityId: u.id, universityName: u.name }));
-    return all;
+  useEffect(() => {
+    if (step === 3 && recipientType === "coaches") fetchUniversities();
+  }, [step, recipientType, fetchUniversities]);
+
+  function allCoachesOf(u: DbUniversity): SelectedCoach[] {
+    return u.coaches
+      .filter((c) => c.email)
+      .map((c) => ({
+        coachId: c.id,
+        coachFirstName: c.firstName,
+        coachLastName: c.lastName,
+        coachEmail: c.email!,
+        universityId: u.id,
+        universityName: u.name,
+      }));
   }
 
   function isCoachSelected(id: string) { return selectedCoaches.some((c) => c.coachId === id); }
-  function isUniAllSelected(u: typeof MOCK_UNIVERSITIES[0]) { return allCoachesOf(u).every((c) => isCoachSelected(c.coachId)); }
+  function isUniAllSelected(u: DbUniversity) { return allCoachesOf(u).every((c) => isCoachSelected(c.coachId)); }
 
   function toggleCoach(coach: SelectedCoach) {
     setSelectedCoaches((prev) => prev.some((c) => c.coachId === coach.coachId) ? prev.filter((c) => c.coachId !== coach.coachId) : [...prev, coach]);
   }
-  function toggleUniversity(u: typeof MOCK_UNIVERSITIES[0]) {
+  function toggleUniversity(u: DbUniversity) {
     if (isUniAllSelected(u)) {
       setSelectedCoaches((prev) => prev.filter((c) => c.universityId !== u.id));
     } else {
@@ -90,7 +99,7 @@ export default function NewCampaignPage() {
     }
   }
   function selectAllVisible() {
-    const newOnes = filteredUniversities.flatMap(allCoachesOf).filter((c) => !isCoachSelected(c.coachId));
+    const newOnes = universities.flatMap(allCoachesOf).filter((c) => !isCoachSelected(c.coachId));
     setSelectedCoaches((prev) => [...prev, ...newOnes]);
   }
 
@@ -294,30 +303,41 @@ export default function NewCampaignPage() {
                     {selectedCoaches.length > 0 && <span className="ml-2 px-2 py-0.5 bg-navy text-paper text-xs rounded">{selectedCoaches.length} sélectionné{selectedCoaches.length > 1 ? "s" : ""}</span>}
                   </p>
                   <button onClick={selectAllVisible} className="text-xs font-mono text-navy hover:underline">
-                    Tout sélectionner ({filteredUniversities.reduce((s, u) => s + 1 + u.assistants.length, 0)})
+                    Tout sélectionner ({universities.reduce((s, u) => s + u.coaches.filter((c) => c.email).length, 0)})
                   </button>
                 </div>
 
                 <div className="flex gap-3 mb-4">
                   <div className="relative flex-1">
                     <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-graphite" />
-                    <input placeholder="Rechercher une université…" value={search} onChange={(e) => setSearch(e.target.value)}
+                    <input placeholder="Rechercher une université…" value={search}
+                      onChange={(e) => setSearch(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && fetchUniversities()}
                       className="w-full pl-8 pr-3 py-2 border border-line rounded text-sm font-mono focus:outline-none focus:ring-1 focus:ring-navy" />
                   </div>
-                  <select value={filterDiv} onChange={(e) => setFilterDiv(e.target.value)}
+                  <select value={filterDiv} onChange={(e) => { setFilterDiv(e.target.value); setTimeout(fetchUniversities, 0); }}
                     className="border border-line rounded px-3 py-2 text-xs font-mono bg-white focus:outline-none focus:ring-1 focus:ring-navy">
                     <option value="">Toutes divisions</option>
                     {DIVISIONS.map((d) => <option key={d} value={d}>{DIV_LABELS[d] ?? d}</option>)}
                   </select>
-                  <select value={filterState} onChange={(e) => setFilterState(e.target.value)}
+                  <select value={filterState} onChange={(e) => { setFilterState(e.target.value); setTimeout(fetchUniversities, 0); }}
                     className="border border-line rounded px-3 py-2 text-xs font-mono bg-white focus:outline-none focus:ring-1 focus:ring-navy">
                     <option value="">Tous états</option>
                     {US_STATES.map((s) => <option key={s} value={s}>{s}</option>)}
                   </select>
+                  <button onClick={fetchUniversities} className="px-3 py-2 bg-navy text-paper text-xs font-mono rounded hover:bg-navy/90">
+                    Chercher
+                  </button>
                 </div>
 
+                {loadingUnis ? (
+                  <div className="flex items-center justify-center py-12">
+                    <Loader2 className="w-6 h-6 animate-spin text-graphite" />
+                    <span className="ml-3 text-sm font-mono text-graphite">Chargement des coachs…</span>
+                  </div>
+                ) : (
                 <div className="space-y-2 max-h-96 overflow-y-auto pr-1">
-                  {filteredUniversities.map((u) => {
+                  {universities.map((u) => {
                     const coaches = allCoachesOf(u);
                     return (
                       <div key={u.id} className="border border-line rounded-lg overflow-hidden">
@@ -325,7 +345,7 @@ export default function NewCampaignPage() {
                           <input type="checkbox" checked={isUniAllSelected(u)} onChange={() => {}} className="w-3.5 h-3.5 accent-navy" />
                           <div className="flex-1 min-w-0">
                             <p className="text-sm font-semibold text-ink">{u.name}</p>
-                            <p className="text-xs font-mono text-graphite">{u.city}, {u.state} · {DIV_LABELS[u.division] ?? u.division}</p>
+                            <p className="text-xs font-mono text-graphite">{u.city}, {u.state} · {DIV_LABELS[u.division ?? ""] ?? u.division}</p>
                           </div>
                           <span className="text-xs font-mono text-stone">{coaches.length} coach{coaches.length !== 1 ? "s" : ""}</span>
                         </div>
@@ -334,14 +354,18 @@ export default function NewCampaignPage() {
                             <div key={c.coachId} className="flex items-center gap-3 px-6 py-2.5 hover:bg-paper/60 cursor-pointer" onClick={() => toggleCoach(c)}>
                               <input type="checkbox" checked={isCoachSelected(c.coachId)} onChange={() => {}} className="w-3 h-3 accent-navy" />
                               <span className="text-xs text-ink font-medium flex-1">{c.coachFirstName || c.coachLastName ? `${c.coachFirstName} ${c.coachLastName}`.trim() : "Nom non renseigné"}</span>
-                              <span className="text-xs font-mono text-graphite">{c.coachEmail}</span>
+                              <span className="text-xs font-mono text-graphite truncate max-w-48">{c.coachEmail}</span>
                             </div>
                           ))}
                         </div>
                       </div>
                     );
                   })}
+                  {universities.length === 0 && !loadingUnis && (
+                    <p className="text-center py-8 text-sm font-mono text-graphite">Aucune université trouvée — modifiez les filtres</p>
+                  )}
                 </div>
+                )}
               </div>
 
               {selectedCoaches.length > 0 && (
