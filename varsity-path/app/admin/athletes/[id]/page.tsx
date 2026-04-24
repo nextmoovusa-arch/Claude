@@ -293,6 +293,12 @@ export default function AthletePage({ params }: { params: { id: string } }) {
               Portail athlète
             </Button>
           </a>
+          <Link href={`/admin/athletes/${params.id}/portal-settings`}>
+            <Button variant="outline" size="sm">
+              <Settings2 className="w-4 h-4 mr-2" />
+              Paramètres portail
+            </Button>
+          </Link>
           <Link href={`/admin/athletes/${params.id}/edit`}>
             <Button variant="outline" size="sm">
               <Edit3 className="w-4 h-4 mr-2" />
